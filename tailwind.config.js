@@ -27,10 +27,12 @@ export default {
             },
             width:{
                 'responsive-width': ['clamp(16em, 90vw, 40em)'],
+                'responsive-normal-button-width': ['clamp(8em, 16vw, 9em)'],
             },
             height:{
                 'responsive-height-first-image': ['clamp(20em, 64vw, 45em)'],
                 'responsive-height-second-image': ['clamp(12em, 60vw, 34em)'],
+                'responsive-normal-button-height': ['clamp(3em, 8vw, 3em)'],
             },
             screens:{
                 'custom-flex-wrap-first-title':{max:'1309px'},

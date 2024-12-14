@@ -14,6 +14,8 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::get('/AdminRoutines',function (){return Inertia::render('AdminRoutines');})->name('AdminRoutines');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
