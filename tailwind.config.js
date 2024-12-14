@@ -20,11 +20,19 @@ export default {
                 "lilaSecundario":"#8F3985"
             },
             fontSize: {
+                'responsive-h1': ['clamp(1.3em, 9vw, 4.6em)'],
                 'responsive-h2': ['clamp(1.1em, 9.64vw, 4em)'],
+                'responsive-h4': ['clamp(0.5em,4vw, 1.5em)'],
             },
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            width:{
+                'responsive-width': ['clamp(16em, 90vw, 40em)'],
             },
+            height:{
+                'responsive-height-first-image': ['clamp(20em, 64vw, 45em)'],
+            },
+            screens:{
+                'custom-flex-wrap-first-title':{max:'1309px'},
+            }
         },
     },
 

@@ -82,3 +82,7 @@ html, body {
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#6A0574", GradientType=1 );
 }
+
+.mask-gradient {
+    mask-image: linear-gradient(black 80%, transparent);
+}
