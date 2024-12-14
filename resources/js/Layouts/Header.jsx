@@ -1,16 +1,12 @@
 import logo from '../assets/images/Logo.png';
 import avatar from '@/assets/images/avatar.png';
 import { Link } from "@inertiajs/react";
-import { useState, useCallback } from "react";
+import { useIconAnimation } from "@/Hooks/Home/useIconAnimation.js";
 import {motion} from "motion/react";
 import HamburgerButton from "@/Components/HamburgerButton.jsx";
 
 export const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleMenu = useCallback(() => {
-        setIsOpen(prev => !prev);
-    }, []);
+    const { isOpen, toggleMenu } = useIconAnimation();
 
     return (
         <header className="p-2 bg-black fixed flex justify-between items-center w-screen z-20">
