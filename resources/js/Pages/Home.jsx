@@ -1,6 +1,7 @@
 import React from "react";
 import {Head} from "@inertiajs/react";
 import {Header} from "@/Layouts/Header.jsx";
+import {Footer} from "@/Layouts/Footer.jsx";
 
 export default function Home() {
     return (
@@ -12,5 +13,6 @@ export default function Home() {
                     Home
                 </h1>
             </main>
+            <Footer></Footer>
         </div>
     );}
