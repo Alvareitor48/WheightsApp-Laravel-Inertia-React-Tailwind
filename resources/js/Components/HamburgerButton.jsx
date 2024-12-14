@@ -1,14 +1,7 @@
-import { useState, useCallback } from "react";
 import { motion } from 'motion/react';
-
-const HamburgerButton = () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleMenu = useCallback(() => {
-        setIsOpen(prev => !prev);
-    }, []);
+const HamburgerButton = ({action,isOpen}) => {
     return (
-        <div className="bg-custom-gradient2 rounded-full p-2 w-10 h-10 cursor-pointer z-40" onClick={toggleMenu}>
+        <div className="bg-custom-gradient2 rounded-full p-2 w-10 h-10 cursor-pointer z-40" onClick={action}>
             <div className="flex flex-col justify-center items-center space-y-1 w-6">
                 <motion.div
                     className="h-1 w-full bg-black rounded"
