@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+*{
+    font-family: "Poppins", system-ui;
+    font-weight: 900;
+    font-style: normal;
+
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    text-align: center;
+}
+
+/* Archivo: custom.css */
+.bg-custom-gradient {
+    background: hsla(233, 24%, 19%, 1);
+
+    background: linear-gradient(135deg, hsla(233, 24%, 19%, 1) 27%, hsla(254, 31%, 27%, 1) 59%, hsla(295, 92%, 24%, 1) 94%);
+
+    background: -moz-linear-gradient(135deg, hsla(233, 24%, 19%, 1) 27%, hsla(254, 31%, 27%, 1) 59%, hsla(295, 92%, 24%, 1) 94%);
+
+    background: -webkit-linear-gradient(135deg, hsla(233, 24%, 19%, 1) 27%, hsla(254, 31%, 27%, 1) 59%, hsla(295, 92%, 24%, 1) 94%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#392F5A", GradientType=1 );
+}
+.bg-custom-gradient2{
+    background: hsla(0, 35%, 74%, 1);
+
+    background: radial-gradient(circle, hsla(0, 35%, 74%, 1) 0%, hsla(295, 92%, 24%, 1) 54%, hsla(233, 24%, 19%, 1) 91%);
+
+    background: -moz-radial-gradient(circle, hsla(0, 35%, 74%, 1) 0%, hsla(295, 92%, 24%, 1) 54%, hsla(233, 24%, 19%, 1) 91%);
+
+    background: -webkit-radial-gradient(circle, hsla(0, 35%, 74%, 1) 0%, hsla(295, 92%, 24%, 1) 54%, hsla(233, 24%, 19%, 1) 91%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D4A5A5", endColorstr="#6A0574", GradientType=1 );
+}
+
+.bg-custom-gradient3{
+    background: hsla(233, 24%, 19%, 1);
+
+    background: linear-gradient(315deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    background: -moz-linear-gradient(315deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    background: -webkit-linear-gradient(315deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#6A0574", GradientType=1 );
+}
+
+.bg-custom-gradient4{
+    background: hsla(233, 24%, 19%, 1);
+
+    background: linear-gradient(135deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    background: -moz-linear-gradient(135deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    background: -webkit-linear-gradient(135deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#6A0574", GradientType=1 );
+}
+
+.bg-custom-gradient5{
+    background: hsla(233, 24%, 19%, 1);
+
+    background: linear-gradient(225deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    background: -moz-linear-gradient(225deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    background: -webkit-linear-gradient(225deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#6A0574", GradientType=1 );
+}

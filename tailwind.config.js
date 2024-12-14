@@ -12,6 +12,16 @@ export default {
 
     theme: {
         extend: {
+            colors:{
+                "lilaPrincipal":"#6A0574",
+                "azulFondo":"#25283D",
+                "azulSecundario":"#392F5A",
+                "carne":"#D4A5A5",
+                "lilaSecundario":"#8F3985"
+            },
+            fontSize: {
+                'responsive-h2': ['clamp(1.1em, 9.64vw, 4em)'],
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
