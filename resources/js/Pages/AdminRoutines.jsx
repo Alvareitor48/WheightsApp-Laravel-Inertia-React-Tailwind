@@ -2,6 +2,7 @@ import MainLayout from "@/Layouts/MainLayout.jsx";
 import {motion} from "motion/react";
 import {Head, router} from "@inertiajs/react";
 import React from "react";
+import {PrincipalTable} from "@/Components/PrincipalTable.jsx";
 
 export default function AdminRoutines(){
     return(
@@ -23,6 +24,7 @@ export default function AdminRoutines(){
                 >
                     Comenzar Rutina
                 </motion.button>
+                <PrincipalTable></PrincipalTable>
             </div>
 
         </MainLayout>
