@@ -28,6 +28,7 @@ export default function AdminRoutines({routine,exercises}){
                     exercises.map(function (exercise,index) {
                         return (
                             <PrincipalTable
+                                key={`${exercise.data.exercise[index].id}.${index}`}
                                 name={exercise.data.exercise[index].name}
                                 description={exercise.data.note}
                                 series={exercise.data.series[index]}

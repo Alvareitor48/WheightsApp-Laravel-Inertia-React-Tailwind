@@ -45,8 +45,7 @@ export function PrincipalTable({name, description,duration,series}) {
                     <tbody className="text-gray-700">
                     {
                         series.map(function (serie,index){
-                            console.log(serie)
-                            return (<tr className="border-b border-gray-200 hover:bg-lilaPrincipal">
+                            return (<tr key={`${serie.id}.${index}`} className="border-b border-gray-200 hover:bg-lilaPrincipal">
                                 <td className="py-3 px-2 text-center whitespace-nowrap">{index+1}</td>
                                 <td className="py-3 px-2 text-center">{serie.repetitions}</td>
                                 <td className="py-3 px-2 text-center">{serie.weight}</td>
