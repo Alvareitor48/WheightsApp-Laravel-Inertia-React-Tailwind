@@ -29,7 +29,7 @@ export default function AdminRoutines({routine,exercises}){
                         return (
                             <PrincipalTable
                                 name={exercise.data.exercise[index].name}
-                                description={exercise.data.description}
+                                description={exercise.data.note}
                                 series={exercise.data.series[index]}
                             ></PrincipalTable>
                         )

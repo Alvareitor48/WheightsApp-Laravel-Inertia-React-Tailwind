@@ -21,7 +21,7 @@ class ExerciseRoutineResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'description' => $this->description,
+            'note' => $this->note,
             'exercise' => $this->exercise, // Incluye el recurso de ejercicio
             'series' => $this->series,     // Incluye el recurso de series
         ];
