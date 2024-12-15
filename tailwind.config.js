@@ -26,17 +26,23 @@ export default {
                 'responsive-ul': ['clamp(1em,5vw, 2.5em)'],
                 'responsive-table':['clamp(0.12em,3.5vw, 1.5em)'],
                 'responsive-note-table':['clamp(0.2em,2vw, 1em)'],
+                'responsive-index-title':['clamp(0.8em,3.4vw, 1.6em)'],
+                'responsive-index':['clamp(0.55em,2.8vw, 1.1em)'],
             },
             width:{
                 'responsive-width': ['clamp(16em, 90vw, 40em)'],
                 'responsive-normal-button-width': ['clamp(8em, 16vw, 9em)'],
                 'responsive-width-table-image': ['clamp(2em, 12vw, 6em)'],
+                'responsive-index-button-width': ['clamp(7em, 12vw, 4em)'],
+                'responsive-index-width': ['clamp(12em, 40vw, 15em)'],
             },
             height:{
                 'responsive-height-first-image': ['clamp(20em, 64vw, 45em)'],
                 'responsive-height-second-image': ['clamp(12em, 60vw, 34em)'],
                 'responsive-normal-button-height': ['clamp(3em, 8vw, 3em)'],
                 'responsive-height-table-image': ['clamp(2em, 12vw, 6em)'],
+                'responsive-index-button-height': ['clamp(3em, 8vw, 3em)'],
+                'responsive-index-height': ['clamp(3em, 8vw, 3em)'],
             },
             screens:{
                 'custom-flex-wrap-first-title':{max:'1309px'},
