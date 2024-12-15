@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\RoutineController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,7 +14,7 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/AdminRoutines',function (){return Inertia::render('AdminRoutines');})->name('AdminRoutines');
+Route::get('/AdminRoutines',[RoutineController::class,'show'])->name('AdminRoutines');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

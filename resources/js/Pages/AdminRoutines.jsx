@@ -4,7 +4,8 @@ import {Head, router} from "@inertiajs/react";
 import React from "react";
 import {PrincipalTable} from "@/Components/PrincipalTable.jsx";
 
-export default function AdminRoutines(){
+export default function AdminRoutines({routine,exercises}){
+    console.log(routine,exercises)
     return(
         <MainLayout>
             <Head title="Routines"/>
