@@ -1,7 +1,7 @@
 import React from 'react';
 import {motion} from "motion/react";
 import {router} from "@inertiajs/react";
-export function IndexRoutine({name,day,description}) {
+export function IndexRoutine({name,day,description,id}) {
     return (
         <>
             <div className="w-responsive-index-width mx-6 my-6">
@@ -26,7 +26,7 @@ export function IndexRoutine({name,day,description}) {
                         <motion.button
                             className="bg-lilaPrincipal pb-1 m-2 w-responsive-index-button-width h-responsive-index-button-height text-responsive-index rounded-xl"
                             whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
-                            onClick={() => router.visit(route('AdminRoutines'))}
+                            onClick={() => router.visit(route('AdminRoutines',id))}
                         >
                             Comenzar Rutina
                         </motion.button>

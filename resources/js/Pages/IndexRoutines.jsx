@@ -16,7 +16,7 @@ export default function IndexRoutines({routines}){
                     </div>
                     {
                         routines.map(function (routine){
-                            return <IndexRoutine key={`${routine.id}.${routine.user_id}`} name={routine.name} day={routine.day} description={routine.description}></IndexRoutine>
+                            return <IndexRoutine key={`${routine.id}.${routine.user_id}`} id={routine.id} name={routine.name} day={routine.day} description={routine.description}></IndexRoutine>
                         })
                     }
                 </div>

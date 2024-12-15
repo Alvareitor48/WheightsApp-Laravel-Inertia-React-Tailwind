@@ -19,8 +19,8 @@ class RoutineController extends Controller
             'routines' => $user->routines,
         ]);
     }
-    public function show(){
-        $routine = Routine::with('user')->first();
+    public function show($id){
+        $routine = Routine::with('user')->where('id', $id)->firstOrFail();
         $exerciseRoutines = ExerciseRoutine::with('series')->where('routine_id',$routine->id)->get();
         $series = $exerciseRoutines->map(function ($exerciseRoutine) {
             return SerieResource::collection($exerciseRoutine->series);

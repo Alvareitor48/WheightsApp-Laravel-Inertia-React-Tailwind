@@ -50,12 +50,6 @@ export const Header = () => {
                         Mis rutinas
                     </Link>
                     <Link
-                        href={route('AdminRoutines')}
-                        className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
-                    >
-                        Rutina estandar
-                    </Link>
-                    <Link
                         href={route('home')}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
