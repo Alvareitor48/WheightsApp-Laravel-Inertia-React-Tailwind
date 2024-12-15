@@ -12,6 +12,9 @@ use Inertia\Inertia;
 
 class RoutineController extends Controller
 {
+    public function index(){
+        return Inertia::render('IndexRoutines', []);
+    }
     public function show(){
         $routine = Routine::with('user')->first();
         $exerciseRoutines = ExerciseRoutine::with('series')->where('routine_id',$routine->id)->get();
