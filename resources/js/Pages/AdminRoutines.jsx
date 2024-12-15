@@ -5,16 +5,15 @@ import React from "react";
 import {PrincipalTable} from "@/Components/PrincipalTable.jsx";
 
 export default function AdminRoutines({routine,exercises}){
-    console.log(routine,exercises)
     return(
         <MainLayout>
             <Head title="Routines"/>
             <div className="bg-transparent flex flex-col items-center min-h-screen text-white">
                 {/* Título y usuario */}
                 <div className="text-center mb-4">
-                    <h1 className="text-responsive-h2 font-semibold">Nombre Rutina</h1>
-                    <p className="text-gray-400 text-responsive-h4 my-4 mx-8">Descripcion</p>
-                    <span className="text-gray-200 text-responsive-h4 font-semibold my-4">Created by Admin</span>
+                    <h1 className="text-responsive-h2 font-semibold">{routine.name}</h1>
+                    <p className="text-gray-400 text-responsive-h4 my-4 mx-8">{routine.description}</p>
+                    <span className="text-gray-200 text-responsive-h4 font-semibold my-4">Created by {routine.user.name}</span>
                 </div>
 
                 {/* Botón de Comenzar Rutina*/}
@@ -25,7 +24,17 @@ export default function AdminRoutines({routine,exercises}){
                 >
                     Comenzar Rutina
                 </motion.button>
-                <PrincipalTable></PrincipalTable>
+                {
+                    exercises.map(function (exercise,index) {
+                        return (
+                            <PrincipalTable
+                                name={exercise.data.exercise[index].name}
+                                description={exercise.data.description}
+                                series={exercise.data.series[index]}
+                            ></PrincipalTable>
+                        )
+                    })
+                }
             </div>
 
         </MainLayout>
