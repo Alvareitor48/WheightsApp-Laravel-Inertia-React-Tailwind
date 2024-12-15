@@ -44,10 +44,16 @@ export const Header = () => {
                         Mi perfil
                     </Link>
                     <Link
+                        href={route('IndexRoutines')}
+                        className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
+                    >
+                        Mis rutinas
+                    </Link>
+                    <Link
                         href={route('AdminRoutines')}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
-                        Diseñar rutina
+                        Rutina estandar
                     </Link>
                     <Link
                         href={route('home')}
