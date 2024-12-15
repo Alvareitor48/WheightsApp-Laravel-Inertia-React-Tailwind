@@ -8,12 +8,19 @@ use App\Http\Resources\SerieResource;
 use App\Models\Exercise;
 use App\Models\ExerciseRoutine;
 use App\Models\Routine;
+use App\Models\User;
 use Inertia\Inertia;
 
 class RoutineController extends Controller
 {
-    public function show(){
-        $routine = Routine::with('user')->first();
+    public function index(){
+        $user = User::first();
+        return Inertia::render('IndexRoutines', [
+            'routines' => $user->routines,
+        ]);
+    }
+    public function show($id){
+        $routine = Routine::with('user')->where('id', $id)->firstOrFail();
         $exerciseRoutines = ExerciseRoutine::with('series')->where('routine_id',$routine->id)->get();
         $series = $exerciseRoutines->map(function ($exerciseRoutine) {
             return SerieResource::collection($exerciseRoutine->series);

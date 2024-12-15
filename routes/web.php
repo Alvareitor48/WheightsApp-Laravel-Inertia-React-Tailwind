@@ -14,7 +14,8 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/AdminRoutines',[RoutineController::class,'show'])->name('AdminRoutines');
+Route::get('AdminRoutines/{id}',[RoutineController::class,'show'])->name('AdminRoutines');
+Route::get('IndexRoutines',[RoutineController::class,'index'])->name('IndexRoutines');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
