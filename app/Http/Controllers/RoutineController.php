@@ -8,12 +8,16 @@ use App\Http\Resources\SerieResource;
 use App\Models\Exercise;
 use App\Models\ExerciseRoutine;
 use App\Models\Routine;
+use App\Models\User;
 use Inertia\Inertia;
 
 class RoutineController extends Controller
 {
     public function index(){
-        return Inertia::render('IndexRoutines', []);
+        $user = User::first();
+        return Inertia::render('IndexRoutines', [
+            'routines' => $user->routines,
+        ]);
     }
     public function show(){
         $routine = Routine::with('user')->first();
