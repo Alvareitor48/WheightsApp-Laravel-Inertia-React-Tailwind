@@ -56,17 +56,19 @@ class RoutineController extends Controller
         ]);
     }
 
-    public function update(Request $request, Routine $routine, ExerciseRoutine $exercises){
+    public function update(Request $request){
+        $routine = $request->get("routine");
+        $exercises = $request->get("exercises");
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1000',
-            'day' => 'required|string|in:Monday,Tuesday,Wednesday,Thursday,Friday',
+            'routine.name' => 'required|string|max:255',
+            'routine.description' => 'nullable|string|max:1000',
+            'routine.day' => 'required|string|in:Monday,Tuesday,Wednesday,Thursday,Friday',
         ]);
-
         dd($routine);
+        $routine = Routine::query()->where('id', $routine['id'])->firstOrFail();
+        $routine->update($routine->toArray());
 
-        //$routine = Routine::query()->where('id', $id)->firstOrFail();
-        //$exerciseRoutines = ExerciseRoutine::query()->where('routine_id',$routine->id)->get();
+        $exerciseRoutines = ExerciseRoutine::query()->where('routine_id',$routine->id)->get();
         return redirect()->route('routines.index')->with('success', 'Rutina actualizada correctamente.');
     }
 }

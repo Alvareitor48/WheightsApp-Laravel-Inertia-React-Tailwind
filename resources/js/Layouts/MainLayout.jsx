@@ -10,7 +10,7 @@ export default function MainLayout({ children}) {
         <>
             <div className='grid grid-rows-[auto,1fr,auto]'>
                 <Header></Header>
-                <main className='mt-14 p-2 bg-black'>
+                <main className='mt-14 p-2 pb-12 bg-black'>
                     <motion.div
                         className="fixed pointer-events-none bg-white rounded-full"
                         style={{

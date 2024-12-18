@@ -35,6 +35,7 @@ export default {
                 'responsive-width-table-image': ['clamp(2em, 12vw, 6em)'],
                 'responsive-index-button-width': ['clamp(7em, 12vw, 4em)'],
                 'responsive-index-width': ['clamp(12em, 40vw, 15em)'],
+                'responsive-input':['clamp(5em, 64vw, 32em)'],
             },
             height:{
                 'responsive-height-first-image': ['clamp(20em, 64vw, 45em)'],

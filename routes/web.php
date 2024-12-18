@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('AdminRoutines/{id}',[RoutineController::class,'show'])->name('AdminRoutines');
 Route::get('IndexRoutines',[RoutineController::class,'index'])->name('IndexRoutines');
 Route::get('UpdateRoutines/{id}/edit', [RoutineController::class, 'edit'])->name('routines.edit');
-Route::put('UpdateRoutines/{routine}',[RoutineController::class,'update'])->name('routines.update');
+Route::put('UpdateRoutines',[RoutineController::class,'update'])->name('routines.update');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
