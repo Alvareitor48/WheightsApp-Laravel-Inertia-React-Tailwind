@@ -16,7 +16,7 @@ class RoutineController extends Controller
 {
     public function index(){
         $user = User::first();
-        return Inertia::render('IndexRoutines', [
+        return Inertia::render('routines/pages/IndexRoutines', [
             'routines' => $user->routines,
         ]);
     }
@@ -32,7 +32,7 @@ class RoutineController extends Controller
         $exerciseRoutinesWithDetails = $exerciseRoutines->map(function ($exerciseRoutine, $index) use ($series, $exercises) {
             return new ExerciseRoutineResource($exerciseRoutine, $series, $exercises);
         });
-        return Inertia::render('AdminRoutines', [
+        return Inertia::render('routines/pages/AdminRoutines', [
             'routine' => $routine,
             'exercises' => $exerciseRoutinesWithDetails
         ]);
@@ -50,7 +50,7 @@ class RoutineController extends Controller
         $exerciseRoutinesWithDetails = $exerciseRoutines->map(function ($exerciseRoutine, $index) use ($series, $exercises) {
             return new ExerciseRoutineResource($exerciseRoutine, $series, $exercises);
         });
-        return Inertia::render('UpdateRoutines', [
+        return Inertia::render('routines/pages/UpdateRoutines', [
             'routine' => $routine,
             'exercises' => $exerciseRoutinesWithDetails
         ]);
@@ -69,6 +69,6 @@ class RoutineController extends Controller
         $routine->update($routine->toArray());
 
         $exerciseRoutines = ExerciseRoutine::query()->where('routine_id',$routine->id)->get();
-        return redirect()->route('routines.index')->with('success', 'Rutina actualizada correctamente.');
+        return redirect()->route('routines/pages/routines.index')->with('success', 'Rutina actualizada correctamente.');
     }
 }

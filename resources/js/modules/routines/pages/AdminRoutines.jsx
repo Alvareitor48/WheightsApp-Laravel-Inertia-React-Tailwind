@@ -1,8 +1,8 @@
-import MainLayout from "@/Layouts/MainLayout.jsx";
+import MainLayout from "@/shared/layouts/MainLayout.jsx";
 import {motion} from "motion/react";
 import {Head, router} from "@inertiajs/react";
 import React from "react";
-import {PrincipalTable} from "@/Components/PrincipalTable.jsx";
+import {PrincipalTable} from "@/modules/routines/components/PrincipalTable.jsx";
 
 export default function AdminRoutines({routine,exercises}){
     return(

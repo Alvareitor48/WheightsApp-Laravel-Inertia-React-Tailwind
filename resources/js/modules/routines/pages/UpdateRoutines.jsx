@@ -1,10 +1,10 @@
-import MainLayout from "@/Layouts/MainLayout.jsx";
+import MainLayout from "@/shared/layouts/MainLayout.jsx";
 import {motion} from "motion/react";
 import {Head, router, useForm} from "@inertiajs/react";
 import React from "react";
-import {PrincipalTable} from "@/Components/PrincipalTable.jsx";
-import {RoutineFormProvider} from "@/Context/RoutineFormContext.jsx";
-import RoutineForm from "@/Pages/RoutineForm.jsx";
+import {PrincipalTable} from "@/modules/routines/components/PrincipalTable.jsx";
+import {RoutineFormProvider} from "@/modules/routines/contexts/RoutineFormContext.jsx";
+import RoutineForm from "@/modules/routines/components/RoutineForm.jsx";
 
 export default function UpdateRoutines({routine,exercises}){
     return(

@@ -1,9 +1,9 @@
 import React from "react";
-import UpdateRoutines from "@/Pages/UpdateRoutines.jsx";
+import UpdateRoutines from "@/modules/routines/pages/UpdateRoutines.jsx";
 import {motion} from "motion/react";
 import {router} from "@inertiajs/react";
-import {PrincipalTable} from "@/Components/PrincipalTable.jsx";
-import {useRoutineForm} from "@/Context/RoutineFormContext.jsx";
+import {PrincipalTable} from "@/modules/routines/components/PrincipalTable.jsx";
+import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
 
 export default function RoutineForm(){
     const {data, setData, put, processing, errors} = useRoutineForm()

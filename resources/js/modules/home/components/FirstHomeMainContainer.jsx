@@ -1,4 +1,4 @@
-import newHome from '@/assets/images/newHome.png'
+import newHome from '@/modules/home/assets/images/newHome.png'
 import { motion } from 'motion/react'
 export const FirstHomeMainContainer = () => {
     return (

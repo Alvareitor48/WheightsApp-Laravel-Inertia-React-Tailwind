@@ -1,9 +1,9 @@
-import logo from '../assets/images/Logo.png';
-import avatar from '@/assets/images/avatar.png';
+import logo from '@/shared/assets/images/Logo.png';
+import avatar from '@/shared/assets/images/avatar.png';
 import { Link } from "@inertiajs/react";
-import { useIconAnimation } from "@/Hooks/Home/useIconAnimation.js";
+import { useIconAnimation } from "@/modules/home/hooks/useIconAnimation.js";
 import {motion} from "motion/react";
-import HamburgerButton from "@/Components/HamburgerButton.jsx";
+import HamburgerButton from "@/shared/components/HamburgerButton.jsx";
 
 export const Header = () => {
     const { isOpen, toggleMenu } = useIconAnimation();

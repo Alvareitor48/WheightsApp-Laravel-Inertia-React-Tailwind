@@ -1,5 +1,5 @@
 import React from 'react';
-import shoulder_press from '@/assets/images/shoulder_press.png'
+import shoulder_press from '@/modules/routines/assets/images/shoulder_press.png'
 import {motion} from "motion/react";
 export function PrincipalTable({name, description,duration,series}) {
     return (

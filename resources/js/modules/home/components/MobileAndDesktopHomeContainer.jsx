@@ -1,4 +1,4 @@
-import desktopAndMobile from '@/assets/images/desktopAndMobile.png'
+import desktopAndMobile from '@/modules/home/assets/images/desktopAndMobile.png'
 import { motion } from 'motion/react'
 
 export const MobileAndDesktopHomeContainer = ({Imageorientation,title,li}) => {

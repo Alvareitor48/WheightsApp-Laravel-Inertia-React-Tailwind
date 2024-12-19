@@ -1,7 +1,7 @@
-import {Header} from "@/Layouts/Header.jsx";
-import {Footer} from "@/Layouts/Footer.jsx";
+import {Header} from "@/shared/components/Header.jsx";
+import {Footer} from "@/shared/components/Footer.jsx";
 import {motion} from "motion/react";
-import {useLanternAnimation} from "@/Hooks/Core/useLanternAnimation.js";
+import {useLanternAnimation} from "@/shared/hooks/useLanternAnimation.js";
 
 export default function MainLayout({ children}) {
     const {cursorPosition} = useLanternAnimation();
