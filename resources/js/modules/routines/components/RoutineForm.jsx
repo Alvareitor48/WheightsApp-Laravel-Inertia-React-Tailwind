@@ -64,8 +64,7 @@ export default function RoutineForm(){
                         return (
                             <PrincipalTable
                                 key={`${exercise.data.exercise[index].id}.${index}`}
-                                name={exercise.data.exercise[index].name}
-                                description={exercise.data.note}
+                                index={index}
                                 series={exercise.data.series[index]}
                             ></PrincipalTable>
                         )

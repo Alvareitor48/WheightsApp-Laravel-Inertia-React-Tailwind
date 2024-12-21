@@ -1,7 +1,16 @@
 import React from 'react';
 import shoulder_press from '@/modules/routines/assets/images/shoulder_press.png'
+import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import {motion} from "motion/react";
-export function PrincipalTable({name, description,duration,series}) {
+export function PrincipalTable({index,series}) {
+    const {data,setData} = useRoutineForm()
+
+    const updateNote = (newData) => {
+        const updatedExercises = [...data.exercises];
+        updatedExercises[index].data.note = newData;
+
+        setData("exercises", updatedExercises);
+    };
     return (
         <>
             <div className="m-auto w-[90%] mt-6 mb-6">
@@ -18,12 +27,21 @@ export function PrincipalTable({name, description,duration,series}) {
 
                     {/* Título del Ejercicio */}
                     <div className="text-center px-2 py-3">
-                        <h2 className="text-responsive-table font-semibold inline-block">{name}</h2>
+                        <h2 className="text-responsive-table font-semibold inline-block">{data.exercises[index].data.exercise[index].name}</h2>
                     </div>
 
                     {/* Notas */}
-                    <div className="text-center px-2 py-3">
-                        <p className="text-responsive-note-table text-gray-400 inline-block"> {description}</p>
+                    <div className="text-center">
+                        <textarea
+                            rows={1}
+                            className="text-responsive-note-table leading-normal resize-none w-responsive-mini-input text-gray-400 inline-block bg-transparent border-0"
+                            value={data.exercises[index].data.note}
+                            onChange={(e)=>updateNote(e.target.value)}
+                            onInput={(e) => {
+                                e.target.style.height = "auto"; // Resetea el alto
+                                e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta al contenido
+                            }}
+                        />
                     </div>
 
                     {/* Temporizador (No funcional) */}

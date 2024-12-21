@@ -26,7 +26,7 @@ export function IndexRoutine({name,day,description,id}) {
                         <motion.button
                             className="bg-lilaPrincipal pb-1 m-2 w-responsive-index-button-width h-responsive-index-button-height text-responsive-index rounded-xl"
                             whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
-                            onClick={() => router.visit(route('AdminRoutines',id))}
+                            onClick={() => router.visit(route('routines.edit',id))}
                         >
                             Comenzar Rutina
                         </motion.button>
