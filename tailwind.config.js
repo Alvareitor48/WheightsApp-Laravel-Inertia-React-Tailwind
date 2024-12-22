@@ -26,7 +26,7 @@ export default {
                 'responsive-ul': ['clamp(1em,5vw, 2.5em)'],
                 'responsive-table':['clamp(0.12em,3.5vw, 1.5em)'],
                 'responsive-note-table':['clamp(0.2em,2vw, 1em)'],
-                'responsive-td-table':['clamp(0.01em,2vw, 1em)'],
+                'responsive-td-table':['clamp(0.01em,6vw, 1em)'],
                 'responsive-index-title':['clamp(0.8em,3.4vw, 1.6em)'],
                 'responsive-index':['clamp(0.55em,2.8vw, 1.1em)'],
             },
