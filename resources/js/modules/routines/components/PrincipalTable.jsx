@@ -1,6 +1,7 @@
 import shoulder_press from '@/modules/routines/assets/images/shoulder_press.png'
 import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import {GridTable} from "@/modules/routines/components/GridTable.jsx";
+import {m} from "motion/react"
 export function PrincipalTable({index,series}) {
     const {data,setData} = useRoutineForm()
 
@@ -10,6 +11,19 @@ export function PrincipalTable({index,series}) {
 
         setData("exercises", updatedExercises);
     };
+    const createSeries = () => {
+        const updatedExercises = [...data.exercises];
+        const exerciseId = updatedExercises[index].data.id;
+        const serie = {
+            ...updatedExercises[index].data.series[index][0],
+            id: `temp-${exerciseId}-${updatedExercises[index].data.series[index].length}`,
+            RIR: 0,
+            repetitions: 0,
+            weight: 0,
+        };
+        updatedExercises[index].data.series[index].push(serie)
+        setData("exercises", updatedExercises);
+    }
     return (
         <>
             <div className="m-auto w-[90%] mt-6 mb-6">
@@ -35,7 +49,7 @@ export function PrincipalTable({index,series}) {
                             rows={1}
                             className="text-responsive-note-table leading-normal resize-none w-responsive-mini-input text-gray-400 inline-block bg-transparent border-0"
                             value={data.exercises[index].data.note}
-                            onChange={(e)=>updateNote(e.target.value)}
+                            onChange={(e) => updateNote(e.target.value)}
                             onInput={(e) => {
                                 e.target.style.height = "auto"; // Resetea el alto
                                 e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta al contenido
@@ -61,14 +75,26 @@ export function PrincipalTable({index,series}) {
                     </thead>
                     <tbody className="text-gray-700">
                     {
-                        series.map(function (serie,seriesIndex){
+                        series.map(function (serie, seriesIndex) {
                             return (
-                                <GridTable key={`${serie.id}.${index}`} seriesIndex={seriesIndex} principalIndex={index}></GridTable>
+                                <GridTable key={`${serie.id}.${index}`} seriesIndex={seriesIndex}
+                                           principalIndex={index}></GridTable>
                             )
                         })
                     }
                     </tbody>
                 </table>
+                <m.button
+                    type="button"
+                    className="glass pb-1 mt-5 w-full h-responsive-normal-button-height text-responsive-h4"
+                    whileHover={{scale: 1.1}}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        createSeries();
+                    }}
+                >
+                    + Añadir Serie
+                </m.button>
             </div>
         </>
     );
