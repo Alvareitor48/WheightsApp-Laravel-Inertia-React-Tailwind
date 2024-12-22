@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import {m} from "motion/react";
-export function SelectPopUp({ isOpen, onClose, onSelect }) {
+export function SelectPopUp({ isOpen, onClose, onSelect, options }) {
     if (!isOpen) return null;
 
     return ReactDOM.createPortal(
@@ -12,7 +12,7 @@ export function SelectPopUp({ isOpen, onClose, onSelect }) {
                 exit={{ opacity: 0, scale: 0.8 }}
             >
                 <ul className="flex flex-col justify-center gap-5">
-                    {["0","1", "2", "3", "4", "5", "F"].map((option) => (
+                    {options.map((option) => (
                         <li key={option}>
                             <button
                                 type="button"
