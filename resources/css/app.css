@@ -151,3 +151,14 @@ html, body {
 .mask-gradient {
     mask-image: linear-gradient(black 80%, transparent);
 }
+
+.no-arrows::-webkit-inner-spin-button,
+.no-arrows::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Oculta las flechas en navegadores basados en WebKit */
+    margin: 0;
+}
+
+.no-arrows {
+    -moz-appearance: textfield; /* Oculta las flechas en Firefox */
+}
+

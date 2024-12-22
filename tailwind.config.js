@@ -26,6 +26,7 @@ export default {
                 'responsive-ul': ['clamp(1em,5vw, 2.5em)'],
                 'responsive-table':['clamp(0.12em,3.5vw, 1.5em)'],
                 'responsive-note-table':['clamp(0.2em,2vw, 1em)'],
+                'responsive-td-table':['clamp(0.01em,2vw, 1em)'],
                 'responsive-index-title':['clamp(0.8em,3.4vw, 1.6em)'],
                 'responsive-index':['clamp(0.55em,2.8vw, 1.1em)'],
             },
@@ -36,7 +37,8 @@ export default {
                 'responsive-index-button-width': ['clamp(7em, 12vw, 4em)'],
                 'responsive-index-width': ['clamp(12em, 40vw, 15em)'],
                 'responsive-input':['clamp(5em, 64vw, 32em)'],
-                'responsive-mini-input':['clamp(3em, 34vw, 15em)'],
+                'responsive-mini-input':['clamp(2em, 24vw, 15em)'],
+                'responsive-mini-mini-input':['clamp(1em, 14vw, 8em)'],
             },
             height:{
                 'responsive-height-first-image': ['clamp(20em, 64vw, 45em)'],

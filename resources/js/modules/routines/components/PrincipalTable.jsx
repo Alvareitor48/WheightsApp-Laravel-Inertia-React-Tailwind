@@ -2,6 +2,7 @@ import React from 'react';
 import shoulder_press from '@/modules/routines/assets/images/shoulder_press.png'
 import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import {motion} from "motion/react";
+import {GridTable} from "@/modules/routines/components/GridTable.jsx";
 export function PrincipalTable({index,series}) {
     const {data,setData} = useRoutineForm()
 
@@ -62,13 +63,10 @@ export function PrincipalTable({index,series}) {
                     </thead>
                     <tbody className="text-gray-700">
                     {
-                        series.map(function (serie,index){
-                            return (<tr key={`${serie.id}.${index}`} className="border-b border-gray-200 hover:bg-lilaPrincipal">
-                                <td className="py-3 px-2 text-center whitespace-nowrap">{index+1}</td>
-                                <td className="py-3 px-2 text-center">{serie.repetitions}</td>
-                                <td className="py-3 px-2 text-center">{serie.weight}</td>
-                                <td className="py-3 px-2 text-center">{serie.failure==true?'F':serie.RIR}</td>
-                            </tr>)
+                        series.map(function (serie,seriesIndex){
+                            return (
+                                <GridTable key={`${serie.id}.${index}`} seriesIndex={seriesIndex} principalIndex={index}></GridTable>
+                            )
                         })
                     }
                     </tbody>
