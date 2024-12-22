@@ -1,7 +1,5 @@
-import React from 'react';
 import shoulder_press from '@/modules/routines/assets/images/shoulder_press.png'
 import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
-import {motion} from "motion/react";
 import {GridTable} from "@/modules/routines/components/GridTable.jsx";
 export function PrincipalTable({index,series}) {
     const {data,setData} = useRoutineForm()

@@ -1,12 +1,11 @@
-import React from 'react';
 import ReactDOM from "react-dom";
-import {motion} from "motion/react";
+import {m} from "motion/react";
 export function SelectPopUp({ isOpen, onClose, onSelect }) {
     if (!isOpen) return null;
 
     return ReactDOM.createPortal(
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <motion.div
+            <m.div
                 className="bg-black rounded-lg p-4 w-responsive-popup"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -39,7 +38,7 @@ export function SelectPopUp({ isOpen, onClose, onSelect }) {
                 >
                     Cancelar
                 </button>
-            </motion.div>
+            </m.div>
         </div>,
         document.body
     );

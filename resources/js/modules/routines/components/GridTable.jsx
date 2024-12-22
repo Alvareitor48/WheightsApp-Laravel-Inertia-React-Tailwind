@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
 import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import {NumberInput} from "@/modules/routines/components/NumberInput.jsx";
 import {SelectPopUp} from "@/modules/routines/components/SelectPopUp.jsx";
+import {useState} from "react";
 export function GridTable({seriesIndex,principalIndex}) {
     const {data,setData} = useRoutineForm()
     const [isPopupOpen, setPopupOpen] = useState(false);

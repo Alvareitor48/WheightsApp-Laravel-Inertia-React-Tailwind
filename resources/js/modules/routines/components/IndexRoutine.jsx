@@ -1,5 +1,4 @@
-import React from 'react';
-import {motion} from "motion/react";
+import {m} from "motion/react";
 import {router} from "@inertiajs/react";
 export function IndexRoutine({name,day,description,id}) {
     return (
@@ -23,13 +22,13 @@ export function IndexRoutine({name,day,description,id}) {
                     </div>
 
                     <div className="px-2 py-1 rounded-b-xl w-full border border-gray-300 border-t-0">
-                        <motion.button
+                        <m.button
                             className="bg-lilaPrincipal pb-1 m-2 w-responsive-index-button-width h-responsive-index-button-height text-responsive-index rounded-xl"
                             whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
                             onClick={() => router.visit(route('routines.edit',id))}
                         >
                             Comenzar Rutina
-                        </motion.button>
+                        </m.button>
                     </div>
                     {
                         /*Muñeco con los musculos implicados*/

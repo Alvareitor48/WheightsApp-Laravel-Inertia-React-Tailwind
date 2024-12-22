@@ -1,8 +1,5 @@
 import MainLayout from "@/shared/layouts/MainLayout.jsx";
-import {motion} from "motion/react";
-import {Head, router, useForm} from "@inertiajs/react";
-import React from "react";
-import {PrincipalTable} from "@/modules/routines/components/PrincipalTable.jsx";
+import {Head} from "@inertiajs/react";
 import {RoutineFormProvider} from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import RoutineForm from "@/modules/routines/components/RoutineForm.jsx";
 

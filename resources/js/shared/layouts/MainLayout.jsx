@@ -1,6 +1,6 @@
 import {Header} from "@/shared/components/Header.jsx";
 import {Footer} from "@/shared/components/Footer.jsx";
-import {motion} from "motion/react";
+import { LazyMotion, domAnimation,m } from "motion/react"
 import {useLanternAnimation} from "@/shared/hooks/useLanternAnimation.js";
 
 export default function MainLayout({ children}) {
@@ -8,10 +8,11 @@ export default function MainLayout({ children}) {
 
     return (
         <>
+            <LazyMotion features={domAnimation}>
             <div className='grid grid-rows-[auto,1fr,auto]'>
                 <Header></Header>
                 <main className='mt-14 p-2 pb-12 bg-black'>
-                    <motion.div
+                    <m.div
                         className="fixed pointer-events-none bg-white rounded-full"
                         style={{
                             width: "1400px",
@@ -26,6 +27,7 @@ export default function MainLayout({ children}) {
                 </main>
                 <Footer></Footer>
             </div>
+            </LazyMotion>
         </>
     );
 }

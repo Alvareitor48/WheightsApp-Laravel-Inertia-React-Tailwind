@@ -1,5 +1,5 @@
 import MainLayout from "@/shared/layouts/MainLayout.jsx";
-import {motion} from "motion/react";
+import {m} from "motion/react";
 import {Head, router} from "@inertiajs/react";
 import React from "react";
 import {PrincipalTable} from "@/modules/routines/components/PrincipalTable.jsx";
@@ -18,14 +18,14 @@ export default function AdminRoutines({routine,exercises}){
                 </div>
 
                 {/* Botón de Comenzar Rutina*/}
-                <motion.button
+                <m.button
                     className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
                     whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
                     onClick={() => router.visit(route('AdminRoutines'))}
                 >
                     Comenzar Rutina
-                </motion.button>
-                <motion.button
+                </m.button>
+                <m.button
                     className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
                     whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
                     onClick={() => {
@@ -33,7 +33,7 @@ export default function AdminRoutines({routine,exercises}){
                     }}
                 >
                     Actualizar Rutina
-                </motion.button>
+                </m.button>
                 {
                     exercises.map(function (exercise, index) {
                         return (

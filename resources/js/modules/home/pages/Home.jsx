@@ -1,7 +1,4 @@
-import React from "react";
 import {Head} from "@inertiajs/react";
-import {Header} from "@/shared/components/Header.jsx";
-import {Footer} from "@/shared/components/Footer.jsx";
 import MainLayout from "@/shared/layouts/MainLayout.jsx";
 import {FirstHomeMainContainer} from "@/modules/home/components/FirstHomeMainContainer.jsx";
 import {MobileAndDesktopHomeContainer} from "@/modules/home/components/MobileAndDesktopHomeContainer.jsx";

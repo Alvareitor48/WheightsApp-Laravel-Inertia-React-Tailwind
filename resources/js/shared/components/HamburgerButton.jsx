@@ -1,9 +1,9 @@
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 const HamburgerButton = ({action,isOpen}) => {
     return (
         <div className="bg-custom-gradient2 rounded-full p-2 w-10 h-10 cursor-pointer z-40" onClick={action}>
             <div className="flex flex-col justify-center items-center space-y-1 w-6">
-                <motion.div
+                <m.div
                     className="h-1 w-full bg-black rounded"
                     animate={{
                         rotate: isOpen ? 45 : 0,
@@ -11,14 +11,14 @@ const HamburgerButton = ({action,isOpen}) => {
                     }}
                     transition={{ duration: 0.4 }}
                 />
-                <motion.div
+                <m.div
                     className="h-1 w-full bg-black rounded"
                     animate={{
                         opacity: isOpen ? 0 : 1,
                     }}
                     transition={{ duration: 0.4 }}
                 />
-                <motion.div
+                <m.div
                     className="h-1 w-full bg-black rounded"
                     animate={{
                         rotate: isOpen ? -45 : 0,

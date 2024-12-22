@@ -1,6 +1,5 @@
 import MainLayout from "@/shared/layouts/MainLayout.jsx";
-import {Head, router} from "@inertiajs/react";
-import React from "react";
+import {Head} from "@inertiajs/react";
 import {IndexRoutine} from "@/modules/routines/components/IndexRoutine.jsx";
 
 export default function IndexRoutines({routines}){

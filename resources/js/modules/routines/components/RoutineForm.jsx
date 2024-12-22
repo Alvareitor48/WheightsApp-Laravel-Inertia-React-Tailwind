@@ -1,6 +1,4 @@
-import React from "react";
-import UpdateRoutines from "@/modules/routines/pages/UpdateRoutines.jsx";
-import {motion} from "motion/react";
+import {m} from "motion/react";
 import {router} from "@inertiajs/react";
 import {PrincipalTable} from "@/modules/routines/components/PrincipalTable.jsx";
 import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
@@ -52,13 +50,13 @@ export default function RoutineForm(){
                 </div>
 
                 {/* Botón de Comenzar Rutina*/}
-                <motion.button
+                <m.button
                     className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
                     whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
                     onClick={() => router.visit(route('AdminRoutines'))}
                 >
                     Comenzar Rutina
-                </motion.button>
+                </m.button>
                 {
                     data.exercises.map(function (exercise, index) {
                         return (
@@ -71,13 +69,13 @@ export default function RoutineForm(){
                     })
                 }
 
-                <motion.button
+                <m.button
                     className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
                     whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
                     type="submit"
                     disabled={processing}
                 >Guardar Rutina
-                </motion.button>
+                </m.button>
             </form>
     )
 }
