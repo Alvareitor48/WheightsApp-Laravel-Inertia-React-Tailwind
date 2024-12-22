@@ -41,7 +41,7 @@ export function GridTable({seriesIndex,principalIndex}) {
                         e.preventDefault()
                         setPopupOpen(true)}}
                 >
-                    {data.exercises[principalIndex].data.series[principalIndex][seriesIndex].failure === true ?
+                    {data.exercises[principalIndex].data.series[principalIndex][seriesIndex].failure === 1 ?
                         'F':
                         data.exercises[principalIndex].data.series[principalIndex][seriesIndex].RIR
                     }
