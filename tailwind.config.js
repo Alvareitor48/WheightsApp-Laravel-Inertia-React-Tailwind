@@ -39,6 +39,7 @@ export default {
                 'responsive-input':['clamp(5em, 64vw, 32em)'],
                 'responsive-mini-input':['clamp(2em, 24vw, 15em)'],
                 'responsive-mini-mini-input':['clamp(1em, 14vw, 8em)'],
+                'responsive-popup':['clamp(5em, 64vw, 32em)'],
             },
             height:{
                 'responsive-height-first-image': ['clamp(20em, 64vw, 45em)'],
