@@ -2,11 +2,11 @@ import {m} from "motion/react";
 import {router} from "@inertiajs/react";
 import {PrincipalTable} from "@/modules/routines/components/PrincipalTable.jsx";
 import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
+import { useUpdate } from '@/modules/routines/hooks/useUpdate';
 
 export default function RoutineForm(){
-    const {data, setData, put, processing, errors} = useRoutineForm()
-
-    console.log(data)
+    const {put, processing, errors} = useRoutineForm()
+    const {update,data} = useUpdate()
     const handleSubmit = (e) => {
         e.preventDefault();
         put(route('routines.update'),{
@@ -14,13 +14,6 @@ export default function RoutineForm(){
             exercises:data.exercises
         });
     };
-
-    const updateRoutine = (name,newData)=>{
-        setData('routine', {
-            ...data.routine,
-            [name]: newData
-        });
-    }
     return(
             <form onSubmit={handleSubmit} className="bg-transparent flex flex-col items-center min-h-screen text-white">
                 {/* Título y usuario */}
@@ -28,7 +21,7 @@ export default function RoutineForm(){
                     <textarea
                         rows={1}
                         value={data.routine.name}
-                        onChange={(e) => updateRoutine('name', e.target.value)}
+                        onChange={(e) => update(e.target.value,0,'name')}
                         className="inline-block w-responsive-input text-responsive-h2 leading-normal font-semibold bg-black border-0 resize-none"
                         onInput={(e) => {
                             e.target.style.height = "auto"; // Resetea el alto
@@ -38,7 +31,7 @@ export default function RoutineForm(){
                     <textarea
                         rows={1}
                         value={data.routine.description}
-                        onChange={(e) => updateRoutine('description', e.target.value)}
+                        onChange={(e) => update(e.target.value,0,'description')}
                         className="inline-block w-responsive-input text-gray-400 text-responsive-h4 leading-normal my-4 mx-8 bg-black border-0 resize-none"
                         onInput={(e) => {
                             e.target.style.height = "auto"; // Resetea el alto

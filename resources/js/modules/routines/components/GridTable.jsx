@@ -1,39 +1,26 @@
-import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import {NumberInput} from "@/modules/routines/components/NumberInput.jsx";
 import {SelectPopUp} from "@/modules/routines/components/SelectPopUp.jsx";
 import {useState} from "react";
+import { useUpdate } from '@/modules/routines/hooks/useUpdate';
+
 export function GridTable({seriesIndex,principalIndex}) {
-    const {data,setData} = useRoutineForm()
+    const {update,data} = useUpdate()
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [isPopup2Open, setPopup2Open] = useState(false);
-    const updateExercise = (attribute,newData) => {
-        const updatedExercises = [...data.exercises];
-        updatedExercises[principalIndex].data.series[principalIndex][seriesIndex][attribute] = newData;
-        console.log(updatedExercises)
-        setData("exercises", updatedExercises);
-    };
 
     const handleInputChange = (attribute) => (newData) => {
         if (newData==='F'){
-            updateExercise('failure',1)
+            update(1,true,'failure',principalIndex,seriesIndex)
             return
         }else if(attribute === 'RIR'){
-            updateExercise('failure',0)
+            update(0,true,'failure',principalIndex,seriesIndex)
         }
-        updateExercise(attribute, newData);
+        update(newData,true,attribute,principalIndex,seriesIndex)
     };
 
-    const removeExercise = (newData) => {
-        const updatedExercises = [...data.exercises];
-        if(newData === 'Eliminar'){
-            updatedExercises[principalIndex].data.series[principalIndex] =
-                updatedExercises[principalIndex].data.series[principalIndex].filter(
-                    (serie, index) => index !== seriesIndex // Eliminar la serie con el índice especificado
-                );
-        }
-        console.log(updatedExercises)
-        setData("exercises", updatedExercises);
-    };
+    const handleDelete = () => {
+        update('Eliminar',true,'',principalIndex)
+    }
     return (
         <>
         <tr className="border-b border-gray-200 hover:bg-lilaPrincipal">
@@ -81,7 +68,7 @@ export function GridTable({seriesIndex,principalIndex}) {
             <SelectPopUp
                 isOpen={isPopup2Open}
                 onClose={() => setPopup2Open(false)}
-                onSelect={removeExercise}
+                onSelect={handleDelete}
                 options={["Eliminar"]}
             />
 </>
