@@ -1,9 +1,9 @@
 import shoulder_press from '@/modules/routines/assets/images/shoulder_press.png'
-import { GridTable } from "@/modules/routines/components/GridTable.jsx";
+import { GridTableUpdate } from "@/modules/routines/components/GridTableUpdate.jsx";
 import { m } from "motion/react"
 import { useUpdate } from '@/modules/routines/hooks/useUpdate';
 import { useCreateSeries } from '../hooks/useCreateSeries';
-export function PrincipalTable({ index, series }) {
+export function PrincipalTableUpdate({ index, series }) {
     const { update, data } = useUpdate()
     const { createSeries } = useCreateSeries()
     return (
@@ -59,8 +59,8 @@ export function PrincipalTable({ index, series }) {
                         {
                             series.map(function (serie, seriesIndex) {
                                 return (
-                                    <GridTable key={`${serie.id}.${index}`} seriesIndex={seriesIndex}
-                                        principalIndex={index}></GridTable>
+                                    <GridTableUpdate key={`${serie.id}.${index}`} seriesIndex={seriesIndex}
+                                        principalIndex={index}></GridTableUpdate>
                                 )
                             })
                         }

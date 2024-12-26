@@ -3,7 +3,7 @@ import {SelectPopUp} from "@/modules/routines/components/SelectPopUp.jsx";
 import {useState} from "react";
 import { useUpdate } from '@/modules/routines/hooks/useUpdate';
 
-export function GridTable({seriesIndex,principalIndex}) {
+export function GridTableUpdate({seriesIndex,principalIndex}) {
     const {update,data} = useUpdate()
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [isPopup2Open, setPopup2Open] = useState(false);
