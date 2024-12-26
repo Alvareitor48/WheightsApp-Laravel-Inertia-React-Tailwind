@@ -1,7 +1,7 @@
 import logo from '@/shared/assets/images/Logo.png';
 import avatar from '@/shared/assets/images/avatar.png';
 import { Link } from "@inertiajs/react";
-import { useIconAnimation } from "@/modules/home/hooks/useIconAnimation.js";
+import { useIconAnimation } from "@/shared/hooks/useIconAnimation.js";
 import {m} from "motion/react";
 import HamburgerButton from "@/shared/components/HamburgerButton.jsx";
 
