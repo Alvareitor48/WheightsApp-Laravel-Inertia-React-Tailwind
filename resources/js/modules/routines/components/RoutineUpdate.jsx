@@ -3,6 +3,7 @@ import {router} from "@inertiajs/react";
 import {PrincipalTableUpdate} from "@/modules/routines/components/PrincipalTableUpdate.jsx";
 import {useRoutineForm} from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import { useUpdate } from '@/modules/routines/hooks/useUpdate';
+import { RouteButton } from "./RouteButton";
 
 export default function RoutineUpdate(){
     const {put, processing, errors} = useRoutineForm()
@@ -43,13 +44,7 @@ export default function RoutineUpdate(){
                 </div>
 
                 {/* Botón de Comenzar Rutina*/}
-                <m.button
-                    className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
-                    whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
-                    onClick={() => router.visit(route('AdminRoutines',data.routine.id))}
-                >
-                    Comenzar Rutina
-                </m.button>
+                <RouteButton onClick={()=>router.visit(route('AdminRoutines',data.routine.id))} title = "Comenzar Rutina"></RouteButton>
                 {
                     data.exercises.map(function (exercise, index) {
                         return (
@@ -61,7 +56,6 @@ export default function RoutineUpdate(){
                         )
                     })
                 }
-
                 <m.button
                     className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
                     whileHover={{backgroundColor: "#8F3985", scale: 1.1}}

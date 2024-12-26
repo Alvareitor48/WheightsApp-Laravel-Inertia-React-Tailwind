@@ -2,6 +2,7 @@ import {m} from "motion/react";
 import {router} from "@inertiajs/react";
 import { useUpdate } from '@/modules/routines/hooks/useUpdate';
 import { PrincipalTableShow } from "./PrincipalTableShow";
+import { RouteButton } from "./RouteButton";
 
 export default function RoutineShow(){
     const {data} = useUpdate();
@@ -16,22 +17,8 @@ export default function RoutineShow(){
                             </div>
             
                             {/* Botón de Comenzar Rutina*/}
-                            <m.button
-                                className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
-                                whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
-                                onClick={() => router.visit(route('AdminRoutines',data.routine.id))}
-                            >
-                                Comenzar Rutina
-                            </m.button>
-                            <m.button
-                                className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
-                                whileHover={{backgroundColor: "#8F3985", scale: 1.1}}
-                                onClick={() => {
-                                    router.visit(route('routines.edit',data.routine.id));
-                                }}
-                            >
-                                Actualizar Rutina
-                            </m.button>
+                            <RouteButton onClick={()=>router.visit(route('AdminRoutines',data.routine.id))} title = "Comenzar Rutina"></RouteButton>
+                            <RouteButton onClick={()=>router.visit(route('routines.edit',data.routine.id))} title = "Actualizar Rutina"></RouteButton>
                             {
                                 data.exercises.map(function (exercise, index) {
                                     return (
