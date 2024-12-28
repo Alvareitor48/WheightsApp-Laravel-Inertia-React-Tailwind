@@ -2,6 +2,7 @@ import {NumberInput} from "@/modules/routines/components/NumberInput.jsx";
 import {SelectPopUp} from "@/modules/routines/components/SelectPopUp.jsx";
 import {useState} from "react";
 import { useUpdate } from '@/modules/routines/hooks/useUpdate';
+import { GridTableBase } from "./GridTableBase";
 
 export function GridTableUpdate({seriesIndex,principalIndex}) {
     const {update,data} = useUpdate()
@@ -21,11 +22,9 @@ export function GridTableUpdate({seriesIndex,principalIndex}) {
     const handleDelete = () => {
         update('Eliminar',true,'',principalIndex,seriesIndex)
     }
-    return (
-        <>
-        <tr className="border-b border-gray-200 hover:bg-lilaPrincipal">
-            <td className="py-3 px-2 text-center whitespace-nowrap">
-                <button
+
+    const tds = [
+        <button
                     type="button"
                     className="bg-transparent text-responsive-td-table border border-none px-2 py-1 text-white"
                     onClick={(e) => {
@@ -34,18 +33,11 @@ export function GridTableUpdate({seriesIndex,principalIndex}) {
                     }}
                 >
                     {seriesIndex+1}
-                </button>
-            </td>
-            <td className="py-3 px-2 text-center">
-                <NumberInput onChange={handleInputChange("repetitions")}
-                             value={data.exercises[principalIndex].data.series[principalIndex][seriesIndex]["repetitions"]}/>
-            </td>
-            <td className="py-3 px-2 text-center">
-                <NumberInput onChange={handleInputChange("weight")}
-                             value={data.exercises[principalIndex].data.series[principalIndex][seriesIndex]["weight"]}/>
-            </td>
-            <td className="py-3 px-2 text-center">
-            <button
+                </button>,
+        <NumberInput onChange={handleInputChange("repetitions")}
+                     value={data.exercises[principalIndex].data.series[principalIndex][seriesIndex]["repetitions"]}/>,
+        <NumberInput onChange={handleInputChange("weight")} value={data.exercises[principalIndex].data.series[principalIndex][seriesIndex]["weight"]}/>,
+        <button
                     type="button"
                     className="bg-transparent text-responsive-td-table border border-none px-2 py-1 text-white"
                     onClick={(e) => {
@@ -57,8 +49,10 @@ export function GridTableUpdate({seriesIndex,principalIndex}) {
                         data.exercises[principalIndex].data.series[principalIndex][seriesIndex].RIR
                     }
                 </button>
-            </td>
-        </tr>
+    ]
+    return (
+        <>
+        <GridTableBase tds={tds}></GridTableBase>
         <SelectPopUp
             isOpen={isPopupOpen}
             onClose={() => setPopupOpen(false)}
