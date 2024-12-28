@@ -1,12 +1,12 @@
 import { useRoutineForm } from '../contexts/RoutineFormContext';
+import { v4 as uuidv4 } from "uuid";
 
 export const useCreateSeries = () => {
     const { data, setData } = useRoutineForm();
     const createSeries = (index) => {
         const updatedExercises = [...data.exercises];
-        const exerciseId = updatedExercises[index].data.id;
         const serie = {
-            id: `temp-${exerciseId}-${updatedExercises[index].data.series[index].length}`,
+            id: uuidv4(),
             RIR: 0,
             repetitions: 0,
             weight: 0,

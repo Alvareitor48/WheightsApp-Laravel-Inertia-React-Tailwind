@@ -19,7 +19,7 @@ export function GridTableUpdate({seriesIndex,principalIndex}) {
     };
 
     const handleDelete = () => {
-        update('Eliminar',true,'',principalIndex)
+        update('Eliminar',true,'',principalIndex,seriesIndex)
     }
     return (
         <>
