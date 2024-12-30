@@ -1,7 +1,7 @@
 import { useRoutineForm } from '../contexts/RoutineFormContext';
 
 export const useUpdate = () => {
-    const {data,setData} = useRoutineForm();
+    const {data,setData,errors} = useRoutineForm();
     const update = (newData, isExercise, attribute, principalIndex,seriesIndex) => {
         if(isExercise){
             const updatedExercises = [...data.exercises];
@@ -28,5 +28,5 @@ export const useUpdate = () => {
             });
         }
     }
-    return {data,update};
+    return {data,update,errors};
 };
