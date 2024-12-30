@@ -20,7 +20,7 @@ class RoutineController extends Controller
             'routines' => $user->routines,
         ]);
     }
-    public function show($id){
+    private function getRoutineDetails($id){
         $routine = Routine::with('user')->where('id', $id)->firstOrFail();
         $exerciseRoutines = ExerciseRoutine::with('series')->where('routine_id',$routine->id)->get();
         $series = $exerciseRoutines->map(function ($exerciseRoutine) {
@@ -32,28 +32,19 @@ class RoutineController extends Controller
         $exerciseRoutinesWithDetails = $exerciseRoutines->map(function ($exerciseRoutine, $index) use ($series, $exercises) {
             return new ExerciseRoutineResource($exerciseRoutine, $series, $exercises);
         });
-        return Inertia::render('routines/pages/AdminRoutines', [
+        return [
             'routine' => $routine,
-            'exercises' => $exerciseRoutinesWithDetails
-        ]);
+            'exercises' => $exerciseRoutinesWithDetails,
+        ];
+    }
+    public function show($id){
+        $routineDetails = $this->getRoutineDetails($id);
+        return Inertia::render('routines/pages/AdminRoutines', $routineDetails);
     }
 
     public function edit($id){
-        $routine = Routine::with('user')->where('id', $id)->firstOrFail();
-        $exerciseRoutines = ExerciseRoutine::with('series')->where('routine_id',$routine->id)->get();
-        $series = $exerciseRoutines->map(function ($exerciseRoutine) {
-            return SerieResource::collection($exerciseRoutine->series);
-        });
-        $exercises = $exerciseRoutines->map(function ($exerciseRoutine) {
-            return new ExerciseResource(Exercise::query()->where('id',$exerciseRoutine->exercise_id)->first());
-        });
-        $exerciseRoutinesWithDetails = $exerciseRoutines->map(function ($exerciseRoutine, $index) use ($series, $exercises) {
-            return new ExerciseRoutineResource($exerciseRoutine, $series, $exercises);
-        });
-        return Inertia::render('routines/pages/UpdateRoutines', [
-            'routine' => $routine,
-            'exercises' => $exerciseRoutinesWithDetails
-        ]);
+        $routineDetails = $this->getRoutineDetails($id);
+        return Inertia::render('routines/pages/UpdateRoutines', $routineDetails);
     }
 
     public function update(Request $request){
