@@ -94,28 +94,20 @@ class RoutineController extends Controller
             $exerciseRoutine->update([
                 'note' => $exerciseData['data']['note'],
             ]);
-            if (!empty($exerciseData['data']['series'][$count - 1])) {
-                
-                $seriesIds = collect($exerciseData['data']['series'][$count - 1])
-                    ->filter(function ($seriesData) {
-                        return is_numeric($seriesData['id']);
-                    })
-                    ->map(function ($seriesData) {
-                        return $seriesData['id'];
-                    });
+            $seriesGroups = $exerciseData['data']['series'][$count - 1] ?? [];
+            $seriesIds = collect($seriesGroups)
+                ->filter(fn($seriesData) => is_numeric($seriesData['id']))
+                ->pluck('id')
+                ->toArray();
 
-
-                
-            } else {
-                $seriesIds = [];
-            }
             $exerciseRoutine->series()->whereNotIn('id', $seriesIds)->delete();
+
             
             if (!empty($exerciseData['data']['series'][$count - 1])) {
                 foreach ($exerciseData['data']['series'][$count-1] as $seriesData) {
                     if (is_numeric($seriesData['id'])) {
-                        $series = $exerciseRoutine->series()->where('id', $seriesData['id'])->firstOrFail();
-                        $series->update([
+                        $series = $exerciseRoutine->series()->find($seriesData['id']);
+                        $series?->update([
                             'repetitions' => $seriesData['repetitions'],
                             'weight' => $seriesData['weight'],
                             'RIR' => $seriesData['RIR'],
