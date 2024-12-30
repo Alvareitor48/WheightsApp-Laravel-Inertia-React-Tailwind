@@ -11,6 +11,7 @@ use App\Models\Routine;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Requests\UpdateRoutinesRequest;
 
 class RoutineController extends Controller
 {
@@ -47,39 +48,18 @@ class RoutineController extends Controller
         return Inertia::render('routines/pages/UpdateRoutines', $routineDetails);
     }
 
-    public function update(Request $request){
-        $validated = $request->validate([
-            'routine.id' => 'required|integer|exists:routines,id',
-            'routine.name' => 'required|string|max:255',
-            'routine.description' => 'nullable|string|max:1000',
-            'routine.day' => 'required|string|in:Monday,Tuesday,Wednesday,Thursday,Friday',
-            'exercises.*.data.id' => 'required|integer|exists:exercises_routines,id',
-            'exercises.*.data.note' => 'required|string|max:255',
-            'exercises.*.data.exercise.*.id' => 'required|integer|exists:exercises,id',
-            'exercises.*.data.exercise.*.name' => 'required|string|max:255',
-            'exercises.*.data.series.*.*.id' => [
-                'required',
-                function ($attribute, $value, $fail) {
-                    if (!is_numeric($value) && !preg_match('/^[0-9a-fA-F-]{36}$/', $value)) {
-                        $fail("El campo $attribute debe ser un número entero o un UUID válido.");
-                    }
-                },
-            ],
-            'exercises.*.data.series.*.*.repetitions' => 'required|integer',
-            'exercises.*.data.series.*.*.RIR' => 'required|in:0,1,2,3,4,5',
-            'exercises.*.data.series.*.*.failure' => 'required|boolean',
-            'exercises.*.data.series.*.*.weight' => 'required|numeric',
-        ]);
-        $routine = Routine::query()->where('id', $validated['routine']['id'])->firstOrFail();
+    public function update(UpdateRoutinesRequest $request){
+        $data = $request->all();
+        $routine = Routine::query()->where('id', $data['routine']['id'])->firstOrFail();
         $routine->update([
-            'name' => $validated['routine']['name'],
-            'description' => $validated['routine']['description'],
-            'day' => $validated['routine']['day'],
+            'name' => $data['routine']['name'],
+            'description' => $data['routine']['description'],
+            'day' => $data['routine']['day'],
         ]);
 
 
         $count = 0;
-        foreach ($validated['exercises'] as $exerciseData) {
+        foreach ($data['exercises'] as $exerciseData) {
             $count++;
             $exerciseRoutine = ExerciseRoutine::findOrFail($exerciseData['data']['id']);
             $exerciseRoutine->update([
