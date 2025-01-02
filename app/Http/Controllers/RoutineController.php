@@ -31,7 +31,7 @@ class RoutineController extends Controller
             return new ExerciseResource(Exercise::query()->where('id',$exerciseRoutine->exercise_id)->first());
         });
         $exerciseRoutinesWithDetails = $exerciseRoutines->map(function ($exerciseRoutine, $index) use ($series, $exercises) {
-            return new ExerciseRoutineResource($exerciseRoutine, $series, $exercises);
+            return (new ExerciseRoutineResource($exerciseRoutine, $series[$index], $exercises[$index]))->toArray(request());
         });
         return [
             'routine' => $routine,
