@@ -29,6 +29,9 @@ export default function RoutineUpdate(){
                             e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta al contenido
                         }}
                     />
+                    {errors["routine.name"] && (
+                        <p className="text-red-500 text-sm mt-1">{errors["routine.name"]}</p>
+                    )}
                     <textarea
                         rows={1}
                         value={data.routine.description}
@@ -39,6 +42,9 @@ export default function RoutineUpdate(){
                             e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta al contenido
                         }}
                     />
+                    {errors["routine.description"] && (
+                        <p className="text-red-500 text-sm mt-1">{errors["routine.description"]}</p>
+                    )}
                     <span
                         className="text-gray-200 text-responsive-h4 font-semibold my-4">Created by {data.routine.user.name}</span>
                 </div>

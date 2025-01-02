@@ -4,8 +4,9 @@ import { m } from "motion/react"
 import { useUpdate } from '@/modules/routines/hooks/useUpdate';
 import { useCreateSeries } from '../hooks/useCreateSeries';
 import { PrincipalTableBase } from './PrincipalTableBase';
+import { handleErrors } from '../functions/handleErrors';
 export function PrincipalTableUpdate({ index }) {
-    const { update, data } = useUpdate()
+    const { update, data, errors } = useUpdate()
     const { createSeries } = useCreateSeries()
     const headDivs = [
         <div className='flex justify-center m-1'>
@@ -28,6 +29,9 @@ export function PrincipalTableUpdate({ index }) {
                     e.target.style.height = `${e.target.scrollHeight}px`;
                 }}
             />
+            {errors[`exercises.${index}.data.note`] && (
+                <p className="text-red-500 text-responsive-note-table mt-1">{errors[`exercises.${index}.data.note`]}</p>
+            )}
         </div>,
         <div className='text-center px-2 py-3'>
             <p className='text-responsive-table font-medium text-gray-400 inline-block'>03:00</p>
@@ -42,7 +46,15 @@ export function PrincipalTableUpdate({ index }) {
     });
 
     const aditionalDivs = (
-        <m.button
+        <>
+            {handleErrors(index, errors) === 'both' ? (
+                <p className="text-red-500 text-responsive-note-table mt-1">¡Hay errores en las repeticiones y los pesos!</p>
+            ) : handleErrors(index, errors) === 'repetitions' ? (
+                <p className="text-red-500 text-responsive-note-table mt-1">¡Hay errores en las repeticiones!</p>
+            ) : handleErrors(index, errors) === 'weight' ? (
+                <p className="text-red-500 text-responsive-note-table mt-1">¡Hay errores en los pesos!</p>
+            ) : null}
+            <m.button
             type="button"
             className="glass pb-1 mt-5 w-full h-responsive-normal-button-height text-responsive-h4"
             whileHover={{ scale: 1.1 }}
@@ -53,6 +65,7 @@ export function PrincipalTableUpdate({ index }) {
         >
             + Añadir Serie
         </m.button>
+        </>
     )
     return (
         <>
