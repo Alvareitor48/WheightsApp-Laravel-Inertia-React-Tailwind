@@ -35,8 +35,8 @@ export function GridTableUpdate({seriesIndex,principalIndex}) {
                     {seriesIndex+1}
                 </button>,
         <NumberInput onChange={handleInputChange("repetitions")}
-                     value={data.exercises[principalIndex].data.series[principalIndex][seriesIndex]["repetitions"]}/>,
-        <NumberInput onChange={handleInputChange("weight")} value={data.exercises[principalIndex].data.series[principalIndex][seriesIndex]["weight"]}/>,
+                     value={data.exercises[principalIndex].series[seriesIndex]["repetitions"]}/>,
+        <NumberInput onChange={handleInputChange("weight")} value={data.exercises[principalIndex].series[seriesIndex]["weight"]}/>,
         <button
                     type="button"
                     className="bg-transparent text-responsive-td-table border border-none px-2 py-1 text-white"
@@ -44,9 +44,9 @@ export function GridTableUpdate({seriesIndex,principalIndex}) {
                         e.preventDefault()
                         setPopupOpen(true)}}
                 >
-                    {data.exercises[principalIndex].data.series[principalIndex][seriesIndex].failure === 1 ?
+                    {data.exercises[principalIndex].series[seriesIndex].failure === 1 ?
                         'F':
-                        data.exercises[principalIndex].data.series[principalIndex][seriesIndex].RIR
+                        data.exercises[principalIndex].series[seriesIndex].RIR
                     }
                 </button>
     ]

@@ -4,7 +4,7 @@ import { m } from "motion/react"
 import { useUpdate } from '@/modules/routines/hooks/useUpdate';
 import { useCreateSeries } from '../hooks/useCreateSeries';
 import { PrincipalTableBase } from './PrincipalTableBase';
-export function PrincipalTableUpdate({ index, series }) {
+export function PrincipalTableUpdate({ index }) {
     const { update, data } = useUpdate()
     const { createSeries } = useCreateSeries()
     const headDivs = [
@@ -15,13 +15,13 @@ export function PrincipalTableUpdate({ index, series }) {
             ></div>
         </div>,
         <div className='text-center px-2 py-3'>
-            <h2 className='text-responsive-table font-semibold inline-block'>{data.exercises[index].data.exercise[index].name}</h2>
+            <h2 className='text-responsive-table font-semibold inline-block'>{data.exercises[index].exercise.name}</h2>
         </div>,
         <div className='text-center'>
             <textarea
                 rows={1}
                 className='text-responsive-note-table leading-normal resize-none w-responsive-mini-input text-gray-400 inline-block bg-transparent border-0'
-                value={data.exercises[index].data.note}
+                value={data.exercises[index].note}
                 onChange={(e) => update(e.target.value, true, 'note', index)}
                 onInput={(e) => {
                     e.target.style.height = "auto";
@@ -34,7 +34,7 @@ export function PrincipalTableUpdate({ index, series }) {
         </div>
     ]
 
-    const tbody = series.map(function (serie, seriesIndex) {
+    const tbody = data.exercises[index].series.map(function (serie, seriesIndex) {
         return (
             <GridTableUpdate key={`${serie.id}.${index}`} seriesIndex={seriesIndex}
                 principalIndex={index}></GridTableUpdate>

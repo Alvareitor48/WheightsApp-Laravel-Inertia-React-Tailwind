@@ -49,9 +49,8 @@ export default function RoutineUpdate(){
                     data.exercises.map(function (exercise, index) {
                         return (
                             <PrincipalTableUpdate
-                                key={`${exercise.data.exercise[index].id}.${index}`}
+                                key={`${exercise.exercise.id}.${index}`}
                                 index={index}
-                                series={exercise.data.series[index]}
                             ></PrincipalTableUpdate>
                         )
                     })
