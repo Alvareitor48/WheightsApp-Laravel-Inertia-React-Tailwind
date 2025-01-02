@@ -23,9 +23,8 @@ export default function RoutineShow(){
                                 data.exercises.map(function (exercise, index) {
                                     return (
                                         <PrincipalTableShow
-                                            key={`${exercise.data.exercise[index].id}.${index}`}
+                                            key={`${exercise.exercise.id}.${index}`}
                                             index={index}
-                                            series={exercise.data.series[index]}
                                         ></PrincipalTableShow>
                                     )
                                 })
