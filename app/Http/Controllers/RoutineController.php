@@ -57,25 +57,21 @@ class RoutineController extends Controller
             'day' => $data['routine']['day'],
         ]);
 
-
-        $count = 0;
         foreach ($data['exercises'] as $exerciseData) {
-            $count++;
-            $exerciseRoutine = ExerciseRoutine::findOrFail($exerciseData['data']['id']);
+            $exerciseRoutine = ExerciseRoutine::findOrFail($exerciseData['id']);
             $exerciseRoutine->update([
-                'note' => $exerciseData['data']['note'],
+                'note' => $exerciseData['note'],
             ]);
-            $seriesGroups = $exerciseData['data']['series'][$count - 1] ?? [];
+            $seriesGroups = $exerciseData['series'] ?? [];
             $seriesIds = collect($seriesGroups)
                 ->filter(fn($seriesData) => is_numeric($seriesData['id']))
                 ->pluck('id')
                 ->toArray();
-
             $exerciseRoutine->series()->whereNotIn('id', $seriesIds)->delete();
 
             
-            if (!empty($exerciseData['data']['series'][$count - 1])) {
-                foreach ($exerciseData['data']['series'][$count-1] as $seriesData) {
+            if (!empty($exerciseData['series'])) {
+                foreach ($exerciseData['series'] as $seriesData) {
                     if (is_numeric($seriesData['id'])) {
                         $series = $exerciseRoutine->series()->find($seriesData['id']);
                         $series?->update([
