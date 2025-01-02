@@ -13,7 +13,7 @@ export const useCreateSeries = () => {
             duration: "00:00:00",
             failure: false,
         };
-        updatedExercises[index].data.series[index].push(serie)
+        updatedExercises[index].series.push(serie);
         setData("exercises", updatedExercises);
     }
     return { createSeries };

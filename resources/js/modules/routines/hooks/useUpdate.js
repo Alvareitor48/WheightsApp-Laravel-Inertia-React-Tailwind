@@ -6,19 +6,19 @@ export const useUpdate = () => {
         if(isExercise){
             const updatedExercises = [...data.exercises];
             if(!attribute.localeCompare('note')){
-                updatedExercises[principalIndex].data.note = newData;
+                updatedExercises[principalIndex].note = newData;
                 setData("exercises", updatedExercises);
                 return;
             }
             if(typeof newData === 'string' && !newData.localeCompare('Eliminar')){
-                updatedExercises[principalIndex].data.series[principalIndex] =
-                updatedExercises[principalIndex].data.series[principalIndex].filter(
+                updatedExercises[principalIndex].series =
+                updatedExercises[principalIndex].series.filter(
                     (serie, index) => index !== seriesIndex // Eliminar la serie con el índice especificado
                 );
                 setData("exercises", updatedExercises);
                 return;
             }
-            updatedExercises[principalIndex].data.series[principalIndex][seriesIndex][attribute] = newData;
+            updatedExercises[principalIndex].series[seriesIndex][attribute] = newData;
             setData("exercises", updatedExercises);
             
         }else{
