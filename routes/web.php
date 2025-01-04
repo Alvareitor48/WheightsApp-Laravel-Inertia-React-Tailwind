@@ -14,10 +14,12 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('AdminRoutines/{id}',[RoutineController::class,'show'])->name('AdminRoutines');
-Route::get('IndexRoutines',[RoutineController::class,'index'])->name('IndexRoutines');
-Route::get('UpdateRoutines/{id}/edit', [RoutineController::class, 'edit'])->name('routines.edit');
-Route::put('UpdateRoutines',[RoutineController::class,'update'])->name('routines.update');
+Route::middleware('auth')->group(function(){
+    Route::get('AdminRoutines/{id}',[RoutineController::class,'show'])->name('AdminRoutines');
+    Route::get('IndexRoutines',[RoutineController::class,'index'])->name('IndexRoutines');
+    Route::get('UpdateRoutines/{id}/edit', [RoutineController::class, 'edit'])->name('routines.edit');
+    Route::put('UpdateRoutines',[RoutineController::class,'update'])->name('routines.update');
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
