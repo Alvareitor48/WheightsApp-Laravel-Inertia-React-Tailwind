@@ -8,7 +8,6 @@ export default function SignBase({ children, isSignIn }) {
     const [isAnimating, setIsAnimating] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    // Actualizar ancho de la ventana al cambiar el tamaño
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -24,9 +23,17 @@ export default function SignBase({ children, isSignIn }) {
         }, 500);
     };
 
-    // Variantes dinámicas basadas en el ancho de la ventana
     const variants = {
-        hidden: { x: isSignIn ? -windowWidth / 3.8 : windowWidth / 3.8 },
+        hidden: {
+            x:
+                windowWidth > 1309
+                    ? isSignIn
+                        ? -windowWidth / 3.8
+                        : windowWidth / 3.8
+                    : isSignIn
+                    ? -windowWidth / 2.6
+                    : windowWidth / 2.6,
+        },
         visible: { x: 0 },
         exit: { x: isSignIn ? -windowWidth / 3.8 : windowWidth / 3.8 },
     };
@@ -47,7 +54,7 @@ export default function SignBase({ children, isSignIn }) {
         <>
             <MainLayout>
                 <div className="w-full h-[100vh] flex flex-row justify-center items-center">
-                    <div className="w-[70vw] h-[65vh] glass relative">
+                    <div className="w-[70vw] h-[65vh] glass relative custom-flex-wrap-first-title:w-[90vw] rounded-xl shadow-xl">
                         <AnimatePresence mode="wait">
                             {!isAnimating && (
                                 <div
