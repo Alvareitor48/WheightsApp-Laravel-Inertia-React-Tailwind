@@ -1,7 +1,7 @@
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
+import InputError from "@/modules/auth/components/InputError";
+import InputLabel from "@/modules/auth/components/InputLabel";
+import PrimaryButton from "@/modules/auth/components/PrimaryButton";
+import TextInput from "@/modules/auth/components/TextInput";
 import { Head, useForm } from "@inertiajs/react";
 import SignBase from "@/modules/auth/components/SignBase";
 

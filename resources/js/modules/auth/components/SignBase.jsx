@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PrimaryButton from "@/Components/PrimaryButton";
+import PrimaryButton from "@/modules/auth/components/PrimaryButton";
 import { router } from "@inertiajs/react";
 import { AnimatePresence, motion } from "motion/react";
 import MainLayout from "@/shared/layouts/MainLayout";
