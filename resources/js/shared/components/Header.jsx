@@ -5,6 +5,7 @@ import { useIconAnimation } from "@/shared/hooks/useIconAnimation.js";
 import { m } from "motion/react";
 import HamburgerButton from "@/shared/components/HamburgerButton.jsx";
 import { Guest } from "./Guest";
+import { Auth } from "./Auth";
 
 export const Header = () => {
     const { isOpen, toggleMenu } = useIconAnimation();
@@ -51,18 +52,21 @@ export const Header = () => {
                             Register
                         </Link>
                     </Guest>
-                    <Link
-                        href={route("home")}
-                        className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
-                    >
-                        Mi perfil
-                    </Link>
-                    <Link
-                        href={route("IndexRoutines")}
-                        className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
-                    >
-                        Mis rutinas
-                    </Link>
+                    <Auth>
+                        <Link
+                            href={route("dashboard")}
+                            className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
+                        >
+                            Mi perfil
+                        </Link>
+                        <Link
+                            href={route("IndexRoutines")}
+                            className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
+                        >
+                            Mis rutinas
+                        </Link>
+                    </Auth>
+
                     <Link
                         href={route("home")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
