@@ -4,8 +4,8 @@ export const useIconAnimation = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = useCallback(() => {
-        setIsOpen(prev => !prev);
+        setIsOpen((prev) => !prev);
     }, []);
 
     return { isOpen, toggleMenu };
-}
+};

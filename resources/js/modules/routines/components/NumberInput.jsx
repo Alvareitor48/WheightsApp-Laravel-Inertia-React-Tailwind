@@ -1,4 +1,4 @@
-export function NumberInput({onChange,value}) {
+export function NumberInput({ onChange, value }) {
     return (
         <input
             type="text" // Cambiamos a "text" para mayor control
@@ -15,10 +15,7 @@ export function NumberInput({onChange,value}) {
                 ];
 
                 // Permitir solo números, punto, y teclas especiales
-                if (
-                    !/[0-9]/.test(e.key) &&
-                    !allowedKeys.includes(e.key)
-                ) {
+                if (!/[0-9]/.test(e.key) && !allowedKeys.includes(e.key)) {
                     e.preventDefault();
                 }
 
@@ -27,7 +24,6 @@ export function NumberInput({onChange,value}) {
                     e.preventDefault();
                 }
             }}
-
             onInput={(e) => {
                 const value = e.target.value;
 
@@ -38,9 +34,7 @@ export function NumberInput({onChange,value}) {
                     e.target.value = value.slice(0, -1); // Remover el último carácter no válido
                 }
             }}
-
-            onChange={(e)=>onChange(e.target.value)}
+            onChange={(e) => onChange(e.target.value)}
         />
-    )
-        ;
+    );
 }

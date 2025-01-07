@@ -1,4 +1,4 @@
-import { useRoutineForm } from '../contexts/RoutineFormContext';
+import { useRoutineForm } from "../contexts/RoutineFormContext";
 import { v4 as uuidv4 } from "uuid";
 
 export const useCreateSeries = () => {
@@ -15,6 +15,6 @@ export const useCreateSeries = () => {
         };
         updatedExercises[index].series.push(serie);
         setData("exercises", updatedExercises);
-    }
+    };
     return { createSeries };
-}
+};

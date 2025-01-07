@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import {m} from "motion/react";
+import { m } from "motion/react";
 export function SelectPopUp({ isOpen, onClose, onSelect, options }) {
     if (!isOpen) return null;
 

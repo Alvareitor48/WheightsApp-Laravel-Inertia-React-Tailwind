@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export const useLanternAnimation = () => {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -12,6 +12,5 @@ export const useLanternAnimation = () => {
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
-    return {cursorPosition}
-}
-
+    return { cursorPosition };
+};
