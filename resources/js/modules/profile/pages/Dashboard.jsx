@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import MainLayout from "@/shared/layouts/MainLayout";
+import SimpleLayout from "@/shared/layouts/SimpleLayout";
 
 export default function WorkoutDashboard() {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -31,7 +31,7 @@ export default function WorkoutDashboard() {
     };
 
     return (
-        <MainLayout>
+        <SimpleLayout>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -222,6 +222,6 @@ export default function WorkoutDashboard() {
                     </motion.div>
                 </div>
             </motion.div>
-        </MainLayout>
+        </SimpleLayout>
     );
 }

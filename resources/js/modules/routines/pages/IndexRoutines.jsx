@@ -1,11 +1,11 @@
-import MainLayout from "@/shared/layouts/MainLayout.jsx";
 import { Head } from "@inertiajs/react";
 import { IndexRoutine } from "@/modules/routines/components/IndexRoutine.jsx";
+import SimpleLayout from "@/shared/layouts/SimpleLayout";
 
 export default function IndexRoutines({ routines }) {
     console.log(routines);
     return (
-        <MainLayout>
+        <SimpleLayout>
             <Head title="Routines" />
             <div className="min-h-screen bg-transparent">
                 <div className="flex flex-row flex-wrap items-center justify-center text-white">
@@ -28,6 +28,6 @@ export default function IndexRoutines({ routines }) {
                     })}
                 </div>
             </div>
-        </MainLayout>
+        </SimpleLayout>
     );
 }

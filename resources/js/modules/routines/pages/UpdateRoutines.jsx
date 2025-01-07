@@ -1,11 +1,11 @@
-import MainLayout from "@/shared/layouts/MainLayout.jsx";
 import { Head } from "@inertiajs/react";
 import { RoutineFormProvider } from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import RoutineUpdate from "@/modules/routines/components/RoutineUpdate.jsx";
+import SimpleLayout from "@/shared/layouts/SimpleLayout";
 
 export default function UpdateRoutines({ routine, exercises }) {
     return (
-        <MainLayout>
+        <SimpleLayout>
             <RoutineFormProvider
                 initialData={{
                     routine: routine,
@@ -15,6 +15,6 @@ export default function UpdateRoutines({ routine, exercises }) {
                 <Head title="Routines" />
                 <RoutineUpdate />
             </RoutineFormProvider>
-        </MainLayout>
+        </SimpleLayout>
     );
 }

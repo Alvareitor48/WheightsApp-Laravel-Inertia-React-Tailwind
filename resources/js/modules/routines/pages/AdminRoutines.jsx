@@ -1,15 +1,12 @@
-import MainLayout from "@/shared/layouts/MainLayout.jsx";
-import { m } from "motion/react";
-import { Head, router } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import React from "react";
-import { PrincipalTableShow } from "@/modules/routines/components/PrincipalTableShow.jsx";
 import { RoutineFormProvider } from "../contexts/RoutineFormContext";
-import { useUpdate } from "../hooks/useUpdate";
 import RoutineShow from "../components/RoutineShow";
+import SimpleLayout from "@/shared/layouts/SimpleLayout";
 
 export default function AdminRoutines({ routine, exercises }) {
     return (
-        <MainLayout>
+        <SimpleLayout>
             <RoutineFormProvider
                 initialData={{
                     routine: routine,
@@ -19,6 +16,6 @@ export default function AdminRoutines({ routine, exercises }) {
                 <Head title="Routines" />
                 <RoutineShow />
             </RoutineFormProvider>
-        </MainLayout>
+        </SimpleLayout>
     );
 }
