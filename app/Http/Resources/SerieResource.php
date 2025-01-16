@@ -17,7 +17,6 @@ class SerieResource extends JsonResource
         return [
             'id'=>$this->id,
             'repetitions'=>$this->repetitions,
-            'duration'=>$this->duration,
             'RIR'=>$this->RIR,
             'failure'=>$this->failure,
             'weight'=>$this->weight

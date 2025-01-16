@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('exercises_routines_id')->constrained()->cascadeOnDelete();
             $table->smallInteger('repetitions')->nullable();
-            $table->time('duration')->nullable();
             $table->tinyInteger('RIR')->nullable();
             $table->boolean('failure')->default(false);
             $table->double('weight')->nullable();

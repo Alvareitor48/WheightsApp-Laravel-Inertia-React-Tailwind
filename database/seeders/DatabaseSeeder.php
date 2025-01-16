@@ -43,7 +43,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines->id,
             'repetitions' => 5,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>2,
             'failure' => false,
             'weight' => 22.5
@@ -52,7 +51,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines->id,
             'repetitions' => 6,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>2,
             'failure' => false,
             'weight' => 20
@@ -61,7 +59,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines->id,
             'repetitions' => 5,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>0,
             'failure' => true,
             'weight' => 20
@@ -76,7 +73,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines2->id,
             'repetitions' => 3,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>2,
             'failure' => false,
             'weight' => 22.5
@@ -85,7 +81,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines2->id,
             'repetitions' => 4,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>2,
             'failure' => false,
             'weight' => 20
@@ -94,7 +89,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines2->id,
             'repetitions' => 2,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>0,
             'failure' => true,
             'weight' => 20
@@ -139,7 +133,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines3->id,
             'repetitions' => 5,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>2,
             'failure' => false,
             'weight' => 22.5
@@ -148,7 +141,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines3->id,
             'repetitions' => 6,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>2,
             'failure' => false,
             'weight' => 20
@@ -157,7 +149,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines3->id,
             'repetitions' => 5,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>0,
             'failure' => true,
             'weight' => 20
@@ -172,7 +163,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines4->id,
             'repetitions' => 3,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>2,
             'failure' => false,
             'weight' => 22.5
@@ -181,7 +171,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines4->id,
             'repetitions' => 4,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>2,
             'failure' => false,
             'weight' => 20
@@ -190,7 +179,6 @@ class DatabaseSeeder extends Seeder
         Serie::create([
             'exercises_routines_id' => $exercises_routines4->id,
             'repetitions' => 2,
-            'duration' => Carbon::createFromTime(0, 0, 50),
             'RIR'=>0,
             'failure' => true,
             'weight' => 20
