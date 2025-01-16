@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Http\Requests\UpdateRoutinesRequest;
+use App\Http\Requests\StartRoutinesRequest;
 
 class RoutineController extends Controller
 {
@@ -101,10 +102,11 @@ class RoutineController extends Controller
 
     public function start($id){
         $routineDetails = $this->getRoutineDetails($id);
+        $routineDetails['routine']['durationInSeconds'] = 0;
         return Inertia::render('routines/pages/StartRoutines', $routineDetails);
     }
 
-    public function session(UpdateRoutinesRequest $request){
-        dd();
+    public function session(StartRoutinesRequest $request){
+        dd($request->all());
     }
 }

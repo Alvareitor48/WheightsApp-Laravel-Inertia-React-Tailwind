@@ -5,14 +5,26 @@ import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import { RouteButton } from "./RouteButton";
 import { PrincipalTableStart } from "./PrincipalTableStart";
 import { useSerieChecked } from "../contexts/SerieCheckedContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function RoutineStart() {
     const { put, processing, errors } = useRoutineForm();
     const { update, data } = useUpdate();
     const { areExerciseSeriesCompleted } = useSerieChecked();
     const [exerciseErrors, setExerciseErrors] = useState({});
-    const handleSubmit = (e) => {
+    const [timeElapsed, setTimeElapsed] = useState(0);
+    const [intervalId, setIntervalId] = useState(null);
+
+    useEffect(() => {
+        const start = Date.now();
+        const id = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - start) / 1000);
+            setTimeElapsed(elapsed);
+        }, 1000);
+        setIntervalId(id);
+        return () => clearInterval(id);
+    }, []);
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const newErrors = {};
@@ -33,11 +45,18 @@ export default function RoutineStart() {
             window.scrollTo({ top: 0, behavior: "smooth" });
             return;
         }
+
+        clearInterval(intervalId);
+        update(timeElapsed, false, "durationInSeconds");
+
+        console.log("Datos actualizados:", data.routine);
+
         put(route("routines.start.session"), {
             routine: data.routine,
             exercises: data.exercises,
         });
     };
+
     return (
         <form
             onSubmit={handleSubmit}
@@ -60,6 +79,10 @@ export default function RoutineStart() {
                         {errors["routine.name"]}
                     </p>
                 )}
+                <p className="text-responsive-note-table">
+                    Tiempo transcurrido: {Math.floor(timeElapsed / 60)}m{" "}
+                    {timeElapsed % 60}s
+                </p>
                 <textarea
                     rows={1}
                     value={data.routine.description}
