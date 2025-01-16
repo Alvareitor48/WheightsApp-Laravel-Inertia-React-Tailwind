@@ -57,13 +57,6 @@ export default function RoutineUpdate() {
                 </span>
             </div>
 
-            {/* Botón de Comenzar Rutina*/}
-            <RouteButton
-                onClick={() =>
-                    router.visit(route("AdminRoutines", data.routine.id))
-                }
-                title="Comenzar Rutina"
-            ></RouteButton>
             {data.exercises.map(function (exercise, index) {
                 return (
                     <PrincipalTableUpdate

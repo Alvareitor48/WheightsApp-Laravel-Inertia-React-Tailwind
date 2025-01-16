@@ -24,7 +24,7 @@ export default function RoutineShow() {
             {/* Botón de Comenzar Rutina*/}
             <RouteButton
                 onClick={() =>
-                    router.visit(route("AdminRoutines", data.routine.id))
+                    router.visit(route("routines.start", data.routine.id))
                 }
                 title="Comenzar Rutina"
             ></RouteButton>
