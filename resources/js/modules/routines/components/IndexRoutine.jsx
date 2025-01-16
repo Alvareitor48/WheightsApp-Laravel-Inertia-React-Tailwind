@@ -34,7 +34,7 @@ export function IndexRoutine({ name, day, description, id }) {
                                 router.visit(route("AdminRoutines", id))
                             }
                         >
-                            Comenzar Rutina
+                            Ver Rutina
                         </m.button>
                     </div>
                     {/*Muñeco con los musculos implicados*/}

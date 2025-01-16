@@ -8,7 +8,7 @@ export function PrincipalTableBase({ headDivs, tbody, aditionalDivs }) {
                     ))}
                 </div>
 
-                <table className="text-responsive-table border-separate border-spacing-0 glassbottom border border-gray-300 border-t-0 rounded-b-xl w-full">
+                <table className="text-responsive-table border-separate border-spacing-0 glassfull border border-gray-300 border-t-0 w-full">
                     <thead>
                         <tr className="text-white uppercase leading-normal">
                             <th className="w-1/4 py-3 px-2 text-center">

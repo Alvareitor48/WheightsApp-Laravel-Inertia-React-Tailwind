@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
     overflow-x: hidden;
     width: 100%;
 }
 
-*{
+* {
     font-family: "Poppins", system-ui;
     font-weight: 900;
     font-style: normal;
@@ -27,102 +28,209 @@ html, body {
 .bg-custom-gradient {
     background: hsla(233, 24%, 19%, 1);
 
-    background: linear-gradient(135deg, hsla(233, 24%, 19%, 1) 27%, hsla(254, 31%, 27%, 1) 59%, hsla(295, 92%, 24%, 1) 94%);
+    background: linear-gradient(
+        135deg,
+        hsla(233, 24%, 19%, 1) 27%,
+        hsla(254, 31%, 27%, 1) 59%,
+        hsla(295, 92%, 24%, 1) 94%
+    );
 
-    background: -moz-linear-gradient(135deg, hsla(233, 24%, 19%, 1) 27%, hsla(254, 31%, 27%, 1) 59%, hsla(295, 92%, 24%, 1) 94%);
+    background: -moz-linear-gradient(
+        135deg,
+        hsla(233, 24%, 19%, 1) 27%,
+        hsla(254, 31%, 27%, 1) 59%,
+        hsla(295, 92%, 24%, 1) 94%
+    );
 
-    background: -webkit-linear-gradient(135deg, hsla(233, 24%, 19%, 1) 27%, hsla(254, 31%, 27%, 1) 59%, hsla(295, 92%, 24%, 1) 94%);
+    background: -webkit-linear-gradient(
+        135deg,
+        hsla(233, 24%, 19%, 1) 27%,
+        hsla(254, 31%, 27%, 1) 59%,
+        hsla(295, 92%, 24%, 1) 94%
+    );
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#392F5A", GradientType=1 );
 }
-.bg-custom-gradient2{
+.bg-custom-gradient2 {
     background: hsla(0, 35%, 74%, 1);
 
-    background: radial-gradient(circle, hsla(0, 35%, 74%, 1) 0%, hsla(295, 92%, 24%, 1) 54%, hsla(233, 24%, 19%, 1) 91%);
+    background: radial-gradient(
+        circle,
+        hsla(0, 35%, 74%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 54%,
+        hsla(233, 24%, 19%, 1) 91%
+    );
 
-    background: -moz-radial-gradient(circle, hsla(0, 35%, 74%, 1) 0%, hsla(295, 92%, 24%, 1) 54%, hsla(233, 24%, 19%, 1) 91%);
+    background: -moz-radial-gradient(
+        circle,
+        hsla(0, 35%, 74%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 54%,
+        hsla(233, 24%, 19%, 1) 91%
+    );
 
-    background: -webkit-radial-gradient(circle, hsla(0, 35%, 74%, 1) 0%, hsla(295, 92%, 24%, 1) 54%, hsla(233, 24%, 19%, 1) 91%);
+    background: -webkit-radial-gradient(
+        circle,
+        hsla(0, 35%, 74%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 54%,
+        hsla(233, 24%, 19%, 1) 91%
+    );
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D4A5A5", endColorstr="#6A0574", GradientType=1 );
 }
 
-.bg-custom-gradient3{
+.bg-custom-gradient3 {
     background: hsla(233, 24%, 19%, 1);
 
-    background: linear-gradient(315deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: linear-gradient(
+        315deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
-    background: -moz-linear-gradient(315deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: -moz-linear-gradient(
+        315deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
-    background: -webkit-linear-gradient(315deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: -webkit-linear-gradient(
+        315deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#6A0574", GradientType=1 );
 }
 
-.bg-custom-gradient4{
+.bg-custom-gradient4 {
     background: hsla(233, 24%, 19%, 1);
 
-    background: linear-gradient(135deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: linear-gradient(
+        135deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
-    background: -moz-linear-gradient(135deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: -moz-linear-gradient(
+        135deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
-    background: -webkit-linear-gradient(135deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: -webkit-linear-gradient(
+        135deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#6A0574", GradientType=1 );
 }
 
-.bg-custom-gradient5{
+.bg-custom-gradient5 {
     background: hsla(233, 24%, 19%, 1);
 
-    background: linear-gradient(225deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: linear-gradient(
+        225deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
-    background: -moz-linear-gradient(225deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: -moz-linear-gradient(
+        225deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
-    background: -webkit-linear-gradient(225deg, hsla(233, 24%, 19%, 1) 0%, hsla(295, 92%, 24%, 1) 52%, hsla(307, 43%, 39%, 1) 100%);
+    background: -webkit-linear-gradient(
+        225deg,
+        hsla(233, 24%, 19%, 1) 0%,
+        hsla(295, 92%, 24%, 1) 52%,
+        hsla(307, 43%, 39%, 1) 100%
+    );
 
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25283D", endColorstr="#6A0574", GradientType=1 );
 }
 
-.glasstop{
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+.glasstop {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
-    border:1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.glassbottom{
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+.glassbottom {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    border:1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.glass{
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+.glassfull {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
-    border:1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.glassCircle{
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+.glassCircle {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 100%;
-    border:1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .glassTint {
-    background: linear-gradient(135deg, rgba(106, 5, 116, 0.3), rgba(255, 255, 255, 0.1));
+    background: linear-gradient(
+        135deg,
+        rgba(106, 5, 116, 0.3),
+        rgba(255, 255, 255, 0.1)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -131,7 +239,11 @@ html, body {
 }
 
 .glassTintCircle {
-    background: linear-gradient(135deg, rgba(106, 5, 116, 0.3), rgba(255, 255, 255, 0.1));
+    background: linear-gradient(
+        135deg,
+        rgba(106, 5, 116, 0.3),
+        rgba(255, 255, 255, 0.1)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 100%;
@@ -139,9 +251,12 @@ html, body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-
 .glassTintWORadius {
-    background: linear-gradient(135deg, rgba(106, 5, 116, 0.3), rgba(255, 255, 255, 0.1));
+    background: linear-gradient(
+        135deg,
+        rgba(106, 5, 116, 0.3),
+        rgba(255, 255, 255, 0.1)
+    );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-left: 1px solid rgba(255, 255, 255, 0.18);
@@ -161,4 +276,3 @@ html, body {
 .no-arrows {
     -moz-appearance: textfield; /* Oculta las flechas en Firefox */
 }
-
