@@ -7,6 +7,8 @@ use App\Models\ExerciseRoutine;
 use App\Models\Routine;
 use App\Models\Serie;
 use App\Models\User;
+use App\Models\RoutineSession;
+use App\Models\ExerciseLog;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -36,7 +38,6 @@ class DatabaseSeeder extends Seeder
             'routine_id' => $routine->id,
             'exercise_id' => $exercise->id,
             'note' => 'Description random',
-            'duration' => Carbon::createFromTime(1, 0, 50),
         ]);
 
         Serie::create([
@@ -70,7 +71,6 @@ class DatabaseSeeder extends Seeder
             'routine_id' => $routine->id,
             'exercise_id' => $exercise->id,
             'note' => 'Description random 2',
-            'duration' => Carbon::createFromTime(1, 0, 50),
         ]);
 
         Serie::create([
@@ -100,6 +100,28 @@ class DatabaseSeeder extends Seeder
             'weight' => 20
         ]);
 
+        $routineSession1 = RoutineSession::create([
+            'user_id' => $user->id,
+            'routine_id' => $routine->id,
+            'duration' => '00:45:00',
+            'completed_at' => now(),
+        ]);
+
+        foreach ($exercises_routines->series as $serie) {
+            ExerciseLog::create([
+                'routine_session_id' => $routineSession1->id,
+                'exercise_id' => $exercises_routines->exercise_id,
+                'series_id' => $serie->id,
+            ]);
+        }
+
+        foreach ($exercises_routines2->series as $serie) {
+            ExerciseLog::create([
+                'routine_session_id' => $routineSession1->id,
+                'exercise_id' => $exercises_routines2->exercise_id,
+                'series_id' => $serie->id,
+            ]);
+        }
 
         $routine2 = Routine::create([
             'user_id' => $user->id,
@@ -112,7 +134,6 @@ class DatabaseSeeder extends Seeder
             'routine_id' => $routine2->id,
             'exercise_id' => $exercise->id,
             'note' => 'Description random 3',
-            'duration' => Carbon::createFromTime(1, 0, 50),
         ]);
 
         Serie::create([
@@ -146,7 +167,6 @@ class DatabaseSeeder extends Seeder
             'routine_id' => $routine2->id,
             'exercise_id' => $exercise->id,
             'note' => 'Description random 4',
-            'duration' => Carbon::createFromTime(1, 0, 50),
         ]);
 
         Serie::create([
@@ -175,6 +195,29 @@ class DatabaseSeeder extends Seeder
             'failure' => true,
             'weight' => 20
         ]);
+
+        $routineSession2 = RoutineSession::create([
+            'user_id' => $user->id,
+            'routine_id' => $routine2->id,
+            'duration' => '00:45:00',
+            'completed_at' => now(),
+        ]);
+
+        foreach ($exercises_routines3->series as $serie) {
+            ExerciseLog::create([
+                'routine_session_id' => $routineSession2->id,
+                'exercise_id' => $exercises_routines3->exercise_id,
+                'series_id' => $serie->id,
+            ]);
+        }
+
+        foreach ($exercises_routines4->series as $serie) {
+            ExerciseLog::create([
+                'routine_session_id' => $routineSession2->id,
+                'exercise_id' => $exercises_routines4->exercise_id,
+                'series_id' => $serie->id,
+            ]);
+        }
 
     }
 }

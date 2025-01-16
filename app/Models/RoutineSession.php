@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class RoutineSession extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'routine_id'];
+    protected $fillable = ['user_id', 'routine_id', 'duration', 'complete_at'];
     protected $table = 'routine_sessions';
 }

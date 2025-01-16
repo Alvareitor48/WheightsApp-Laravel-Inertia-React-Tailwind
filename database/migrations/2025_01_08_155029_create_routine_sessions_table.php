@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('routine_id')->constrained()->cascadeOnDelete();
+            $table->time('duration');
             $table->timestamp('completed_at')->useCurrent();
             $table->timestamps();
         });
