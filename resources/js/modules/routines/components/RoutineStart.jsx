@@ -5,7 +5,7 @@ import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import { RouteButton } from "./RouteButton";
 import { PrincipalTableStart } from "./PrincipalTableStart";
 import { useSerieChecked } from "../contexts/SerieCheckedContext";
-import { useEffect, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 
 export default function RoutineStart() {
     const { put, processing, errors } = useRoutineForm();
@@ -13,18 +13,18 @@ export default function RoutineStart() {
     const { areExerciseSeriesCompleted } = useSerieChecked();
     const [exerciseErrors, setExerciseErrors] = useState({});
     const [timeElapsed, setTimeElapsed] = useState(0);
-    const [intervalId, setIntervalId] = useState(null);
+    const intervalRef = useRef(null);
 
     useEffect(() => {
         const start = Date.now();
-        const id = setInterval(() => {
+        intervalRef.current = setInterval(() => {
             const elapsed = Math.floor((Date.now() - start) / 1000);
             setTimeElapsed(elapsed);
+            update(elapsed, false, "durationInSeconds");
         }, 1000);
-        setIntervalId(id);
-        return () => clearInterval(id);
+        return () => clearInterval(intervalRef.current);
     }, []);
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         const newErrors = {};
@@ -46,8 +46,7 @@ export default function RoutineStart() {
             return;
         }
 
-        clearInterval(intervalId);
-        update(timeElapsed, false, "durationInSeconds");
+        clearInterval(intervalRef.current);
 
         console.log("Datos actualizados:", data.routine);
 
