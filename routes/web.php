@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function(){
     Route::get('IndexRoutines',[RoutineController::class,'index'])->name('IndexRoutines');
     Route::get('UpdateRoutines/{id}/edit', [RoutineController::class, 'edit'])->name('routines.edit');
     Route::put('UpdateRoutines',[RoutineController::class,'update'])->name('routines.update');
+    Route::get('StartRoutines/{id}', [RoutineController::class, 'start'])->name('routines.start');
+    Route::put('StartRoutines',[RoutineController::class,'session'])->name('routines.start.session');
 });
 
 Route::get('/dashboard', function () {

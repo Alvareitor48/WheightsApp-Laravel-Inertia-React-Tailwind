@@ -91,7 +91,20 @@ class RoutineController extends Controller
                 }
             }
         }
+        if ($request->expectsJson()) {
+            return response()->json(['status' => 'Rutina actualizada correctamente.']);
+        }
+    
         return redirect()->route('AdminRoutines', ['id' => $routine->id])
             ->with('success', 'Rutina actualizada correctamente.');
+    }
+
+    public function start($id){
+        $routineDetails = $this->getRoutineDetails($id);
+        return Inertia::render('routines/pages/StartRoutines', $routineDetails);
+    }
+
+    public function session(UpdateRoutinesRequest $request){
+        dd();
     }
 }
