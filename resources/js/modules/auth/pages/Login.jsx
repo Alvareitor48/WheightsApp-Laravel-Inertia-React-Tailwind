@@ -27,7 +27,7 @@ export default function Login({ status, canResetPassword, isSignUpProp }) {
 
             <form onSubmit={submit} className="space-y-6 px-8 py-10">
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel forInput="email" value="Email" />
+                    <InputLabel value="Email" />
                     <TextInput
                         id="email"
                         type="email"
@@ -42,7 +42,7 @@ export default function Login({ status, canResetPassword, isSignUpProp }) {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel forInput="password" value="Contraseña" />
+                    <InputLabel value="Contraseña" />
                     <TextInput
                         id="password"
                         type="password"

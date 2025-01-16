@@ -27,7 +27,7 @@ export default function Register() {
 
             <form onSubmit={submit} className="space-y-4 px-8 py-10">
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel forInput="name" value="Nombre" />
+                    <InputLabel value="Nombre" />
                     <TextInput
                         id="name"
                         type="text"
@@ -42,7 +42,7 @@ export default function Register() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel forInput="email" value="Email" />
+                    <InputLabel value="Email" />
                     <TextInput
                         id="email"
                         type="email"
@@ -56,7 +56,7 @@ export default function Register() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel forInput="password" value="Contraseña" />
+                    <InputLabel value="Contraseña" />
                     <TextInput
                         id="password"
                         type="password"
@@ -70,10 +70,7 @@ export default function Register() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel
-                        forInput="password_confirmation"
-                        value="Confirmar Contraseña"
-                    />
+                    <InputLabel value="Confirmar Contraseña" />
                     <TextInput
                         id="password_confirmation"
                         type="password"
