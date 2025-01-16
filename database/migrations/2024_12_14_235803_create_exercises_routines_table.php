@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('routine_id')->constrained()->cascadeOnDelete();
             $table->string('note')->nullable();
             $table->time('rest_time')->nullable();
-            $table->time('duration');
             $table->timestamps();
         });
     }
