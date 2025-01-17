@@ -1,9 +1,13 @@
-export function NumberInput({ onChange, value }) {
+import {useState} from "react";
+
+export function NumberInput({ onChange, value, isStart }) {
+    const [isEmpty, setEmpty] = useState(true);
     return (
         <input
             type="text" // Cambiamos a "text" para mayor control
             className="p-0 bg-transparent text-responsive-td-table border-0 no-arrows w-responsive-mini-mini-input"
-            value={value}
+            value={isStart ? (isEmpty === true ? '' : value) : value}
+            placeholder={isStart && value}
             onKeyDown={(e) => {
                 const allowedKeys = [
                     "Backspace",
@@ -34,7 +38,12 @@ export function NumberInput({ onChange, value }) {
                     e.target.value = value.slice(0, -1); // Remover el último carácter no válido
                 }
             }}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={
+                (e) => {
+                    setEmpty(false);
+                    onChange(e.target.value)
+                }
+            }
         />
     );
 }

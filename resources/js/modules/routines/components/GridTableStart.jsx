@@ -46,10 +46,12 @@ export function GridTableStart({ seriesIndex, principalIndex }) {
                     "repetitions"
                 ]
             }
+            isStart={true}
         />,
         <NumberInput
             onChange={handleInputChange("weight")}
             value={data.exercises[principalIndex].series[seriesIndex]["weight"]}
+            isStart={true}
         />,
         <button
             type="button"
