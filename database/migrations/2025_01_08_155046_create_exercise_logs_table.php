@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('routine_session_id')->constrained()->cascadeOnDelete();
             $table->foreignId('exercise_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('series_id')->constrained()->cascadeOnDelete();
+            $table->smallInteger('repetitions')->nullable();
+            $table->tinyInteger('RIR')->nullable();
+            $table->boolean('failure')->default(false);
+            $table->double('weight')->nullable();
             $table->timestamps();
         });
     }

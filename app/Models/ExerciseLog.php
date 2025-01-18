@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class ExerciseLog extends Model
 {
     use HasFactory;
-    protected $fillable = ['routine_session_id', 'exercise_id', 'series_id'];
+    protected $fillable = ['routine_session_id', 'exercise_id', 'repetitions', 'RIR', 'failure', 'weight'];
     protected $table = 'exercise_logs';
 }

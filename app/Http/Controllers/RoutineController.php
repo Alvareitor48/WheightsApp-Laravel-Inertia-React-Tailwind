@@ -147,7 +147,10 @@ class RoutineController extends Controller
                 ExerciseLog::create([
                     'routine_session_id' => $routineSession->id,
                     'exercise_id' => $exercise['exercise']['id'],
-                    'series_id' => $series['id'],
+                    'repetitions' => $series['repetitions'],
+                    'RIR' => $series['RIR'],
+                    'failure' => $series['failure'],
+                    'weight' => $series['weight'],
                 ]);
             }
         }

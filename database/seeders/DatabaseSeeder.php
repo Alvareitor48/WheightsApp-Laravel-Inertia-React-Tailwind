@@ -105,7 +105,10 @@ class DatabaseSeeder extends Seeder
             ExerciseLog::create([
                 'routine_session_id' => $routineSession1->id,
                 'exercise_id' => $exercises_routines->exercise_id,
-                'series_id' => $serie->id,
+                'repetitions' => $serie->repetitions,
+                'RIR' => $serie->RIR,
+                'failure' => $serie->failure,
+                'weight' => $serie->weight,
             ]);
         }
 
@@ -113,7 +116,10 @@ class DatabaseSeeder extends Seeder
             ExerciseLog::create([
                 'routine_session_id' => $routineSession1->id,
                 'exercise_id' => $exercises_routines2->exercise_id,
-                'series_id' => $serie->id,
+                'repetitions' => $serie->repetitions,
+                'RIR' => $serie->RIR,
+                'failure' => $serie->failure,
+                'weight' => $serie->weight,
             ]);
         }
 
@@ -195,7 +201,10 @@ class DatabaseSeeder extends Seeder
             ExerciseLog::create([
                 'routine_session_id' => $routineSession2->id,
                 'exercise_id' => $exercises_routines3->exercise_id,
-                'series_id' => $serie->id,
+                'repetitions' => $serie->repetitions,
+                'RIR' => $serie->RIR,
+                'failure' => $serie->failure,
+                'weight' => $serie->weight,
             ]);
         }
 
@@ -203,7 +212,10 @@ class DatabaseSeeder extends Seeder
             ExerciseLog::create([
                 'routine_session_id' => $routineSession2->id,
                 'exercise_id' => $exercises_routines4->exercise_id,
-                'series_id' => $serie->id,
+                'repetitions' => $serie->repetitions,
+                'RIR' => $serie->RIR,
+                'failure' => $serie->failure,
+                'weight' => $serie->weight,
             ]);
         }
 
