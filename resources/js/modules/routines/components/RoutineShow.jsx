@@ -1,11 +1,12 @@
-import { m } from "motion/react";
 import { router } from "@inertiajs/react";
 import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import { PrincipalTableShow } from "./PrincipalTableShow";
 import { RouteButton } from "./RouteButton";
+import Chart from "../components/Chart";
 
-export default function RoutineShow() {
+export default function RoutineShow({ stadistics }) {
     const { data } = useUpdate();
+    console.log(stadistics);
     return (
         <div className="bg-transparent flex flex-col items-center min-h-screen text-white">
             {/* Título y usuario */}
@@ -19,6 +20,9 @@ export default function RoutineShow() {
                 <span className="text-gray-200 text-responsive-h4 font-semibold my-4">
                     Created by {data.routine.user.name}
                 </span>
+                <div>
+                    <Chart data={stadistics} />
+                </div>
             </div>
 
             {/* Botón de Comenzar Rutina*/}

@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class StatisticsResource extends JsonResource
 {
@@ -15,9 +16,9 @@ class StatisticsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'date' => $this->completed_at,
-            'repetitionsCount' => $this->exerciseLogs->sum('repetitions'),
-            'weightCount' => $this->exerciseLogs->sum('weight'),
+            'date' => Carbon::parse($this->completed_at)->format('d-m-Y'),
+            'Repeticiones Totales' => $this->exerciseLogs->sum('repetitions'),
+            'Peso Levantado' => $this->exerciseLogs->sum('weight'),
         ];
     }
 }

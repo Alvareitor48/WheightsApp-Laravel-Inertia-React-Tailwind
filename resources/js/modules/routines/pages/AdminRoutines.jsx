@@ -5,7 +5,6 @@ import RoutineShow from "../components/RoutineShow";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 
 export default function AdminRoutines({ routine, exercises, stadistics }) {
-    console.log(stadistics);
     return (
         <SimpleLayout>
             <RoutineFormProvider
@@ -15,7 +14,7 @@ export default function AdminRoutines({ routine, exercises, stadistics }) {
                 }}
             >
                 <Head title="Routines" />
-                <RoutineShow />
+                <RoutineShow stadistics={stadistics} />
             </RoutineFormProvider>
         </SimpleLayout>
     );
