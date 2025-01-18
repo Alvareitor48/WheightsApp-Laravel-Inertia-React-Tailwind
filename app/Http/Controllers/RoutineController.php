@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ExerciseResource;
 use App\Http\Resources\ExerciseRoutineResource;
 use App\Http\Resources\SerieResource;
+use App\Http\Resources\StatisticsResource;
 use App\Models\Exercise;
 use App\Models\ExerciseLog;
 use App\Models\ExerciseRoutine;
@@ -108,6 +109,14 @@ class RoutineController extends Controller
     }
     public function show($id){
         $routineDetails = $this->getRoutineDetails($id);
+
+        $sessions = RoutineSession::where('routine_id', $id)
+            ->where('user_id',auth()->user()->id)
+            ->with('exerciseLogs')
+            ->get();
+        $stadistics = StatisticsResource::collection($sessions)->toArray(request());
+        $routineDetails['stadistics'] = $stadistics;
+
         return Inertia::render('routines/pages/AdminRoutines', $routineDetails);
     }
 

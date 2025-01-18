@@ -4,7 +4,8 @@ import { RoutineFormProvider } from "../contexts/RoutineFormContext";
 import RoutineShow from "../components/RoutineShow";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 
-export default function AdminRoutines({ routine, exercises }) {
+export default function AdminRoutines({ routine, exercises, stadistics }) {
+    console.log(stadistics);
     return (
         <SimpleLayout>
             <RoutineFormProvider
