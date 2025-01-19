@@ -1,0 +1,128 @@
+[
+    {
+        "name": "Bicicleta de Aire",
+        "description": "Ejercicio cardiovascular realizado con una bicicleta de aire.",
+        "gif": "exercises_gifs/cardio/air-bike.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Boxeo",
+        "description": "Ejercicio cardiovascular realizado mediante movimientos de boxeo.",
+        "gif": "exercises_gifs/cardio/boxing.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Otros"
+    },
+    {
+        "name": "Escalada",
+        "description": "Ejercicio cardiovascular que involucra la escalada, ideal para fuerza y resistencia.",
+        "gif": "exercises_gifs/cardio/climbing.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Otros"
+    },
+    {
+        "name": "Ciclismo",
+        "description": "Ejercicio cardiovascular realizado al aire libre en bicicleta.",
+        "gif": "exercises_gifs/cardio/cycling.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Meneo de Cuerdas",
+        "description": "Ejercicio cardiovascular intenso realizado con cuerdas de batalla.",
+        "gif": "exercises_gifs/cardio/battle-ropes.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Otros"
+    },
+    {
+        "name": "Elíptica",
+        "description": "Ejercicio cardiovascular realizado en máquina elíptica.",
+        "gif": "exercises_gifs/cardio/elliptical.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "HIIT",
+        "description": "Entrenamiento por intervalos de alta intensidad para mejorar la capacidad cardiovascular.",
+        "gif": "exercises_gifs/cardio/hiit.gif",
+        "muscles": ["Cardio"],
+        "equipment": null
+    },
+    {
+        "name": "Saltos a la Comba",
+        "description": "Ejercicio cardiovascular realizado con una cuerda para saltar.",
+        "gif": "exercises_gifs/cardio/jump-rope.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Otros"
+    },
+    {
+        "name": "Correr",
+        "description": "Ejercicio cardiovascular básico realizado corriendo al aire libre.",
+        "gif": "exercises_gifs/cardio/running.gif",
+        "muscles": ["Cardio"],
+        "equipment": null
+    },
+    {
+        "name": "Skating",
+        "description": "Ejercicio cardiovascular realizado en patines.",
+        "gif": "exercises_gifs/cardio/skating.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Otros"
+    },
+    {
+        "name": "Skiing",
+        "description": "Ejercicio cardiovascular realizado mediante esquí en la nieve.",
+        "gif": "exercises_gifs/cardio/skiing.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Otros"
+    },
+    {
+        "name": "Snowboarding",
+        "description": "Ejercicio cardiovascular realizado con snowboard.",
+        "gif": "exercises_gifs/cardio/snowboarding.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Otros"
+    },
+    {
+        "name": "Spinning",
+        "description": "Ejercicio cardiovascular realizado en bicicleta estática.",
+        "gif": "exercises_gifs/cardio/spinning.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Sprints",
+        "description": "Ejercicio cardiovascular realizado corriendo en alta intensidad durante cortos periodos.",
+        "gif": "exercises_gifs/cardio/sprints.gif",
+        "muscles": ["Cardio"],
+        "equipment": null
+    },
+    {
+        "name": "Máquina de Escaleras",
+        "description": "Ejercicio cardiovascular realizado en máquina de escaleras.",
+        "gif": "exercises_gifs/cardio/step-machine.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Natación",
+        "description": "Ejercicio cardiovascular realizado nadando en piscina o en aguas abiertas.",
+        "gif": "exercises_gifs/cardio/swimming.gif",
+        "muscles": ["Cardio"],
+        "equipment": null
+    },
+    {
+        "name": "Correr en Cinta",
+        "description": "Ejercicio cardiovascular realizado corriendo en cinta de correr.",
+        "gif": "exercises_gifs/cardio/treadmill-running.gif",
+        "muscles": ["Cardio"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Andar",
+        "description": "Ejercicio cardiovascular básico realizado caminando.",
+        "gif": "exercises_gifs/cardio/walking.gif",
+        "muscles": ["Cardio"],
+        "equipment": null
+    }
+]

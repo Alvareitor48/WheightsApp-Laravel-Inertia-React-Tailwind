@@ -1,0 +1,226 @@
+[
+    {
+        "name": "Adducción de Piernas en Máquina",
+        "description": "Ejercicio de adducción realizado en máquina para trabajar los aductores.",
+        "gif": "exercises_gifs/legs/adduction-machine.gif",
+        "muscles": ["Aductores"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Abducción de Piernas en Máquina",
+        "description": "Ejercicio de abducción realizado en máquina para trabajar los abductores.",
+        "gif": "exercises_gifs/legs/abduction-machine.gif",
+        "muscles": ["Abductores"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Peso Muerto con Barra",
+        "description": "Ejercicio de peso muerto con barra, enfocado en glúteos y femorales.",
+        "gif": "exercises_gifs/legs/deadlift-barbell.gif",
+        "muscles": ["Glúteo", "Femoral"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Peso Muerto con Mancuernas",
+        "description": "Ejercicio de peso muerto realizado con mancuernas, enfocado en glúteos y femorales.",
+        "gif": "exercises_gifs/legs/deadlift-dumbbell.gif",
+        "muscles": ["Glúteo", "Femoral"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Peso Muerto en Máquina Smith",
+        "description": "Ejercicio de peso muerto realizado en máquina Smith, enfocado en glúteos y femorales.",
+        "gif": "exercises_gifs/legs/deadlift-smith-machine.gif",
+        "muscles": ["Glúteo", "Femoral"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Peso Muerto Rumano con Barra",
+        "description": "Ejercicio de peso muerto rumano realizado con barra, enfocado en femorales y glúteos.",
+        "gif": "exercises_gifs/legs/romanian-deadlift-barbell.gif",
+        "muscles": ["Femoral", "Glúteo"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Peso Muerto Rumano con Mancuernas",
+        "description": "Ejercicio de peso muerto rumano realizado con mancuernas, enfocado en femorales y glúteos.",
+        "gif": "exercises_gifs/legs/romanian-deadlift-dumbbell.gif",
+        "muscles": ["Femoral", "Glúteo"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Peso Muerto Rumano con Cable",
+        "description": "Ejercicio de peso muerto rumano realizado con cable, enfocado en glúteos y femorales.",
+        "gif": "exercises_gifs/legs/romanian-deadlift-cable.gif",
+        "muscles": ["Femoral", "Glúteo"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Curl Femoral Acostado",
+        "description": "Ejercicio de curl femoral realizado acostado en máquina.",
+        "gif": "exercises_gifs/legs/lying-leg-curl.gif",
+        "muscles": ["Femoral"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Curl de Femoral en Máquina",
+        "description": "Ejercicio de curl femoral realizado sentado en máquina.",
+        "gif": "exercises_gifs/legs/seated-leg-curl.gif",
+        "muscles": ["Femoral"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Hip Thrust",
+        "description": "Ejercicio de empuje de cadera para trabajar los glúteos.",
+        "gif": "exercises_gifs/legs/hip-thrust.gif",
+        "muscles": ["Glúteo"],
+        "equipment": null
+    },
+    {
+        "name": "Hip Thrust con Barra",
+        "description": "Ejercicio de empuje de cadera realizado con barra, enfocado en los glúteos.",
+        "gif": "exercises_gifs/legs/hip-thrust-barbell.gif",
+        "muscles": ["Glúteo"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Hip Thrust Unilateral",
+        "description": "Ejercicio de empuje de cadera realizado con una sola pierna, enfocado en los glúteos.",
+        "gif": "exercises_gifs/legs/hip-thrust-unilateral.gif",
+        "muscles": ["Glúteo"],
+        "equipment": null
+    },
+    {
+        "name": "Curl de Glúteo en el Suelo",
+        "description": "Ejercicio de curl de glúteo realizado en el suelo, enfocado en glúteos.",
+        "gif": "exercises_gifs/legs/glute-curl-floor.gif",
+        "muscles": ["Glúteo"],
+        "equipment": null
+    },
+    {
+        "name": "Curl de Glúteo en el Suelo con Peso",
+        "description": "Ejercicio de curl de glúteo realizado en el suelo con peso adicional.",
+        "gif": "exercises_gifs/legs/glute-curl-floor-weighted.gif",
+        "muscles": ["Glúteo"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Kickback de Glúteo en Máquina",
+        "description": "Ejercicio de empuje hacia atrás realizado en máquina para trabajar los glúteos.",
+        "gif": "exercises_gifs/legs/glute-kickback-machine.gif",
+        "muscles": ["Glúteo"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Sentadilla Sumo",
+        "description": "Ejercicio de sentadilla en posición sumo, enfocado en los cuádriceps.",
+        "gif": "exercises_gifs/legs/sumo-squat.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": null
+    },
+    {
+        "name": "Sentadilla con Mancuerna",
+        "description": "Ejercicio de sentadilla realizado con mancuernas, enfocado en los cuádriceps.",
+        "gif": "exercises_gifs/legs/squat-dumbbell.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Sentadilla Hack",
+        "description": "Ejercicio de sentadilla realizado en máquina hack, enfocado en los cuádriceps.",
+        "gif": "exercises_gifs/legs/hack-squat.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Sentadilla con Peso con Pausa",
+        "description": "Ejercicio de sentadilla realizado con peso y pausa en la posición baja.",
+        "gif": "exercises_gifs/legs/paused-squat.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Sentadilla Pendular en Máquina",
+        "description": "Ejercicio de sentadilla realizado en máquina pendular, enfocado en los cuádriceps.",
+        "gif": "exercises_gifs/legs/pendulum-squat-machine.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Prensa",
+        "description": "Ejercicio de extensión de piernas realizado en prensa para trabajar los cuádriceps.",
+        "gif": "exercises_gifs/legs/leg-press.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Sentadilla Zercher",
+        "description": "Ejercicio de sentadilla realizado con barra sostenida en la parte interna de los codos.",
+        "gif": "exercises_gifs/legs/zercher-squat.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Extensión de Cuádriceps en Máquina",
+        "description": "Ejercicio de extensión de cuádriceps realizado en máquina.",
+        "gif": "exercises_gifs/legs/leg-extension-machine.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Sentadilla con Peso",
+        "description": "Ejercicio básico de sentadilla realizado con peso.",
+        "gif": "exercises_gifs/legs/weighted-squat.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Hold de Sentadilla en la Pared",
+        "description": "Ejercicio isométrico de sentadilla con apoyo en la pared.",
+        "gif": "exercises_gifs/legs/wall-squat-hold.gif",
+        "muscles": ["Cuádriceps"],
+        "equipment": null
+    },
+    {
+        "name": "Extensión de Gemelo en Máquina",
+        "description": "Ejercicio de extensión de gemelos realizado en máquina.",
+        "gif": "exercises_gifs/legs/calf-extension-machine.gif",
+        "muscles": ["Gemelos"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Gemelos en Prensa",
+        "description": "Ejercicio de extensión de gemelos realizado en prensa.",
+        "gif": "exercises_gifs/legs/calf-press.gif",
+        "muscles": ["Gemelos"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Gemelo Sentado en Máquina",
+        "description": "Ejercicio de extensión de gemelos sentado en máquina.",
+        "gif": "exercises_gifs/legs/seated-calf-machine.gif",
+        "muscles": ["Gemelos"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Gemelos Parado",
+        "description": "Ejercicio de extensión de gemelos realizado de pie con peso corporal.",
+        "gif": "exercises_gifs/legs/calf-raise-bodyweight.gif",
+        "muscles": ["Gemelos"],
+        "equipment": null
+    },
+    {
+        "name": "Gemelos Parado con Barra",
+        "description": "Ejercicio de extensión de gemelos realizado de pie con barra.",
+        "gif": "exercises_gifs/legs/calf-raise-barbell.gif",
+        "muscles": ["Gemelos"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Hold Gemelos Parado",
+        "description": "Ejercicio isométrico de extensión de gemelos realizado de pie.",
+        "gif": "exercises_gifs/legs/calf-hold-bodyweight.gif",
+        "muscles": ["Gemelos"],
+        "equipment": null
+    }
+]

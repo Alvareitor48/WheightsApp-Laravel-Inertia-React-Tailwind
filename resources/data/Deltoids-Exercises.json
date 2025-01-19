@@ -1,0 +1,170 @@
+[
+    {
+        "name": "Press Arnold",
+        "description": "Ejercicio de press con mancuernas que activa deltoides frontal y tríceps.",
+        "gif": "exercises_gifs/deltoids/arnold-press.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Elevaciones Frontales con Barra",
+        "description": "Elevaciones frontales realizadas con barra para deltoides frontal.",
+        "gif": "exercises_gifs/deltoids/front-raise-barbell.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Elevaciones Frontales con Mancuernas",
+        "description": "Elevaciones frontales realizadas con mancuernas para deltoides frontal.",
+        "gif": "exercises_gifs/deltoids/front-raise-dumbbells.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Elevaciones Frontales en Polea",
+        "description": "Elevaciones frontales realizadas con polea para deltoides frontal.",
+        "gif": "exercises_gifs/deltoids/front-raise-cable.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Elevaciones Frontales con Disco",
+        "description": "Elevaciones frontales realizadas con disco para deltoides frontal.",
+        "gif": "exercises_gifs/deltoids/front-raise-plate.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Otros"
+    },
+    {
+        "name": "Flexiones de Pino",
+        "description": "Flexiones verticales con el cuerpo en posición de pino, trabajando deltoides frontal y tríceps.",
+        "gif": "exercises_gifs/deltoids/handstand-pushups.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": null
+    },
+    {
+        "name": "Flexiones Pica",
+        "description": "Flexiones verticales con los pies tocando el suelo pero el culo muy elevado, trabajando deltoides frontal y tríceps.",
+        "gif": "exercises_gifs/deltoids/pica-pushups.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": null
+    },
+    {
+        "name": "Elevaciones Laterales con Cable",
+        "description": "Elevaciones laterales realizadas con cable para deltoides frontal.",
+        "gif": "exercises_gifs/deltoids/lateral-raise-cable.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Elevaciones Laterales con Mancuernas",
+        "description": "Elevaciones laterales realizadas con mancuernas para deltoides frontal.",
+        "gif": "exercises_gifs/deltoids/lateral-raise-dumbbells.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Elevaciones Laterales en Máquina Sentado",
+        "description": "Elevaciones laterales realizadas en máquina sentado.",
+        "gif": "exercises_gifs/deltoids/lateral-raise-machine-seated.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Press Militar de Pie con Barra",
+        "description": "Ejercicio de press militar realizado de pie con barra.",
+        "gif": "exercises_gifs/deltoids/military-press-barbell-standing.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Press Militar de Pie con Mancuernas",
+        "description": "Ejercicio de press militar realizado de pie con mancuernas.",
+        "gif": "exercises_gifs/deltoids/military-press-dumbbells-standing.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Press Militar de Pie en Máquina Smith",
+        "description": "Ejercicio de press militar de pie realizado en máquina Smith.",
+        "gif": "exercises_gifs/deltoids/military-press-smith-machine-standing.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Elevaciones Laterales con Mancuernas Sentado",
+        "description": "Elevaciones laterales realizadas sentado con mancuernas.",
+        "gif": "exercises_gifs/deltoids/lateral-raise-dumbbells-seated.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Press Militar con Barra Sentado",
+        "description": "Ejercicio de press militar sentado realizado con barra.",
+        "gif": "exercises_gifs/deltoids/military-press-barbell-seated.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": "Barra"
+    },
+    {
+        "name": "Press Militar con Mancuernas Sentado",
+        "description": "Ejercicio de press militar sentado realizado con mancuernas.",
+        "gif": "exercises_gifs/deltoids/military-press-dumbbells-seated.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Press Militar en Máquina",
+        "description": "Ejercicio de press militar realizado en máquina.",
+        "gif": "exercises_gifs/deltoids/military-press-machine.gif",
+        "muscles": ["Deltoides Frontal", "Tríceps"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Elevaciones Laterales Unilaterales en Polea",
+        "description": "Elevaciones laterales realizadas con una sola mano en polea.",
+        "gif": "exercises_gifs/deltoids/lateral-raise-cable-unilateral.gif",
+        "muscles": ["Deltoides Frontal"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Face Pull desde Arriba",
+        "description": "Ejercicio de face pull con cable alto para trabajar deltoides posterior y trapecios.",
+        "gif": "exercises_gifs/deltoids/face-pull-high.gif",
+        "muscles": ["Deltoides Posterior", "Espalda Alta y Trapecio"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Face Pull desde Abajo",
+        "description": "Ejercicio de face pull con cable bajo para trabajar deltoides posterior, trapecios y espalda alta.",
+        "gif": "exercises_gifs/deltoids/face-pull-low.gif",
+        "muscles": ["Deltoides Posterior", "Espalda Alta y Trapecio"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Elevaciones Posteriores en Banco con Mancuernas",
+        "description": "Elevaciones posteriores realizadas acostado en banco con mancuernas para deltoides posterior y espalda alta.",
+        "gif": "exercises_gifs/deltoids/reverse-fly-bench-dumbbells.gif",
+        "muscles": ["Deltoides Posterior"],
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Posterior con Cable",
+        "description": "Elevaciones posteriores realizadas con cable para deltoides posterior y espalda alta.",
+        "gif": "exercises_gifs/deltoids/reverse-fly-cable.gif",
+        "muscles": ["Deltoides Posterior"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Posterior en Máquina",
+        "description": "Elevaciones posteriores realizadas en máquina para deltoides posterior y espalda alta.",
+        "gif": "exercises_gifs/deltoids/reverse-fly-machine.gif",
+        "muscles": ["Deltoides Posterior"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Posterior con Mancuernas",
+        "description": "Elevaciones posteriores realizadas con mancuernas para deltoides posterior y espalda alta.",
+        "gif": "exercises_gifs/deltoids/reverse-fly-dumbbells.gif",
+        "muscles": ["Deltoides Posterior"],
+        "equipment": "Mancuernas"
+    }
+]

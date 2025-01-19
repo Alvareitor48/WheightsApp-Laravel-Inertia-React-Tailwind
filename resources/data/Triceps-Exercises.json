@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Fondos en Banco",
+        "description": "Ejercicio de fondos en banco para tríceps, pecho y hombros.",
+        "gif": "exercises_gifs/triceps/bench-dips.gif",
+        "muscles": ["Tríceps", "Pecho", "Deltoides Frontal"],
+        "category": "Compuesto",
+        "equipment": null
+    },
+    {
+        "name": "Press Cerrado",
+        "description": "Press cerrado realizado con barra para trabajar tríceps, pecho y hombros.",
+        "gif": "exercises_gifs/triceps/close-grip-bench-press.gif",
+        "muscles": ["Tríceps", "Pecho", "Deltoides Frontal"],
+        "category": "Compuesto",
+        "equipment": "Barra"
+    },
+    {
+        "name": "Flexiones Diamante",
+        "description": "Flexiones con agarre cerrado en forma de diamante para tríceps, pecho y hombros.",
+        "gif": "exercises_gifs/triceps/diamond-pushup.gif",
+        "muscles": ["Tríceps", "Pecho", "Deltoides Frontal"],
+        "category": "Compuesto",
+        "equipment": null
+    },
+    {
+        "name": "JM Press",
+        "description": "Ejercicio de JM press con barra para trabajar tríceps, pecho y hombros.",
+        "gif": "exercises_gifs/triceps/jm-press.gif",
+        "muscles": ["Tríceps", "Pecho", "Deltoides Frontal"],
+        "category": "Compuesto",
+        "equipment": "Barra"
+    },
+    {
+        "name": "Extensión de Tríceps tras Nuca Unilateral con Mancuerna Sentado",
+        "description": "Extensión de tríceps tras nuca realizada con mancuerna y un solo brazo en posición sentada.",
+        "gif": "exercises_gifs/triceps/overhead-extension-unilateral-dumbbell-seated.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Extensión de Tríceps en Cable Unilateral",
+        "description": "Extensión de tríceps realizada en cable con un solo brazo.",
+        "gif": "exercises_gifs/triceps/cable-extension-unilateral.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Extensión de Tríceps tras Nuca con Barra",
+        "description": "Extensión de tríceps tras nuca realizada con barra.",
+        "gif": "exercises_gifs/triceps/overhead-extension-barbell.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Barra"
+    },
+    {
+        "name": "Extensión de Tríceps tras Nuca Unilateral con Cable Parado",
+        "description": "Extensión de tríceps tras nuca realizada con cable y un solo brazo en posición de pie.",
+        "gif": "exercises_gifs/triceps/overhead-extension-unilateral-cable-standing.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Extensión de Tríceps tras Nuca Unilateral con Mancuerna Parado",
+        "description": "Extensión de tríceps tras nuca realizada con mancuerna y un solo brazo en posición de pie.",
+        "gif": "exercises_gifs/triceps/overhead-extension-unilateral-dumbbell-standing.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Patada de Tríceps en Cable",
+        "description": "Ejercicio de patada de tríceps realizado en cable.",
+        "gif": "exercises_gifs/triceps/cable-kickback.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Patada de Tríceps con Mancuerna",
+        "description": "Ejercicio de patada de tríceps realizado con mancuernas.",
+        "gif": "exercises_gifs/triceps/dumbbell-kickback.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Mancuernas"
+    },
+    {
+        "name": "Extensión de Tríceps con Cable con Barra",
+        "description": "Extensión de tríceps realizada con barra y cable.",
+        "gif": "exercises_gifs/triceps/cable-extension-bar.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Extensión de Tríceps con Cable con Cuerda",
+        "description": "Extensión de tríceps realizada con cuerda y cable.",
+        "gif": "exercises_gifs/triceps/cable-extension-rope.gif",
+        "muscles": ["Tríceps"],
+        "category": "Aislado",
+        "equipment": "Máquina"
+    }
+]
