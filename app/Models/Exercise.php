@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Exercise extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description','gif','muscle'];
+    protected $fillable = ['name', 'description','gif','equipment'];
     protected $table = 'exercises';
 
     public function routines(): BelongsToMany
@@ -17,5 +17,10 @@ class Exercise extends Model
         return $this->belongsToMany(Routine::class,'exercises_routines')
             ->withPivot(['id','duration','note','rest_time'])
             ->as('pivot');
+    }
+
+    public function muscles(): BelongsToMany
+    {
+        return $this->belongsToMany(Muscle::class, 'exercise_muscle');
     }
 }

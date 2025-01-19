@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('gif');
-            $table->string('category');
             $table->string('equipment')->nullable();
             $table->timestamps();
         });
