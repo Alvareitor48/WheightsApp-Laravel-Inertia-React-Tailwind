@@ -68,7 +68,7 @@ export const Header = () => {
                     </Auth>
 
                     <Link
-                        href={route("home")}
+                        href={route("exercises.index")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
                         Tutoriales

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoutineController;
+use App\Http\Controllers\ExerciseController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -22,6 +23,8 @@ Route::middleware('auth')->group(function(){
     Route::get('StartRoutines/{id}', [RoutineController::class, 'start'])->name('routines.start');
     Route::put('StartRoutines',[RoutineController::class,'session'])->name('routines.start.session');
 });
+
+Route::get('IndexExercises',[ExerciseController::class,'index'])->name('exercises.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('profile/pages/Dashboard');
