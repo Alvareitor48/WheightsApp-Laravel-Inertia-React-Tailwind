@@ -70,6 +70,7 @@ export default function IndexExercises({ exercises }) {
                         </m.div>
                     ))}
                 </div>
+                <Pagination links={exercises.links} />
             </m.div>
         </MainLayout>
     );
