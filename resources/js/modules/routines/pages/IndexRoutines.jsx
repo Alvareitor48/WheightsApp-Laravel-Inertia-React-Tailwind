@@ -3,7 +3,6 @@ import { IndexRoutine } from "@/modules/routines/components/IndexRoutine.jsx";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 
 export default function IndexRoutines({ routines }) {
-    console.log(routines);
     return (
         <SimpleLayout>
             <Head title="Routines" />

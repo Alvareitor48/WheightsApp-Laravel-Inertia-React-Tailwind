@@ -2,7 +2,6 @@ import { NumberInput } from "@/modules/routines/components/NumberInput.jsx";
 import { SelectPopUp } from "@/modules/routines/components/SelectPopUp.jsx";
 import { useState } from "react";
 import { useUpdate } from "@/modules/routines/hooks/useUpdate";
-import { GridTableBase } from "./GridTableBase";
 import { useSerieChecked } from "../contexts/SerieCheckedContext";
 
 export function GridTableStart({ seriesIndex, principalIndex }) {

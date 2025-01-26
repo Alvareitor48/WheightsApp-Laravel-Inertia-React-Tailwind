@@ -4,7 +4,6 @@ import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import { PrincipalTableBase } from "./PrincipalTableBase";
 export function PrincipalTableShow({ index }) {
     const { data } = useUpdate();
-    console.log(data.exercises);
     const headDivs = [
         <div className="flex justify-center m-1">
             <div

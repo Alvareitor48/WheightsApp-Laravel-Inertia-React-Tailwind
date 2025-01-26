@@ -6,7 +6,6 @@ import Chart from "../components/Chart";
 
 export default function RoutineShow({ stadistics }) {
     const { data } = useUpdate();
-    console.log(stadistics);
     return (
         <div className="bg-transparent flex flex-col items-center min-h-screen text-white">
             {/* Título y usuario */}
