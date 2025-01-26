@@ -10,6 +10,7 @@ export const SerieCheckedProvider = ({ children }) => {
         setCompletedSeries((previousState) => {
             const newState = { ...previousState };
             newState[seriesKey] = !newState[seriesKey];
+            localStorage.setItem("seriesCompletion", JSON.stringify(newState));
             return newState;
         });
     };
@@ -27,6 +28,7 @@ export const SerieCheckedProvider = ({ children }) => {
                 completedSeries,
                 toggleCompletion,
                 areExerciseSeriesCompleted,
+                setCompletedSeries,
             }}
         >
             {children}

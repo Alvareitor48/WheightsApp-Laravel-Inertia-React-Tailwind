@@ -2,30 +2,61 @@ import { useRoutineForm } from "../contexts/RoutineFormContext";
 
 export const useUpdate = () => {
     const { data, setData, errors } = useRoutineForm();
+
+    const saveProgressToLocalStorage = () => {
+        const routineProgress = {
+            routine: data.routine,
+            exercises: data.exercises,
+            seriesCompletion:
+                JSON.parse(localStorage.getItem("seriesCompletion")) || {},
+            startTime: localStorage.getItem("startTime"),
+        };
+        localStorage.setItem(
+            "routineProgress",
+            JSON.stringify(routineProgress)
+        );
+    };
+
     const update = (
         newData,
         isExercise,
         attribute,
-        principalIndex,
-        seriesIndex
+        principalIndex = null,
+        seriesIndex = null,
+        isLocalStorageSet = false
     ) => {
+        if (isLocalStorageSet) {
+            if (isExercise) {
+                setData("exercises", newData);
+            } else {
+                setData("routine", newData);
+            }
+            return;
+        }
+
         if (isExercise) {
             const updatedExercises = [...data.exercises];
             if (!attribute.localeCompare("note")) {
                 updatedExercises[principalIndex].note = newData;
                 setData("exercises", updatedExercises);
+                saveProgressToLocalStorage();
                 return;
             }
-            if (
-                typeof newData === "string" &&
-                !newData.localeCompare("Eliminar")
-            ) {
+
+            if (newData === "Eliminar") {
                 updatedExercises[principalIndex].series = updatedExercises[
                     principalIndex
-                ].series.filter(
-                    (serie, index) => index !== seriesIndex // Eliminar la serie con el índice especificado
-                );
+                ].series.filter((_, index) => index !== seriesIndex);
                 setData("exercises", updatedExercises);
+
+                setCompletedSeries((prevState) => {
+                    const newState = { ...prevState };
+                    const seriesKey = `${principalIndex}-${seriesIndex}`;
+                    delete newState[seriesKey];
+                    return newState;
+                });
+
+                saveProgressToLocalStorage();
                 return;
             }
             updatedExercises[principalIndex].series[seriesIndex][attribute] =
@@ -37,6 +68,7 @@ export const useUpdate = () => {
                 [attribute]: newData,
             });
         }
+        saveProgressToLocalStorage();
     };
     return { data, update, errors };
 };

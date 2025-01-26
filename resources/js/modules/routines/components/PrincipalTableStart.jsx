@@ -9,19 +9,7 @@ import { useSerieChecked } from "../contexts/SerieCheckedContext";
 export function PrincipalTableStart({ index, error }) {
     const { update, data, errors } = useUpdate();
     const { createSeries } = useCreateSeries();
-    const { toggleCompletion, completedSeries } = useSerieChecked();
 
-    const seriesCompleted = () => {
-        const totalSeriesCount = data.exercises.reduce(
-            (total, exercise) => total + exercise.series.length,
-            0
-        );
-
-        if (!areAllSeriesCompleted(totalSeriesCount)) {
-            return false;
-        }
-        return true;
-    };
     const headDivs = [
         <div className="flex justify-center m-1">
             <div

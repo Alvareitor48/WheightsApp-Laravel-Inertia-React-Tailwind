@@ -1,29 +1,79 @@
 import { m } from "motion/react";
-import { router } from "@inertiajs/react";
 import { useRoutineForm } from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import { useUpdate } from "@/modules/routines/hooks/useUpdate";
-import { RouteButton } from "./RouteButton";
 import { PrincipalTableStart } from "./PrincipalTableStart";
 import { useSerieChecked } from "../contexts/SerieCheckedContext";
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function RoutineStart() {
     const { put, processing, errors } = useRoutineForm();
     const { update, data } = useUpdate();
-    const { areExerciseSeriesCompleted } = useSerieChecked();
+    const { setCompletedSeries, areExerciseSeriesCompleted } =
+        useSerieChecked();
     const [exerciseErrors, setExerciseErrors] = useState({});
     const [timeElapsed, setTimeElapsed] = useState(0);
     const intervalRef = useRef(null);
 
     useEffect(() => {
-        const start = Date.now();
+        const savedProgress = localStorage.getItem("routineProgress");
+        const savedStartTime = localStorage.getItem("startTime");
+
+        if (savedProgress) {
+            const parsedProgress = JSON.parse(savedProgress);
+            update(parsedProgress.routine, false, null, null, null, true);
+            update(parsedProgress.exercises, true, null, null, null, true);
+
+            if (savedStartTime) {
+                const elapsed = Math.floor(
+                    (Date.now() - parseInt(savedStartTime, 10)) / 1000
+                );
+                setTimeElapsed(elapsed);
+                update(elapsed, false, "durationInSeconds");
+            }
+        }
+
+        const seriesCompletion = localStorage.getItem("seriesCompletion");
+        if (seriesCompletion) {
+            setCompletedSeries(JSON.parse(seriesCompletion));
+        }
+
+        if (!savedStartTime) {
+            localStorage.setItem("startTime", Date.now());
+        }
+
         intervalRef.current = setInterval(() => {
-            const elapsed = Math.floor((Date.now() - start) / 1000);
+            const startTime = parseInt(localStorage.getItem("startTime"), 10);
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
             setTimeElapsed(elapsed);
             update(elapsed, false, "durationInSeconds");
+
+            const routineProgress = {
+                routine: { ...data.routine, durationInSeconds: elapsed },
+                exercises: data.exercises,
+            };
+            localStorage.setItem(
+                "routineProgress",
+                JSON.stringify(routineProgress)
+            );
         }, 1000);
-        return () => clearInterval(intervalRef.current);
+
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+                intervalRef.current = null;
+            }
+        };
     }, []);
+    useEffect(() => {
+        const routineProgress = {
+            routine: data.routine,
+            exercises: data.exercises,
+        };
+        localStorage.setItem(
+            "routineProgress",
+            JSON.stringify(routineProgress)
+        );
+    }, [data]);
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -46,13 +96,14 @@ export default function RoutineStart() {
             return;
         }
 
-        clearInterval(intervalRef.current);
-
-        console.log("Datos actualizados:", data.routine);
-
         put(route("routines.start.session"), {
             routine: data.routine,
             exercises: data.exercises,
+            onSuccess: () => {
+                localStorage.removeItem("routineProgress");
+                localStorage.removeItem("seriesCompletion");
+                localStorage.removeItem("startTime");
+            },
         });
     };
 
