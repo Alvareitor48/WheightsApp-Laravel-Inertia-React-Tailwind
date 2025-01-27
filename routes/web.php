@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function(){
     Route::put('UpdateRoutines',[RoutineController::class,'update'])->name('routines.update');
     Route::get('StartRoutines/{id}', [RoutineController::class, 'start'])->name('routines.start');
     Route::put('StartRoutines',[RoutineController::class,'session'])->name('routines.start.session');
+    Route::get('AddExercises/{routineId}',[ExerciseController::class,'indexAddExercises'])->name('routines.add.exercises');
 });
 
 Route::get('IndexExercises',[ExerciseController::class,'index'])->name('exercises.index');

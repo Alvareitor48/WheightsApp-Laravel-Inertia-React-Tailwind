@@ -4,6 +4,7 @@ import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import { PrincipalTableStart } from "./PrincipalTableStart";
 import { useSerieChecked } from "../contexts/SerieCheckedContext";
 import { useEffect, useRef, useState } from "react";
+import { router } from "@inertiajs/react";
 
 export default function RoutineStart() {
     const { put, processing, errors } = useRoutineForm();
@@ -162,6 +163,18 @@ export default function RoutineStart() {
                     ></PrincipalTableStart>
                 );
             })}
+            <m.button
+                type="button"
+                className="glass pb-1 mt-5 w-5/6 h-responsive-normal-button-height text-responsive-h4"
+                whileHover={{ scale: 1.1 }}
+                onClick={() =>
+                    router.visit(
+                        route("routines.add.exercises", data.routine.id)
+                    )
+                }
+            >
+                + Añadir Ejercicio
+            </m.button>
             <m.button
                 className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
                 whileHover={{ backgroundColor: "#8F3985", scale: 1.1 }}

@@ -16,4 +16,13 @@ class ExerciseController extends Controller
             'exercises' => ExerciseResource::collection($exercises)
         ]);
     }
+
+    public function indexAddExercises($routineId)
+    {
+        $exercises = Exercise::query()->paginate(20);
+        return Inertia::render('exercises/pages/AddExercises', [
+            'exercises' => ExerciseResource::collection($exercises),
+            'routineId' => $routineId
+        ]);
+    }
 }
