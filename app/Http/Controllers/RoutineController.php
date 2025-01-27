@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Http\Requests\UpdateRoutinesRequest;
 use App\Http\Requests\StartRoutinesRequest;
+use App\Http\Requests\AddExerciseRequest;
 
 class RoutineController extends Controller
 {
@@ -166,5 +167,30 @@ class RoutineController extends Controller
 
         return redirect()->route('AdminRoutines', ['id' => $updateData['routine']['id']])
             ->with('success', 'Rutina actualizada correctamente.');
+    }
+
+    public function addExercise(AddExerciseRequest $request, $routineId, $redirect_to = null){
+        $data = $request->validated();
+        $routine = Routine::query()->where('id', $routineId)->firstOrFail();
+        $exercise = Exercise::query()->where('id', $data['exercise_id'])->firstOrFail();
+        $exerciseRoutine = ExerciseRoutine::query()->where('exercise_id', $exercise->id)->where('routine_id', $routine->id);
+        if ($exerciseRoutine->exists()) {
+            return redirect()->route('routines.add.exercises', ['routineId' => $routineId, 'redirect_to' => $redirect_to]);
+        }
+        ExerciseRoutine::create([
+            'routine_id' => $routine->id,
+            'exercise_id' => $exercise->id,
+            'note' => null,
+        ]);
+
+        switch ($redirect_to) {
+        case 'routines.start':
+            return redirect()->route('routines.start', ['id' => $routineId]);
+        case 'routines.edit':
+            return redirect()->route('routines.edit', ['id' => $routineId]);
+        default:
+            return redirect()->route('routines.index');
+    }
+        
     }
 }
