@@ -8,7 +8,7 @@ import { router } from "@inertiajs/react";
 
 export default function RoutineStart() {
     const { put, processing, errors } = useRoutineForm();
-    const { update, data } = useUpdate();
+    const { update, data, saveProgressToLocalStorage } = useUpdate();
     const { setCompletedSeries, areExerciseSeriesCompleted } =
         useSerieChecked();
     const [exerciseErrors, setExerciseErrors] = useState({});
@@ -21,8 +21,17 @@ export default function RoutineStart() {
 
         if (savedProgress) {
             const parsedProgress = JSON.parse(savedProgress);
+            const updatedExercises = [...data.exercises];
+            parsedProgress.exercises.forEach((exercise, index) => {
+                if (updatedExercises[index]) {
+                    updatedExercises[index] = {
+                        ...updatedExercises[index],
+                        ...exercise,
+                    };
+                }
+            });
+            update(updatedExercises, true, null, null, null, true);
             update(parsedProgress.routine, false, null, null, null, true);
-            update(parsedProgress.exercises, true, null, null, null, true);
 
             if (savedStartTime) {
                 const elapsed = Math.floor(
@@ -167,11 +176,15 @@ export default function RoutineStart() {
                 type="button"
                 className="glass pb-1 mt-5 w-5/6 h-responsive-normal-button-height text-responsive-h4"
                 whileHover={{ scale: 1.1 }}
-                onClick={() =>
+                onClick={() => {
+                    saveProgressToLocalStorage();
                     router.visit(
-                        route("routines.add.exercises", data.routine.id)
-                    )
-                }
+                        route("routines.add.exercises", {
+                            routineId: data.routine.id,
+                            redirect_to: "routines.start",
+                        })
+                    );
+                }}
             >
                 + Añadir Ejercicio
             </m.button>

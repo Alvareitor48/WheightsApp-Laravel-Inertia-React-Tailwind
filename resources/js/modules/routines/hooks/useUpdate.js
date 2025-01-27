@@ -70,5 +70,5 @@ export const useUpdate = () => {
         }
         saveProgressToLocalStorage();
     };
-    return { data, update, errors };
+    return { data, update, errors, saveProgressToLocalStorage };
 };

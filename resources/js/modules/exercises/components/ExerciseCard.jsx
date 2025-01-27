@@ -1,7 +1,13 @@
 import { m } from "motion/react";
 import { CardRouteButton } from "./CardRouteButton";
 
-export default function ExerciseCard({ name, image, equipment, muscles }) {
+export default function ExerciseCard({
+    name,
+    image,
+    equipment,
+    muscles,
+    extraButton,
+}) {
     return (
         <m.div
             className="rounded-lg overflow-hidden glass"
@@ -37,7 +43,7 @@ export default function ExerciseCard({ name, image, equipment, muscles }) {
                 </div>
                 <div className="flex justify-around">
                     <CardRouteButton title="Tutorial"></CardRouteButton>
-                    <CardRouteButton title="Añadir+"></CardRouteButton>
+                    {extraButton}
                 </div>
             </div>
         </m.div>
