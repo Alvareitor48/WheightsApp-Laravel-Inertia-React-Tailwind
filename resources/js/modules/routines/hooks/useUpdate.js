@@ -1,7 +1,9 @@
 import { useRoutineForm } from "../contexts/RoutineFormContext";
+import { useSerieChecked } from "../contexts/SerieCheckedContext";
 
 export const useUpdate = () => {
     const { data, setData, errors } = useRoutineForm();
+    const { setCompletedSeries } = useSerieChecked();
 
     const saveProgressToLocalStorage = () => {
         const routineProgress = {
