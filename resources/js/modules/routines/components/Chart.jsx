@@ -10,7 +10,7 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
-const Chart = ({ data }) => {
+const Chart = ({ data, height, width }) => {
     const [metric, setMetric] = useState("Repeticiones Totales");
 
     const handleMetricChange = (e) => {
@@ -18,7 +18,7 @@ const Chart = ({ data }) => {
     };
 
     return (
-        <div className="mt-7">
+        <div className="mt-7 flex flex-col items-center justify-center">
             <div className="mb-4">
                 <select
                     id="metric"
@@ -33,13 +33,13 @@ const Chart = ({ data }) => {
                 </select>
             </div>
 
-            <ResponsiveContainer width="100%" height={200}>
+            <ResponsiveContainer width={width} height={height}>
                 <LineChart
                     data={data}
                     margin={{
                         top: 20,
-                        right: 30,
-                        left: 20,
+                        right: 60,
+                        left: 0,
                         bottom: 5,
                     }}
                 >
