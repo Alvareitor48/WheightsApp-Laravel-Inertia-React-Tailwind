@@ -174,9 +174,6 @@ class RoutineController extends Controller
         $routine = Routine::query()->where('id', $routineId)->firstOrFail();
         $exercise = Exercise::query()->where('id', $data['exercise_id'])->firstOrFail();
         $exerciseRoutine = ExerciseRoutine::query()->where('exercise_id', $exercise->id)->where('routine_id', $routine->id);
-        if ($exerciseRoutine->exists()) {
-            return redirect()->route('routines.add.exercises', ['routineId' => $routineId, 'redirect_to' => $redirect_to]);
-        }
         ExerciseRoutine::create([
             'routine_id' => $routine->id,
             'exercise_id' => $exercise->id,
@@ -189,7 +186,7 @@ class RoutineController extends Controller
         case 'routines.edit':
             return redirect()->route('routines.edit', ['id' => $routineId]);
         default:
-            return redirect()->route('routines.index');
+            return redirect()->route('IndexRoutines');
     }
         
     }

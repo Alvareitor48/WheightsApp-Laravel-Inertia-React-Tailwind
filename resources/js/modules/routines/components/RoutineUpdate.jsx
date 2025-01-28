@@ -66,6 +66,21 @@ export default function RoutineUpdate() {
                 );
             })}
             <m.button
+                type="button"
+                className="glass pb-1 mt-5 w-5/6 h-responsive-normal-button-height text-responsive-h4"
+                whileHover={{ scale: 1.1 }}
+                onClick={() => {
+                    router.visit(
+                        route("routines.add.exercises", {
+                            routineId: data.routine.id,
+                            redirect_to: "routines.edit",
+                        })
+                    );
+                }}
+            >
+                + Añadir Ejercicio
+            </m.button>
+            <m.button
                 className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
                 whileHover={{ backgroundColor: "#8F3985", scale: 1.1 }}
                 type="submit"
