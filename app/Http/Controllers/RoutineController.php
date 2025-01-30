@@ -169,7 +169,7 @@ class RoutineController extends Controller
             ->with('success', 'Rutina actualizada correctamente.');
     }
 
-    public function addExercise(ManageExerciseRequest $request, $routineId, $redirect_to = null){
+    public function addExercise(ManageExerciseRequest $request, $routineId){
         $data = $request->validated();
         $routine = Routine::query()->where('id', $routineId)->firstOrFail();
         $exercise = Exercise::query()->where('id', $data['exercise_id'])->firstOrFail();
@@ -180,7 +180,7 @@ class RoutineController extends Controller
             'note' => null,
         ]);
 
-        switch ($redirect_to) {
+        switch ($data['redirect_to']) {
         case 'routines.start':
             return redirect()->route('routines.start', ['id' => $routineId]);
         case 'routines.edit':
@@ -191,7 +191,7 @@ class RoutineController extends Controller
         
     }
 
-    public function deleteExercise(ManageExerciseRequest $request, $routineId, $redirect_to = null)
+    public function deleteExercise(ManageExerciseRequest $request, $routineId)
 {
     $routine = Routine::findOrFail($routineId);
     $exerciseId = $request->input('exercise_id');
@@ -204,7 +204,7 @@ class RoutineController extends Controller
 
     ExerciseRoutine::query()->where('routine_id', $routineId)->where('id', $exerciseId)->delete();
     
-    switch ($redirect_to) {
+    switch ($request->input('redirect_to')) {
         case 'routines.start':
             return redirect()->route('routines.start', ['id' => $routineId]);
         case 'routines.edit':

@@ -23,6 +23,7 @@ class ManageExerciseRequest extends FormRequest
     {
         return [
             'exercise_id' => 'required|integer|exists:exercises,id',
+            'redirect_to' => 'string|in:routines.start,routines.edit'
         ];
     }
 }
