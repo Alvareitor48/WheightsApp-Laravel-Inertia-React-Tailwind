@@ -41,6 +41,7 @@ export default {
                 "responsive-mini-input": ["clamp(2em, 24vw, 15em)"],
                 "responsive-mini-mini-input": ["clamp(1em, 14vw, 8em)"],
                 "responsive-popup": ["clamp(5em, 64vw, 32em)"],
+                "responsive-remove-button-width": ["clamp(2em, 8vw, 4em)"],
             },
             height: {
                 "responsive-height-first-image": ["clamp(20em, 64vw, 45em)"],
@@ -49,6 +50,7 @@ export default {
                 "responsive-height-table-image": ["clamp(2em, 12vw, 6em)"],
                 "responsive-index-button-height": ["clamp(3em, 8vw, 3em)"],
                 "responsive-index-height": ["clamp(3em, 8vw, 3em)"],
+                "responsive-remove-button-height": ["clamp(2em, 8vw, 4em)"],
             },
             screens: {
                 "custom-flex-wrap-first-title": { max: "1309px" },

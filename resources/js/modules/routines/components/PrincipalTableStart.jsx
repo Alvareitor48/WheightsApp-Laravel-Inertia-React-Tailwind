@@ -5,10 +5,42 @@ import { useCreateSeries } from "../hooks/useCreateSeries";
 import { PrincipalTableBase } from "./PrincipalTableBase";
 import { handleErrors } from "../functions/handleErrors";
 import { GridTableStart } from "./GridTableStart";
-import { useSerieChecked } from "../contexts/SerieCheckedContext";
+import { router } from "@inertiajs/react";
 export function PrincipalTableStart({ index, error }) {
     const { update, data, errors } = useUpdate();
     const { createSeries } = useCreateSeries();
+
+    const handleRemoveExercise = (routineId, exerciseId, redirect_to) => {
+        router.delete(
+            route("routines.delete.exercise", {
+                routineId,
+                redirect_to,
+            }),
+            {
+                data: { exercise_id: exerciseId },
+                onSuccess: () => {
+                    console.log("Ejercicio eliminado correctamente");
+                    const updatedExercises = data.exercises.filter(
+                        (exercise) => exercise.id !== exerciseId
+                    );
+                    update(updatedExercises, true, null, null, null, true);
+
+                    const routineProgress = {
+                        routine: data.routine,
+                        exercises: updatedExercises,
+                    };
+                    console.log(routineProgress);
+                    localStorage.setItem(
+                        "routineProgress",
+                        JSON.stringify(routineProgress)
+                    );
+                },
+                onError: (errors) => {
+                    console.error("Error al eliminar el ejercicio", errors);
+                },
+            }
+        );
+    };
 
     const headDivs = [
         <div className="flex justify-center m-1">
@@ -88,6 +120,21 @@ export function PrincipalTableStart({ index, error }) {
                 }}
             >
                 + Añadir Serie
+            </m.button>
+            <m.button
+                type="button"
+                className="w-responsive-remove-button-width h-responsive-remove-button-height absolute z-20 -right-4 top-3 bg-red-600 rounded-full text-responsive-note-table"
+                whileHover={{ scale: 1.1 }}
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleRemoveExercise(
+                        data.routine.id,
+                        data.exercises[index].id,
+                        "routines.start"
+                    );
+                }}
+            >
+                <m.span whileHover={{ scale: 1.2 }}>X</m.span>
             </m.button>
         </>
     );

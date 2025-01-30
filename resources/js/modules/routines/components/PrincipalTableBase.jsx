@@ -1,7 +1,7 @@
 export function PrincipalTableBase({ headDivs, tbody, aditionalDivs }) {
     return (
         <>
-            <div className="m-auto w-[90%] mt-6 mb-6">
+            <div className="m-auto w-[90%] mt-6 mb-6 relative">
                 <div className="border border-gray-300 border-b-0 rounded-t-xl glasstop grid grid-cols-4 items-center justify-between mt-8 mb-1">
                     {headDivs.map((headDiv, index) => (
                         <div key={index}>{headDiv}</div>
