@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Http\Requests\UpdateRoutinesRequest;
 use App\Http\Requests\StartRoutinesRequest;
-use App\Http\Requests\AddExerciseRequest;
+use App\Http\Requests\ManageExerciseRequest;
 
 class RoutineController extends Controller
 {
@@ -169,7 +169,7 @@ class RoutineController extends Controller
             ->with('success', 'Rutina actualizada correctamente.');
     }
 
-    public function addExercise(AddExerciseRequest $request, $routineId, $redirect_to = null){
+    public function addExercise(ManageExerciseRequest $request, $routineId, $redirect_to = null){
         $data = $request->validated();
         $routine = Routine::query()->where('id', $routineId)->firstOrFail();
         $exercise = Exercise::query()->where('id', $data['exercise_id'])->firstOrFail();
@@ -190,4 +190,27 @@ class RoutineController extends Controller
     }
         
     }
+
+    public function deleteExercise(ManageExerciseRequest $request, $routineId, $redirect_to = null)
+{
+    $routine = Routine::findOrFail($routineId);
+    $exerciseId = $request->input('exercise_id');
+
+    $exerciseRoutine = ExerciseRoutine::query()->where('id', $exerciseId)->where('routine_id', $routineId)->first();
+
+    if (!$exerciseRoutine) {
+        return back()->withErrors(['error' => 'El ejercicio no está en esta rutina']);
+    }
+
+    ExerciseRoutine::query()->where('routine_id', $routineId)->where('id', $exerciseId)->delete();
+    
+    switch ($redirect_to) {
+        case 'routines.start':
+            return redirect()->route('routines.start', ['id' => $routineId]);
+        case 'routines.edit':
+            return redirect()->route('routines.edit', ['id' => $routineId]);
+        default:
+            return redirect()->route('IndexRoutines');
+    }
+}
 }
