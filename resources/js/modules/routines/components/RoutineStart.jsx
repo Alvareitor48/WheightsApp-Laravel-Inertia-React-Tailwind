@@ -5,6 +5,7 @@ import { PrincipalTableStart } from "./PrincipalTableStart";
 import { useSerieChecked } from "../contexts/SerieCheckedContext";
 import { useEffect, useRef, useState } from "react";
 import { router } from "@inertiajs/react";
+import AutoResizingTextarea from "./AutoResizingTextArea";
 
 export default function RoutineStart() {
     const { put, processing, errors } = useRoutineForm();
@@ -124,15 +125,12 @@ export default function RoutineStart() {
         >
             {/* Título y usuario */}
             <div className="text-center mb-4 flex flex-col items-center">
-                <textarea
-                    rows={1}
-                    value={data.routine.name}
-                    onChange={(e) => update(e.target.value, 0, "name")}
-                    className="inline-block w-responsive-input text-responsive-h2 leading-normal font-semibold bg-black border-0 resize-none"
-                    onInput={(e) => {
-                        e.target.style.height = "auto"; // Resetea el alto
-                        e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta al contenido
+                <AutoResizingTextarea
+                    onChange={(e) => {
+                        update(e.target.value, 0, "name");
                     }}
+                    value={data.routine.name}
+                    className="inline-block w-responsive-input text-responsive-h2 leading-normal font-semibold bg-black border-0 resize-none"
                 />
                 {errors["routine.name"] && (
                     <p className="text-red-500 text-sm mt-1">
@@ -143,15 +141,12 @@ export default function RoutineStart() {
                     Tiempo transcurrido: {Math.floor(timeElapsed / 60)}m{" "}
                     {timeElapsed % 60}s
                 </p>
-                <textarea
-                    rows={1}
-                    value={data.routine.description}
-                    onChange={(e) => update(e.target.value, 0, "description")}
-                    className="inline-block w-responsive-input text-gray-400 text-responsive-h4 leading-normal my-4 mx-8 bg-black border-0 resize-none"
-                    onInput={(e) => {
-                        e.target.style.height = "auto"; // Resetea el alto
-                        e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta al contenido
+                <AutoResizingTextarea
+                    onChange={(e) => {
+                        update(e.target.value, 0, "description");
                     }}
+                    value={data.routine.description}
+                    className="inline-block w-responsive-input text-gray-400 text-responsive-h4 leading-normal my-4 mx-8 bg-black border-0 resize-none"
                 />
                 {errors["routine.description"] && (
                     <p className="text-red-500 text-sm mt-1">

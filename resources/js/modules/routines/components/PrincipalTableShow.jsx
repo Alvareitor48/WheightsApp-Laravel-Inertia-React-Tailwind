@@ -12,18 +12,18 @@ export function PrincipalTableShow({ index }) {
             ></div>
         </div>,
         <div className="text-center px-2 py-3">
-            <h2 className="text-responsive-table font-semibold inline-block">
+            <h2 className="text-responsive-table font-semibold inline-block break-all">
                 {data.exercises[index].exercise.name}
             </h2>
         </div>,
         <div className="text-center px-2 py-3">
-            <p className="text-responsive-note-table text-gray-400 inline-block">
+            <p className="text-responsive-note-table text-gray-400 inline-block break-all">
                 {" "}
                 {data.exercises[index].note}
             </p>
         </div>,
         <div className="text-center px-2 py-3">
-            <p className="text-responsive-table font-medium text-gray-400 inline-block">
+            <p className="text-responsive-table font-medium text-gray-400 inline-block break-all">
                 03:00
             </p>
         </div>,

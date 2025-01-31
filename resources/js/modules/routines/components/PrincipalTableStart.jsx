@@ -6,6 +6,7 @@ import { PrincipalTableBase } from "./PrincipalTableBase";
 import { handleErrors } from "../functions/handleErrors";
 import { GridTableStart } from "./GridTableStart";
 import { router } from "@inertiajs/react";
+import AutoResizingTextarea from "./AutoResizingTextArea";
 export function PrincipalTableStart({ index, error }) {
     const { update, data, errors } = useUpdate();
     const { createSeries } = useCreateSeries();
@@ -55,15 +56,10 @@ export function PrincipalTableStart({ index, error }) {
             </h2>
         </div>,
         <div className="text-center">
-            <textarea
-                rows={1}
-                className="text-responsive-note-table leading-normal resize-none w-responsive-mini-input text-gray-400 inline-block bg-transparent border-0"
-                value={data.exercises[index].note}
+            <AutoResizingTextarea
                 onChange={(e) => update(e.target.value, true, "note", index)}
-                onInput={(e) => {
-                    e.target.style.height = "auto";
-                    e.target.style.height = `${e.target.scrollHeight}px`;
-                }}
+                value={data.exercises[index].note}
+                className="text-responsive-note-table leading-normal resize-none w-responsive-mini-input text-gray-400 inline-block bg-transparent border-0"
             />
             {errors[`exercises.${index}.data.note`] && (
                 <p className="text-red-500 text-responsive-note-table mt-1">

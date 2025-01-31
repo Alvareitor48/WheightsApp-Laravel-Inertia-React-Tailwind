@@ -35,10 +35,10 @@ export default function RoutineShow({ stadistics }) {
         <div className="bg-transparent flex flex-col items-center min-h-screen text-white">
             {/* Título y usuario */}
             <div className="text-center flex flex-col items-center justify-center mb-4 w-2/4">
-                <h1 className="text-responsive-h2 font-semibold">
+                <h1 className="text-responsive-h2 font-semibold break-all">
                     {data.routine.name}
                 </h1>
-                <p className="text-gray-400 text-responsive-h4 my-4 mx-8">
+                <p className="text-gray-400 text-responsive-h4 my-4 mx-8 break-all">
                     {data.routine.description}
                 </p>
                 <span className="text-gray-200 text-responsive-h4 font-semibold my-4">

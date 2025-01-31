@@ -3,7 +3,7 @@ import { router } from "@inertiajs/react";
 import { PrincipalTableUpdate } from "@/modules/routines/components/PrincipalTableUpdate.jsx";
 import { useRoutineForm } from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import { useUpdate } from "@/modules/routines/hooks/useUpdate";
-import { RouteButton } from "./RouteButton";
+import AutoResizingTextarea from "./AutoResizingTextArea";
 
 export default function RoutineUpdate() {
     const { put, processing, errors } = useRoutineForm();
@@ -22,30 +22,20 @@ export default function RoutineUpdate() {
         >
             {/* Título y usuario */}
             <div className="text-center mb-4 flex flex-col items-center">
-                <textarea
-                    rows={1}
-                    value={data.routine.name}
+                <AutoResizingTextarea
                     onChange={(e) => update(e.target.value, 0, "name")}
+                    value={data.routine.name}
                     className="inline-block w-responsive-input text-responsive-h2 leading-normal font-semibold bg-black border-0 resize-none"
-                    onInput={(e) => {
-                        e.target.style.height = "auto"; // Resetea el alto
-                        e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta al contenido
-                    }}
                 />
                 {errors["routine.name"] && (
                     <p className="text-red-500 text-sm mt-1">
                         {errors["routine.name"]}
                     </p>
                 )}
-                <textarea
-                    rows={1}
-                    value={data.routine.description}
+                <AutoResizingTextarea
                     onChange={(e) => update(e.target.value, 0, "description")}
+                    value={data.routine.description}
                     className="inline-block w-responsive-input text-gray-400 text-responsive-h4 leading-normal my-4 mx-8 bg-black border-0 resize-none"
-                    onInput={(e) => {
-                        e.target.style.height = "auto"; // Resetea el alto
-                        e.target.style.height = `${e.target.scrollHeight}px`; // Ajusta al contenido
-                    }}
                 />
                 {errors["routine.description"] && (
                     <p className="text-red-500 text-sm mt-1">
