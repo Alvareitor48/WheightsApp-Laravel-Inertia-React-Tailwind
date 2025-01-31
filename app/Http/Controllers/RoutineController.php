@@ -103,9 +103,8 @@ class RoutineController extends Controller
         ];
     }
     public function index(){
-        $user = User::first();
         return Inertia::render('routines/pages/IndexRoutines', [
-            'routines' => $user->routines,
+            'routines' => auth()->user()->routines,
         ]);
     }
     public function show($id){
@@ -212,5 +211,17 @@ class RoutineController extends Controller
         default:
             return redirect()->route('IndexRoutines');
     }
+}
+
+public function createRoutine()
+{
+    $routine = Routine::create([
+        'user_id' => auth()->id(),
+        'name' => 'Nueva Rutina',
+        'description' => '',
+        'day' => 'Monday',
+    ]);
+
+    return redirect()->route('routines.edit', ['id' => $routine->id]);
 }
 }

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Routine extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','description','day'];
+    protected $fillable = ['user_id','name','description','day'];
     protected $table = 'routines';
 
     public function user(): BelongsTo

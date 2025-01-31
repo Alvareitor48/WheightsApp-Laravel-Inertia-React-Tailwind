@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function(){
     Route::get('AddExercises/{routineId}/{redirect_to?}',[ExerciseController::class,'indexAddExercises'])->name('routines.add.exercises');
     Route::put('AddExercise/{routineId}/', [RoutineController::class, 'addExercise'])->name('routines.add.exercise');
     Route::delete('DeleteExercise/{routineId}/', [RoutineController::class, 'deleteExercise'])->name('routines.delete.exercise');
+    Route::post('Routines/create', [RoutineController::class, 'createRoutine'])->name('routines.create');
 });
 
 Route::get('IndexExercises',[ExerciseController::class,'index'])->name('exercises.index');
