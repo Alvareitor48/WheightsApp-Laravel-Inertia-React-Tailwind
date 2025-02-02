@@ -59,7 +59,7 @@ export default function RoutineStart() {
             update(elapsed, false, "durationInSeconds");
 
             const routineProgress = {
-                routine: { ...data.routine, durationInSeconds: elapsed },
+                routine: data.routine,
                 exercises: data.exercises,
             };
             localStorage.setItem(
@@ -110,6 +110,7 @@ export default function RoutineStart() {
         put(route("routines.start.session"), {
             routine: data.routine,
             exercises: data.exercises,
+            durationInSeconds: data.durationInSeconds,
             onSuccess: () => {
                 localStorage.removeItem("routineProgress");
                 localStorage.removeItem("seriesCompletion");

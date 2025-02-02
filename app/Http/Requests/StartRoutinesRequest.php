@@ -26,7 +26,7 @@ class StartRoutinesRequest extends FormRequest
             'routine.name' => 'required|string|max:255',
             'routine.description' => 'nullable|string|max:1000',
             'routine.day' => 'required|string|in:Monday,Tuesday,Wednesday,Thursday,Friday',
-            'routine.durationInSeconds' => 'required|integer|min:1',
+            'durationInSeconds' => 'required|integer|min:1',
             'exercises.*.id' => 'required|integer|exists:exercises_routines,id',
             'exercises.*.note' => 'nullable|string|max:255',
             'exercises.*.exercise.id' => 'required|integer|exists:exercises,id',

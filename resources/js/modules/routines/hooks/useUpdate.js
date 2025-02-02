@@ -65,6 +65,11 @@ export const useUpdate = () => {
                 newData;
             setData("exercises", updatedExercises);
         } else {
+            if (attribute === "durationInSeconds") {
+                setData("durationInSeconds", newData);
+                saveProgressToLocalStorage();
+                return;
+            }
             setData("routine", {
                 ...data.routine,
                 [attribute]: newData,

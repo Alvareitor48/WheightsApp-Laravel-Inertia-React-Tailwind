@@ -148,7 +148,7 @@ class RoutineController extends Controller
         $routineSession = RoutineSession::create([
             'routine_id' => $updateData['routine']['id'],
             'user_id'=> auth()->user()->id,
-            'duration' => Carbon::createFromTimestampUTC($data['routine']['durationInSeconds'])->toTimeString()
+            'duration' => Carbon::createFromTimestampUTC($data['durationInSeconds'])->toTimeString()
         ]);
 
         foreach ($updateData['exercises'] as $exercise) {

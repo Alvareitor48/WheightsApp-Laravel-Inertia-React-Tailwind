@@ -12,6 +12,7 @@ export default function StartRoutines({ routine, exercises }) {
                     initialData={{
                         routine: routine,
                         exercises: exercises,
+                        durationInSeconds: 0,
                     }}
                 >
                     <Head title="Routines" />
