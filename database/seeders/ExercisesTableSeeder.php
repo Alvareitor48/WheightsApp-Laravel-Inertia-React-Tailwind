@@ -25,7 +25,7 @@ class ExercisesTableSeeder extends Seeder
                 $exercise = Exercise::create([
                     'name' => $exerciseData['name'],
                     'description' => $exerciseData['description'],
-                    'gif' => $exerciseData['gif'],
+                    'url' => $exerciseData['url'],
                     'equipment' => $exerciseData['equipment'],
                 ]);
 
