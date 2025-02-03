@@ -2,7 +2,7 @@
     {
         "name": "Remo con Barra",
         "description": "Ejercicio de remo con barra para espalda alta.",
-        "gif": "exercises_gifs/back/barbell-row.gif",
+        "url": "exercises_video_images/back/barbell-row.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Bíceps",
@@ -15,7 +15,7 @@
     {
         "name": "Remo con Mancuernas",
         "description": "Remo con dos mancuernas para trabajar la espalda alta.",
-        "gif": "exercises_gifs/back/dumbbell-row.gif",
+        "url": "exercises_video_images/back/dumbbell-row.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -29,14 +29,14 @@
     {
         "name": "Remo con Mancuernas Abierto Acostado",
         "description": "Ejercicio de remo con mancuernas acostado para espalda alta.",
-        "gif": "exercises_gifs/back/dumbbell-reverse-fly-row.gif",
+        "url": "exercises_video_images/back/dumbbell-reverse-fly-row.mp4",
         "muscles": ["Espalda Alta y Trapecio", "Bíceps", "Deltoides Posterior"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Remo con Mancuerna Unilateral",
         "description": "Remo con una mancuerna a la vez, enfocado en la espalda alta.",
-        "gif": "exercises_gifs/back/one-arm-dumbbell-row.gif",
+        "url": "exercises_video_images/back/one-arm-dumbbell-row.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Bíceps",
@@ -48,14 +48,14 @@
     {
         "name": "Dominadas Australianas",
         "description": "Ejercicio de dominadas con el cuerpo inclinado para espalda alta.",
-        "gif": "exercises_gifs/back/australian-pullups.gif",
+        "url": "exercises_video_images/back/australian-pullups.mp4",
         "muscles": ["Espalda Alta y Trapecio", "Bíceps", "Deltoides Posterior"],
         "equipment": "Paralelas"
     },
     {
         "name": "Dominadas",
         "description": "Ejercicio de dominadas con el cuerpo colgado para espalda alta.",
-        "gif": "exercises_gifs/back/pullups.gif",
+        "url": "exercises_video_images/back/pullups.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -67,7 +67,7 @@
     {
         "name": "Remo en T",
         "description": "Ejercicio de remo en máquina en T para espalda alta.",
-        "gif": "exercises_gifs/back/t-bar-row.gif",
+        "url": "exercises_video_images/back/t-bar-row.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Bíceps",
@@ -80,7 +80,7 @@
     {
         "name": "Jalón al Pecho Agarre Supino",
         "description": "Ejercicio de jalón al pecho con agarre supino.",
-        "gif": "exercises_gifs/back/supinated-lat-pulldown.gif",
+        "url": "exercises_video_images/back/supinated-lat-pulldown.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Bíceps",
@@ -90,9 +90,9 @@
         "equipment": "Máquina"
     },
     {
-        "name": "Remo Sentado con Cable Agarre Supino",
-        "description": "Remo sentado con cable y agarre supino para espalda alta.",
-        "gif": "exercises_gifs/back/seated-cable-row-supinated.gif",
+        "name": "Remo Sentado con Cable Agarre Semi-Cerrado",
+        "description": "Remo sentado con cable y agarre en 45º para espalda alta.",
+        "url": "exercises_video_images/back/seated-cable-row-semi-close-grip.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Bíceps",
@@ -105,7 +105,7 @@
     {
         "name": "Remo Sentado con Cable Agarre Abierto",
         "description": "Remo sentado con cable y agarre abierto para espalda alta.",
-        "gif": "exercises_gifs/back/seated-cable-row-wide-grip.gif",
+        "url": "exercises_video_images/back/seated-cable-row-wide-grip.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Bíceps",
@@ -118,7 +118,7 @@
     {
         "name": "Remo Sentado con Cable Agarre Cerrado",
         "description": "Remo sentado con cable y agarre cerrado para espalda alta.",
-        "gif": "exercises_gifs/back/seated-cable-row-close-grip.gif",
+        "url": "exercises_video_images/back/seated-cable-row-close-grip.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -132,77 +132,77 @@
     {
         "name": "Extensión de Espalda Baja en Banco Acostado",
         "description": "Ejercicio de extensión de espalda baja en banco acostado, enfocado también en glúteos y femorales.",
-        "gif": "exercises_gifs/back/lying-back-extension.gif",
+        "url": "exercises_video_images/back/lying-back-extension.mp4",
         "muscles": ["Espalda Baja", "Glúteo", "Femoral"],
         "equipment": "Máquina"
     },
     {
         "name": "Extensión de Espalda Baja Sentado",
         "description": "Ejercicio de extensión de espalda baja realizado sentado.",
-        "gif": "exercises_gifs/back/seated-back-extension.gif",
+        "url": "exercises_video_images/back/seated-back-extension.mp4",
         "muscles": ["Espalda Baja"],
         "equipment": "Máquina"
     },
     {
         "name": "Extensión de Espalda Baja en Banco con Peso",
         "description": "Ejercicio de extensión de espalda baja en banco inclinado utilizando peso adicional, trabajando también glúteos y femorales.",
-        "gif": "exercises_gifs/back/weighted-back-extension.gif",
+        "url": "exercises_video_images/back/weighted-back-extension.webp",
         "muscles": ["Espalda Baja", "Glúteo", "Femoral"],
         "equipment": "Máquina"
     },
     {
         "name": "Rack Pull",
         "description": "Ejercicio parcial de peso muerto, enfocado en la espalda baja, glúteos y femorales.",
-        "gif": "exercises_gifs/back/rack-pull.gif",
+        "url": "exercises_video_images/back/rack-pull.webp",
         "muscles": ["Espalda Baja", "Glúteo", "Femoral"],
         "equipment": "Barra"
     },
     {
         "name": "Retracciones Escapulares",
         "description": "Ejercicio colgado en la barra y retrallendo las escapulas",
-        "gif": "exercises_gifs/back/scapular-retractions.gif",
+        "url": "exercises_video_images/back/scapular-retractions.webp",
         "muscles": ["Espalda Alta y Trapecio", "Deltoides Posterior"],
         "equipment": "Barra Fija"
     },
     {
         "name": "Elevaciones de Trapecio con Barra",
         "description": "Ejercicio de elevaciones para trapecio realizado con barra.",
-        "gif": "exercises_gifs/trapezius/shrug-barbell.gif",
+        "url": "exercises_video_images/back/shrug-barbell.mp4",
         "muscles": ["Espalda Alta y Trapecio"],
         "equipment": "Barra"
     },
     {
         "name": "Elevaciones de Trapecio con Cable",
         "description": "Ejercicio de elevaciones para trapecio realizado con cable.",
-        "gif": "exercises_gifs/trapezius/shrug-cable.gif",
+        "url": "exercises_video_images/back/shrug-cable.mp4",
         "muscles": ["Espalda Alta y Trapecio"],
         "equipment": "Máquina"
     },
     {
         "name": "Elevaciones de Trapecio con Mancuernas",
         "description": "Ejercicio de elevaciones para trapecio realizado con mancuernas.",
-        "gif": "exercises_gifs/trapezius/shrug-dumbbells.gif",
+        "url": "exercises_video_images/back/shrug-dumbbells.mp4",
         "muscles": ["Espalda Alta y Trapecio"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Elevaciones de Trapecio en Máquina",
         "description": "Ejercicio de elevaciones para trapecio realizado en máquina específica.",
-        "gif": "exercises_gifs/trapezius/shrug-machine.gif",
+        "url": "exercises_video_images/back/shrug-machine.mp4",
         "muscles": ["Espalda Alta y Trapecio"],
         "equipment": "Máquina"
     },
     {
         "name": "Elevaciones de Trapecio en Máquina Smith",
         "description": "Ejercicio de elevaciones para trapecio realizado en máquina Smith.",
-        "gif": "exercises_gifs/trapezius/shrug-smith-machine.gif",
+        "url": "exercises_video_images/back/shrug-smith-machine.mp4",
         "muscles": ["Espalda Alta y Trapecio"],
         "equipment": "Máquina"
     },
     {
         "name": "Dominada con Agarre Supino",
         "description": "Ejercicio de dominadas con agarre supino para espalda alta y bíceps.",
-        "gif": "exercises_gifs/back/supinated-pullup.gif",
+        "url": "exercises_video_images/back/supinated-pullup.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -214,7 +214,7 @@
     {
         "name": "Dominada con Agarre Supino en Máquina Asistida",
         "description": "Dominadas con agarre supino utilizando máquina asistida para espalda alta y bíceps.",
-        "gif": "exercises_gifs/back/supinated-pullup-assisted.gif",
+        "url": "exercises_video_images/back/supinated-pullup-assisted.webp",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -226,7 +226,7 @@
     {
         "name": "Dominada Lastrada con Agarre Supino",
         "description": "Ejercicio de dominadas lastradas con agarre supino para espalda alta y bíceps.",
-        "gif": "exercises_gifs/back/supinated-pullup-weighted.gif",
+        "url": "exercises_video_images/back/supinated-pullup-weighted.webp",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -238,21 +238,21 @@
     {
         "name": "Remo en Máquina Sentado desde Arriba",
         "description": "Remo sentado en máquina desde arriba para espalda alta, trapecios y bíceps.",
-        "gif": "exercises_gifs/back/high-row-machine.gif",
+        "url": "exercises_video_images/back/high-row-machine.webp",
         "muscles": ["Espalda Alta y Trapecio", "Deltoides Posterior", "Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Remo en Máquina Sentado agarre abierto",
         "description": "Remo sentado en máquina para espalda alta, trapecios y bíceps.",
-        "gif": "exercises_gifs/back/row-machine.gif",
+        "url": "exercises_video_images/back/row-wide-grip-machine.mp4",
         "muscles": ["Espalda Alta y Trapecio", "Deltoides Posterior", "Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Remo en Máquina Sentado agarre cerrado",
         "description": "Remo sentado en máquina para espalda alta, trapecios y bíceps.",
-        "gif": "exercises_gifs/back/row-machine.gif",
+        "url": "exercises_video_images/back/row-close-grip-machine.webp",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -264,7 +264,7 @@
     {
         "name": "Jalón al Pecho con Agarre Prono",
         "description": "Jalón al pecho con agarre prono para espalda alta, trapecios y bíceps.",
-        "gif": "exercises_gifs/back/pronated-lat-pulldown.gif",
+        "url": "exercises_video_images/back/pronated-lat-pulldown.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -276,7 +276,7 @@
     {
         "name": "Jalón al Pecho con Agarre Prono en Máquina",
         "description": "Jalón al pecho realizado en máquina con agarre prono.",
-        "gif": "exercises_gifs/back/pronated-lat-pulldown-machine.gif",
+        "url": "exercises_video_images/back/pronated-lat-pulldown-machine.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -288,7 +288,7 @@
     {
         "name": "Dominadas Asistidas en Máquina",
         "description": "Dominadas con agarre prono realizadas en máquina asistida.",
-        "gif": "exercises_gifs/back/assisted-pullup-pronated.gif",
+        "url": "exercises_video_images/back/assisted-pullup-pronated.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -300,7 +300,7 @@
     {
         "name": "Jalón al Pecho con Agarre Cerrado",
         "description": "Ejercicio de jalón al pecho con agarre cerrado para espalda alta y bíceps.",
-        "gif": "exercises_gifs/back/close-grip-lat-pulldown.gif",
+        "url": "exercises_video_images/back/close-grip-lat-pulldown.webp",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -312,7 +312,7 @@
     {
         "name": "Dominadas Negativas",
         "description": "Ejercicio de dominadas negativas con agarre prono para espalda alta y bíceps.",
-        "gif": "exercises_gifs/back/negative-pullup.gif",
+        "url": "exercises_video_images/back/negative-pullup.mp4",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -324,7 +324,7 @@
     {
         "name": "Dominadas Lastradas",
         "description": "Ejercicio de dominadas lastradas con agarre prono para espalda alta, trapecios y bíceps.",
-        "gif": "exercises_gifs/back/weighted-pullup.gif",
+        "url": "exercises_video_images/back/weighted-pullup.webp",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",
@@ -336,28 +336,28 @@
     {
         "name": "Pull Over en Polea con Barra",
         "description": "Pull over realizado con barra y polea, enfocado en espalda alta y bíceps.",
-        "gif": "exercises_gifs/back/pullover-cable-bar.gif",
+        "url": "exercises_video_images/back/pullover-cable-bar.mp4",
         "muscles": ["Espalda Alta y Trapecio", "Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Pull Over en Polea con Cuerda",
         "description": "Pull over realizado con cuerda y polea, enfocado en espalda alta y bíceps.",
-        "gif": "exercises_gifs/back/pullover-cable-rope.gif",
+        "url": "exercises_video_images/back/pullover-cable-rope.mp4",
         "muscles": ["Dorsales", "Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Jalón al Pecho Unilateral",
         "description": "Ejercicio de jalón al pecho realizado de forma unilateral para espalda alta y bíceps.",
-        "gif": "exercises_gifs/back/one-arm-lat-pulldown.gif",
+        "url": "exercises_video_images/back/one-arm-lat-pulldown.webp",
         "muscles": ["Dorsales", "Deltoides Posterior", "Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Dominadas con Agarre Neutro",
         "description": "Ejercicio de dominadas con agarre neutro para espalda alta, trapecios y bíceps.",
-        "gif": "exercises_gifs/back/neutral-grip-pullup.gif",
+        "url": "exercises_video_images/back/neutral-grip-pullup.webp",
         "muscles": [
             "Espalda Alta y Trapecio",
             "Dorsales",

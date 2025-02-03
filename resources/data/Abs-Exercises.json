@@ -2,168 +2,168 @@
     {
         "name": "Tijeras",
         "description": "Ejercicio abdominal que consiste en mover las piernas como si fueran tijeras.",
-        "gif": "exercises_gifs/abs/scissors.gif",
+        "url": "exercises_video_images/abs/scissors.webp",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Rueda Abdominal",
         "description": "Ejercicio de rueda abdominal que fortalece el core.",
-        "gif": "exercises_gifs/abs/ab-wheel.gif",
+        "url": "exercises_video_images/abs/ab-wheel.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Otros"
     },
     {
         "name": "Crunch Bicicleta",
         "description": "Ejercicio de crunch alternando piernas y brazos, similar al pedaleo de una bicicleta.",
-        "gif": "exercises_gifs/abs/bicycle-crunch.gif",
+        "url": "exercises_video_images/abs/bicycle-crunch.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Crunch con Cable",
         "description": "Ejercicio de crunch abdominal realizado con cable para añadir resistencia.",
-        "gif": "exercises_gifs/abs/cable-crunch.gif",
+        "url": "exercises_video_images/abs/cable-crunch.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Máquina"
     },
     {
         "name": "Crunch",
         "description": "Ejercicio clásico de crunch abdominal.",
-        "gif": "exercises_gifs/abs/crunch.gif",
+        "url": "exercises_video_images/abs/crunch.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Crunch en Máquina",
         "description": "Ejercicio de crunch abdominal realizado en máquina.",
-        "gif": "exercises_gifs/abs/machine-crunch.gif",
+        "url": "exercises_video_images/abs/machine-crunch.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Máquina"
     },
     {
         "name": "Crunch con Peso",
         "description": "Crunch abdominal realizado con peso adicional.",
-        "gif": "exercises_gifs/abs/weighted-crunch.gif",
+        "url": "exercises_video_images/abs/weighted-crunch.webp",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Mancuernas"
     },
     {
         "name": "El Bicho",
         "description": "Ejercicio de core conocido como 'Dead Bug' que trabaja los abdominales y la coordinación.",
-        "gif": "exercises_gifs/abs/dead-bug.gif",
+        "url": "exercises_video_images/abs/dead-bug.webp",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Crunch Declinado",
         "description": "Crunch abdominal realizado en un banco declinado.",
-        "gif": "exercises_gifs/abs/decline-crunch.gif",
+        "url": "exercises_video_images/abs/decline-crunch.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Dragon Flag",
         "description": "Ejercicio avanzado de core realizado en banco para fortalecer los abdominales.",
-        "gif": "exercises_gifs/abs/dragon-flag.gif",
+        "url": "exercises_video_images/abs/dragon-flag.webp",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Sostener Piernas Levantadas Colgado en Barra",
         "description": "Ejercicio de sostener las piernas levantadas mientras se cuelga de una barra.",
-        "gif": "exercises_gifs/abs/hanging-leg-hold.gif",
+        "url": "exercises_video_images/abs/hanging-leg-hold.webp",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Barra"
     },
     {
         "name": "Elevaciones de Piernas Colgado en Barra",
         "description": "Ejercicio abdominal que consiste en elevar las piernas mientras se cuelga de una barra.",
-        "gif": "exercises_gifs/abs/hanging-leg-raises.gif",
+        "url": "exercises_video_images/abs/hanging-leg-raises.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Barra"
     },
     {
         "name": "Hollow Rock",
         "description": "Ejercicio de balanceo en posición hueca que fortalece los abdominales.",
-        "gif": "exercises_gifs/abs/hollow-rock.gif",
+        "url": "exercises_video_images/abs/hollow-rock.webp",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Elevaciones de Piernas en Paralelas con Almohadilla",
         "description": "Elevación de piernas realizada en paralelas con almohadilla para soporte.",
-        "gif": "exercises_gifs/abs/parallel-leg-raises.gif",
+        "url": "exercises_video_images/abs/parallel-leg-raises.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Paralelas"
     },
     {
         "name": "Hold L-Sit",
         "description": "Ejercicio isométrico donde se sostiene una posición en forma de L para trabajar el core.",
-        "gif": "exercises_gifs/abs/l-sit-hold.gif",
+        "url": "exercises_video_images/abs/l-sit-hold.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Paralelas"
     },
     {
         "name": "Elevaciones de Piernas Acostado",
         "description": "Elevaciones de piernas realizadas en posición acostada.",
-        "gif": "exercises_gifs/abs/lying-leg-raises.gif",
+        "url": "exercises_video_images/abs/lying-leg-raises.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Crunch de Oblicuos",
         "description": "Crunch enfocado específicamente en los oblicuos.",
-        "gif": "exercises_gifs/abs/oblique-crunch.gif",
+        "url": "exercises_video_images/abs/oblique-crunch.mp4",
         "muscles": ["Oblicuos"],
         "equipment": null
     },
     {
         "name": "Plancha",
         "description": "Ejercicio isométrico de plancha para trabajar el core.",
-        "gif": "exercises_gifs/abs/plank.gif",
+        "url": "exercises_video_images/abs/plank.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Russian Twist",
         "description": "Ejercicio rotacional para trabajar los oblicuos.",
-        "gif": "exercises_gifs/abs/russian-twist.gif",
+        "url": "exercises_video_images/abs/russian-twist.mp4",
         "muscles": ["Oblicuos"],
         "equipment": null
     },
     {
         "name": "Sit Up",
         "description": "Ejercicio clásico de sit up para trabajar los abdominales.",
-        "gif": "exercises_gifs/abs/sit-up.gif",
+        "url": "exercises_video_images/abs/sit-up.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Sit Up con Peso",
         "description": "Sit up realizado con peso adicional.",
-        "gif": "exercises_gifs/abs/weighted-sit-up.gif",
+        "url": "exercises_video_images/abs/weighted-sit-up.webp",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Elevaciones de Pies a la Barra",
         "description": "Ejercicio avanzado de abdominales donde se eleva los pies hasta tocar la barra.",
-        "gif": "exercises_gifs/abs/toes-to-bar.gif",
+        "url": "exercises_video_images/abs/toes-to-bar.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": "Barra"
     },
     {
         "name": "Crunch en V Estirado",
         "description": "Ejercicio de crunch en V realizado con los brazos y piernas estirados.",
-        "gif": "exercises_gifs/abs/v-crunch.gif",
+        "url": "exercises_video_images/abs/v-crunch.mp4",
         "muscles": ["Abdominales", "Oblicuos"],
         "equipment": null
     },
     {
         "name": "Front Lever Tucked Hold",
         "description": "Posición de front lever en tuck, sostenida en barra.",
-        "gif": "exercises_gifs/abs/front-lever-tucked-hold.gif",
+        "url": "exercises_video_images/abs/front-lever-tucked-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -175,7 +175,7 @@
     {
         "name": "Front Lever Advanced-Tucked Hold",
         "description": "Posición de front lever avanzado en tuck, sostenida en barra.",
-        "gif": "exercises_gifs/abs/front-lever-advanced-tucked-hold.gif",
+        "url": "exercises_video_images/abs/front-lever-advanced-tucked-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -187,7 +187,7 @@
     {
         "name": "Front Lever One Leg Hold",
         "description": "Posición de front lever con una pierna extendida, sostenida en barra.",
-        "gif": "exercises_gifs/abs/front-lever-one-leg-hold.gif",
+        "url": "exercises_video_images/abs/front-lever-one-leg-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -199,7 +199,7 @@
     {
         "name": "Front Lever Straddle Hold",
         "description": "Posición de front lever con piernas abiertas, sostenida en barra.",
-        "gif": "exercises_gifs/abs/front-lever-straddle-hold.gif",
+        "url": "exercises_video_images/abs/front-lever-straddle-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -211,7 +211,7 @@
     {
         "name": "Front Lever Full Hold",
         "description": "Posición completa de front lever, sostenida en barra.",
-        "gif": "exercises_gifs/abs/front-lever-full-hold.gif",
+        "url": "exercises_video_images/abs/front-lever-full-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -223,7 +223,7 @@
     {
         "name": "Front Lever Tucked Raises",
         "description": "Levantamientos de front lever en tuck, realizados en barra.",
-        "gif": "exercises_gifs/abs/front-lever-tucked-raises.gif",
+        "url": "exercises_video_images/abs/front-lever-tucked-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -235,7 +235,7 @@
     {
         "name": "Front Lever Advanced-Tucked Raises",
         "description": "Levantamientos avanzados de front lever en tuck, realizados en barra.",
-        "gif": "exercises_gifs/abs/front-lever-advanced-tucked-raises.gif",
+        "url": "exercises_video_images/abs/front-lever-advanced-tucked-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -247,7 +247,7 @@
     {
         "name": "Front Lever One Leg Raises",
         "description": "Levantamientos de front lever con una pierna extendida, realizados en barra.",
-        "gif": "exercises_gifs/abs/front-lever-one-leg-raises.gif",
+        "url": "exercises_video_images/abs/front-lever-one-leg-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -259,7 +259,7 @@
     {
         "name": "Front Lever Straddle Raises",
         "description": "Levantamientos de front lever con piernas abiertas, realizados en barra.",
-        "gif": "exercises_gifs/abs/front-lever-straddle-raises.gif",
+        "url": "exercises_video_images/abs/front-lever-straddle-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -271,7 +271,7 @@
     {
         "name": "Front Lever Full Raises",
         "description": "Levantamientos completos de front lever, realizados en barra.",
-        "gif": "exercises_gifs/abs/front-lever-full-raises.gif",
+        "url": "exercises_video_images/abs/front-lever-full-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -283,7 +283,7 @@
     {
         "name": "Back Lever Tucked Hold",
         "description": "Posición de back lever en tuck, sostenida en barra.",
-        "gif": "exercises_gifs/abs/back-lever-tucked-hold.gif",
+        "url": "exercises_video_images/abs/back-lever-tucked-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -295,7 +295,7 @@
     {
         "name": "Back Lever Advanced-Tucked Hold",
         "description": "Posición de back lever avanzado en tuck, sostenida en barra.",
-        "gif": "exercises_gifs/abs/back-lever-advanced-tucked-hold.gif",
+        "url": "exercises_video_images/abs/back-lever-advanced-tucked-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -307,7 +307,7 @@
     {
         "name": "Back Lever One Leg Hold",
         "description": "Posición de back lever con una pierna extendida, sostenida en barra.",
-        "gif": "exercises_gifs/abs/back-lever-one-leg-hold.gif",
+        "url": "exercises_video_images/abs/back-lever-one-leg-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -319,7 +319,7 @@
     {
         "name": "Back Lever Straddle Hold",
         "description": "Posición de back lever con piernas abiertas, sostenida en barra.",
-        "gif": "exercises_gifs/abs/back-lever-straddle-hold.gif",
+        "url": "exercises_video_images/abs/back-lever-straddle-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -331,7 +331,7 @@
     {
         "name": "Back Lever Full Hold",
         "description": "Posición completa de back lever, sostenida en barra.",
-        "gif": "exercises_gifs/abs/back-lever-full-hold.gif",
+        "url": "exercises_video_images/abs/back-lever-full-hold.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -343,7 +343,7 @@
     {
         "name": "Back Lever Tucked Raises",
         "description": "Levantamientos de back lever en tuck, realizados en barra.",
-        "gif": "exercises_gifs/abs/back-lever-tucked-raises.gif",
+        "url": "exercises_video_images/abs/back-lever-tucked-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -355,7 +355,7 @@
     {
         "name": "Back Lever Advanced-Tucked Raises",
         "description": "Levantamientos avanzados de back lever en tuck, realizados en barra.",
-        "gif": "exercises_gifs/abs/back-lever-advanced-tucked-raises.gif",
+        "url": "exercises_video_images/abs/back-lever-advanced-tucked-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -367,7 +367,7 @@
     {
         "name": "Back Lever One Leg Raises",
         "description": "Levantamientos de back lever con una pierna extendida, realizados en barra.",
-        "gif": "exercises_gifs/abs/back-lever-one-leg-raises.gif",
+        "url": "exercises_video_images/abs/back-lever-one-leg-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -379,7 +379,7 @@
     {
         "name": "Back Lever Straddle Raises",
         "description": "Levantamientos de back lever con piernas abiertas, realizados en barra.",
-        "gif": "exercises_gifs/abs/back-lever-straddle-raises.gif",
+        "url": "exercises_video_images/abs/back-lever-straddle-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",
@@ -391,7 +391,7 @@
     {
         "name": "Back Lever Full Raises",
         "description": "Levantamientos completos de back lever, realizados en barra.",
-        "gif": "exercises_gifs/abs/back-lever-full-raises.gif",
+        "url": "exercises_video_images/abs/back-lever-full-raises.webp",
         "muscles": [
             "Dorsales",
             "Abdominales",

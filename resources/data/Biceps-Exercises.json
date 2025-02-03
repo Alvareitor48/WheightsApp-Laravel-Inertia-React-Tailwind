@@ -2,161 +2,161 @@
     {
         "name": "Curl de Bíceps con Barra",
         "description": "Ejercicio de curl de bíceps realizado con barra.",
-        "gif": "exercises_gifs/biceps/barbell-curl.gif",
+        "url": "exercises_video_images/biceps/barbell-curl.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Barra"
     },
     {
         "name": "Curl de Bíceps con Cable",
         "description": "Ejercicio de curl de bíceps realizado con cable.",
-        "gif": "exercises_gifs/biceps/cable-curl.gif",
+        "url": "exercises_video_images/biceps/cable-curl.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Curl de Bíceps con Mancuernas",
         "description": "Ejercicio de curl de bíceps realizado con mancuernas.",
-        "gif": "exercises_gifs/biceps/dumbbell-curl.gif",
+        "url": "exercises_video_images/biceps/dumbbell-curl.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl de Bíceps en Máquina",
         "description": "Ejercicio de curl de bíceps realizado en máquina.",
-        "gif": "exercises_gifs/biceps/machine-curl.gif",
+        "url": "exercises_video_images/biceps/machine-curl.webp",
         "muscles": ["Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Curl de Bíceps en Banco Unilateral con Mancuerna",
         "description": "Curl de bíceps realizado en banco con un solo brazo y mancuerna.",
-        "gif": "exercises_gifs/biceps/dumbbell-curl-unilateral-bench.gif",
+        "url": "exercises_video_images/biceps/dumbbell-curl-unilateral-bench.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl Martillo Cruzado con Mancuernas",
         "description": "Curl martillo cruzado realizado con mancuernas.",
-        "gif": "exercises_gifs/biceps/cross-hammer-curl.gif",
+        "url": "exercises_video_images/biceps/cross-hammer-curl.webp",
         "muscles": ["Bíceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl de Bíceps con Barra Z",
         "description": "Ejercicio de curl de bíceps realizado con barra Z.",
-        "gif": "exercises_gifs/biceps/ez-bar-curl.gif",
+        "url": "exercises_video_images/biceps/ez-bar-curl.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Barra"
     },
     {
         "name": "Curl Martillo con Mancuernas",
         "description": "Ejercicio de curl martillo realizado con mancuernas.",
-        "gif": "exercises_gifs/biceps/hammer-curl-dumbbells.gif",
+        "url": "exercises_video_images/biceps/hammer-curl-dumbbells.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl Martillo con Cable",
         "description": "Ejercicio de curl martillo realizado con cable.",
-        "gif": "exercises_gifs/biceps/hammer-curl-cable.gif",
+        "url": "exercises_video_images/biceps/hammer-curl-cable.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Curl de Bíceps Sobre la Cabeza con Polea Alta",
         "description": "Curl de bíceps realizado con polea alta por encima de la cabeza.",
-        "gif": "exercises_gifs/biceps/overhead-cable-curl.gif",
+        "url": "exercises_video_images/biceps/overhead-cable-curl.webp",
         "muscles": ["Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Curl de Bíceps Predicador con Barra",
         "description": "Ejercicio de curl de bíceps predicador realizado con barra.",
-        "gif": "exercises_gifs/biceps/preacher-curl-barbell.gif",
+        "url": "exercises_video_images/biceps/preacher-curl-barbell.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Barra"
     },
     {
         "name": "Curl de Bíceps Predicador con Mancuernas",
         "description": "Ejercicio de curl de bíceps predicador realizado con mancuernas.",
-        "gif": "exercises_gifs/biceps/preacher-curl-dumbbells.gif",
+        "url": "exercises_video_images/biceps/preacher-curl-dumbbells.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl de Bíceps Predicador en Máquina",
         "description": "Ejercicio de curl de bíceps predicador realizado en máquina.",
-        "gif": "exercises_gifs/biceps/preacher-curl-machine.gif",
+        "url": "exercises_video_images/biceps/preacher-curl-machine.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Curl con Disco",
         "description": "Curl realizado con un disco, activando también antebrazos.",
-        "gif": "exercises_gifs/biceps/curl-with-plate.gif",
+        "url": "exercises_video_images/biceps/curl-with-plate.webp",
         "muscles": ["Bíceps", "Antebrazos"],
         "equipment": "Otros"
     },
     {
         "name": "Curl de Bíceps con Agarre Prono con Barra",
         "description": "Curl con agarre prono realizado con barra, trabajando antebrazos.",
-        "gif": "exercises_gifs/biceps/pronated-curl-barbell.gif",
+        "url": "exercises_video_images/biceps/pronated-curl-barbell.mp4",
         "muscles": ["Bíceps", "Antebrazos"],
         "equipment": "Barra"
     },
     {
         "name": "Curl de Bíceps con Agarre Prono en Máquina",
         "description": "Curl con agarre prono realizado en máquina, trabajando antebrazos.",
-        "gif": "exercises_gifs/biceps/pronated-curl-machine.gif",
+        "url": "exercises_video_images/biceps/pronated-curl-machine.mp4",
         "muscles": ["Bíceps", "Antebrazos"],
         "equipment": "Máquina"
     },
     {
         "name": "Curl de Bíceps con Agarre Prono con Mancuernas",
         "description": "Curl con agarre prono realizado con mancuernas, trabajando antebrazos.",
-        "gif": "exercises_gifs/biceps/pronated-curl-dumbbells.gif",
+        "url": "exercises_video_images/biceps/pronated-curl-dumbbells.mp4",
         "muscles": ["Bíceps", "Antebrazos"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl de Bíceps con Agarre Prono con Mancuerna en Banco Unilateral",
         "description": "Curl con agarre prono en banco unilateral, trabajando bíceps y antebrazos.",
-        "gif": "exercises_gifs/biceps/pronated-curl-dumbbell-unilateral-bench.gif",
+        "url": "exercises_video_images/biceps/pronated-curl-dumbbell-unilateral-bench.webp",
         "muscles": ["Bíceps", "Antebrazos"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl Inclinado Acostado",
         "description": "Curl de bíceps realizado en posición inclinada acostado.",
-        "gif": "exercises_gifs/biceps/incline-curl-dumbbells.gif",
+        "url": "exercises_video_images/biceps/incline-curl-dumbbells.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Mancuernas"
     },
     {
-        "name": "Curl de Bíceps en Polea",
-        "description": "Curl de bíceps realizado con polea.",
-        "gif": "exercises_gifs/biceps/cable-curl.gif",
+        "name": "Curl de Bíceps en Polea Unilateral",
+        "description": "Curl de bíceps realizado con polea unilateralmente.",
+        "url": "exercises_video_images/biceps/cable-curl-unilateral.webp",
         "muscles": ["Bíceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Curl Araña con Barra",
         "description": "Ejercicio de curl araña realizado con barra.",
-        "gif": "exercises_gifs/biceps/spider-curl-barbell.gif",
+        "url": "exercises_video_images/biceps/spider-curl-barbell.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Barra"
     },
     {
         "name": "Curl Araña con Mancuernas",
         "description": "Ejercicio de curl araña realizado con mancuernas.",
-        "gif": "exercises_gifs/biceps/spider-curl-dumbbells.gif",
+        "url": "exercises_video_images/biceps/spider-curl-dumbbells.mp4",
         "muscles": ["Bíceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl Bayesian",
         "description": "Ejercicio de curl bayesian realizado con polea baja.",
-        "gif": "exercises_gifs/biceps/bayesian-curl.gif",
+        "url": "exercises_video_images/biceps/bayesian-curl.webp",
         "muscles": ["Bíceps"],
         "equipment": "Máquina"
     }

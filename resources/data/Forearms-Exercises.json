@@ -2,57 +2,57 @@
     {
         "name": "Curl de Antebrazo tras la Espalda con Barra",
         "description": "Ejercicio de curl de antebrazo realizado tras la espalda con barra.",
-        "gif": "exercises_gifs/forearm/reverse-curl-behind-back-barbell.gif",
+        "url": "exercises_video_images/forearm/reverse-curl-behind-back-barbell.webp",
         "muscles": ["Antebrazos"],
         "equipment": "Barra"
     },
     {
-        "name": "Curl de Antebrazo Superior Unilateral Sentado con Mancuerna",
-        "description": "Curl de antebrazo superior realizado con mancuerna, un solo brazo y sentado.",
-        "gif": "exercises_gifs/forearm/superior-curl-unilateral-dumbbell.gif",
+        "name": "Curl de Antebrazo Superior Sentado con Mancuerna",
+        "description": "Curl de antebrazo superior realizado con mancuerna, sentado.",
+        "url": "exercises_video_images/forearm/superior-curl-dumbbell.webp",
         "muscles": ["Antebrazos"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Curl de Antebrazo Superior Sentado con Barra",
         "description": "Curl de antebrazo superior realizado con barra en posición sentada.",
-        "gif": "exercises_gifs/forearm/superior-curl-barbell.gif",
+        "url": "exercises_video_images/forearm/superior-curl-barbell.mp4",
         "muscles": ["Antebrazos"],
         "equipment": "Barra"
     },
     {
         "name": "Enrollamiento de Disco Parado",
         "description": "Ejercicio de enrollamiento de disco realizado en posición de pie.",
-        "gif": "exercises_gifs/forearm/plate-roll-standing.gif",
+        "url": "exercises_video_images/forearm/plate-roll-standing.webp",
         "muscles": ["Antebrazos"],
         "equipment": "Otros"
     },
     {
         "name": "Sostener Disco Parado",
         "description": "Ejercicio de sostener un disco con la mano en posición de pie.",
-        "gif": "exercises_gifs/forearm/plate-hold-standing.gif",
+        "url": "exercises_video_images/forearm/plate-hold-standing.webp",
         "muscles": ["Antebrazos"],
         "equipment": "Otros"
     },
     {
         "name": "Curl Gato en Polea Alta",
         "description": "Curl gato realizado en polea alta, enfocado en los antebrazos.",
-        "gif": "exercises_gifs/forearm/cat-curl-cable-high.gif",
+        "url": "exercises_video_images/forearm/cat-curl-cable-high.webp",
         "muscles": ["Antebrazos"],
         "equipment": "Máquina"
     },
     {
         "name": "Hand Grip",
         "description": "Ejercicio de fortalecimiento de los antebrazos mediante hand grips.",
-        "gif": "exercises_gifs/forearm/hand-grip.gif",
+        "url": "exercises_video_images/forearm/hand-grip.webp",
         "muscles": ["Antebrazos"],
         "equipment": "Otros"
     },
     {
         "name": "Colgarse de la Barra Sostenidamente",
         "description": "Ejercicio de antebrazo que consiste en colgarse de una barra y mantener la posición.",
-        "gif": "exercises_gifs/forearm/hanging-hold-bar.gif",
+        "url": "exercises_video_images/forearm/hanging-hold-bar.webp",
         "muscles": ["Antebrazos"],
-        "equipment": "Barra"
+        "equipment": "Barra Fija"
     }
 ]

@@ -2,154 +2,161 @@
     {
         "name": "Press Banca con Barra",
         "description": "Press de pecho realizado con barra en banco plano.",
-        "gif": "exercises_gifs/chest/bench-press-barbell.gif",
+        "url": "exercises_video_images/chest/bench-press-barbell.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Barra"
     },
     {
         "name": "Press Banca con Mancuernas",
         "description": "Press de pecho realizado con mancuernas en banco plano.",
-        "gif": "exercises_gifs/chest/bench-press-dumbbells.gif",
+        "url": "exercises_video_images/chest/bench-press-dumbbells.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Press Banca con Cable",
         "description": "Press de pecho realizado con cables en banco plano.",
-        "gif": "exercises_gifs/chest/bench-press-cable.gif",
+        "url": "exercises_video_images/chest/bench-press-cable.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Press Banca en Máquina Smith",
         "description": "Press de pecho realizado en banco plano con máquina Smith.",
-        "gif": "exercises_gifs/chest/bench-press-smith-machine.gif",
+        "url": "exercises_video_images/chest/bench-press-smith-machine.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Chest Fly (Peck Deck)",
         "description": "Aperturas para el pecho realizadas en máquina Peck Deck.",
-        "gif": "exercises_gifs/chest/chest-fly-peck-deck.gif",
+        "url": "exercises_video_images/chest/chest-fly-peck-deck.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Cable Fly",
         "description": "Aperturas de pecho con poleas altas enfocadas en el pectoral inferior.",
-        "gif": "exercises_gifs/chest/cable-fly-high.gif",
+        "url": "exercises_video_images/chest/cable-fly-high.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Fondos de Pecho (Paralelas)",
         "description": "Ejercicio compuesto para pecho realizado en paralelas.",
-        "gif": "exercises_gifs/chest/dips-paralelas.gif",
+        "url": "exercises_video_images/chest/dips-paralelas.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Paralelas"
     },
     {
         "name": "Fondos Asistidos",
         "description": "Ejercicio compuesto para pecho realizado en máquina asistida.",
-        "gif": "exercises_gifs/chest/assisted-dips.gif",
+        "url": "exercises_video_images/chest/assisted-dips.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Fondos de Pecho Lastrados",
         "description": "Fondos realizados en paralelas con peso adicional.",
-        "gif": "exercises_gifs/chest/weighted-dips.gif",
+        "url": "exercises_video_images/chest/weighted-dips.webp",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Paralelas"
     },
     {
         "name": "Press Plano Sentado en Máquina",
         "description": "Press de pecho sentado realizado en máquina.",
-        "gif": "exercises_gifs/chest/seated-press-flat-machine.gif",
+        "url": "exercises_video_images/chest/seated-press-flat-machine.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
-        "name": "Press Plano en Máquina",
-        "description": "Press de pecho realizado en máquina en banco plano.",
-        "gif": "exercises_gifs/chest/press-flat-machine.gif",
+        "name": "Press Plano en Máquina Smith",
+        "description": "Press de pecho realizado en máquina smith en banco plano.",
+        "url": "exercises_video_images/chest/press-flat-smith-machine.mp4",
+        "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
+        "equipment": "Máquina"
+    },
+    {
+        "name": "Flexiones con palmada",
+        "description": "Flesiones normales con una palmada en el aire.",
+        "url": "exercises_video_images/chest/clap-pushups.webp",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Press Declinado con Barra",
         "description": "Press de pecho declinado realizado con barra.",
-        "gif": "exercises_gifs/chest/decline-bench-press-barbell.gif",
+        "url": "exercises_video_images/chest/decline-bench-press-barbell.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Barra"
     },
     {
         "name": "Press Declinado con Mancuernas",
         "description": "Press de pecho declinado realizado con mancuernas.",
-        "gif": "exercises_gifs/chest/decline-bench-press-dumbbells.gif",
+        "url": "exercises_video_images/chest/decline-bench-press-dumbbells.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Press Declinado en Máquina Smith",
         "description": "Press declinado de pecho realizado con máquina Smith.",
-        "gif": "exercises_gifs/chest/decline-press-smith-machine.gif",
+        "url": "exercises_video_images/chest/decline-press-smith-machine.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Press Inclinado con Barra",
         "description": "Press de pecho inclinado realizado con barra.",
-        "gif": "exercises_gifs/chest/incline-bench-press-barbell.gif",
+        "url": "exercises_video_images/chest/incline-bench-press-barbell.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Barra"
     },
     {
         "name": "Press Inclinado con Mancuernas",
         "description": "Press de pecho inclinado realizado con mancuernas.",
-        "gif": "exercises_gifs/chest/incline-bench-press-dumbbells.gif",
+        "url": "exercises_video_images/chest/incline-bench-press-dumbbells.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Mancuernas"
     },
     {
         "name": "Press Inclinado en Máquina Smith",
         "description": "Press inclinado de pecho realizado con máquina Smith.",
-        "gif": "exercises_gifs/chest/incline-press-smith-machine.gif",
+        "url": "exercises_video_images/chest/incline-press-smith-machine.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Press Inclinado en Máquina",
         "description": "Press de pecho inclinado realizado en máquina.",
-        "gif": "exercises_gifs/chest/incline-press-machine.gif",
+        "url": "exercises_video_images/chest/incline-press-machine.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Flexiones Inclinadas",
         "description": "Flexiones con las manos elevadas en una superficie inclinada.",
-        "gif": "exercises_gifs/chest/incline-pushups.gif",
+        "url": "exercises_video_images/chest/incline-pushups.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": null
     },
     {
         "name": "Flexiones Declinadas",
         "description": "Flexiones con los pies elevados en una superficie inclinada.",
-        "gif": "exercises_gifs/chest/decline-pushups.gif",
+        "url": "exercises_video_images/chest/decline-pushups.mp4",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": null
     },
     {
         "name": "Press con Cable Sentado",
         "description": "Press de pecho sentado realizado con poleas a nivel del pecho.",
-        "gif": "exercises_gifs/chest/seated-cable-press.gif",
+        "url": "exercises_video_images/chest/seated-cable-press.webp",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     },
     {
         "name": "Press con Cable Sentado Desde Abajo",
         "description": "Press sentado con poleas bajas, enfocando más el pectoral inferior.",
-        "gif": "exercises_gifs/chest/seated-cable-press-low.gif",
+        "url": "exercises_video_images/chest/seated-cable-press-low.webp",
         "muscles": ["Pecho", "Deltoides Frontal", "Tríceps"],
         "equipment": "Máquina"
     }
