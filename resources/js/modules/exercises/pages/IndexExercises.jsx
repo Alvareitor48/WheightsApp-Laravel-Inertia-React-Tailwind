@@ -11,15 +11,20 @@ export default function IndexExercises({ exercises }) {
                     Ejercicios
                 </h1>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                    {exercises.data.map((exercise, index) => (
-                        <ExerciseCard
-                            key={`${exercise.id}.${index}`}
-                            name={exercise.name}
-                            image={exercise.image}
-                            equipment={exercise.equipment}
-                            muscles={exercise.muscles}
-                        ></ExerciseCard>
-                    ))}
+                    {exercises.data.map(
+                        (exercise, index) => (
+                            console.log(exercise),
+                            (
+                                <ExerciseCard
+                                    key={`${exercise.id}.${index}`}
+                                    name={exercise.name}
+                                    image={exercise.url}
+                                    equipment={exercise.equipment}
+                                    muscles={exercise.muscles}
+                                ></ExerciseCard>
+                            )
+                        )
+                    )}
                 </div>
                 <Pagination links={exercises.links} />
             </m.div>

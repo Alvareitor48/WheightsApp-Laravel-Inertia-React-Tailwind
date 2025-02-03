@@ -2,14 +2,16 @@ import shoulder_press from "@/modules/routines/assets/images/shoulder_press.png"
 import { GridTableShow } from "@/modules/routines/components/GridTableShow.jsx";
 import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import { PrincipalTableBase } from "./PrincipalTableBase";
+import VideoThumbnail from "@/shared/components/VideoThumbnail";
 export function PrincipalTableShow({ index }) {
     const { data } = useUpdate();
     const headDivs = [
         <div className="flex justify-center m-1">
-            <div
-                className="h-responsive-height-table-image w-responsive-width-table-image rounded-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${shoulder_press})` }}
-            ></div>
+            <VideoThumbnail
+                mediaSrc={data.exercises[index].exercise.url}
+                imgClassname="h-responsive-height-table-image w-responsive-width-table-image rounded-full bg-cover bg-center"
+                title={data.exercises[index].exercise.name}
+            />
         </div>,
         <div className="text-center px-2 py-3">
             <h2 className="text-responsive-table font-semibold inline-block break-all">

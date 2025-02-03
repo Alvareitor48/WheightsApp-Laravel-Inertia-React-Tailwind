@@ -17,7 +17,7 @@ export default function IndexExercises({ exercises, routineId, redirect_to }) {
                         <ExerciseCard
                             key={`${exercise.id}.${index}`}
                             name={exercise.name}
-                            image={exercise.image}
+                            image={exercise.url}
                             equipment={exercise.equipment}
                             muscles={exercise.muscles}
                             extraButton={

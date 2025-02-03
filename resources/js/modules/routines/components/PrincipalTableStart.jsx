@@ -7,6 +7,7 @@ import { handleErrors } from "../functions/handleErrors";
 import { GridTableStart } from "./GridTableStart";
 import { router } from "@inertiajs/react";
 import AutoResizingTextarea from "./AutoResizingTextArea";
+import VideoThumbnail from "@/shared/components/VideoThumbnail";
 export function PrincipalTableStart({ index, error }) {
     const { update, data, errors } = useUpdate();
     const { createSeries } = useCreateSeries();
@@ -45,10 +46,11 @@ export function PrincipalTableStart({ index, error }) {
 
     const headDivs = [
         <div className="flex justify-center m-1">
-            <div
-                className="h-responsive-height-table-image w-responsive-width-table-image rounded-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${shoulder_press})` }}
-            ></div>
+            <VideoThumbnail
+                mediaSrc={data.exercises[index].exercise.url}
+                imgClassname="h-responsive-height-table-image w-responsive-width-table-image rounded-full bg-cover bg-center"
+                title={data.exercises[index].exercise.name}
+            />
         </div>,
         <div className="text-center px-2 py-3">
             <h2 className="text-responsive-table font-semibold inline-block">

@@ -1,5 +1,6 @@
 import { m } from "motion/react";
 import { CardRouteButton } from "./CardRouteButton";
+import VideoThumbnail from "@/shared/components/VideoThumbnail";
 
 export default function ExerciseCard({
     name,
@@ -16,13 +17,11 @@ export default function ExerciseCard({
             transition={{ duration: 0.3 }}
             whileHover={{ scale: 1.05 }}
         >
-            <div
-                //src={exercise.image}
-                //alt={exercise.name}
-                width={300}
-                height={200}
-                className="w-full h-48 bg-yellow-50 object-cover"
-            ></div>
+            <VideoThumbnail
+                mediaSrc={image}
+                imgClassname="w-full object-cover h-48"
+                title={name}
+            />
             <div className="p-4 bg-transparent bg-opacity-50 backdrop-blur-sm">
                 <h2 className="font-bold text-white mb-2 text-responsive-table">
                     {name}
