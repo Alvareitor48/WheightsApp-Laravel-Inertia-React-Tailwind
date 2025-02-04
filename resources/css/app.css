@@ -276,3 +276,38 @@ body {
 .no-arrows {
     -moz-appearance: textfield; /* Oculta las flechas en Firefox */
 }
+
+.today {
+    background-color: rgba(
+        0,
+        150,
+        255,
+        0.7
+    ) !important; /* Azul para el día actual */
+    color: white !important;
+    border-radius: 5px;
+}
+
+.workout-day {
+    background-color: rgba(
+        255,
+        0,
+        0,
+        0.3
+    ); /* Rojo claro para días de entrenamiento */
+    color: white;
+    border-radius: 5px;
+}
+
+.workout-day:hover {
+    background-color: rgba(
+        255,
+        0,
+        0,
+        0.7
+    ) !important; /* Rojo más fuerte en hover */
+}
+
+.normal-day:hover {
+    background-color: rgba(100, 100, 100, 0.5) !important; /* Gris en hover */
+}

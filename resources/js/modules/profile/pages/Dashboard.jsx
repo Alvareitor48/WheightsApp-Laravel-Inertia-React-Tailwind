@@ -2,8 +2,20 @@ import { useState } from "react";
 import { m } from "motion/react";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 import BodyHighlight from "../components/BodyHighlight";
+import RoutinesCalendar from "../components/RoutinesCalendar";
 export default function Dashboard() {
     const [mainMuscle, setMainMuscle] = useState("");
+    const [calendarDay, setCalendarDay] = useState(null);
+    const sessions = [
+        {
+            id: 1,
+            date: "2025-02-01",
+        },
+        {
+            id: 2,
+            date: "2025-02-09",
+        },
+    ];
     const data = [
         {
             name: "Press Banca",
@@ -89,7 +101,36 @@ export default function Dashboard() {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.6 }}
                         className="bg-white/5 border border-white/10 rounded-lg p-4 relative"
-                    ></m.div>
+                    >
+                        <RoutinesCalendar
+                            sessions={sessions}
+                            setCalendarDay={setCalendarDay}
+                        ></RoutinesCalendar>
+                        {calendarDay === "" ? (
+                            <m.div className="rounded-lg bg-white/5 p-2">
+                                <p className="text-center text-gray-400 text-responsive-select">
+                                    Ese dia no tienes rutina
+                                </p>
+                            </m.div>
+                        ) : calendarDay === null ? (
+                            <m.div className="rounded-lg bg-white/5 p-2">
+                                <p className="text-center text-gray-400 text-responsive-select">
+                                    Selecciona un día con rutina en el
+                                    calendario
+                                </p>
+                            </m.div>
+                        ) : (
+                            <m.div
+                                className="bg-white/5 p-2 rounded-lg text-responsive-select"
+                                whileHover={{
+                                    backgroundColor: "#8F3985",
+                                    scale: 1.1,
+                                }}
+                            >
+                                {calendarDay}
+                            </m.div>
+                        )}
+                    </m.div>
                 </div>
             </m.div>
         </SimpleLayout>

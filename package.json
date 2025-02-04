@@ -23,6 +23,7 @@
     "dependencies": {
         "motion": "^11.14.4",
         "react-body-highlighter": "^2.0.5",
+        "react-calendar": "^5.1.0",
         "recharts": "^2.15.0",
         "uuid": "^11.0.3"
     }
