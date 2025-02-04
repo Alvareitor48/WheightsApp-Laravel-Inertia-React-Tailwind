@@ -3,6 +3,7 @@ import { m } from "motion/react";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 import BodyHighlight from "../components/BodyHighlight";
 import RoutinesCalendar from "../components/RoutinesCalendar";
+import MaxWeights from "../components/MaxWeights";
 export default function Dashboard() {
     const [mainMuscle, setMainMuscle] = useState("");
     const [calendarDay, setCalendarDay] = useState(null);
@@ -31,6 +32,43 @@ export default function Dashboard() {
             name: "Remo en T",
             muscles: ["upper-back", "biceps"],
             frequency: 8,
+        },
+    ];
+    const stats = [
+        {
+            title: "Tijeras",
+            weight: "120kg",
+            repetitions: "10",
+        },
+        {
+            title: "Tijeras",
+            weight: "130kg",
+            repetitions: "10",
+        },
+        {
+            title: "Tijeras",
+            weight: "110kg",
+            repetitions: "10",
+        },
+        {
+            title: "Tijeras",
+            weight: "70kg",
+            repetitions: "10",
+        },
+        {
+            title: "Tijeras",
+            weight: "50kg",
+            repetitions: "10",
+        },
+        {
+            title: "Tijeras",
+            weight: "20kg",
+            repetitions: "10",
+        },
+        {
+            title: "Tijeras",
+            weight: "50kg",
+            repetitions: "10",
         },
     ];
 
@@ -85,7 +123,12 @@ export default function Dashboard() {
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.4 }}
                         className="md:col-span-2"
-                    ></m.div>
+                    >
+                        <MaxWeights
+                            mainMuscle={mainMuscle}
+                            stats={stats}
+                        ></MaxWeights>
+                    </m.div>
 
                     {/* Ejercicios por musculo */}
                     <m.div
