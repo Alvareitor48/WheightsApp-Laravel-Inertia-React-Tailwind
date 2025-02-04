@@ -4,6 +4,7 @@ import SimpleLayout from "@/shared/layouts/SimpleLayout";
 import BodyHighlight from "../components/BodyHighlight";
 import RoutinesCalendar from "../components/RoutinesCalendar";
 import MaxWeights from "../components/MaxWeights";
+import ExercisesForMuscle from "../components/ExercisesForMuscle";
 export default function Dashboard() {
     const [mainMuscle, setMainMuscle] = useState("");
     const [calendarDay, setCalendarDay] = useState(null);
@@ -72,6 +73,64 @@ export default function Dashboard() {
         },
     ];
 
+    const exercises = [
+        {
+            name: "Press Banca",
+            series: [
+                {
+                    weight: "120kg",
+                    repetitions: 10,
+                },
+                {
+                    weight: "130kg",
+                    repetitions: 10,
+                },
+                {
+                    weight: "110kg",
+                    repetitions: 10,
+                },
+                {
+                    weight: "70kg",
+                    repetitions: 10,
+                },
+                {
+                    weight: "120kg",
+                    repetitions: 10,
+                },
+            ],
+        },
+        {
+            name: "Crunch abdominal",
+            series: [
+                {
+                    weight: "10kg",
+                    repetitions: 10,
+                },
+                {
+                    weight: "10kg",
+                    repetitions: 10,
+                },
+            ],
+        },
+        {
+            name: "Remo en T",
+            series: [
+                {
+                    weight: "120kg",
+                    repetitions: 10,
+                },
+                {
+                    weight: "130kg",
+                    repetitions: 10,
+                },
+                {
+                    weight: "110kg",
+                    repetitions: 10,
+                },
+            ],
+        },
+    ];
+
     return (
         <SimpleLayout>
             <m.div
@@ -136,7 +195,12 @@ export default function Dashboard() {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.5 }}
                         className="bg-white/5 border border-white/10 rounded-lg p-4"
-                    ></m.div>
+                    >
+                        <ExercisesForMuscle
+                            mainMuscle={mainMuscle}
+                            exercises={exercises}
+                        ></ExercisesForMuscle>
+                    </m.div>
 
                     {/* Calendario */}
                     <m.div
