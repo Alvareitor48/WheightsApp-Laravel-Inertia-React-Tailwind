@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -26,13 +27,10 @@ Route::middleware('auth')->group(function(){
     Route::put('AddExercise/{routineId}/', [RoutineController::class, 'addExercise'])->name('routines.add.exercise');
     Route::delete('DeleteExercise/{routineId}/', [RoutineController::class, 'deleteExercise'])->name('routines.delete.exercise');
     Route::post('Routines/create', [RoutineController::class, 'createRoutine'])->name('routines.create');
+    Route::get('Dashboard',[DashboardController::class,'index'])->name('dashboard');
 });
 
 Route::get('IndexExercises',[ExerciseController::class,'index'])->name('exercises.index');
-
-Route::get('/dashboard', function () {
-    return Inertia::render('profile/pages/Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
