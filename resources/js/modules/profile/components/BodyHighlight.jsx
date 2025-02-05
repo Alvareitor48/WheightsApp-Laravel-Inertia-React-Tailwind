@@ -70,10 +70,11 @@ const BodyHighlight = ({ data }) => {
                     preserveState: true,
                     preserveScroll: true,
                     replace: true,
-                    only: ["exercisesForMuscle"],
+                    only: ["exercisesForMuscle", "logsMaxWeights"],
                     onSuccess: (page) => {
                         setExercisesForMuscle(page.props.exercisesForMuscle);
-                        //setMaxWeightsStats(page.props.maxWeightsStats);
+                        console.log(page.props.logsMaxWeights);
+                        setMaxWeightsStats(page.props.logsMaxWeights);
                         setLoadingForMuscle(false);
                     },
                 }

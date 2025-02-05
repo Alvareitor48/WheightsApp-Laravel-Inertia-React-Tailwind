@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 
 const MaxWeights = ({ stats }) => {
-    const { mainMuscle } = useDashboard();
+    const { mainMuscle, maxWeightsStats, loadingForMuscle } = useDashboard();
     const statsRef = useRef(null);
     const scroll = (direction) => {
         if (statsRef.current) {
@@ -66,16 +66,58 @@ const MaxWeights = ({ stats }) => {
                         <div className="overflow-hidden">
                             <m.div
                                 ref={statsRef}
-                                className="grid grid-flow-col auto-cols-[150px] sm:auto-cols-[180px] md:auto-cols-[200px] lg:auto-cols-[220px] xl:auto-cols-[250px] gap-4 overflow-x-auto scrollbar-hide pb-4"
+                                className={`${
+                                    maxWeightsStats.length > 0
+                                        ? "grid grid-flow-col auto-cols-[150px] sm:auto-cols-[180px] md:auto-cols-[200px] lg:auto-cols-[220px] xl:auto-cols-[250px] gap-4"
+                                        : loadingForMuscle ?? ""
+                                } overflow-x-auto scrollbar-hide pb-4`}
                                 style={{
                                     scrollBehavior: "smooth",
                                     WebkitOverflowScrolling: "touch",
                                 }}
                             >
                                 <AnimatePresence>
-                                    {stats.map((stat, index) => (
+                                    {loadingForMuscle ? (
+                                        <h4 className="text-responsive-h4 mb-4">
+                                            Cargando ejercicios...
+                                        </h4>
+                                    ) : maxWeightsStats.length > 0 ? (
+                                        maxWeightsStats.map((stat, index) => (
+                                            <m.div
+                                                key={`${stat}-${index}`}
+                                                initial={{
+                                                    opacity: 0,
+                                                    scale: 0.8,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    scale: 1,
+                                                }}
+                                                exit={{
+                                                    opacity: 0,
+                                                    scale: 0.8,
+                                                }}
+                                                transition={{
+                                                    delay: index * 0.1,
+                                                }}
+                                                className="h-[240px] sm:h-[240px] xl:h-[280px] bg-white/5 border border-white/10 rounded-lg p-4 flex flex-col items-center justify-center"
+                                            >
+                                                <h3 className="text-responsive-select mb-2 sm:mb-3">
+                                                    {stat.exercise}
+                                                </h3>
+                                                <h4 className="text-responsive-select mb-2 sm:mb-3">
+                                                    {stat.date}
+                                                </h4>
+                                                <p className="text-responsive-select font-bold">
+                                                    {stat.weight +
+                                                        " kg x " +
+                                                        stat.repetitions +
+                                                        " repeticiones"}
+                                                </p>
+                                            </m.div>
+                                        ))
+                                    ) : (
                                         <m.div
-                                            key={`${stat}-${index}`}
                                             initial={{
                                                 opacity: 0,
                                                 scale: 0.8,
@@ -88,22 +130,15 @@ const MaxWeights = ({ stats }) => {
                                                 opacity: 0,
                                                 scale: 0.8,
                                             }}
-                                            transition={{
-                                                delay: index * 0.1,
-                                            }}
-                                            className="h-[100px] sm:h-[120px] md:h-[140px] lg:h-[160px] xl:h-[180px] bg-white/5 border border-white/10 rounded-lg p-4 flex flex-col items-center justify-center"
+                                            className="w-full"
                                         >
-                                            <h3 className="text-responsive-h4 mb-2 sm:mb-3">
-                                                {stat.title}
-                                            </h3>
-                                            <p className="text-responsive-select font-bold">
-                                                {stat.weight +
-                                                    " x " +
-                                                    stat.repetitions +
-                                                    " reps"}
-                                            </p>
+                                            <h4 className="text-responsive-h4 mb-4">
+                                                No has hecho ejercicios de{" "}
+                                                {translateExercise(mainMuscle)}{" "}
+                                                en tu vida
+                                            </h4>
                                         </m.div>
-                                    ))}
+                                    )}
                                 </AnimatePresence>
                             </m.div>
                         </div>

@@ -5,7 +5,7 @@ const DashboardContext = createContext();
 export const DashboardProvider = ({ children, sessions }) => {
     const [mainMuscle, setMainMuscle] = useState("");
     const [bodyHighlightData, setBodyHighlightData] = useState(null);
-    const [maxWeightsStats, setMaxWeightsStats] = useState(null);
+    const [maxWeightsStats, setMaxWeightsStats] = useState([]);
     const [exercisesForMuscle, setExercisesForMuscle] = useState([]);
     const [calendarDay, setCalendarDay] = useState("");
     const [loadingForMuscle, setLoadingForMuscle] = useState(false);

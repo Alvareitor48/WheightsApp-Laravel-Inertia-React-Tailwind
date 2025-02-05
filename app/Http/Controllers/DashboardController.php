@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ExerciseLogByExercisesResource;
+use App\Http\Resources\MaxLogResource;
 use App\Http\Resources\SessionsForCalendarResource;
 use App\Models\ExerciseLog;
 use App\Models\Muscle;
@@ -26,12 +27,13 @@ class DashboardController extends Controller
 
         return Inertia::render('profile/pages/Dashboard',[
             'sessions'=>SessionsForCalendarResource::collection($sessions)->toArray(request()),
-            'exercisesForMuscle' => session('exercisesForMuscle') ?? []
+            'exercisesForMuscle' => session('exercisesForMuscle') ?? [],
+            'logsMaxWeights' => session('logsMaxWeights') ?? []
         ]);
     }
 
     public function exercisesByMuscle($muscleName){
-        $today = Carbon::now()->endOfDay();;
+        $today = Carbon::now()->endOfDay();
         $previousMonth = Carbon::now()->subWeek()->startOfDay();
         $muscle = Muscle::query()->where('name',$muscleName)->firstOrFail();
         $exerciseLogs = ExerciseLog::query()
@@ -53,6 +55,24 @@ class DashboardController extends Controller
         foreach ($groupedByDate as $logs) {
             $finalLogs[] = (new ExerciseLogByExercisesResource($logs))->toArray(request());
         }
-        return redirect()->route('dashboard')->with('exercisesForMuscle', $finalLogs);
+
+        $logsMaxWeights = ExerciseLog::query()
+            ->whereHas('routine_session', function ($query) use ($previousMonth, $today) {
+                $query->where('user_id', auth()->id());
+            })
+            ->whereHas('exercise.muscles', function ($query) use ($muscle){
+                $query->where('muscles.id',$muscle->id);
+            })
+            ->with(['exercise:id,name', 'routine_session:id,completed_at'])
+            ->get()
+            ->groupBy('exercise.name')
+            ->map(function ($logs) {
+                $maxLog = $logs->sortByDesc(function ($log) {
+                    return $log->weight * $log->repetitions;
+                })->first();
+                return (new MaxLogResource($maxLog))->toArray(request());
+            })
+            ->values();
+        return redirect()->route('dashboard')->with('exercisesForMuscle', $finalLogs)->with('logsMaxWeights', $logsMaxWeights);
     }
 }
