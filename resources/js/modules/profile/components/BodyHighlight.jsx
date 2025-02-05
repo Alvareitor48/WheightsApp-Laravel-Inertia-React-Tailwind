@@ -1,9 +1,11 @@
 import { m } from "motion/react";
 import Model from "react-body-highlighter";
 import { useState } from "react";
+import { useDashboard } from "../contexts/dashboardContext";
 
-const BodyHighlight = ({ data, setMainMuscle }) => {
+const BodyHighlight = ({ data }) => {
     const [isFront, setIsFront] = useState(true);
+    const { setMainMuscle } = useDashboard();
     const handleClick = ({ muscle, data }) => {
         const { exercises, frequency } = data;
 

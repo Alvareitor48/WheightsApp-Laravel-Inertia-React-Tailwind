@@ -1,6 +1,8 @@
 import Calendar from "react-calendar";
+import { useDashboard } from "../contexts/dashboardContext";
 
-const RoutinesCalendar = ({ sessions, setCalendarDay }) => {
+const RoutinesCalendar = () => {
+    const { sessions, setCalendarDay } = useDashboard();
     const today = new Date();
     const lastMonth = new Date(
         today.getFullYear(),
