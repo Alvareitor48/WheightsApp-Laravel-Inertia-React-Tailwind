@@ -21,6 +21,12 @@ class DashboardController extends Controller
             ->with('routine')
             ->get();
 
-        return Inertia::render('profile/pages/Dashboard',['sessions'=>SessionsForCalendarResource::collection($sessions)->toArray(request())]);
+        return Inertia::render('profile/pages/Dashboard',[
+            'sessions'=>SessionsForCalendarResource::collection($sessions)->toArray(request()),
+        ]);
+    }
+
+    public function exercisesByMuscle($muscleName){
+        dd();
     }
 }

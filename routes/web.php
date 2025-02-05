@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function(){
     Route::delete('DeleteExercise/{routineId}/', [RoutineController::class, 'deleteExercise'])->name('routines.delete.exercise');
     Route::post('Routines/create', [RoutineController::class, 'createRoutine'])->name('routines.create');
     Route::get('Dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::get('/exercises-by-muscle/{muscleName}', [DashboardController::class, 'exercisesByMuscle'])->name('exercises.by.muscle');
 });
 
 Route::get('IndexExercises',[ExerciseController::class,'index'])->name('exercises.index');
