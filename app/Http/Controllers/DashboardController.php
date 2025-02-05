@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BodyHighLightDataResource;
 use App\Http\Resources\ExerciseLogByExercisesResource;
 use App\Http\Resources\MaxLogResource;
 use App\Http\Resources\SessionsForCalendarResource;
@@ -18,6 +19,7 @@ class DashboardController extends Controller
     {
         $today = Carbon::now()->endOfDay();
         $previousMonth = Carbon::now()->subMonth()->startOfDay();
+        $previousWeek = Carbon::now()->subWeek()->startOfDay();
         $sessions = RoutineSession::query()
             ->where('user_id',auth()->id())
             ->whereDate('completed_at', '>=', $previousMonth)
@@ -25,8 +27,18 @@ class DashboardController extends Controller
             ->with('routine')
             ->get();
 
+        $exerciseLogs = ExerciseLog::query()
+            ->whereHas('routine_session', function ($query) use ($previousWeek, $today) {
+                $query->where('user_id', auth()->id())
+                    ->whereBetween('completed_at', [$previousWeek, $today]);
+            })->with('exercise:id,name')
+            ->get()
+            ->groupBy('exercise.name')
+            ->values();
+
         return Inertia::render('profile/pages/Dashboard',[
             'sessions'=>SessionsForCalendarResource::collection($sessions)->toArray(request()),
+            'bodyHighLightData'=> BodyHighLightDataResource::collection($exerciseLogs)->toArray(request()),
             'exercisesForMuscle' => session('exercisesForMuscle') ?? [],
             'logsMaxWeights' => session('logsMaxWeights') ?? []
         ]);
@@ -34,12 +46,12 @@ class DashboardController extends Controller
 
     public function exercisesByMuscle($muscleName){
         $today = Carbon::now()->endOfDay();
-        $previousMonth = Carbon::now()->subWeek()->startOfDay();
+        $previousWeek = Carbon::now()->subWeek()->startOfDay();
         $muscle = Muscle::query()->where('name',$muscleName)->firstOrFail();
         $exerciseLogs = ExerciseLog::query()
-            ->whereHas('routine_session', function ($query) use ($previousMonth, $today) {
+            ->whereHas('routine_session', function ($query) use ($previousWeek, $today) {
                 $query->where('user_id', auth()->id())
-                ->whereBetween('completed_at', [$previousMonth, $today]);
+                ->whereBetween('completed_at', [$previousWeek, $today]);
             })
             ->whereHas('exercise.muscles', function ($query) use ($muscle) {
                 $query->where('muscles.id', $muscle->id);
@@ -57,7 +69,7 @@ class DashboardController extends Controller
         }
 
         $logsMaxWeights = ExerciseLog::query()
-            ->whereHas('routine_session', function ($query) use ($previousMonth, $today) {
+            ->whereHas('routine_session', function ($query) use ($previousWeek, $today) {
                 $query->where('user_id', auth()->id());
             })
             ->whereHas('exercise.muscles', function ($query) use ($muscle){
