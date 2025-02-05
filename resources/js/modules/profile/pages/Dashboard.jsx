@@ -5,19 +5,9 @@ import BodyHighlight from "../components/BodyHighlight";
 import RoutinesCalendar from "../components/RoutinesCalendar";
 import MaxWeights from "../components/MaxWeights";
 import ExercisesForMuscle from "../components/ExercisesForMuscle";
-export default function Dashboard() {
+export default function Dashboard({ sessions }) {
     const [mainMuscle, setMainMuscle] = useState("");
     const [calendarDay, setCalendarDay] = useState(null);
-    const sessions = [
-        {
-            id: 1,
-            date: "2025-02-01",
-        },
-        {
-            id: 2,
-            date: "2025-02-09",
-        },
-    ];
     const data = [
         {
             name: "Press Banca",
@@ -227,15 +217,26 @@ export default function Dashboard() {
                                 </p>
                             </m.div>
                         ) : (
-                            <m.div
-                                className="bg-white/5 p-2 rounded-lg text-responsive-select"
-                                whileHover={{
-                                    backgroundColor: "#8F3985",
-                                    scale: 1.1,
-                                }}
-                            >
-                                {calendarDay}
-                            </m.div>
+                            sessions
+                                .filter(
+                                    (session) => session.date === calendarDay
+                                )
+                                .map((session, index) => (
+                                    <m.div
+                                        key={index}
+                                        className="bg-white/5 backdrop-blur-lg p-2 rounded-lg my-3 text-responsive-select"
+                                    >
+                                        {session.name}
+                                        <m.button
+                                            className="mx-3 bg-lilaPrincipal p-2 rounded-lg text-responsive-select"
+                                            whileHover={{
+                                                scale: 1.1,
+                                            }}
+                                        >
+                                            Ver dia
+                                        </m.button>
+                                    </m.div>
+                                ))
                         )}
                     </m.div>
                 </div>
