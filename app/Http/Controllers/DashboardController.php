@@ -15,8 +15,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $today = Carbon::now()->toDateString();
-        $previousMonth = Carbon::now()->subMonth()->toDateString();
+        $today = Carbon::now()->endOfDay();
+        $previousMonth = Carbon::now()->subMonth()->startOfDay();
         $sessions = RoutineSession::query()
             ->where('user_id',auth()->id())
             ->whereDate('completed_at', '>=', $previousMonth)
@@ -31,8 +31,8 @@ class DashboardController extends Controller
     }
 
     public function exercisesByMuscle($muscleName){
-        $today = Carbon::now()->toDateString();
-        $previousMonth = Carbon::now()->subWeek()->toDateString();
+        $today = Carbon::now()->endOfDay();;
+        $previousMonth = Carbon::now()->subWeek()->startOfDay();
         $muscle = Muscle::query()->where('name',$muscleName)->firstOrFail();
         $exerciseLogs = ExerciseLog::query()
             ->whereHas('routine_session', function ($query) use ($previousMonth, $today) {
