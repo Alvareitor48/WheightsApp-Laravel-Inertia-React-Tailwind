@@ -6,8 +6,9 @@ export const DashboardProvider = ({ children, sessions }) => {
     const [mainMuscle, setMainMuscle] = useState("");
     const [bodyHighlightData, setBodyHighlightData] = useState(null);
     const [maxWeightsStats, setMaxWeightsStats] = useState(null);
-    const [exercisesForMuscle, setExercisesForMuscle] = useState(null);
+    const [exercisesForMuscle, setExercisesForMuscle] = useState([]);
     const [calendarDay, setCalendarDay] = useState("");
+    const [loadingForMuscle, setLoadingForMuscle] = useState(false);
     return (
         <DashboardContext.Provider
             value={{
@@ -22,6 +23,8 @@ export const DashboardProvider = ({ children, sessions }) => {
                 setExercisesForMuscle,
                 calendarDay,
                 setCalendarDay,
+                loadingForMuscle,
+                setLoadingForMuscle,
             }}
         >
             {children}

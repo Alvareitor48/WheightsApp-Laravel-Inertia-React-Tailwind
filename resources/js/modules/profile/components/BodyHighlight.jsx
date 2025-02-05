@@ -6,8 +6,12 @@ import { router } from "@inertiajs/react";
 
 const BodyHighlight = ({ data }) => {
     const [isFront, setIsFront] = useState(true);
-    const { setMainMuscle, setExercisesForMuscle, setMaxWeightsStats } =
-        useDashboard();
+    const {
+        setMainMuscle,
+        setExercisesForMuscle,
+        setMaxWeightsStats,
+        setLoadingForMuscle,
+    } = useDashboard();
     const translateExercise = (muscle) => {
         switch (muscle) {
             case "trapezius":
@@ -58,6 +62,7 @@ const BodyHighlight = ({ data }) => {
             );*/
         if (!(muscle === "head" || muscle === "neck" || muscle === "knees")) {
             setMainMuscle(muscle);
+            setLoadingForMuscle(true);
             router.get(
                 route("exercises.by.muscle", translateExercise(muscle)),
                 {},
@@ -69,6 +74,7 @@ const BodyHighlight = ({ data }) => {
                     onSuccess: (page) => {
                         setExercisesForMuscle(page.props.exercisesForMuscle);
                         //setMaxWeightsStats(page.props.maxWeightsStats);
+                        setLoadingForMuscle(false);
                     },
                 }
             );
