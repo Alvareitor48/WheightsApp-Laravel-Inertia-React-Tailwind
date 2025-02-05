@@ -8,119 +8,6 @@ import ExercisesForMuscle from "../components/ExercisesForMuscle";
 import { useDashboard } from "../contexts/dashboardContext";
 export const DashboardMain = () => {
     const { calendarDay, sessions } = useDashboard();
-    const data = [
-        {
-            name: "Press Banca",
-            muscles: ["chest", "triceps", "front-deltoids"],
-            frequency: 4,
-        },
-        {
-            name: "Crunch abdominal",
-            muscles: ["abs"],
-            frequency: 3,
-        },
-        {
-            name: "Remo en T",
-            muscles: ["upper-back", "biceps"],
-            frequency: 8,
-        },
-    ];
-    const stats = [
-        {
-            title: "Tijeras",
-            weight: "120kg",
-            repetitions: "10",
-        },
-        {
-            title: "Tijeras",
-            weight: "130kg",
-            repetitions: "10",
-        },
-        {
-            title: "Tijeras",
-            weight: "110kg",
-            repetitions: "10",
-        },
-        {
-            title: "Tijeras",
-            weight: "70kg",
-            repetitions: "10",
-        },
-        {
-            title: "Tijeras",
-            weight: "50kg",
-            repetitions: "10",
-        },
-        {
-            title: "Tijeras",
-            weight: "20kg",
-            repetitions: "10",
-        },
-        {
-            title: "Tijeras",
-            weight: "50kg",
-            repetitions: "10",
-        },
-    ];
-
-    const exercises = [
-        {
-            name: "Press Banca",
-            series: [
-                {
-                    weight: "120kg",
-                    repetitions: 10,
-                },
-                {
-                    weight: "130kg",
-                    repetitions: 10,
-                },
-                {
-                    weight: "110kg",
-                    repetitions: 10,
-                },
-                {
-                    weight: "70kg",
-                    repetitions: 10,
-                },
-                {
-                    weight: "120kg",
-                    repetitions: 10,
-                },
-            ],
-        },
-        {
-            name: "Crunch abdominal",
-            series: [
-                {
-                    weight: "10kg",
-                    repetitions: 10,
-                },
-                {
-                    weight: "10kg",
-                    repetitions: 10,
-                },
-            ],
-        },
-        {
-            name: "Remo en T",
-            series: [
-                {
-                    weight: "120kg",
-                    repetitions: 10,
-                },
-                {
-                    weight: "130kg",
-                    repetitions: 10,
-                },
-                {
-                    weight: "110kg",
-                    repetitions: 10,
-                },
-            ],
-        },
-    ];
-
     return (
         <m.div
             initial={{ opacity: 0 }}
@@ -160,7 +47,7 @@ export const DashboardMain = () => {
                     transition={{ delay: 0.3 }}
                     className="bg-white/5 border border-white/10 rounded-lg p-4 md:col-span-2 lg:col-span-1 lg:row-span-2"
                 >
-                    <BodyHighlight data={data}></BodyHighlight>
+                    <BodyHighlight />
                 </m.div>
                 {/* Pesos maximos por musculo */}
                 <m.div
@@ -169,7 +56,7 @@ export const DashboardMain = () => {
                     transition={{ delay: 0.4 }}
                     className="md:col-span-2"
                 >
-                    <MaxWeights stats={stats}></MaxWeights>
+                    <MaxWeights />
                 </m.div>
 
                 {/* Ejercicios por musculo */}
@@ -179,9 +66,7 @@ export const DashboardMain = () => {
                     transition={{ delay: 0.5 }}
                     className="bg-white/5 border border-white/10 rounded-lg p-4"
                 >
-                    <ExercisesForMuscle
-                        exercises={exercises}
-                    ></ExercisesForMuscle>
+                    <ExercisesForMuscle />
                 </m.div>
 
                 {/* Calendario */}
@@ -191,7 +76,7 @@ export const DashboardMain = () => {
                     transition={{ delay: 0.6 }}
                     className="bg-white/5 border border-white/10 rounded-lg p-4 relative"
                 >
-                    <RoutinesCalendar></RoutinesCalendar>
+                    <RoutinesCalendar />
                     {calendarDay === "" ? (
                         <m.div className="rounded-lg bg-white/5 p-2">
                             <p className="text-center text-gray-400 text-responsive-select">

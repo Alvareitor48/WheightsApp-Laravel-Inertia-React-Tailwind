@@ -2,7 +2,7 @@ import { AnimatePresence, m } from "motion/react";
 import { useRef } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 
-const MaxWeights = ({ stats }) => {
+const MaxWeights = () => {
     const { mainMuscle, maxWeightsStats, loadingForMuscle } = useDashboard();
     const statsRef = useRef(null);
     const scroll = (direction) => {

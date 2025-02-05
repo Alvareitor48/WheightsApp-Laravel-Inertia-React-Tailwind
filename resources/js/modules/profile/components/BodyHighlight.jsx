@@ -4,13 +4,14 @@ import { useState } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 import { router } from "@inertiajs/react";
 
-const BodyHighlight = ({ data }) => {
+const BodyHighlight = () => {
     const [isFront, setIsFront] = useState(true);
     const {
         setMainMuscle,
         setExercisesForMuscle,
         setMaxWeightsStats,
         setLoadingForMuscle,
+        bodyHighLightData,
     } = useDashboard();
     const translateExercise = (muscle) => {
         switch (muscle) {
@@ -89,7 +90,7 @@ const BodyHighlight = ({ data }) => {
             <div className="flex justify-center relative items-center min-h-[200px] sm:min-h-[300px] md:min-h-[400px] xl:min-h-[500px]">
                 {isFront ? (
                     <Model
-                        data={data}
+                        data={bodyHighLightData}
                         style={{
                             margin: "3em",
                             minWidth: "100px",
@@ -105,7 +106,7 @@ const BodyHighlight = ({ data }) => {
                     />
                 ) : (
                     <Model
-                        data={data}
+                        data={bodyHighLightData}
                         style={{
                             margin: "3em",
                             minWidth: "100px",

@@ -1,7 +1,7 @@
 import { AnimatePresence, m } from "motion/react";
 import { useRef } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
-const ExercisesForMuscle = ({ exercises }) => {
+const ExercisesForMuscle = () => {
     const { mainMuscle, exercisesForMuscle, loadingForMuscle } = useDashboard();
     const exerciseRef = useRef(null);
     const translateExercise = (muscle) => {

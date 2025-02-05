@@ -7,10 +7,13 @@ import MaxWeights from "../components/MaxWeights";
 import ExercisesForMuscle from "../components/ExercisesForMuscle";
 import { DashboardProvider } from "../contexts/dashboardContext";
 import { DashboardMain } from "../components/DashboardMain";
-export default function Dashboard({ sessions }) {
+export default function Dashboard({ sessions, bodyHighLightData }) {
     return (
         <SimpleLayout>
-            <DashboardProvider sessions={sessions}>
+            <DashboardProvider
+                sessions={sessions}
+                bodyHighLightData={bodyHighLightData}
+            >
                 <DashboardMain></DashboardMain>
             </DashboardProvider>
         </SimpleLayout>
