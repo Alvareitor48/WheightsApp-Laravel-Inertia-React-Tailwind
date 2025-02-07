@@ -1,7 +1,11 @@
 import { usePage } from "@inertiajs/react";
 
-export function Auth({ children }) {
+export function Auth({ children, roles = [] }) {
     const { auth } = usePage().props;
 
-    return auth.user ? <>{children}</> : null;
+    if (!auth.user) return null;
+
+    if (roles.length > 0 && !roles.includes(auth.user.role)) return null;
+
+    return <>{children}</>;
 }
