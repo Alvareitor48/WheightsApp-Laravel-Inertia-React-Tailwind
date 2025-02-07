@@ -16,7 +16,7 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::middleware(['auth', 'role:user'])->group(function(){
+Route::middleware(['auth', 'role:user|premium|admin'])->group(function(){
     Route::get('AdminRoutines/{id}',[RoutineController::class,'show'])->name('AdminRoutines');
     Route::get('IndexRoutines',[RoutineController::class,'index'])->name('IndexRoutines');
     Route::get('UpdateRoutines/{id}/edit', [RoutineController::class, 'edit'])->name('routines.edit');

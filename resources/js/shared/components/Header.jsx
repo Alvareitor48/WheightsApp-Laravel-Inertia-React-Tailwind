@@ -97,6 +97,16 @@ export const Header = () => {
                     >
                         Sobre Nosotros
                     </Link>
+                    <Auth>
+                        <Link
+                            href={route("logout")}
+                            method="post"
+                            as="button"
+                            className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
+                        >
+                            Cerrar Sesión
+                        </Link>
+                    </Auth>
                 </m.div>
             )}
         </header>
