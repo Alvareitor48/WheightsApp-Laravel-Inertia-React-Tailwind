@@ -44,10 +44,21 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function getExercisesByMuscle($muscleName)
+    public function getExercisesByMuscle(Request $request, $muscleName)
     {
         $today = Carbon::now()->endOfDay();
-        $startDate = Carbon::now()->subWeek()->startOfDay();
+        $period = $request->input('period', 'week'); // Por defecto, última semana
+        switch ($period) {
+            case 'month':
+                $startDate = Carbon::now()->subMonth()->startOfDay();
+                break;
+            case 'year':
+                $startDate = Carbon::now()->subYear()->startOfDay();
+                break;
+            default:
+                $startDate = Carbon::now()->subWeek()->startOfDay();
+                break;
+        }
 
         $muscle = Muscle::query()->where('name', $muscleName)->firstOrFail();
 
@@ -75,14 +86,24 @@ class DashboardController extends Controller
             ->with('exercisesForMuscle', $finalLogs);
     }
 
-    public function getMaxWeightsByMuscle($muscleName)
+    public function getMaxWeightsByMuscle(Request $request, $muscleName)
     {
         
         $today = Carbon::now()->endOfDay();
-        $startDate = Carbon::now()->subWeek()->startOfDay();
-
-        $muscle = Muscle::query()->where('name', $muscleName)->firstOrFail();
+        $period = $request->input('period', 'week'); // Por defecto, última semana
         
+        switch ($period) {
+            case 'month':
+                $startDate = Carbon::now()->subMonth()->startOfDay();
+                break;
+            case 'year':
+                $startDate = Carbon::now()->subYear()->startOfDay();
+                break;
+            default:
+                $startDate = Carbon::now()->subWeek()->startOfDay();
+                break;
+        }
+        $muscle = Muscle::query()->where('name', $muscleName)->firstOrFail();
         $logsMaxWeights = ExerciseLog::query()
             ->whereHas('routine_session', function ($query) use ($startDate, $today) {
                 $query->where('user_id', auth()->id());

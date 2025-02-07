@@ -3,8 +3,24 @@ import { useRef } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 
 const MaxWeights = () => {
-    const { mainMuscle, maxWeightsStats, loadingForMuscle } = useDashboard();
+    const {
+        mainMuscle,
+        maxWeightsStats,
+        loadingForMuscle2,
+        weightFilter,
+        setWeightFilter,
+        fetchMaxWeightsByMuscle,
+    } = useDashboard();
+
     const statsRef = useRef(null);
+
+    const handleFilterChange = (e) => {
+        const selectedFilter = e.target.value;
+        setWeightFilter(selectedFilter);
+        if (mainMuscle) {
+            fetchMaxWeightsByMuscle(mainMuscle, selectedFilter);
+        }
+    };
     const scroll = (direction) => {
         if (statsRef.current) {
             const scrollAmount = 200;
@@ -15,6 +31,20 @@ const MaxWeights = () => {
             }
         }
     };
+
+    const translateFilter = (filter) => {
+        switch (filter) {
+            case "week":
+                return "Última semana";
+            case "month":
+                return "Último mes";
+            case "year":
+                return "Último año";
+            default:
+                return filter;
+        }
+    };
+
     const translateExercise = (muscle) => {
         switch (muscle) {
             case "trapezius":
@@ -60,8 +90,19 @@ const MaxWeights = () => {
             {mainMuscle !== "" ? (
                 <>
                     <h2 className="text-responsive-h4 mb-4">
-                        Pesos maximos de {translateExercise(mainMuscle)}
+                        {`Pesos maximos de ${translateExercise(
+                            mainMuscle
+                        )} (${translateFilter(weightFilter)})`}
                     </h2>
+                    <select
+                        value={weightFilter}
+                        onChange={handleFilterChange}
+                        className="mb-4 p-2 rounded bg-black text-white border border-white"
+                    >
+                        <option value="week">Última semana</option>
+                        <option value="month">Último mes</option>
+                        <option value="year">Último año</option>
+                    </select>
                     <div className="relative">
                         <div className="overflow-hidden">
                             <m.div
@@ -69,7 +110,7 @@ const MaxWeights = () => {
                                 className={`${
                                     maxWeightsStats.length > 0
                                         ? "grid grid-flow-col auto-cols-[150px] sm:auto-cols-[180px] md:auto-cols-[200px] lg:auto-cols-[220px] xl:auto-cols-[250px] gap-4"
-                                        : loadingForMuscle ?? ""
+                                        : loadingForMuscle2 ?? ""
                                 } overflow-x-auto scrollbar-hide pb-4`}
                                 style={{
                                     scrollBehavior: "smooth",
@@ -77,7 +118,7 @@ const MaxWeights = () => {
                                 }}
                             >
                                 <AnimatePresence>
-                                    {loadingForMuscle ? (
+                                    {loadingForMuscle2 ? (
                                         <h4 className="text-responsive-h4 mb-4">
                                             Cargando ejercicios...
                                         </h4>
