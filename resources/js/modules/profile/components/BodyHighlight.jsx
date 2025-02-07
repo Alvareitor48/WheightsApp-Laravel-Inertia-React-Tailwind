@@ -3,6 +3,7 @@ import Model from "react-body-highlighter";
 import { useState } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 import { router } from "@inertiajs/react";
+import handleTranslates from "../functions/handleTranslates";
 
 const BodyHighlight = () => {
     const [isFront, setIsFront] = useState(true);
@@ -14,46 +15,9 @@ const BodyHighlight = () => {
         bodyHighLightData,
         setLoadingForMuscle2,
     } = useDashboard();
-    const translateExercise = (muscle) => {
-        switch (muscle) {
-            case "trapezius":
-                return "Espalda Alta y Trapecio";
-            case "upper-back":
-                return "Dorsales";
-            case "lower-back":
-                return "Espalda Baja";
-            case "chest":
-                return "Pecho";
-            case "biceps":
-                return "Bíceps";
-            case "triceps":
-                return "Tríceps";
-            case "forearm":
-                return "Antebrazos";
-            case "back-deltoids":
-                return "Deltoides Posterior";
-            case "front-deltoids":
-                return "Deltoides Frontal";
-            case "abs":
-                return "Abdominales";
-            case "obliques":
-                return "Oblicuos";
-            case "adductor":
-                return "Aductores";
-            case "hamstring":
-                return "Femoral";
-            case "quadriceps":
-                return "Cuádriceps";
-            case "abductors":
-                return "Abductores";
-            case "calves":
-                return "Gemelos";
-            case "gluteal":
-                return "Glúteo";
-            default:
-                return muscle;
-        }
-    };
+
+    const { translateExercise } = handleTranslates;
+
     const handleClick = ({ muscle, data }) => {
         const { exercises, frequency } = data;
 

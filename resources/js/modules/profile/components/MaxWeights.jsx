@@ -1,6 +1,7 @@
 import { AnimatePresence, m } from "motion/react";
 import { useRef } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
+import handleTranslates from "../functions/handleTranslates";
 
 const MaxWeights = () => {
     const {
@@ -11,6 +12,8 @@ const MaxWeights = () => {
         setWeightFilter,
         fetchMaxWeightsByMuscle,
     } = useDashboard();
+
+    const { translateExercise, translateFilter } = handleTranslates;
 
     const statsRef = useRef(null);
 
@@ -32,59 +35,6 @@ const MaxWeights = () => {
         }
     };
 
-    const translateFilter = (filter) => {
-        switch (filter) {
-            case "week":
-                return "Última semana";
-            case "month":
-                return "Último mes";
-            case "year":
-                return "Último año";
-            default:
-                return filter;
-        }
-    };
-
-    const translateExercise = (muscle) => {
-        switch (muscle) {
-            case "trapezius":
-                return "trapecio";
-            case "upper-back":
-                return "espalda alta";
-            case "lower-back":
-                return "espalda baja";
-            case "chest":
-                return "pecho";
-            case "biceps":
-                return "bíceps";
-            case "triceps":
-                return "tríceps";
-            case "forearm":
-                return "antebrazo";
-            case "back-deltoids":
-                return "deltoides posteriores";
-            case "front-deltoids":
-                return "deltoides frontales";
-            case "abs":
-                return "abdominales";
-            case "obliques":
-                return "oblicuos";
-            case "adductor":
-                return "aductor";
-            case "hamstring":
-                return "isquiotibiales";
-            case "quadriceps":
-                return "cuádriceps";
-            case "abductors":
-                return "abductores";
-            case "calves":
-                return "gemelos";
-            case "gluteal":
-                return "glúteos";
-            default:
-                return muscle;
-        }
-    };
     return (
         <>
             {mainMuscle !== "" ? (
