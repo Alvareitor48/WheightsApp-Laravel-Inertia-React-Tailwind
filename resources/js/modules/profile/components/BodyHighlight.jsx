@@ -12,6 +12,7 @@ const BodyHighlight = () => {
         setMaxWeightsStats,
         setLoadingForMuscle,
         bodyHighLightData,
+        setLoadingForMuscle2,
     } = useDashboard();
     const translateExercise = (muscle) => {
         switch (muscle) {
@@ -64,6 +65,7 @@ const BodyHighlight = () => {
         if (!(muscle === "head" || muscle === "neck" || muscle === "knees")) {
             setMainMuscle(muscle);
             setLoadingForMuscle(true);
+            setLoadingForMuscle2(true);
             router.get(
                 route("exercises.by.muscle", translateExercise(muscle)),
                 {},
@@ -71,13 +73,32 @@ const BodyHighlight = () => {
                     preserveState: true,
                     preserveScroll: true,
                     replace: true,
-                    only: ["exercisesForMuscle", "logsMaxWeights"],
+                    only: ["exercisesForMuscle"],
                     onSuccess: (page) => {
                         setExercisesForMuscle(page.props.exercisesForMuscle);
-                        console.log(page.props.logsMaxWeights);
-                        setMaxWeightsStats(page.props.logsMaxWeights);
                         setLoadingForMuscle(false);
+                        router.get(
+                            route(
+                                "max.weights.by.muscle",
+                                translateExercise(muscle)
+                            ),
+                            {},
+                            {
+                                preserveState: true,
+                                preserveScroll: true,
+                                replace: true,
+                                only: ["logsMaxWeights"],
+                                onSuccess: (page) => {
+                                    setMaxWeightsStats(
+                                        page.props.logsMaxWeights
+                                    );
+                                    setLoadingForMuscle2(false);
+                                },
+                                onError: () => setLoadingForMuscle2(false),
+                            }
+                        );
                     },
+                    onError: () => setLoadingForMuscle(false),
                 }
             );
         }
