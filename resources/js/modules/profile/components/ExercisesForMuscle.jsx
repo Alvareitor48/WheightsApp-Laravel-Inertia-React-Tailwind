@@ -2,6 +2,8 @@ import { AnimatePresence, m } from "motion/react";
 import { useRef } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 import handleTranslates from "../functions/handleTranslates";
+import { SubscriptionPopUp } from "./SubscriptionPopUp";
+import { usePremiumOrAdminCheck } from "../hooks/usePremiumOrAdminCheck";
 const ExercisesForMuscle = () => {
     const {
         mainMuscle,
@@ -16,11 +18,20 @@ const ExercisesForMuscle = () => {
 
     const exerciseRef = useRef(null);
 
+    const { isPopUpOpen, setIsPopUpOpen, isPremium } = usePremiumOrAdminCheck();
+
     const handleFilterChange = (e) => {
         const selectedFilter = e.target.value;
-        setExerciseFilter(selectedFilter);
-        if (mainMuscle) {
-            fetchExercisesByMuscle(mainMuscle, selectedFilter);
+        if (
+            !isPremium &&
+            (selectedFilter === "month" || selectedFilter === "year")
+        ) {
+            setIsPopUpOpen(true);
+        } else {
+            setExerciseFilter(selectedFilter);
+            if (mainMuscle) {
+                fetchExercisesByMuscle(mainMuscle, selectedFilter);
+            }
         }
     };
 
@@ -138,6 +149,10 @@ const ExercisesForMuscle = () => {
                     </p>
                 </>
             )}
+            <SubscriptionPopUp
+                isOpen={isPopUpOpen}
+                onClose={() => setIsPopUpOpen(false)}
+            />
         </>
     );
 };

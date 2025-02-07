@@ -2,6 +2,8 @@ import { AnimatePresence, m } from "motion/react";
 import { useRef } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 import handleTranslates from "../functions/handleTranslates";
+import { SubscriptionPopUp } from "./SubscriptionPopUp";
+import { usePremiumOrAdminCheck } from "../hooks/usePremiumOrAdminCheck";
 
 const MaxWeights = () => {
     const {
@@ -17,11 +19,20 @@ const MaxWeights = () => {
 
     const statsRef = useRef(null);
 
+    const { isPopUpOpen, setIsPopUpOpen, isPremium } = usePremiumOrAdminCheck();
+
     const handleFilterChange = (e) => {
         const selectedFilter = e.target.value;
-        setWeightFilter(selectedFilter);
-        if (mainMuscle) {
-            fetchMaxWeightsByMuscle(mainMuscle, selectedFilter);
+        if (
+            !isPremium &&
+            (selectedFilter === "month" || selectedFilter === "year")
+        ) {
+            setIsPopUpOpen(true);
+        } else {
+            setWeightFilter(selectedFilter);
+            if (mainMuscle) {
+                fetchMaxWeightsByMuscle(mainMuscle, selectedFilter);
+            }
         }
     };
     const scroll = (direction) => {
@@ -185,6 +196,10 @@ const MaxWeights = () => {
                     </p>
                 </>
             )}
+            <SubscriptionPopUp
+                isOpen={isPopUpOpen}
+                onClose={() => setIsPopUpOpen(false)}
+            />
         </>
     );
 };
