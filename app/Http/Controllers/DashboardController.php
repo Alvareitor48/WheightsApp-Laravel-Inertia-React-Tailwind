@@ -119,7 +119,10 @@ class DashboardController extends Controller
                 $maxLog = $logs->sortByDesc(function ($log) {
                     return $log->weight * $log->repetitions;
                 })->first();
-                return (new MaxLogResource($maxLog))->toArray(request());
+                $minLog = $logs->sortBy(function ($log) {
+                    return $log->weight * $log->repetitions;
+                })->first();
+                return (new MaxLogResource($maxLog,$minLog))->toArray(request());
             })
             ->values();
 

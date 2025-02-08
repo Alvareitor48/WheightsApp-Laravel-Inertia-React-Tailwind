@@ -51,7 +51,7 @@ const MaxWeights = () => {
             {mainMuscle !== "" ? (
                 <>
                     <h2 className="text-responsive-h4 mb-4">
-                        {`Pesos maximos de ${translateExercise(
+                        {`Pesos maximos y minimos de ${translateExercise(
                             mainMuscle
                         )} (${translateFilter(weightFilter)})`}
                     </h2>
@@ -84,40 +84,54 @@ const MaxWeights = () => {
                                             Cargando ejercicios...
                                         </h4>
                                     ) : maxWeightsStats.length > 0 ? (
-                                        maxWeightsStats.map((stat, index) => (
-                                            <m.div
-                                                key={`${stat}-${index}`}
-                                                initial={{
-                                                    opacity: 0,
-                                                    scale: 0.8,
-                                                }}
-                                                animate={{
-                                                    opacity: 1,
-                                                    scale: 1,
-                                                }}
-                                                exit={{
-                                                    opacity: 0,
-                                                    scale: 0.8,
-                                                }}
-                                                transition={{
-                                                    delay: index * 0.1,
-                                                }}
-                                                className="h-[240px] sm:h-[240px] xl:h-[280px] bg-white/5 border border-white/10 rounded-lg p-4 flex flex-col items-center justify-center"
-                                            >
-                                                <h3 className="text-responsive-select mb-2 sm:mb-3">
-                                                    {stat.exercise}
-                                                </h3>
-                                                <h4 className="text-responsive-select mb-2 sm:mb-3">
-                                                    {stat.date}
-                                                </h4>
-                                                <p className="text-responsive-select font-bold">
-                                                    {stat.weight +
-                                                        " kg x " +
-                                                        stat.repetitions +
-                                                        " repeticiones"}
-                                                </p>
-                                            </m.div>
-                                        ))
+                                        maxWeightsStats.map((stat, index) => {
+                                            console.log(stat);
+                                            return (
+                                                <m.div
+                                                    key={`${stat}-${index}`}
+                                                    initial={{
+                                                        opacity: 0,
+                                                        scale: 0.8,
+                                                    }}
+                                                    animate={{
+                                                        opacity: 1,
+                                                        scale: 1,
+                                                    }}
+                                                    exit={{
+                                                        opacity: 0,
+                                                        scale: 0.8,
+                                                    }}
+                                                    transition={{
+                                                        delay: index * 0.1,
+                                                    }}
+                                                    className="h-[240px] sm:h-[240px] xl:h-[280px] bg-white/5 border border-white/10 rounded-lg p-4 flex flex-col items-center justify-center"
+                                                >
+                                                    <h3 className="text-responsive-select mb-2 sm:mb-3">
+                                                        {stat.max.exercise}
+                                                    </h3>
+                                                    <h4 className="text-responsive-select mb-1 sm:mb-2">
+                                                        Maximo: {stat.max.date}
+                                                    </h4>
+                                                    <p className="text-responsive-select mb-3 font-bold">
+                                                        {stat.max.weight +
+                                                            " kg x " +
+                                                            stat.max
+                                                                .repetitions +
+                                                            " reps"}
+                                                    </p>
+                                                    <h4 className="text-responsive-select mb-1 sm:mb-2">
+                                                        Minimo: {stat.min.date}
+                                                    </h4>
+                                                    <p className="text-responsive-select font-bold">
+                                                        {stat.min.weight +
+                                                            " kg x " +
+                                                            stat.min
+                                                                .repetitions +
+                                                            " reps"}
+                                                    </p>
+                                                </m.div>
+                                            );
+                                        })
                                     ) : (
                                         <m.div
                                             initial={{

@@ -13,13 +13,28 @@ class MaxLogResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+    protected $max;
+    protected $min;
+    public function __construct($max, $min)
+    {
+        $this->max = $max;
+        $this->min = $min;
+    }
     public function toArray(Request $request): array
     {
         return [
-            'exercise' => $this->exercise->name,
-                'weight' => $this->weight,
-                'repetitions' => $this->repetitions,
-                'date' => Carbon::parse($this->routine_session->completed_at)->format('d-m-Y'),
+            'max' => [
+                'exercise' => $this->max->exercise->name,
+                'weight' => $this->max->weight,
+                'repetitions' => $this->max->repetitions,
+                'date' => Carbon::parse($this->max->routine_session->completed_at)->format('d-m-Y')
+            ],
+            'min' => [
+                'exercise' => $this->min->exercise->name,
+                'weight' => $this->min->weight,
+                'repetitions' => $this->min->repetitions,
+                'date' => Carbon::parse($this->min->routine_session->completed_at)->format('d-m-Y')
+            ]
         ];
     }
 }
