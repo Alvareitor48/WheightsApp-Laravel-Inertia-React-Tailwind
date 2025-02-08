@@ -48,7 +48,7 @@ class DashboardController extends Controller
     {
         $today = Carbon::now()->endOfDay();
         $period = $request->input('period', 'month');
-        
+
         switch ($period) {
             case '3months':
                 $startDate = Carbon::now()->subMonths(3)->startOfDay();
@@ -82,17 +82,16 @@ class DashboardController extends Controller
         foreach ($groupedByDate as $logs) {
             $finalLogs[] = (new ExerciseLogByExercisesResource($logs))->toArray(request());
         }
-        
+
         return redirect()->route('dashboard')
             ->with('exercisesForMuscle', $finalLogs);
     }
 
     public function getMaxWeightsByMuscle(Request $request, $muscleName)
     {
-        
         $today = Carbon::now()->endOfDay();
         $period = $request->input('period', 'month');
-        
+
         switch ($period) {
             case '3months':
                 $startDate = Carbon::now()->subMonths(3)->startOfDay();
@@ -107,7 +106,8 @@ class DashboardController extends Controller
         $muscle = Muscle::query()->where('name', $muscleName)->firstOrFail();
         $logsMaxWeights = ExerciseLog::query()
             ->whereHas('routine_session', function ($query) use ($startDate, $today) {
-                $query->where('user_id', auth()->id());
+                $query->where('user_id', auth()->id())
+                ->whereBetween('completed_at', [$startDate, $today]);
             })
             ->whereHas('exercise.muscles', function ($query) use ($muscle) {
                 $query->where('muscles.id', $muscle->id);
@@ -116,13 +116,13 @@ class DashboardController extends Controller
             ->get()
             ->groupBy('exercise.name')
             ->map(function ($logs) {
-                $maxLog = $logs->sortByDesc($maxLog = $logs->sortByDesc(function ($log) {
+                $maxLog = $logs->sortByDesc(function ($log) {
                     return $log->weight * $log->repetitions;
-                }))->first();
+                })->first();
                 return (new MaxLogResource($maxLog))->toArray(request());
             })
             ->values();
-            
+
         return redirect()->route('dashboard')
             ->with('logsMaxWeights', $logsMaxWeights);
     }
