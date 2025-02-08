@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 import handleTranslates from "../functions/handleTranslates";
 import { SubscriptionPopUp } from "./SubscriptionPopUp";
-import { usePremiumOrAdminCheck } from "../hooks/usePremiumOrAdminCheck";
+import { usePremiumOrAdminCheck } from "../../../shared/hooks/usePremiumOrAdminCheck";
 
 const MaxWeights = () => {
     const {
