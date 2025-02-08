@@ -28,7 +28,6 @@ class RoutineController extends Controller
         $routine->update([
             'name' => $data['routine']['name'],
             'description' => $data['routine']['description'],
-            'day' => $data['routine']['day'],
         ]);
 
         $updatedExercises = [];
@@ -230,7 +229,6 @@ public function createRoutine()
         'user_id' => auth()->id(),
         'name' => 'Nueva Rutina',
         'description' => '',
-        'day' => 'Monday',
     ]);
 
     return redirect()->route('routines.edit', ['id' => $routine->id]);

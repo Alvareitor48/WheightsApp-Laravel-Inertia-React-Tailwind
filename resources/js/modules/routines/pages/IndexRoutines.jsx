@@ -24,7 +24,6 @@ export default function IndexRoutines({ routines }) {
                                 key={`${routine.id}.${routine.user_id}`}
                                 id={routine.id}
                                 name={routine.name}
-                                day={routine.day}
                                 description={routine.description}
                             ></IndexRoutine>
                         );

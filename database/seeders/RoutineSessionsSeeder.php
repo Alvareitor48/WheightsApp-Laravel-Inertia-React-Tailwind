@@ -26,7 +26,6 @@ class RoutineSessionsSeeder extends Seeder
                 'user_id' => $user->id,
                 'name' => 'Rutina de prueba',
                 'description' => 'Rutina generada automáticamente para pruebas.',
-                'day' => 'Monday',
             ]);
 
             $exercises = Exercise::inRandomOrder()->limit(2)->get();

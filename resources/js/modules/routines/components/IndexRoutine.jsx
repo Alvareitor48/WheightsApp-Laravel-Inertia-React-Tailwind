@@ -1,6 +1,6 @@
 import { m } from "motion/react";
 import { router } from "@inertiajs/react";
-export function IndexRoutine({ name, day, description, id }) {
+export function IndexRoutine({ name, description, id }) {
     return (
         <>
             <div className="w-responsive-index-width mx-6 my-6">
@@ -9,12 +9,6 @@ export function IndexRoutine({ name, day, description, id }) {
                         <h2 className="text-start text-responsive-index-title font-semibold inline-block break-all">
                             {name}
                         </h2>
-                    </div>
-
-                    <div className="px-2 py-1 w-full text-start border border-gray-300 border-t-0 border-b-0">
-                        <h3 className="text-start text-responsive-index text-gray-400 inline-block break-all">
-                            {day}
-                        </h3>
                     </div>
 
                     <div className="px-2 py-1 w-full text-start border border-gray-300 border-t-0 border-b-0">
