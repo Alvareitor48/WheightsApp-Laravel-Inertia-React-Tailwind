@@ -12,6 +12,7 @@ use App\Models\ExerciseRoutine;
 use App\Models\Routine;
 use App\Models\RoutineSession;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -263,6 +264,14 @@ public function createRoutine()
         session(['stadistics' => $stadistics]);
 
         return redirect()->route('AdminRoutines', ['id' => $request->input('routine_id')]);
+    }
+
+    public function generatePDF($id)
+    {
+        $routineDetails = $this->getRoutineDetails($id);
+        $pdf = Pdf::loadView('pdf.routine', ['routineDetails' => $routineDetails]);
+
+        return $pdf->download("rutina_{$routineDetails['routine']['name']}.pdf");
     }
 
 }

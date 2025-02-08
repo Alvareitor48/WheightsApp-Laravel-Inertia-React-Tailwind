@@ -6,6 +6,7 @@ import Chart from "../components/Chart";
 import { useEffect, useState } from "react";
 import { usePremiumOrAdminCheck } from "@/shared/hooks/usePremiumOrAdminCheck";
 import { SubscriptionPopUp } from "@/modules/profile/components/SubscriptionPopUp";
+import { m } from "motion/react";
 
 export default function RoutineShow({ stadistics }) {
     const { data } = useUpdate();
@@ -70,10 +71,31 @@ export default function RoutineShow({ stadistics }) {
             fetchChart(selectedFilter);
         }
     };
+    const handleExportPDF = () => {
+        if (!isPremium) {
+            setIsPopUpOpen(true);
+        } else {
+            window.open(
+                route("routines.generate.pdf", { routineId: data.routine.id }),
+                "_blank"
+            );
+        }
+    };
     return (
         <>
             <div className="bg-transparent flex flex-col items-center min-h-screen text-white">
                 {/* Título y usuario */}
+                <div className="w-full flex justify-end p-4">
+                    {/* Botón de Exportar PDF */}
+                    <m.button
+                        className="bg-lilaPrincipal text-white text-responsive-select py-1 px-2 rounded-md"
+                        onClick={handleExportPDF}
+                        whileHover={{ backgroundColor: "#8F3985", scale: 1.1 }}
+                    >
+                        Exportar PDF
+                    </m.button>
+                </div>
+
                 <div className="text-center flex flex-col items-center justify-center mb-4 w-2/4">
                     <h1 className="text-responsive-h2 font-semibold break-all">
                         {data.routine.name}
