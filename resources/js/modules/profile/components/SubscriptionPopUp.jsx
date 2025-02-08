@@ -16,8 +16,8 @@ export function SubscriptionPopUp({ isOpen, onClose }) {
                     Acceso Premium Requerido
                 </h2>
                 <p className="text-responsive-p text-white/80 mb-6">
-                    Para acceder a datos más detallados, como el historial
-                    mensual o anual, necesitas una suscripción premium.
+                    Para acceder a datos más detallados, como el historial de
+                    tres meses o de un año, necesitas una suscripción premium.
                 </p>
                 <a className="bg-lilaPrincipal text-white px-4 py-2 rounded-md hover:bg-lilaSecundario block w-full text-center">
                     Suscribirse a Premium

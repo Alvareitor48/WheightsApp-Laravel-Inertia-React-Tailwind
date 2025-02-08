@@ -15,8 +15,8 @@ export const DashboardProvider = ({
     const [loadingForMuscle, setLoadingForMuscle] = useState(false);
     const [loadingForMuscle2, setLoadingForMuscle2] = useState(false);
 
-    const [exerciseFilter, setExerciseFilter] = useState("week"); // "week", "month", "year"
-    const [weightFilter, setWeightFilter] = useState("week"); // "week", "month", "year"
+    const [exerciseFilter, setExerciseFilter] = useState("month");
+    const [weightFilter, setWeightFilter] = useState("month");
 
     const translateExercise = (muscle) => {
         switch (muscle) {

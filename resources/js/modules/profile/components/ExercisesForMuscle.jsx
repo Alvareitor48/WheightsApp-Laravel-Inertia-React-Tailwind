@@ -24,7 +24,7 @@ const ExercisesForMuscle = () => {
         const selectedFilter = e.target.value;
         if (
             !isPremium &&
-            (selectedFilter === "month" || selectedFilter === "year")
+            (selectedFilter === "3months" || selectedFilter === "year")
         ) {
             setIsPopUpOpen(true);
         } else {
@@ -49,8 +49,8 @@ const ExercisesForMuscle = () => {
                         onChange={handleFilterChange}
                         className="mb-4 p-2 rounded bg-black text-white border border-white"
                     >
-                        <option value="week">Última semana</option>
                         <option value="month">Último mes</option>
+                        <option value="3months">Últimos 3 meses</option>
                         <option value="year">Último año</option>
                     </select>
                     <div className="aspect-[2/2] max-h-[400px] bg-white/5 rounded-md overflow-y-auto scrollbar-hide p-4 w-full">

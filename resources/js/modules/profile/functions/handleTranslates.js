@@ -40,10 +40,10 @@ const translateExercise = (muscle) => {
 };
 const translateFilter = (filter) => {
     switch (filter) {
-        case "week":
-            return "Última semana";
         case "month":
             return "Último mes";
+        case "3months":
+            return "Últimos 3 meses";
         case "year":
             return "Último año";
         default:

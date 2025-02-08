@@ -47,16 +47,17 @@ class DashboardController extends Controller
     public function getExercisesByMuscle(Request $request, $muscleName)
     {
         $today = Carbon::now()->endOfDay();
-        $period = $request->input('period', 'week'); // Por defecto, última semana
+        $period = $request->input('period', 'month');
+        
         switch ($period) {
-            case 'month':
-                $startDate = Carbon::now()->subMonth()->startOfDay();
+            case '3months':
+                $startDate = Carbon::now()->subMonths(3)->startOfDay();
                 break;
             case 'year':
                 $startDate = Carbon::now()->subYear()->startOfDay();
                 break;
             default:
-                $startDate = Carbon::now()->subWeek()->startOfDay();
+                $startDate = Carbon::now()->subMonth()->startOfDay();
                 break;
         }
 
@@ -90,17 +91,17 @@ class DashboardController extends Controller
     {
         
         $today = Carbon::now()->endOfDay();
-        $period = $request->input('period', 'week'); // Por defecto, última semana
+        $period = $request->input('period', 'month');
         
         switch ($period) {
-            case 'month':
-                $startDate = Carbon::now()->subMonth()->startOfDay();
+            case '3months':
+                $startDate = Carbon::now()->subMonths(3)->startOfDay();
                 break;
             case 'year':
                 $startDate = Carbon::now()->subYear()->startOfDay();
                 break;
             default:
-                $startDate = Carbon::now()->subWeek()->startOfDay();
+                $startDate = Carbon::now()->subMonth()->startOfDay();
                 break;
         }
         $muscle = Muscle::query()->where('name', $muscleName)->firstOrFail();
