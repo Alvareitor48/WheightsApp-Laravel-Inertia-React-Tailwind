@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import { m } from "motion/react";
+import { Link } from "@inertiajs/react";
 
 export function SubscriptionPopUp({ isOpen, onClose }) {
     if (!isOpen) return null;
@@ -19,9 +20,12 @@ export function SubscriptionPopUp({ isOpen, onClose }) {
                     Para acceder a datos más detallados, como el historial de
                     tres meses o de un año, necesitas una suscripción premium.
                 </p>
-                <a className="bg-lilaPrincipal text-white px-4 py-2 rounded-md hover:bg-lilaSecundario block w-full text-center">
+                <Link
+                    href={route("payments.index")}
+                    className="bg-lilaPrincipal text-white px-4 py-2 rounded-md hover:bg-lilaSecundario block w-full text-center"
+                >
                     Suscribirse a Premium
-                </a>
+                </Link>
                 <button
                     type="button"
                     className="mt-4 w-full text-white hover:text-gray-400"
