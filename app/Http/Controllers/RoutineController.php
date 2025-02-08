@@ -109,12 +109,22 @@ class RoutineController extends Controller
     }
     public function show($id){
         $routineDetails = $this->getRoutineDetails($id);
+        if (session()->has('stadistics')) {
+            $stadistics = session('stadistics');
+            session()->forget('stadistics');
+        } else {
+            $today = \Illuminate\Support\Carbon::now()->endOfDay();
+            $startDate = \Illuminate\Support\Carbon::now()->subMonth()->startOfDay();
 
-        $sessions = RoutineSession::where('routine_id', $id)
-            ->where('user_id',auth()->user()->id)
-            ->with('exerciseLogs')
-            ->get();
-        $stadistics = StatisticsResource::collection($sessions)->toArray(request());
+            $sessions = RoutineSession::where('routine_id', $id)
+                ->where('user_id', auth()->user()->id)
+                ->whereBetween('completed_at', [$startDate, $today])
+                ->with('exerciseLogs')
+                ->get();
+
+            $stadistics = StatisticsResource::collection($sessions)->toArray(request());
+        }
+
         $routineDetails['stadistics'] = $stadistics;
 
         return Inertia::render('routines/pages/AdminRoutines', $routineDetails);
@@ -187,7 +197,7 @@ class RoutineController extends Controller
         default:
             return redirect()->route('IndexRoutines');
     }
-        
+
     }
 
     public function deleteExercise(ManageExerciseRequest $request, $routineId)
@@ -202,7 +212,7 @@ class RoutineController extends Controller
     }
 
     ExerciseRoutine::query()->where('routine_id', $routineId)->where('id', $exerciseId)->delete();
-    
+
     switch ($request->input('redirect_to')) {
         case 'routines.start':
             return redirect()->route('routines.start', ['id' => $routineId]);
@@ -224,4 +234,35 @@ public function createRoutine()
 
     return redirect()->route('routines.edit', ['id' => $routine->id]);
 }
+
+    public function updateChart(Request $request)
+    {
+        $period = $request->input('period', 'month');
+        switch ($period) {
+            case '3months':
+                $startDate = \Illuminate\Support\Carbon::now()->subMonths(3)->startOfDay();
+                break;
+            case 'year':
+                $startDate = \Illuminate\Support\Carbon::now()->subYear()->startOfDay();
+                break;
+            default:
+                $startDate = \Illuminate\Support\Carbon::now()->subMonth()->startOfDay();
+                break;
+        }
+
+        $today = \Illuminate\Support\Carbon::now()->endOfDay();
+
+        $sessions = RoutineSession::where('user_id', auth()->user()->id)
+            ->whereBetween('completed_at', [$startDate, $today])
+            ->with('exerciseLogs')
+            ->get();
+
+        $stadistics = StatisticsResource::collection($sessions)->toArray(request());
+
+        // Guardar en session() para que show lo tome
+        session(['stadistics' => $stadistics]);
+
+        return redirect()->route('AdminRoutines', ['id' => $request->input('routine_id')]);
+    }
+
 }

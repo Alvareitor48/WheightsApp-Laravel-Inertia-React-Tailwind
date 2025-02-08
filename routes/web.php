@@ -30,6 +30,7 @@ Route::middleware(['auth', 'role:user|premium|admin'])->group(function(){
     Route::get('Dashboard',[DashboardController::class,'index'])->name('dashboard');
     Route::get('/exercises-by-muscle/{muscleName}', [DashboardController::class, 'getExercisesByMuscle'])->name('exercises.by.muscle');
     Route::get('/max-weights-by-muscle/{muscleName}', [DashboardController::class, 'getMaxWeightsByMuscle'])->name('max.weights.by.muscle');
+    Route::get('/chart-by-period',[RoutineController::class, 'updateChart'])->name('routines.update.chart');
 });
 
 Route::get('IndexExercises',[ExerciseController::class,'index'])->name('exercises.index');
