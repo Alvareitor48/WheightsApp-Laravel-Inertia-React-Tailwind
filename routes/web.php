@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\DashboardController;
+use \App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -32,6 +33,7 @@ Route::middleware(['auth', 'role:user|premium|admin'])->group(function(){
     Route::get('/max-weights-by-muscle/{muscleName}', [DashboardController::class, 'getMaxWeightsByMuscle'])->name('max.weights.by.muscle');
     Route::get('/chart-by-period',[RoutineController::class, 'updateChart'])->name('routines.update.chart');
     Route::get('/Routine/{routineId}/generate-pdf',[RoutineController::class,'generatePDF'])->name('routines.generate.pdf');
+    Route::get('/payment', [PaymentController::class, 'index'])->name('payments.index');
 });
 
 Route::get('IndexExercises',[ExerciseController::class,'index'])->name('exercises.index');
