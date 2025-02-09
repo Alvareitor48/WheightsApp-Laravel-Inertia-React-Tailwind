@@ -18,25 +18,33 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth', 'role:user|premium|admin'])->group(function(){
-    Route::get('AdminRoutines/{id}',[RoutineController::class,'show'])->name('AdminRoutines');
-    Route::get('IndexRoutines',[RoutineController::class,'index'])->name('IndexRoutines');
-    Route::get('UpdateRoutines/{id}/edit', [RoutineController::class, 'edit'])->name('routines.edit');
-    Route::put('UpdateRoutines',[RoutineController::class,'update'])->name('routines.update');
-    Route::get('StartRoutines/{id}', [RoutineController::class, 'start'])->name('routines.start');
-    Route::put('StartRoutines',[RoutineController::class,'session'])->name('routines.start.session');
-    Route::get('AddExercises/{routineId}/{redirect_to?}',[ExerciseController::class,'indexAddExercises'])->name('routines.add.exercises');
-    Route::put('AddExercise/{routineId}/', [RoutineController::class, 'addExercise'])->name('routines.add.exercise');
-    Route::delete('DeleteExercise/{routineId}/', [RoutineController::class, 'deleteExercise'])->name('routines.delete.exercise');
-    Route::post('Routines/create', [RoutineController::class, 'createRoutine'])->name('routines.create');
-    Route::get('Dashboard',[DashboardController::class,'index'])->name('dashboard');
-    Route::get('/exercises-by-muscle/{muscleName}', [DashboardController::class, 'getExercisesByMuscle'])->name('exercises.by.muscle');
-    Route::get('/max-weights-by-muscle/{muscleName}', [DashboardController::class, 'getMaxWeightsByMuscle'])->name('max.weights.by.muscle');
-    Route::get('/chart-by-period',[RoutineController::class, 'updateChart'])->name('routines.update.chart');
-    Route::get('/Routine/{routineId}/generate-pdf',[RoutineController::class,'generatePDF'])->name('routines.generate.pdf');
-    Route::get('/payment', [PaymentController::class, 'index'])->name('payments.index');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/exercises/by-muscle/{muscleName}', [DashboardController::class, 'getExercisesByMuscle'])->name('exercises.by.muscle');
+    Route::get('/dashboard/max-weights/by-muscle/{muscleName}', [DashboardController::class, 'getMaxWeightsByMuscle'])->name('max.weights.by.muscle');
+    
+    Route::get('/routines', [RoutineController::class, 'index'])->name('routines.index');
+    Route::get('/routines/{id}', [RoutineController::class, 'show'])->name('routines.show');
+    Route::get('/routines/{id}/edit', [RoutineController::class, 'edit'])->name('routines.edit');
+    Route::put('/routines/{id}', [RoutineController::class, 'update'])->name('routines.update');
+    //Route::delete('/routines/{id}', [RoutineController::class, 'destroy'])->name('routines.destroy');
+    Route::post('/routines', [RoutineController::class, 'store'])->name('routines.store');
+    
+    Route::get('/routines/{id}/start', [RoutineController::class, 'start'])->name('routines.start');
+    Route::put('/routines/{id}/start-session', [RoutineController::class, 'session'])->name('routines.start.session');
+    Route::get('/routines/{id}/chart-by-period',[RoutineController::class, 'updateChart'])->name('routines.update.chart');
+
+    Route::get('/routines/{routineId}/add-exercises/{redirect_to?}', [ExerciseController::class, 'indexAddExercises'])->name('routines.add.exercises');
+    Route::put('/routines/{routineId}/add-exercise', [RoutineController::class, 'addExercise'])->name('routines.add.exercise');
+    Route::delete('/routines/{routineId}/delete-exercise', [RoutineController::class, 'deleteExercise'])->name('routines.delete.exercise');
+    
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
 });
 
-Route::get('IndexExercises',[ExerciseController::class,'index'])->name('exercises.index');
+Route::middleware(['auth', 'role:premium|admin'])->group(function(){
+    Route::get('/routines/{routineId}/generate-pdf', [RoutineController::class, 'generatePDF'])->name('routines.generate.pdf');
+});
+
+Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

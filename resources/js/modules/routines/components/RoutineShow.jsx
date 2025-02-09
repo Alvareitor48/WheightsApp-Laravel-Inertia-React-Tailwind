@@ -42,8 +42,8 @@ export default function RoutineShow({ stadistics }) {
     const fetchChart = (period) => {
         setLoadingForChart(true);
         router.get(
-            route("routines.update.chart"),
-            { period: period, routine_id: data.routine.id },
+            route("routines.update.chart", data.routine.id),
+            { period: period },
             {
                 preserveState: true,
                 preserveScroll: true,

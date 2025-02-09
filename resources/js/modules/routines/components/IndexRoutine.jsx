@@ -25,7 +25,7 @@ export function IndexRoutine({ name, description, id }) {
                                 scale: 1.1,
                             }}
                             onClick={() =>
-                                router.visit(route("AdminRoutines", id))
+                                router.visit(route("routines.show", id))
                             }
                         >
                             Ver Rutina

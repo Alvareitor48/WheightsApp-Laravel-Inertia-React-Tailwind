@@ -5,7 +5,7 @@ import { m } from "motion/react";
 
 export default function IndexRoutines({ routines }) {
     const handleCreateRoutine = () => {
-        router.post(route("routines.create"));
+        router.post(route("routines.store"));
     };
     return (
         <SimpleLayout>

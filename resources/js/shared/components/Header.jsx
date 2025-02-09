@@ -60,7 +60,7 @@ export const Header = () => {
                             Mi perfil
                         </Link>
                         <Link
-                            href={route("IndexRoutines")}
+                            href={route("routines.index")}
                             className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                         >
                             Mis rutinas

@@ -142,7 +142,7 @@ class RoutineController extends Controller
             return response()->json(['status' => 'Rutina actualizada correctamente.']);
         }
 
-        return redirect()->route('AdminRoutines', ['id' => $routineAndExercises['routine']->id])
+        return redirect()->route('routines.show', ['id' => $routineAndExercises['routine']->id])
             ->with('success', 'Rutina actualizada correctamente.');
     }
 
@@ -174,7 +174,7 @@ class RoutineController extends Controller
             }
         }
 
-        return redirect()->route('AdminRoutines', ['id' => $updateData['routine']['id']])
+        return redirect()->route('routines.show', ['id' => $updateData['routine']['id']])
             ->with('success', 'Rutina actualizada correctamente.');
     }
 
@@ -195,7 +195,7 @@ class RoutineController extends Controller
         case 'routines.edit':
             return redirect()->route('routines.edit', ['id' => $routineId]);
         default:
-            return redirect()->route('IndexRoutines');
+            return redirect()->route('routines.index');
     }
 
     }
@@ -219,7 +219,7 @@ class RoutineController extends Controller
         case 'routines.edit':
             return redirect()->route('routines.edit', ['id' => $routineId]);
         default:
-            return redirect()->route('IndexRoutines');
+            return redirect()->route('routines.index');
     }
 }
 
@@ -234,7 +234,7 @@ public function createRoutine()
     return redirect()->route('routines.edit', ['id' => $routine->id]);
 }
 
-    public function updateChart(Request $request)
+    public function updateChart(Request $request, $id)
     {
         $period = $request->input('period', 'month');
         switch ($period) {
@@ -261,7 +261,7 @@ public function createRoutine()
         // Guardar en session() para que show lo tome
         session(['stadistics' => $stadistics]);
 
-        return redirect()->route('AdminRoutines', ['id' => $request->input('routine_id')]);
+        return redirect()->route('routines.show', ['id' => $id]);
     }
 
     public function generatePDF($id)

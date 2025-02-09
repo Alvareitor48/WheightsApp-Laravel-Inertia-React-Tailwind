@@ -10,7 +10,7 @@ export default function RoutineUpdate() {
     const { update, data } = useUpdate();
     const handleSubmit = (e) => {
         e.preventDefault();
-        put(route("routines.update"), {
+        put(route("routines.update", data.routine.id), {
             routine: data.routine,
             exercises: data.exercises,
         });

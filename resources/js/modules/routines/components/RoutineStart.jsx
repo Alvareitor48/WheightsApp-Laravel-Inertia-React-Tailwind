@@ -107,7 +107,7 @@ export default function RoutineStart() {
             return;
         }
 
-        put(route("routines.start.session"), {
+        put(route("routines.start.session", data.routine.id), {
             routine: data.routine,
             exercises: data.exercises,
             durationInSeconds: data.durationInSeconds,
