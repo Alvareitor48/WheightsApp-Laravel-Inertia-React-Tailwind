@@ -81,12 +81,33 @@ export default function RoutineShow({ stadistics }) {
             );
         }
     };
+    const handleRemoveRoutine = () => {
+        router.delete(
+            route("routines.destroy", data.routine.id),
+            {},
+            {
+                preserveState: true,
+                preserveScroll: true,
+                replace: true,
+                onSuccess: () => {
+                    router.visit("routines.index");
+                },
+            }
+        );
+    };
     return (
         <>
             <div className="bg-transparent flex flex-col items-center min-h-screen text-white">
                 {/* Título y usuario */}
-                <div className="w-full flex justify-end p-4">
+                <div className="w-full flex justify-between p-4">
                     {/* Botón de Exportar PDF */}
+                    <m.button
+                        className="bg-lilaPrincipal text-white text-responsive-select py-1 px-2 rounded-md"
+                        onClick={handleRemoveRoutine}
+                        whileHover={{ backgroundColor: "#8F3985", scale: 1.1 }}
+                    >
+                        Eliminar rutina
+                    </m.button>
                     <m.button
                         className="bg-lilaPrincipal text-white text-responsive-select py-1 px-2 rounded-md"
                         onClick={handleExportPDF}

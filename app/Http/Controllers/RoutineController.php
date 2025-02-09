@@ -272,4 +272,12 @@ public function store()
         return $pdf->download("rutina_{$routineDetails['routine']['name']}.pdf");
     }
 
+    public function destroy($id)
+    {
+        $routine = Routine::findOrFail($id);
+        $routine->delete();
+
+        return redirect()->route('routines.index');
+    }
+
 }
