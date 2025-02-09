@@ -223,7 +223,7 @@ class RoutineController extends Controller
     }
 }
 
-public function createRoutine()
+public function store()
 {
     $routine = Routine::create([
         'user_id' => auth()->id(),
