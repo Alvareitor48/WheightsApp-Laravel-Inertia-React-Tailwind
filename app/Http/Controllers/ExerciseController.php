@@ -31,4 +31,11 @@ class ExerciseController extends Controller
             'redirect_to' => $redirect_to
         ]);
     }
+
+    public function show($id){
+        $exercise = Exercise::findOrFail($id);
+        return Inertia::render('exercises/pages/ShowExercise',[
+            'exercise' => (new ExerciseResource($exercise))->toArray(request())
+        ]);
+    }
 }
