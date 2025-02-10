@@ -20,9 +20,14 @@ class DashboardController extends Controller
         $today = Carbon::now()->endOfDay();
         $previousMonth = Carbon::now()->subMonth()->startOfDay();
         $previousWeek = Carbon::now()->subWeek()->startOfDay();
-        $sessions = RoutineSession::query()
-            ->where('user_id',auth()->id())
-            ->whereDate('completed_at', '>=', $previousMonth)
+        $sessionsQuery = RoutineSession::query()
+                ->where('user_id',auth()->id());
+
+        if(!auth()->user()->hasRole('admin') || !auth()->user()->hasRole('premium')){
+            $sessionsQuery->whereDate('completed_at', '>=', $previousMonth);
+        }
+
+        $sessions = $sessionsQuery->where('user_id',auth()->id())
             ->whereDate('completed_at', '<=', $today)
             ->with('routine')
             ->get();

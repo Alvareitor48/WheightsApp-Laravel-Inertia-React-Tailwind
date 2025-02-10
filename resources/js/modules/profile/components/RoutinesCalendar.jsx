@@ -1,5 +1,7 @@
 import Calendar from "react-calendar";
 import { useDashboard } from "../contexts/dashboardContext";
+import { SubscriptionPopUp } from "./SubscriptionPopUp";
+import { usePremiumOrAdminCheck } from "@/shared/hooks/usePremiumOrAdminCheck";
 
 const RoutinesCalendar = () => {
     const { sessions, setCalendarDay } = useDashboard();
@@ -9,17 +11,34 @@ const RoutinesCalendar = () => {
         today.getMonth() - 1,
         today.getDate()
     );
+    const { isPopUpOpen, setIsPopUpOpen, isPremium } = usePremiumOrAdminCheck();
     const handleClickDay = (value) => {
-        const clickedDate = value.toLocaleDateString("fr-CA");
+        const clickedDate = new Date(value);
+        const oneMonthAgo = new Date();
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
         const matchingSession = sessions.find(
-            (session) => session.date === clickedDate
+            (session) => session.date === value.toLocaleDateString("fr-CA")
         );
-        if (matchingSession) {
-            setCalendarDay(clickedDate);
+        if (clickedDate <= oneMonthAgo) {
+            if (!isPremium) {
+                setCalendarDay(null);
+                setIsPopUpOpen(true);
+            } else {
+                if (matchingSession) {
+                    setCalendarDay(value.toLocaleDateString("fr-CA"));
+                } else {
+                    setCalendarDay("");
+                }
+            }
         } else {
-            setCalendarDay("");
+            if (matchingSession) {
+                setCalendarDay(value.toLocaleDateString("fr-CA"));
+            } else {
+                setCalendarDay("");
+            }
         }
     };
+
     return (
         <>
             <h2 className="text-responsive-h4 mb-4">Calendario</h2>
@@ -27,7 +46,6 @@ const RoutinesCalendar = () => {
                 <Calendar
                     className="!bg-transparent !text-white !border-none !rounded-lg p-2 w-full h-full !text-responsive-select"
                     onClickDay={handleClickDay}
-                    minDate={lastMonth}
                     maxDate={today}
                     tileClassName={({ date }) => {
                         const dateString = date.toLocaleDateString("fr-CA");
@@ -46,6 +64,10 @@ const RoutinesCalendar = () => {
                     }}
                 />
             </div>
+            <SubscriptionPopUp
+                isOpen={isPopUpOpen}
+                onClose={() => setIsPopUpOpen(false)}
+            />
         </>
     );
 };
