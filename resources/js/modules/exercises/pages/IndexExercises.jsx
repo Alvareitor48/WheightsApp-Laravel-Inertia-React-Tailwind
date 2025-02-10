@@ -17,6 +17,7 @@ export default function IndexExercises({ exercises }) {
                             (
                                 <ExerciseCard
                                     key={`${exercise.id}.${index}`}
+                                    id={exercise.id}
                                     name={exercise.name}
                                     image={exercise.url}
                                     equipment={exercise.equipment}

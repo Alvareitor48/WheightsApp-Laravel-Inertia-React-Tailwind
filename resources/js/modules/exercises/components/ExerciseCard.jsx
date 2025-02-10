@@ -1,8 +1,10 @@
 import { m } from "motion/react";
 import { CardRouteButton } from "./CardRouteButton";
 import VideoThumbnail from "@/shared/components/VideoThumbnail";
+import { router } from "@inertiajs/react";
 
 export default function ExerciseCard({
+    id,
     name,
     image,
     equipment,
@@ -34,14 +36,19 @@ export default function ExerciseCard({
                     {muscles.map((muscle, index) => (
                         <span
                             key={index}
-                            className="bg-blue-600 bg-opacity-70 text-white px-2 py-1 rounded-full text-responsive-note-table"
+                            className="bg-blue-900 bg-opacity-70 text-white px-2 py-1 rounded-full text-responsive-note-table"
                         >
                             {muscle}
                         </span>
                     ))}
                 </div>
                 <div className="flex justify-around">
-                    <CardRouteButton title="Tutorial"></CardRouteButton>
+                    <CardRouteButton
+                        onClick={() =>
+                            router.visit(route("exercises.show", id))
+                        }
+                        title="Tutorial"
+                    ></CardRouteButton>
                     {extraButton}
                 </div>
             </div>

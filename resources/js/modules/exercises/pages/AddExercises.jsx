@@ -16,6 +16,7 @@ export default function IndexExercises({ exercises, routineId, redirect_to }) {
                     {exercises.data.map((exercise, index) => (
                         <ExerciseCard
                             key={`${exercise.id}.${index}`}
+                            id={exercise.id}
                             name={exercise.name}
                             image={exercise.url}
                             equipment={exercise.equipment}
