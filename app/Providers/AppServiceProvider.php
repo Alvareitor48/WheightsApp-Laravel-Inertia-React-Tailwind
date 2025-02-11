@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\AlwaysAcceptJson;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
         app('router')->middlewareGroup('api', [
             EnsureFrontendRequestsAreStateful::class, // Middleware de Sanctum
             ThrottleRequests::class . ':api',
+        ]);
+        $router->middlewareGroup('api', [
+            AlwaysAcceptJson::class,
         ]);
         $router->aliasMiddleware('role', RoleMiddleware::class);
         $router->aliasMiddleware('permission', PermissionMiddleware::class);
