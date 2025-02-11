@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Exercise extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description','gif','equipment'];
+    protected $fillable = ['name', 'description','url','equipment','user_id','is_private'];
     protected $table = 'exercises';
 
     public function routines(): BelongsToMany
