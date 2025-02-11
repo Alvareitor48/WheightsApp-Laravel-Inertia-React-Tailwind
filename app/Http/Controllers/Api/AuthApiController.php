@@ -38,4 +38,25 @@ class AuthApiController extends Controller
             'token' => $token,
         ], 201);
     }
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json(['message' => 'Credenciales incorrectas'], 401);
+        }
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Inicio de sesión exitoso',
+            'user' => $user,
+            'token' => $token,
+        ]);
+    }
 }
