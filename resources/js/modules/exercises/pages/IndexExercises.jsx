@@ -3,12 +3,18 @@ import { m } from "motion/react";
 import Pagination from "../components/Pagination";
 import ExerciseCard from "../components/ExerciseCard";
 import { useForm } from "@inertiajs/react";
+import { Auth } from "@/shared/components/Auth";
 
 export default function IndexExercises({ exercises, equipments, muscles }) {
     const { data, setData, get } = useForm({
         equipment: "",
         muscle: "",
+        my_exercises: "",
     });
+
+    const handleMyExercises = (e) => {
+        setData("my_exercises", e.target.value);
+    };
 
     const handleFilterChange = (e) => {
         setData(e.target.name, e.target.value);
@@ -82,6 +88,27 @@ export default function IndexExercises({ exercises, equipments, muscles }) {
                             ))}
                         </select>
                     </div>
+                    <Auth roles={["admin", "premium"]}>
+                        <div className="flex flex-col mt-4">
+                            <label className="text-sm font-semibold text-white">
+                                Mis ejercicios
+                            </label>
+                            <select
+                                name="muscle"
+                                value={data.my_exercises}
+                                onChange={handleMyExercises}
+                                className="border border-gray-300 bg-transparent rounded p-2 mt-1"
+                            >
+                                <option value="">Todos</option>
+                                <option value="Mis ejercicios">
+                                    Mis Ejercicios
+                                </option>
+                                <option value="Ejercicios normales">
+                                    Ejercicios Normales
+                                </option>
+                            </select>
+                        </div>
+                    </Auth>
 
                     {/* Botones de acción */}
                     <div className="flex space-x-4 mt-4">

@@ -5,7 +5,11 @@ export function Auth({ children, roles = [] }) {
 
     if (!auth.user) return null;
 
-    if (roles.length > 0 && !roles.includes(auth.user.role)) return null;
+    const hasRequiredRole =
+        roles.length === 0 ||
+        auth.user.roles.some((role) => roles.includes(role.name));
+
+    if (!hasRequiredRole) return null;
 
     return <>{children}</>;
 }
