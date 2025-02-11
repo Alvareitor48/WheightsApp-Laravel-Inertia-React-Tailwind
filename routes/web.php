@@ -42,6 +42,7 @@ Route::middleware(['auth', 'role:user|premium|admin'])->group(function(){
 
 Route::middleware(['auth', 'role:premium|admin'])->group(function(){
     Route::get('/routines/{routineId}/generate-pdf', [RoutineController::class, 'generatePDF'])->name('routines.generate.pdf');
+    Route::get('/routines/{routineId}/create-exercise/{redirect_to?}',[ExerciseController::class, 'create'])->name('routines.create.exercise');
 });
 
 Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises.index');

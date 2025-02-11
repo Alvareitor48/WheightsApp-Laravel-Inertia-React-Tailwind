@@ -106,4 +106,14 @@ class ExerciseController extends Controller
             'exercise' => (new ExerciseResource($exercise))->toArray(request())
         ]);
     }
+
+    public function create($routineId, $redirect_to)
+    {
+        return Inertia::render('exercises/pages/CreateExercise',[
+            'routineId' => $routineId,
+            'redirect_to' => $redirect_to,
+            'equipments' => Exercise::distinct()->pluck('equipment')->filter()->values(),
+            'muscles' => Muscle::pluck('name')->toArray()
+        ]);
+    }
 }
