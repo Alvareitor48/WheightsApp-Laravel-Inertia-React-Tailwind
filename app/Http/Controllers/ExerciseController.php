@@ -29,6 +29,21 @@ class ExerciseController extends Controller
                 $query->where('name', $request->muscle);
             });
         }
+        if ($request->filled('my_exercises')) {
+            if ($request->my_exercises === 'Mis ejercicios'){
+                $query->where(function ($query) {
+                    $query->where('user_id', auth()->id());
+                });
+            }else if($request->my_exercises === 'Ejercicios normales') {
+                $query->where(function ($query) {
+                    $query->whereNull('user_id');
+                });
+            }
+        }else{
+            $query->where(function ($query) {
+                $query->whereNull('user_id');
+            });
+        }
 
         $exercises = $query->paginate(20);
         return Inertia::render('exercises/pages/IndexExercises', [
@@ -57,6 +72,21 @@ class ExerciseController extends Controller
         if ($request->filled('muscle')) {
             $query->whereHas('muscles', function ($query) use ($request) {
                 $query->where('name', $request->muscle);
+            });
+        }
+        if ($request->filled('my_exercises')) {
+            if ($request->my_exercises === 'Mis ejercicios'){
+                $query->where(function ($query) {
+                    $query->where('user_id', auth()->id());
+                });
+            }else if($request->my_exercises === 'Ejercicios normales') {
+                $query->where(function ($query) {
+                    $query->whereNull('user_id');
+                });
+            }
+        }else{
+            $query->where(function ($query) {
+                $query->whereNull('user_id');
             });
         }
 
