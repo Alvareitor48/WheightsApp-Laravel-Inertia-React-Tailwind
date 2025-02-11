@@ -1,7 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ManageExerciseRequest;
+use App\Http\Requests\StartRoutinesRequest;
+use App\Http\Requests\UpdateRoutinesRequest;
 use App\Http\Resources\ExerciseResource;
 use App\Http\Resources\ExerciseRoutineResource;
 use App\Http\Resources\SerieResource;
@@ -11,14 +15,10 @@ use App\Models\ExerciseLog;
 use App\Models\ExerciseRoutine;
 use App\Models\Routine;
 use App\Models\RoutineSession;
-use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Http\Requests\UpdateRoutinesRequest;
-use App\Http\Requests\StartRoutinesRequest;
-use App\Http\Requests\ManageExerciseRequest;
 
 class RoutineController extends Controller
 {

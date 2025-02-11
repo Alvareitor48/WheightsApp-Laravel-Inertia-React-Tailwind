@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreExerciseRequest;
+use App\Http\Resources\ExerciseResource;
 use App\Models\Exercise;
 use App\Models\Muscle;
 use App\Models\Routine;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
-use App\Http\Resources\ExerciseResource;
 
 class ExerciseController extends Controller
 {

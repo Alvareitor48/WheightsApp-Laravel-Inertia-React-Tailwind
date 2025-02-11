@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\BodyHighLightDataResource;
 use App\Http\Resources\ExerciseLogByExercisesResource;
 use App\Http\Resources\MaxLogResource;

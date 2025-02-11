@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RoutineController;
-use App\Http\Controllers\ExerciseController;
-use App\Http\Controllers\DashboardController;
-use \App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\Web\ExerciseController;
+use App\Http\Controllers\Web\PaymentController;
+use App\Http\Controllers\Web\ProfileController;
+use App\Http\Controllers\Web\RoutineController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
