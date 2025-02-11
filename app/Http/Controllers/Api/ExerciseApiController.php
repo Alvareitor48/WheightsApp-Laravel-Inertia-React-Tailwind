@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ExerciseResource;
 use App\Models\Exercise;
 use Illuminate\Http\Request;
-
 class ExerciseApiController extends Controller
 {
     public function index(Request $request)
@@ -32,5 +31,20 @@ class ExerciseApiController extends Controller
 
         $exercises = $query->paginate(10);
         return ExerciseResource::collection($exercises);
+    }
+    public function show($id)
+    {
+        $exercise = Exercise::find($id);
+
+        if (!$exercise) {
+            return response()->json(['message' => 'Ejercicio no encontrado'], 404);
+        }
+        if($exercise->user_id != auth()->id() && $exercise->user_id != null){
+            if(!(auth()->hasRole('admin'))){
+                return response()->json(['message' => 'Unauthorized to see this exercise'], 401);
+            }
+        }
+
+        return new ExerciseResource($exercise);
     }
 }
