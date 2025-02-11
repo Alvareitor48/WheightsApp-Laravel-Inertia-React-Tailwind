@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreExerciseRequest;
 use App\Models\Exercise;
 use App\Models\Muscle;
 use App\Models\Routine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use App\Http\Resources\ExerciseResource;
 
@@ -116,4 +118,53 @@ class ExerciseController extends Controller
             'muscles' => Muscle::pluck('name')->toArray()
         ]);
     }
+
+
+    public function store(StoreExerciseRequest $request, $routineId, $redirect_to)
+    {
+        $data = $request->validated();
+        if ($data['equipment'] === 'Sin equipamiento') {
+            $equipment = null;
+        } else {
+            $equipment = $data['equipment'];
+        }
+
+        $file = $data['media'];
+        $originalExtension = $file->getClientOriginalExtension();
+
+        $sanitizedName = preg_replace('/[^a-zA-Z0-9]/', '_', strtolower($request->name));
+        $sanitizedDescription = substr(preg_replace('/[^a-zA-Z0-9]/', '_', strtolower($request->description)), 0, 30); // Máx 30 caracteres
+        $timestamp = time();
+
+        $fileName = "{$sanitizedName}_{$sanitizedDescription}_{$timestamp}.{$originalExtension}";
+
+        $destinationPath = public_path("exercises_video_images/custom/");
+
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0777, true);
+        }
+
+        $file->move($destinationPath, $fileName);
+
+        $publicUrl = "exercises_video_images/custom/{$fileName}";
+
+
+        $exercise = Exercise::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'url' => $publicUrl,
+            'equipment' => $equipment,
+            'user_id' => auth()->id(),
+            'is_private' => true,
+        ]);
+
+        $muscleIds = Muscle::whereIn('name', $request->muscles)->pluck('id')->toArray();
+        $exercise->muscles()->attach($muscleIds);
+
+        return redirect()->route('routines.add.exercises',[
+            'routineId' => $routineId,
+            'redirect_to' => $redirect_to,
+        ]);
+    }
+
 }
