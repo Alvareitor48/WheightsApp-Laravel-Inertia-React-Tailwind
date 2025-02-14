@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Middleware\AlwaysAcceptJson;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Auth;
@@ -50,5 +51,11 @@ class AppServiceProvider extends ServiceProvider
                 ];
             },
         ]);
+
+        $this->app->booted(function () {
+            $schedule = app(Schedule::class);
+
+            $schedule->command('routines:delete-old')->daily();
+        });
     }
 }
