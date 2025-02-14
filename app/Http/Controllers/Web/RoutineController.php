@@ -20,6 +20,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Events\RoutineDeleted;
 
 class RoutineController extends Controller
 {
@@ -297,6 +298,7 @@ public function store()
     {
         $routine = Routine::findOrFail($id);
         $this->authorize('delete',$routine);
+        event(new RoutineDeleted($routine));
         $routine->delete();
 
         return redirect()->route('routines.index');
