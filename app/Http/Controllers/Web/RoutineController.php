@@ -19,9 +19,11 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class RoutineController extends Controller
 {
+    use AuthorizesRequests;
     private function updateRoutineAndSeries(array $data)
     {
         $routine = Routine::query()->where('id', $data['routine']['id'])->firstOrFail();
@@ -103,15 +105,14 @@ class RoutineController extends Controller
         ];
     }
     public function index(){
+        $this->authorize('viewAny', Exercise::class);
         return Inertia::render('routines/pages/IndexRoutines', [
             'routines' => auth()->user()->routines,
         ]);
     }
     public function show($id){
         $routine = Routine::findOrFail($id);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para ver esta rutina.');
-        }
+        $this->authorize('view', $routine);
         $routineDetails = $this->getRoutineDetails($id);
         if (session()->has('stadistics')) {
             $stadistics = session('stadistics');
@@ -136,9 +137,7 @@ class RoutineController extends Controller
 
     public function edit($id){
         $routine = Routine::findOrFail($id);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para editar esta rutina.');
-        }
+        $this->authorize('update', $routine);
         $routineDetails = $this->getRoutineDetails($id);
         return Inertia::render('routines/pages/UpdateRoutines', $routineDetails);
     }
@@ -146,9 +145,7 @@ class RoutineController extends Controller
     public function update(UpdateRoutinesRequest $request){
         $data = $request->all();
         $routine = Routine::findOrFail($data['routine']['id']);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para editar esta rutina.');
-        }
+        $this->authorize('update', $routine);
         $routineAndExercises = $this->updateRoutineAndSeries($data);
         if ($request->expectsJson()) {
             return response()->json(['status' => 'Rutina actualizada correctamente.']);
@@ -160,9 +157,7 @@ class RoutineController extends Controller
 
     public function start($id){
         $routine = Routine::findOrFail($id);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para iniciar esta rutina.');
-        }
+        $this->authorize('startRoutine', $routine);
         $routineDetails = $this->getRoutineDetails($id);
         $routineDetails['routine']['durationInSeconds'] = 0;
         return Inertia::render('routines/pages/StartRoutines', $routineDetails);
@@ -171,9 +166,7 @@ class RoutineController extends Controller
     public function session(StartRoutinesRequest $request){
         $data = $request->all();
         $routine = Routine::findOrFail($data['routine']['id']);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para editar esta rutina.');
-        }
+        $this->authorize('generatePDF', $routine);
         $updateData = $this->updateRoutineAndSeries($data);
         $routineSession = RoutineSession::create([
             'routine_id' => $updateData['routine']['id'],
@@ -200,9 +193,7 @@ class RoutineController extends Controller
 
     public function addExercise(ManageExerciseRequest $request, $routineId){
         $routine = Routine::findOrFail($routineId);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para añadir ejercicios aqui.');
-        }
+        $this->authorize('addExercise', $routine);
         $data = $request->validated();
         $routine = Routine::query()->where('id', $routineId)->firstOrFail();
         $exercise = Exercise::query()->where('id', $data['exercise_id'])->firstOrFail();
@@ -227,9 +218,7 @@ class RoutineController extends Controller
     public function deleteExercise(ManageExerciseRequest $request, $routineId)
 {
     $routine = Routine::findOrFail($routineId);
-    if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-        abort(403, 'No tienes permiso para iniciar esta rutina.');
-    }
+    $this->authorize('addExercise', $routine);
     $exerciseId = $request->input('exercise_id');
 
     $exerciseRoutine = ExerciseRoutine::query()->where('id', $exerciseId)->where('routine_id', $routineId)->first();
@@ -252,6 +241,7 @@ class RoutineController extends Controller
 
 public function store()
 {
+    $this->authorize('create', Routine::class);
     $routine = Routine::create([
         'user_id' => auth()->id(),
         'name' => 'Nueva Rutina',
@@ -263,6 +253,8 @@ public function store()
 
     public function updateChart(Request $request, $id)
     {
+        $routine = Routine::findOrFail($id);
+        $this->authorize('updateChart', $routine);
         $period = $request->input('period', 'month');
         switch ($period) {
             case '3months':
@@ -294,9 +286,7 @@ public function store()
     public function generatePDF($id)
     {
         $routine = Routine::findOrFail($id);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para generar pdf de esta rutina.');
-        }
+        $this->authorize('generatePDF', $routine);
         $routineDetails = $this->getRoutineDetails($id);
         $pdf = Pdf::loadView('pdf.routine', ['routineDetails' => $routineDetails]);
 
@@ -306,9 +296,7 @@ public function store()
     public function destroy($id)
     {
         $routine = Routine::findOrFail($id);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para eliminar esta rutina.');
-        }
+        $this->authorize('delete',$routine);
         $routine->delete();
 
         return redirect()->route('routines.index');
