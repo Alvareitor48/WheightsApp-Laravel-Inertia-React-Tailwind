@@ -28,6 +28,7 @@ Route::middleware(['auth', 'role:user|premium|admin'])->group(function(){
     Route::put('/routines/{id}', [RoutineController::class, 'update'])->name('routines.update');
     Route::delete('/routines/{id}', [RoutineController::class, 'destroy'])->name('routines.destroy');
     Route::post('/routines', [RoutineController::class, 'store'])->name('routines.store');
+    Route::get('/routines/{id}/restore', [RoutineController::class, 'restore'])->name('routines.restore');
 
     Route::get('/routines/{id}/start', [RoutineController::class, 'start'])->name('routines.start');
     Route::put('/routines/{id}/start-session', [RoutineController::class, 'session'])->name('routines.start.session');

@@ -302,4 +302,13 @@ public function store()
         return redirect()->route('routines.index');
     }
 
+    public function restore($id)
+    {
+        $routine = Routine::onlyTrashed()->findOrFail($id);
+        $this->authorize('delete', $routine);
+        $routine->restore();
+
+        return redirect()->route('routines.index');
+    }
+
 }
