@@ -10,11 +10,14 @@ use App\Models\Muscle;
 use App\Models\Routine;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ExerciseController extends Controller
 {
+    use AuthorizesRequests;
     public function index(Request $request)
     {
+        $this->authorize('viewAny', Exercise::class);
         $query = Exercise::query();
 
         if ($request->filled('equipment')) {
@@ -58,9 +61,7 @@ class ExerciseController extends Controller
     public function indexAddExercises(Request $request, $routineId, $redirect_to)
     {
         $routine = Routine::findOrFail($routineId);
-        if ($routine->user_id !== auth()->id() && !auth()->user()->hasRole('admin')) {
-            abort(403, 'No tienes permiso para añadir ejercicios aqui.');
-        }
+        $this->authorize('addExercise', $routine);
         $query = Exercise::query();
 
         if ($request->filled('equipment')) {
@@ -104,6 +105,7 @@ class ExerciseController extends Controller
 
     public function show($id){
         $exercise = Exercise::findOrFail($id);
+        $this->authorize('view', $exercise);
         return Inertia::render('exercises/pages/ShowExercise',[
             'exercise' => (new ExerciseResource($exercise))->toArray(request())
         ]);
@@ -111,6 +113,7 @@ class ExerciseController extends Controller
 
     public function create($routineId, $redirect_to)
     {
+        $this->authorize('create', auth()->user());
         return Inertia::render('exercises/pages/CreateExercise',[
             'routineId' => $routineId,
             'redirect_to' => $redirect_to,
@@ -122,6 +125,7 @@ class ExerciseController extends Controller
 
     public function store(StoreExerciseRequest $request, $routineId, $redirect_to)
     {
+        $this->authorize('create', auth()->user());
         $data = $request->validated();
         if ($data['equipment'] === 'Sin equipamiento') {
             $equipment = null;
