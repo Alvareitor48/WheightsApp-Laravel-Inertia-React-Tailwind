@@ -7,30 +7,15 @@ use App\Http\Requests\StoreApiExerciseRequest;
 use App\Http\Resources\ExerciseResource;
 use App\Models\Exercise;
 use App\Models\Muscle;
+use App\Services\ExerciseService;
 use Illuminate\Http\Request;
 class ExerciseApiController extends Controller
 {
+    private ExerciseService $exerciseService;
     public function index(Request $request)
     {
         $query = Exercise::query();
-
-        if ($request->filled('equipment')) {
-            $query->where('equipment', $request->equipment);
-        }
-
-        if ($request->filled('muscles')) {
-            $muscles = explode(',', $request->muscles);
-            $query->whereHas('muscles', function ($q) use ($muscles) {
-                $q->whereIn('name', $muscles);
-            });
-        }
-
-        if ($request->boolean('created_by_me') && auth()->check()) {
-            $query->where('user_id', auth()->id());
-        } elseif ($request->boolean('created_by_me')) {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
-
+        $this->applyFilters($query, $request);
         $exercises = $query->paginate(10);
         return ExerciseResource::collection($exercises);
     }
@@ -55,34 +40,12 @@ class ExerciseApiController extends Controller
 
         $muscles = explode(',', $data['muscles']);
         $muscles = array_map('trim', $muscles);
-
-        $file = $data['media'];
-        $originalExtension = $file->getClientOriginalExtension();
-
-        $sanitizedName = preg_replace('/[^a-zA-Z0-9]/', '_', strtolower($request->name));
-        $sanitizedDescription = substr(preg_replace('/[^a-zA-Z0-9]/', '_', strtolower($request->description)), 0, 30); // Máx 30 caracteres
-        $timestamp = time();
-
-        $fileName = "{$sanitizedName}_{$sanitizedDescription}_{$timestamp}.{$originalExtension}";
-
-        $destinationPath = public_path("exercises_video_images/custom/");
-
-        if (!file_exists($destinationPath)) {
-            mkdir($destinationPath, 0777, true);
-        }
-
-        $file->move($destinationPath, $fileName);
-
-        $publicUrl = "exercises_video_images/custom/{$fileName}";
-
-        $exercise = Exercise::create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'url' => $publicUrl,
-            'equipment' => $data['equipment'] ?? null,
-            'user_id' => auth()->id(),
-            'is_private' => true,
-        ]);
+        $exercise = $this->exerciseService->createExercise(
+            $data['media'],
+            $data['name'],
+            $data['description'],
+            $data['equipment']
+        );
 
         if (!empty($muscles)) {
             $muscleIds = Muscle::whereIn('name', $muscles)->pluck('id')->toArray();
@@ -90,5 +53,25 @@ class ExerciseApiController extends Controller
         }
 
         return new ExerciseResource($exercise);
+    }
+
+    private function applyFilters($query, Request $request)
+    {
+        if ($request->filled('equipment')) {
+            $query->where('equipment', $request->equipment);
+        }
+
+        if ($request->filled('muscles')) {
+            $muscles = explode(',', $request->muscles);
+            $query->whereHas('muscles', function ($q) use ($muscles) {
+                $q->whereIn('name', $muscles);
+            });
+        }
+
+        if ($request->boolean('created_by_me') && auth()->check()) {
+            $query->where('user_id', auth()->id());
+        } elseif ($request->boolean('created_by_me')) {
+            abort(response()->json(['message' => 'Unauthorized'], 401));
+        }
     }
 }
