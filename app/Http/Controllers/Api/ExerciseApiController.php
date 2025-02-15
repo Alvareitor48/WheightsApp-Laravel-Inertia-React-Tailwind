@@ -12,8 +12,13 @@ use Illuminate\Http\Request;
 class ExerciseApiController extends Controller
 {
     private ExerciseService $exerciseService;
+    public function __construct(ExerciseService $exerciseService)
+    {
+        $this->exerciseService = $exerciseService;
+    }
     public function index(Request $request)
     {
+        $this->authorize('viewAny', Exercise::class);
         $query = Exercise::query();
         $this->applyFilters($query, $request);
         $exercises = $query->paginate(10);
@@ -22,7 +27,7 @@ class ExerciseApiController extends Controller
     public function show($id)
     {
         $exercise = Exercise::find($id);
-
+        $this->authorize('view', $exercise);
         if (!$exercise) {
             return response()->json(['message' => 'Ejercicio no encontrado'], 404);
         }
@@ -37,7 +42,7 @@ class ExerciseApiController extends Controller
     public function store(StoreApiExerciseRequest $request)
     {
         $data = $request->validated();
-
+        $this->authorize('create', Exercise::class);
         $muscles = explode(',', $data['muscles']);
         $muscles = array_map('trim', $muscles);
         $exercise = $this->exerciseService->createExercise(

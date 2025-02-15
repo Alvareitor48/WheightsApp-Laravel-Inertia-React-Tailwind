@@ -17,6 +17,11 @@ class ExerciseController extends Controller
 {
     use AuthorizesRequests;
     private ExerciseService $exerciseService;
+
+    public function __construct(ExerciseService $exerciseService)
+    {
+        $this->exerciseService = $exerciseService;
+    }
     public function index(Request $request)
     {
         $this->authorize('viewAny', Exercise::class);
@@ -45,7 +50,7 @@ class ExerciseController extends Controller
 
     public function create($routineId, $redirect_to)
     {
-        $this->authorize('create', auth()->user());
+        $this->authorize('create', Exercise::class);
         return Inertia::render('exercises/pages/CreateExercise', array_merge([
             'routineId' => $routineId,
             'redirect_to' => $redirect_to,
@@ -55,7 +60,7 @@ class ExerciseController extends Controller
 
     public function store(StoreExerciseRequest $request, $routineId, $redirect_to)
     {
-        $this->authorize('create', auth()->user());
+        $this->authorize('create', Exercise::class);
         $data = $request->validated();
         $equipment = ($data['equipment'] === 'Sin equipamiento') ? null : $data['equipment'];
         $exercise = $this->exerciseService->createExercise(
