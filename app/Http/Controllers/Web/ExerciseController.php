@@ -8,6 +8,7 @@ use App\Http\Resources\ExerciseResource;
 use App\Models\Exercise;
 use App\Models\Muscle;
 use App\Models\Routine;
+use App\Services\ExerciseService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -15,92 +16,23 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class ExerciseController extends Controller
 {
     use AuthorizesRequests;
+    private ExerciseService $exerciseService;
     public function index(Request $request)
     {
         $this->authorize('viewAny', Exercise::class);
-        $query = Exercise::query();
 
-        if ($request->filled('equipment')) {
-            if ($request->equipment === 'Sin equipamiento') {
-                $query->whereNull('equipment');
-            } else {
-                $query->where('equipment', $request->equipment);
-            }
-        }
-
-
-        if ($request->filled('muscle')) {
-            $query->whereHas('muscles', function ($query) use ($request) {
-                $query->where('name', $request->muscle);
-            });
-        }
-        if ($request->filled('my_exercises')) {
-            if ($request->my_exercises === 'Mis ejercicios'){
-                $query->where(function ($query) {
-                    $query->where('user_id', auth()->id());
-                });
-            }else if($request->my_exercises === 'Ejercicios normales') {
-                $query->where(function ($query) {
-                    $query->whereNull('user_id');
-                });
-            }
-        }else{
-            $query->where(function ($query) {
-                $query->whereNull('user_id');
-            });
-        }
-
-        $exercises = $query->paginate(20);
-        return Inertia::render('exercises/pages/IndexExercises', [
-            'exercises' => ExerciseResource::collection($exercises),
-            'equipments' => Exercise::distinct()->pluck('equipment')->filter()->values(),
-            'muscles' => Muscle::pluck('name')->toArray()
-        ]);
+        return Inertia::render('exercises/pages/IndexExercises', $this->getExerciseDataForRender($request));
     }
 
     public function indexAddExercises(Request $request, $routineId, $redirect_to)
     {
         $routine = Routine::findOrFail($routineId);
         $this->authorize('addExercise', $routine);
-        $query = Exercise::query();
 
-        if ($request->filled('equipment')) {
-            if ($request->equipment === 'Sin equipamiento') {
-                $query->whereNull('equipment');
-            } else {
-                $query->where('equipment', $request->equipment);
-            }
-        }
-
-        if ($request->filled('muscle')) {
-            $query->whereHas('muscles', function ($query) use ($request) {
-                $query->where('name', $request->muscle);
-            });
-        }
-        if ($request->filled('my_exercises')) {
-            if ($request->my_exercises === 'Mis ejercicios'){
-                $query->where(function ($query) {
-                    $query->where('user_id', auth()->id());
-                });
-            }else if($request->my_exercises === 'Ejercicios normales') {
-                $query->where(function ($query) {
-                    $query->whereNull('user_id');
-                });
-            }
-        }else{
-            $query->where(function ($query) {
-                $query->whereNull('user_id');
-            });
-        }
-
-        $exercises = $query->paginate(20);
-        return Inertia::render('exercises/pages/AddExercises', [
-            'exercises' => ExerciseResource::collection($exercises),
+        return Inertia::render('exercises/pages/AddExercises', array_merge([
             'routineId' => $routineId,
             'redirect_to' => $redirect_to,
-            'equipments' => Exercise::distinct()->pluck('equipment')->filter()->values(),
-            'muscles' => Muscle::pluck('name')->toArray()
-        ]);
+        ],$this->getExerciseDataForRender($request)));
     }
 
     public function show($id){
@@ -114,12 +46,10 @@ class ExerciseController extends Controller
     public function create($routineId, $redirect_to)
     {
         $this->authorize('create', auth()->user());
-        return Inertia::render('exercises/pages/CreateExercise',[
+        return Inertia::render('exercises/pages/CreateExercise', array_merge([
             'routineId' => $routineId,
             'redirect_to' => $redirect_to,
-            'equipments' => Exercise::distinct()->pluck('equipment')->filter()->values(),
-            'muscles' => Muscle::pluck('name')->toArray()
-        ]);
+        ], $this->getEquipmentsAndMuscles()));
     }
 
 
@@ -127,40 +57,13 @@ class ExerciseController extends Controller
     {
         $this->authorize('create', auth()->user());
         $data = $request->validated();
-        if ($data['equipment'] === 'Sin equipamiento') {
-            $equipment = null;
-        } else {
-            $equipment = $data['equipment'];
-        }
-
-        $file = $data['media'];
-        $originalExtension = $file->getClientOriginalExtension();
-
-        $sanitizedName = preg_replace('/[^a-zA-Z0-9]/', '_', strtolower($request->name));
-        $sanitizedDescription = substr(preg_replace('/[^a-zA-Z0-9]/', '_', strtolower($request->description)), 0, 30); // Máx 30 caracteres
-        $timestamp = time();
-
-        $fileName = "{$sanitizedName}_{$sanitizedDescription}_{$timestamp}.{$originalExtension}";
-
-        $destinationPath = public_path("exercises_video_images/custom/");
-
-        if (!file_exists($destinationPath)) {
-            mkdir($destinationPath, 0777, true);
-        }
-
-        $file->move($destinationPath, $fileName);
-
-        $publicUrl = "exercises_video_images/custom/{$fileName}";
-
-
-        $exercise = Exercise::create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'url' => $publicUrl,
-            'equipment' => $equipment,
-            'user_id' => auth()->id(),
-            'is_private' => true,
-        ]);
+        $equipment = ($data['equipment'] === 'Sin equipamiento') ? null : $data['equipment'];
+        $exercise = $this->exerciseService->createExercise(
+            $data['media'],
+            $data['name'],
+            $data['description'],
+            $equipment
+        );
 
         $muscleIds = Muscle::whereIn('name', $request->muscles)->pluck('id')->toArray();
         $exercise->muscles()->attach($muscleIds);
@@ -169,6 +72,49 @@ class ExerciseController extends Controller
             'routineId' => $routineId,
             'redirect_to' => $redirect_to,
         ]);
+    }
+
+    private function filterExercises(Request $request)
+    {
+        $query = Exercise::query();
+
+        if ($request->filled('equipment')) {
+            $query->where('equipment', $request->equipment === 'Sin equipamiento' ? null : $request->equipment);
+        }
+
+        if ($request->filled('muscle')) {
+            $query->whereHas('muscles', function ($query) use ($request) {
+                $query->where('name', $request->muscle);
+            });
+        }
+
+        if ($request->filled('my_exercises')) {
+            if ($request->my_exercises === 'Mis ejercicios') {
+                $query->where('user_id', auth()->id());
+            } elseif ($request->my_exercises === 'Ejercicios normales') {
+                $query->whereNull('user_id');
+            }
+        } else {
+            $query->whereNull('user_id');
+        }
+
+        return $query->paginate(20);
+    }
+
+
+    private function getEquipmentsAndMuscles()
+    {
+        return [
+            'equipments' => Exercise::distinct()->pluck('equipment')->filter()->values(),
+            'muscles' => Muscle::pluck('name')->toArray(),
+        ];
+    }
+
+    private function getExerciseDataForRender(Request $request)
+    {
+        return array_merge([
+            'exercises' => ExerciseResource::collection($this->filterExercises($request)),
+        ], $this->getEquipmentsAndMuscles());
     }
 
 }
