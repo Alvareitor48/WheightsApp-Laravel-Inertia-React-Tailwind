@@ -16,6 +16,7 @@ export default function RoutineShow({ stadistics }) {
     const { isPopUpOpen, setIsPopUpOpen, isPremium } = usePremiumOrAdminCheck();
     const [loadingForChart, setLoadingForChart] = useState(false);
     const [filterStadistics, setFilterStadistics] = useState(stadistics);
+    const [loading, setLoading] = useState(false);
 
     // Ajustar la altura del gráfico dinámicamente según el ancho de la pantalla
     useEffect(() => {
@@ -75,9 +76,32 @@ export default function RoutineShow({ stadistics }) {
         if (!isPremium) {
             setIsPopUpOpen(true);
         } else {
-            window.open(
+            setLoading(true);
+            router.post(
                 route("routines.generate.pdf", { routineId: data.routine.id }),
-                "_blank"
+                {},
+                {
+                    onSuccess: () => {
+                        router.get(
+                            route("routines.download.pdf", {
+                                routineId: data.routine.id,
+                            }),
+                            {},
+                            {
+                                onSuccess: () => {
+                                    setLoading(false);
+                                    window.open(
+                                        route("routines.download.pdf", {
+                                            routineId: data.routine.id,
+                                        }),
+                                        "_blank",
+                                        "noopener,noreferrer"
+                                    );
+                                },
+                            }
+                        );
+                    },
+                }
             );
         }
     };
@@ -113,7 +137,7 @@ export default function RoutineShow({ stadistics }) {
                         onClick={handleExportPDF}
                         whileHover={{ backgroundColor: "#8F3985", scale: 1.1 }}
                     >
-                        Exportar PDF
+                        {loading ? "Exportando PDF..." : "Exportar PDF"}
                     </m.button>
                 </div>
 
