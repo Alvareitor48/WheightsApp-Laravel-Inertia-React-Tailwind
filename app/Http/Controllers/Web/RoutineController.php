@@ -11,14 +11,16 @@ use App\Http\Resources\ExerciseResource;
 use App\Http\Resources\ExerciseRoutineResource;
 use App\Http\Resources\SerieResource;
 use App\Http\Resources\StatisticsResource;
+use App\Jobs\GenerateRoutinePdfJob;
 use App\Models\Exercise;
 use App\Models\ExerciseLog;
 use App\Models\ExerciseRoutine;
 use App\Models\Routine;
 use App\Models\RoutineSession;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Events\RoutineDeleted;
@@ -126,9 +128,23 @@ public function store()
         $routine = Routine::findOrFail($id);
         $this->authorize('generatePDF', $routine);
         $routineDetails = $this->getRoutineDetails($id);
-        $pdf = Pdf::loadView('pdf.routine', ['routineDetails' => $routineDetails]);
+        GenerateRoutinePdfJob::dispatch($routineDetails,$id);
+    }
 
-        return $pdf->download("rutina_{$routineDetails['routine']['name']}.pdf");
+    public function downloadPDF($id)
+    {
+        $filePath = "pdfs/rutina_{$id}.pdf";
+        if (DB::table('jobs')->where('payload', 'like', "%GenerateRoutinePdfJob%")->exists()) {
+            return;
+        }
+
+        if (!Storage::disk('public')->exists($filePath)) {
+            return;
+        }
+
+        $pdfContent = Storage::disk('public')->path($filePath);
+        Storage::disk('public')->delete($filePath);
+        return response()->download($pdfContent, "rutina_{$id}.pdf");
     }
 
     public function destroy($id)
