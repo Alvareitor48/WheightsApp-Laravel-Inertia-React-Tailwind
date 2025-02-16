@@ -10,7 +10,7 @@ class ExerciseRoutine extends Model
 {
     use HasFactory;
     protected $table = 'exercises_routines';
-    protected $fillable = ['exercise_id','routine_id','duration','note','rest_time'];
+    protected $fillable = ['exercise_id','routine_id','note','rest_time'];
 
     public function exercise(): BelongsTo
     {

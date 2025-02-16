@@ -15,7 +15,7 @@ class Exercise extends Model
     public function routines(): BelongsToMany
     {
         return $this->belongsToMany(Routine::class,'exercises_routines')
-            ->withPivot(['id','duration','note','rest_time'])
+            ->withPivot(['id','note','rest_time'])
             ->as('pivot');
     }
 
