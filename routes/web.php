@@ -36,7 +36,7 @@ Route::middleware(['auth', 'role:user|premium|admin'])->group(function(){
 
     Route::get('/routines/{routineId}/add-exercises/{redirect_to?}', [ExerciseController::class, 'indexAddExercises'])->name('routines.add.exercises');
     Route::put('/routines/{routineId}/add-exercise', [RoutineController::class, 'addExercise'])->name('routines.add.exercise');
-    Route::delete('/routines/{routineId}/delete-exercise', [RoutineController::class, 'deleteExercise'])->name('routines.delete.exercise');
+    Route::delete('/routines/{routineId}/delete-exercise/{redirect_to?}', [RoutineController::class, 'deleteExercise'])->name('routines.delete.exercise');
 
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
 });

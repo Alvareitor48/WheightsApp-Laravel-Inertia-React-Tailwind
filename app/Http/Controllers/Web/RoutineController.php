@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Helpers\DateHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ManageExerciseRemoveRequest;
 use App\Http\Requests\ManageExerciseRequest;
 use App\Http\Requests\StartRoutinesRequest;
 use App\Http\Requests\UpdateRoutinesRequest;
@@ -50,17 +51,16 @@ class RoutineController extends Controller
         return Inertia::render('routines/pages/UpdateRoutines', $routineDetails);
     }
 
-    public function update(UpdateRoutinesRequest $request){
+    public function update(UpdateRoutinesRequest $request,$id){
         $data = $request->all();
-        $routine = Routine::findOrFail($data['routine']['id']);
+        $routine = Routine::findOrFail($id);
         $this->authorize('update', $routine);
         $routineAndExercises = $this->updateRoutineAndSeries($data);
         if ($request->expectsJson()) {
             return response()->json(['status' => 'Rutina actualizada correctamente.']);
         }
 
-        return redirect()->route('routines.show', ['id' => $routineAndExercises['routine']->id])
-            ->with('success', 'Rutina actualizada correctamente.');
+        return redirect()->route('routines.show', ['id' => $id]);
     }
 
     public function start($id){
@@ -71,10 +71,10 @@ class RoutineController extends Controller
         return Inertia::render('routines/pages/StartRoutines', $routineDetails);
     }
 
-    public function session(StartRoutinesRequest $request){
+    public function session(StartRoutinesRequest $request,$id){
         $data = $request->all();
-        $routine = Routine::findOrFail($data['routine']['id']);
-        $this->authorize('generatePDF', $routine);
+        $routine = Routine::findOrFail($id);
+        $this->authorize('startRoutine', $routine);
         $updateDataId = $this->setSessionDataAndGetId($data);
 
         return redirect()->route('routines.show', ['id' => $updateDataId]);
@@ -88,7 +88,7 @@ class RoutineController extends Controller
     }
 
 
-    public function deleteExercise(ManageExerciseRequest $request, $routineId)
+    public function deleteExercise(ManageExerciseRemoveRequest $request, $routineId, $redirect_to)
 {
     $routine = Routine::findOrFail($routineId);
     $this->authorize('addExercise', $routine);
@@ -98,7 +98,7 @@ class RoutineController extends Controller
         return back()->withErrors(['error' => 'El ejercicio no está en esta rutina']);
     }
 
-    return $this->redirect_to($request->input('redirect_to'), $routineId);
+    return $this->redirect_to($redirect_to, $routineId);
 }
 
 public function store()

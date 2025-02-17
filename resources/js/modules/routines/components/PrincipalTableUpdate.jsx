@@ -19,6 +19,9 @@ export function PrincipalTableUpdate({ index }) {
             }),
             {
                 data: { exercise_id: exerciseId },
+                preserveState: true,
+                only: ['exercises'],
+                preserveScroll: true,
                 onSuccess: () => {
                     console.log("Ejercicio eliminado correctamente");
                     const updatedExercises = data.exercises.filter(
