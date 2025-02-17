@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class RoutineSession extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'routine_id', 'duration', 'complete_at'];
+    protected $fillable = ['user_id', 'routine_id', 'duration', 'completed_at'];
     protected $table = 'routine_sessions';
 
     public function exerciseLogs()
