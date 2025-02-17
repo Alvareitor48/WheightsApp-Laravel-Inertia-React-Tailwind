@@ -22,9 +22,9 @@ class ExerciseLogFactory extends Factory
             'routine_session_id' => RoutineSession::factory(),
             'exercise_id' => Exercise::factory(),
             'repetitions' => $this->faker->numberBetween(6, 15),
-            'RIR' => $this->faker->optional()->numberBetween(0, 3),
+            'RIR' => $this->faker->numberBetween(0, 3),
             'failure' => $this->faker->boolean(30),
-            'weight' => $this->faker->optional()->randomFloat(2, 5, 100),
+            'weight' => $this->faker->randomFloat(2, 5, 100),
             'created_at' => now(),
             'updated_at' => now(),
         ];
