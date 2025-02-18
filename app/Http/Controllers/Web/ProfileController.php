@@ -37,7 +37,7 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
-        
+
         return redirect()->route('dashboard');
     }
 
@@ -48,6 +48,9 @@ class ProfileController extends Controller
     {
         $request->validate([
             'password' => ['required', 'current_password'],
+        ], [
+            'password.required' => 'La contraseña es requerida.',
+            'password.current_password' => 'La contraseña ingresada no es correcta.',
         ]);
 
         $user = $request->user();

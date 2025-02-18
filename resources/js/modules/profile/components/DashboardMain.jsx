@@ -6,12 +6,33 @@ import RoutinesCalendar from "../components/RoutinesCalendar";
 import MaxWeights from "../components/MaxWeights";
 import ExercisesForMuscle from "../components/ExercisesForMuscle";
 import { useDashboard } from "../contexts/dashboardContext";
-import { Link } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
+import { PasswordPopUp } from "./PasswordPopUp";
 export const DashboardMain = () => {
     const { calendarDay, sessions } = useDashboard();
     const [isOpen, setIsOpen] = useState(false);
+    const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
     const toggleDropdown = () => setIsOpen(!isOpen);
+
+    const handleRemoveAccount = () => {
+        setIsPopUpOpen(true); // Mostrar el popup al hacer clic en "Eliminar cuenta"
+    };
+
+    const confirmDeletion = (password, setError) => {
+        router.delete(route("profile.destroy"), {
+            data: { password },
+            preserveScroll: true,
+            onSuccess: () => {
+                window.location.href = "/"; // Redirigir fuera de la app si se elimina la cuenta
+            },
+            onError: (errors) => {
+                if (errors.password) {
+                    setError(errors.password); // Mostrar error si la contraseña es incorrecta
+                }
+            },
+        });
+    };
     return (
         <m.div
             initial={{ opacity: 0 }}
@@ -69,7 +90,12 @@ export const DashboardMain = () => {
                             </svg>
                         </m.button>
                         {isOpen && (
-                            <div className="absolute right-0 mt-2 w-48 glass shadow-lg z-10">
+                            <m.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.2 }}
+                                className="absolute right-0 mt-2 w-48 glass shadow-lg z-10"
+                            >
                                 <Link
                                     href={route("profile.edit")}
                                     className="block px-4 py-3 text-sm text-white hover:bg-lilaSecundario rounded-t-xl"
@@ -82,13 +108,15 @@ export const DashboardMain = () => {
                                 >
                                     Cambiar contraseña
                                 </Link>
-                                <a
+                                <button
                                     href="#"
-                                    className="block px-4 py-3 text-sm text-white hover:bg-lilaSecundario rounded-b-xl"
+                                    className="block w-full px-4 py-3 text-sm text-white hover:bg-lilaSecundario rounded-b-xl"
+                                    type="button"
+                                    onClick={handleRemoveAccount}
                                 >
-                                    Editar cuenta
-                                </a>
-                            </div>
+                                    Eliminar cuenta
+                                </button>
+                            </m.div>
                         )}
                     </div>
                 </m.div>
@@ -163,6 +191,11 @@ export const DashboardMain = () => {
                     )}
                 </m.div>
             </div>
+            <PasswordPopUp
+                isOpen={isPopUpOpen}
+                onClose={() => setIsPopUpOpen(false)}
+                onConfirm={confirmDeletion}
+            />
         </m.div>
     );
 };
