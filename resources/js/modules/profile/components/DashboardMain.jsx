@@ -76,12 +76,12 @@ export const DashboardMain = () => {
                                 >
                                     Editar perfil
                                 </Link>
-                                <a
-                                    href="#"
+                                <Link
+                                    href={route("password.index")}
                                     className="block px-4 py-3 text-sm text-white hover:bg-lilaSecundario"
                                 >
                                     Cambiar contraseña
-                                </a>
+                                </Link>
                                 <a
                                     href="#"
                                     className="block px-4 py-3 text-sm text-white hover:bg-lilaSecundario rounded-b-xl"
