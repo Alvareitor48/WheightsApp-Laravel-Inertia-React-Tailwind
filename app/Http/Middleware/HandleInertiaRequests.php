@@ -37,6 +37,10 @@ class HandleInertiaRequests extends Middleware
                     'name' => Auth::user()->name,
                     'email' => Auth::user()->email,
                     'roles' => Auth::user()->roles->map(fn($role) => ['id' => $role->id, 'name' => $role->name]),
+                    'birthdate' => Auth::user()->birthdate,
+                    'gender' => Auth::user()->gender,
+                    'weight' => Auth::user()->weight,
+                    'height' => Auth::user()->height,
                 ] : null,
             ],
         ]);
