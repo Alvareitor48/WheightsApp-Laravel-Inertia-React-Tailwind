@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use Inertia\Middleware;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +32,8 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $locale = session('locale', config('app.locale'));
+        App::setLocale($locale);
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => Auth::check() ? [
@@ -43,6 +47,8 @@ class HandleInertiaRequests extends Middleware
                     'height' => Auth::user()->height,
                 ] : null,
             ],
+            'locale' => $locale,
+            'translations' => trans('messages'),
         ]);
     }
 }

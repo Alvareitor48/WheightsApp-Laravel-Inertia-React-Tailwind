@@ -5,6 +5,7 @@ use App\Http\Controllers\Web\ExerciseController;
 use App\Http\Controllers\Web\PaymentController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\RoutineController;
+use App\Http\Controllers\Web\LanguageController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -56,5 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/set-locale/{locale}',[LanguageController::class, 'setLocale'])->name('setLocale');
 
 require __DIR__.'/auth.php';
