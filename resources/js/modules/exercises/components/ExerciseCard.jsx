@@ -2,6 +2,7 @@ import { m } from "motion/react";
 import { CardRouteButton } from "./CardRouteButton";
 import VideoThumbnail from "@/shared/components/VideoThumbnail";
 import { router } from "@inertiajs/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function ExerciseCard({
     id,
@@ -11,6 +12,7 @@ export default function ExerciseCard({
     muscles,
     extraButton,
 }) {
+    const t = useTranslation();
     return (
         <m.div
             className="rounded-lg overflow-hidden glass"
@@ -29,7 +31,7 @@ export default function ExerciseCard({
                     {name}
                 </h2>
                 <p className="text-gray-400 mb-2 text-responsive-note-table">
-                    Equipamiento:{" "}
+                    {t("exercise_card_equip")}{" "}
                     {equipment === null ? "Sin Equipamiento" : equipment}
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-2 mb-4">

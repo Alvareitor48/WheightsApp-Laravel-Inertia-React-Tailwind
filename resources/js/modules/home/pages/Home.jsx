@@ -2,35 +2,37 @@ import { Head } from "@inertiajs/react";
 import MainLayout from "@/shared/layouts/MainLayout.jsx";
 import { FirstHomeMainContainer } from "@/modules/home/components/FirstHomeMainContainer.jsx";
 import { MobileAndDesktopHomeContainer } from "@/modules/home/components/MobileAndDesktopHomeContainer.jsx";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function Home() {
+    const t = useTranslation();
     return (
         <MainLayout>
             <Head title="Home" />
             <FirstHomeMainContainer></FirstHomeMainContainer>
             <MobileAndDesktopHomeContainer
                 Imageorientation={"left"}
-                title={"CONTROLA TUS RUTINAS"}
+                title={t("mob_desk_1_title")}
                 li={
                     <>
                         <li>
-                            Registro de{" "}
+                            {t("mob_desk_1_li_1_part1")}{" "}
                             <span className="text-lilaPrincipal">
-                                series y repes
+                                {t("mob_desk_1_li_1_highlight")}
                             </span>
                         </li>
-                        <li>Control preciso del RIR</li>
+                        <li>{t("mob_desk_1_li_2")}</li>
                         <li>
                             <span className="text-lilaPrincipal">
-                                Acceso rapido
+                                {t("mob_desk_1_li_3_highlight")}
                             </span>{" "}
-                            al historial
+                            {t("mob_desk_1_li_3_part2")}
                         </li>
-                        <li>Control de las cargas</li>
+                        <li>{t("mob_desk_1_li_4")}</li>
                         <li>
-                            Monitoreo de{" "}
+                            {t("mob_desk_1_li_5_part1")}{" "}
                             <span className="text-lilaPrincipal">
-                                descansos
+                                {t("mob_desk_1_li_5_highlight")}
                             </span>
                         </li>
                     </>
@@ -38,23 +40,24 @@ export default function Home() {
             ></MobileAndDesktopHomeContainer>
             <MobileAndDesktopHomeContainer
                 Imageorientation={"right"}
-                title={"PRIORIZA TUS OBJETIVOS"}
+                title={t("mob_desk_2_title")}
                 li={
                     <>
                         <li className="text-lilaPrincipal">
-                            Rutinas personalizadas
+                            {t("mob_desk_2_li_1_highlight")}
                         </li>
-                        <li>Hechas por profesionales</li>
+                        <li>{t("mob_desk_2_li_2")}</li>
                         <li>
-                            Conoce tus{" "}
-                            <span className="text-lilaPrincipal">calorias</span>{" "}
-                            necesarias
-                        </li>
-                        <li>Busca tu objetivo</li>
-                        <li>
-                            Calcula tu{" "}
+                            {t("mob_desk_2_li_3_part1")}{" "}
                             <span className="text-lilaPrincipal">
-                                repeticion maxima
+                                {t("mob_desk_2_li_3_highlight")}
+                            </span>
+                        </li>
+                        <li>{t("mob_desk_2_li_4")}</li>
+                        <li>
+                            {t("mob_desk_2_li_5_part1")}{" "}
+                            <span className="text-lilaPrincipal">
+                                {t("mob_desk_2_li_5_highlight")}
                             </span>
                         </li>
                     </>

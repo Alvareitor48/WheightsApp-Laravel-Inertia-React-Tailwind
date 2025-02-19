@@ -62,8 +62,8 @@ export const DashboardProvider = ({
     const fetchExercisesByMuscle = (muscle, period) => {
         setLoadingForMuscle(true);
         router.get(
-            route("exercises.by.muscle", translateExercise(muscle)), // Solo enviamos el músculo en la URL
-            { period }, // Enviamos el período como parámetro de consulta
+            route("exercises.by.muscle", translateExercise(muscle)),
+            { period },
             {
                 preserveState: true,
                 preserveScroll: true,
@@ -81,8 +81,8 @@ export const DashboardProvider = ({
     const fetchMaxWeightsByMuscle = (muscle, period) => {
         setLoadingForMuscle2(true);
         router.get(
-            route("max.weights.by.muscle", translateExercise(muscle)), // Ahora usamos la nueva ruta
-            { period }, // Enviamos el período como parámetro de consulta
+            route("max.weights.by.muscle", translateExercise(muscle)),
+            { period },
             {
                 preserveState: true,
                 preserveScroll: true,

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { m } from "motion/react";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function PaymentPage() {
     const [isProcessing, setIsProcessing] = useState(false);
+    const t = useTranslation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,11 +26,10 @@ export default function PaymentPage() {
                     <div className="w-full max-w-md glassfull text-white rounded-lg shadow-lg overflow-hidden">
                         <div className="p-6">
                             <h2 className="text-2xl font-bold mb-2">
-                                Suscripción 1 Mes
+                                {t("payment_title")}
                             </h2>
                             <p className="text-gray-400 mb-6">
-                                Ingresa los detalles de tu tarjeta para procesar
-                                el pago
+                                {t("payment_description")}
                             </p>
                             <form onSubmit={handleSubmit}>
                                 <div className="space-y-4">
@@ -114,7 +115,7 @@ export default function PaymentPage() {
                                                 className="flex items-center justify-center"
                                             >
                                                 <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                                                Procesando...
+                                                {t("payment_processing")}
                                             </m.div>
                                         ) : (
                                             <m.div
@@ -124,7 +125,7 @@ export default function PaymentPage() {
                                                 transition={{ duration: 0.2 }}
                                                 className="flex items-center justify-center"
                                             >
-                                                Pagar Ahora
+                                                {t("payment_pay_now")}
                                             </m.div>
                                         )}
                                     </m.button>

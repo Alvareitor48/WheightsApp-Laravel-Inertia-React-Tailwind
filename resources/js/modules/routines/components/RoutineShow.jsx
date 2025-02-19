@@ -7,34 +7,32 @@ import { useEffect, useState } from "react";
 import { usePremiumOrAdminCheck } from "@/shared/hooks/usePremiumOrAdminCheck";
 import { SubscriptionPopUp } from "@/modules/profile/components/SubscriptionPopUp";
 import { m } from "motion/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function RoutineShow({ stadistics }) {
     const { data } = useUpdate();
-    const [chartHeight, setChartHeight] = useState(300); // Altura inicial
-    const [chartWidth, setChartWidth] = useState(300); // Ancho inicial
+    const [chartHeight, setChartHeight] = useState(300);
+    const [chartWidth, setChartWidth] = useState(300);
     const [chartFilter, setChartFilter] = useState("month");
     const { isPopUpOpen, setIsPopUpOpen, isPremium } = usePremiumOrAdminCheck();
     const [loadingForChart, setLoadingForChart] = useState(false);
     const [filterStadistics, setFilterStadistics] = useState(stadistics);
     const [loading, setLoading] = useState(false);
+    const t = useTranslation();
 
-    // Ajustar la altura del gráfico dinámicamente según el ancho de la pantalla
     useEffect(() => {
         const updateChartHeight = () => {
             const screenWidth = window.innerWidth;
-            const newHeight = Math.max(200, screenWidth * 0.15); // Ejemplo: 40% del ancho
-            const newWidth = Math.max(200, screenWidth * 0.6); // Ejemplo: 20% del ancho
+            const newHeight = Math.max(200, screenWidth * 0.15);
+            const newWidth = Math.max(200, screenWidth * 0.6);
             setChartHeight(newHeight);
             setChartWidth(newWidth);
         };
 
-        // Calcular la altura al montar el componente
         updateChartHeight();
 
-        // Escuchar cambios en el tamaño de la ventana
         window.addEventListener("resize", updateChartHeight);
 
-        // Limpiar el evento al desmontar el componente
         return () => {
             window.removeEventListener("resize", updateChartHeight);
         };
@@ -122,22 +120,22 @@ export default function RoutineShow({ stadistics }) {
     return (
         <>
             <div className="bg-transparent flex flex-col items-center min-h-screen text-white">
-                {/* Título y usuario */}
                 <div className="w-full flex justify-between p-4">
-                    {/* Botón de Exportar PDF */}
                     <m.button
                         className="bg-lilaPrincipal text-white text-responsive-select py-1 px-2 rounded-md"
                         onClick={handleRemoveRoutine}
                         whileHover={{ backgroundColor: "#8F3985", scale: 1.1 }}
                     >
-                        Eliminar rutina
+                        {t("routine_show_delete")}
                     </m.button>
                     <m.button
                         className="bg-lilaPrincipal text-white text-responsive-select py-1 px-2 rounded-md"
                         onClick={handleExportPDF}
                         whileHover={{ backgroundColor: "#8F3985", scale: 1.1 }}
                     >
-                        {loading ? "Exportando PDF..." : "Exportar PDF"}
+                        {loading
+                            ? t("routine_show_exporting_pdf")
+                            : t("routine_show_export_pdf")}
                     </m.button>
                 </div>
 
@@ -149,7 +147,7 @@ export default function RoutineShow({ stadistics }) {
                         {data.routine.description}
                     </p>
                     <span className="text-gray-200 text-responsive-h4 font-semibold my-4">
-                        Created by {data.routine.user.name}
+                        {t("routine_show_created_by")} {data.routine.user.name}
                     </span>
                     <div className="w-full h-[40vh] flex flex-col justify-center items-center">
                         <select
@@ -157,14 +155,20 @@ export default function RoutineShow({ stadistics }) {
                             onChange={handleFilterChange}
                             className="p-2 rounded bg-black text-white border border-white"
                         >
-                            <option value="month">Último mes</option>
-                            <option value="3months">Últimos 3 meses</option>
-                            <option value="year">Último año</option>
+                            <option value="month">
+                                {t("routine_show_filter_month")}
+                            </option>
+                            <option value="3months">
+                                {t("routine_show_filter_3months")}
+                            </option>
+                            <option value="year">
+                                {t("routine_show_filter_year")}
+                            </option>
                         </select>
                         {loadingForChart ? (
                             <div>
                                 <h4 className="text-responsive-h4 mb-4">
-                                    Cargando ejercicios...
+                                    {t("routine_show_loading")}
                                 </h4>
                             </div>
                         ) : (
@@ -186,7 +190,7 @@ export default function RoutineShow({ stadistics }) {
                                 route("routines.start", data.routine.id)
                             )
                         }
-                        title="Comenzar Rutina"
+                        title={t("routine_show_start_routine")}
                     ></RouteButton>
                     <RouteButton
                         extraCSS={"mx-2"}
@@ -195,7 +199,7 @@ export default function RoutineShow({ stadistics }) {
                                 route("routines.edit", data.routine.id)
                             )
                         }
-                        title="Actualizar Rutina"
+                        title={t("routine_show_update_routine")}
                     ></RouteButton>
                 </div>
                 {data.exercises.map(function (exercise, index) {

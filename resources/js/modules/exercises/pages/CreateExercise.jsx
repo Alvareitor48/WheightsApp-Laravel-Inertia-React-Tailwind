@@ -1,7 +1,7 @@
 import MainLayout from "@/shared/layouts/MainLayout";
 import { useForm } from "@inertiajs/react";
 import AutoResizingTextarea from "@/modules/routines/components/AutoResizingTextArea";
-import { useEffect } from "react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function CreateExercise({
     routineId,
@@ -16,6 +16,8 @@ export default function CreateExercise({
         equipment: "Otros",
         muscles: [],
     });
+
+    const t = useTranslation();
 
     const handleChange = (e) => {
         setData(e.target.name, e.target.value);
@@ -71,14 +73,16 @@ export default function CreateExercise({
             <div className="min-h-screen bg-transparent text-white p-6">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-responsive-h1 font-bold mb-4">
-                        Crear Ejercicio Personalizado
+                        {t("create_exercise_title")}
                     </h1>
                     <form
                         onSubmit={handleSubmit}
                         className="bg-transparent p-6 rounded shadow-lg"
                     >
                         <div className="mb-4">
-                            <label className="block text-white">Nombre</label>
+                            <label className="block text-white">
+                                {t("create_exercise_name")}
+                            </label>
                             <AutoResizingTextarea
                                 name="name"
                                 value={data.name}
@@ -95,7 +99,7 @@ export default function CreateExercise({
 
                         <div className="mb-4">
                             <label className="block text-white">
-                                Descripción
+                                {t("create_exercise_description")}
                             </label>
                             <AutoResizingTextarea
                                 name="description"
@@ -113,7 +117,7 @@ export default function CreateExercise({
 
                         <div className="mb-4">
                             <label className="block text-white">
-                                Subir Imagen o Video (Webp o Mp4)
+                                {t("create_exercise_upload")}
                             </label>
                             <input
                                 type="file"
@@ -131,7 +135,7 @@ export default function CreateExercise({
 
                         <div className="flex flex-col">
                             <label className="text-sm font-semibold text-white">
-                                Equipamiento
+                                {t("create_exercise_equipment")}
                             </label>
                             <select
                                 name="equipment"
@@ -147,14 +151,14 @@ export default function CreateExercise({
                                     ) : null
                                 )}
                                 <option value={"Sin equipamiento"}>
-                                    Sin equipamiento
+                                    {t("exercises_filter_no_equipment")}
                                 </option>
                             </select>
                         </div>
 
                         <div className="flex flex-col mt-4">
                             <label className="text-sm font-semibold text-white">
-                                Músculos (Selecciona varios)
+                                {t("create_exercise_muscles")}
                             </label>
                             <select
                                 name="muscles"
@@ -188,7 +192,7 @@ export default function CreateExercise({
                                               </button>
                                           </span>
                                       ))
-                                    : "Ninguno"}
+                                    : t("create_exercise_no_muscles")}
                             </div>
                             {errors.muscles && (
                                 <p className="text-red-500 text-sm mt-1">
@@ -202,7 +206,7 @@ export default function CreateExercise({
                             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 mt-4"
                             disabled={processing}
                         >
-                            Guardar Ejercicio
+                            {t("create_exercise_save")}
                         </button>
                     </form>
                 </div>

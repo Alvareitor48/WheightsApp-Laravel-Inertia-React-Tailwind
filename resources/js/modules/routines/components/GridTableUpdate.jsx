@@ -3,11 +3,13 @@ import { SelectPopUp } from "@/modules/routines/components/SelectPopUp.jsx";
 import { useState } from "react";
 import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import { GridTableBase } from "./GridTableBase";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export function GridTableUpdate({ seriesIndex, principalIndex }) {
     const { update, data } = useUpdate();
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [isPopup2Open, setPopup2Open] = useState(false);
+    const t = useTranslation();
 
     const handleInputChange = (attribute) => (newData) => {
         if (newData === "F") {
@@ -72,7 +74,7 @@ export function GridTableUpdate({ seriesIndex, principalIndex }) {
                 isOpen={isPopup2Open}
                 onClose={() => setPopup2Open(false)}
                 onSelect={handleDelete}
-                options={["Eliminar"]}
+                options={[t("select_pop_up_remove")]}
             />
         </>
     );

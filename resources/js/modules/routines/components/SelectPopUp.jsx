@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom";
 import { m } from "motion/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 export function SelectPopUp({ isOpen, onClose, onSelect, options }) {
+    const t = useTranslation();
     if (!isOpen) return null;
 
     return ReactDOM.createPortal(
@@ -36,7 +38,7 @@ export function SelectPopUp({ isOpen, onClose, onSelect, options }) {
                         onClose();
                     }}
                 >
-                    Cancelar
+                    {t("select_pop_up_cancel")}
                 </button>
             </m.div>
         </div>,

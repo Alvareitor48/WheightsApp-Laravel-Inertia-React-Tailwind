@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "../hooks/useTranslation";
 
 const VideoThumbnail = ({ mediaSrc, imgClassname, titulo }) => {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const [thumbnail, setThumbnail] = useState(null);
-    const baseURL = "http://laravel-react.test/"; // Cambiar en producción
+    const baseURL = "http://laravel-react.test/";
+    const t = useTranslation();
 
     useEffect(() => {
         if (mediaSrc.endsWith(".mp4")) {
@@ -13,7 +15,7 @@ const VideoThumbnail = ({ mediaSrc, imgClassname, titulo }) => {
             video.src = baseURL + mediaSrc;
             video.load();
             video.onloadeddata = () => {
-                video.currentTime = 0.1; // Capturar el primer frame
+                video.currentTime = 0.1;
             };
             video.onseeked = () => {
                 const canvas = canvasRef.current;
@@ -33,7 +35,7 @@ const VideoThumbnail = ({ mediaSrc, imgClassname, titulo }) => {
             {thumbnail ? (
                 <img src={thumbnail} alt={titulo} className={imgClassname} />
             ) : (
-                <p>Cargando...</p>
+                <p>{t("video_thumbnail_loading")}</p>
             )}
             {mediaSrc.endsWith(".mp4") && (
                 <video

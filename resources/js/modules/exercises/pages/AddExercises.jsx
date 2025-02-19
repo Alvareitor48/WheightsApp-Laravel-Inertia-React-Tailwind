@@ -7,6 +7,7 @@ import { CardRouteButton } from "../components/CardRouteButton";
 import { Auth } from "@/shared/components/Auth";
 import { usePremiumOrAdminCheck } from "@/shared/hooks/usePremiumOrAdminCheck";
 import { SubscriptionPopUp } from "@/modules/profile/components/SubscriptionPopUp";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function AddExercises({
     exercises,
@@ -20,6 +21,7 @@ export default function AddExercises({
         muscle: "",
         my_exercises: "",
     });
+    const t = useTranslation();
     const { isPopUpOpen, setIsPopUpOpen, isPremium } = usePremiumOrAdminCheck();
 
     const handleFilterChange = (e) => {
@@ -61,7 +63,7 @@ export default function AddExercises({
         <MainLayout>
             <m.div className="min-h-screen bg-transparent p-8 relative">
                 <h1 className="text-responsive-h2 font-bold text-white mb-8 text-center">
-                    Ejercicios
+                    {t("exercises_index_title")}
                 </h1>
                 <form
                     onSubmit={handleSubmit}
@@ -69,7 +71,7 @@ export default function AddExercises({
                 >
                     <div className="flex flex-col">
                         <label className="text-sm font-semibold text-white">
-                            Equipamiento
+                            {t("exercises_index_filter_equipment")}
                         </label>
                         <select
                             name="equipment"
@@ -77,7 +79,9 @@ export default function AddExercises({
                             onChange={handleFilterChange}
                             className="border bg-transparent border-gray-300 rounded p-2 mt-1"
                         >
-                            <option value="">Todos</option>
+                            <option value="">
+                                {t("exercises_index_filter_all")}
+                            </option>
                             {equipments.map((equip, index) =>
                                 equip ? (
                                     <option key={index} value={equip}>
@@ -86,14 +90,14 @@ export default function AddExercises({
                                 ) : null
                             )}
                             <option value={"Sin equipamiento"}>
-                                Sin equipamiento
+                                {t("exercises_index_filter_no_equipment")}
                             </option>
                         </select>
                     </div>
 
                     <div className="flex flex-col mt-4">
                         <label className="text-sm font-semibold text-white">
-                            Músculos
+                            {t("exercises_index_filter_muscles")}
                         </label>
                         <select
                             name="muscle"
@@ -101,7 +105,9 @@ export default function AddExercises({
                             onChange={handleFilterChange}
                             className="border border-gray-300 bg-transparent rounded p-2 mt-1"
                         >
-                            <option value="">Todos</option>
+                            <option value="">
+                                {t("exercises_index_filter_all")}
+                            </option>
                             {muscles.map((muscle, index) => (
                                 <option key={index} value={muscle}>
                                     {muscle === "Deltoides Frontal"
@@ -114,7 +120,7 @@ export default function AddExercises({
                     <Auth roles={["admin", "premium"]}>
                         <div className="flex flex-col mt-4">
                             <label className="text-sm font-semibold text-white">
-                                Mis ejercicios
+                                {t("exercises_index_filter_my_exercises")}
                             </label>
                             <select
                                 name="muscle"
@@ -124,10 +130,14 @@ export default function AddExercises({
                             >
                                 <option value="">Todos</option>
                                 <option value="Mis ejercicios">
-                                    Mis Ejercicios
+                                    {t(
+                                        "exercises_index_filter_my_exercises_option"
+                                    )}
                                 </option>
                                 <option value="Ejercicios normales">
-                                    Ejercicios Normales
+                                    {t(
+                                        "exercises_index_filter_normal_exercises"
+                                    )}
                                 </option>
                             </select>
                         </div>
@@ -140,7 +150,7 @@ export default function AddExercises({
                                 scale: 1.1,
                             }}
                         >
-                            Filtrar
+                            {t("exercises_index_filter_button")}
                         </m.button>
                         <m.button
                             type="button"
@@ -150,7 +160,7 @@ export default function AddExercises({
                                 scale: 1.1,
                             }}
                         >
-                            Limpiar
+                            {t("exercises_index_clear_button")}
                         </m.button>
 
                         <m.button
@@ -161,7 +171,7 @@ export default function AddExercises({
                                 scale: 1.1,
                             }}
                         >
-                            Crear tu propio ejercicio
+                            {t("exercises_index_create_button")}
                         </m.button>
                     </div>
                 </form>
@@ -190,7 +200,7 @@ export default function AddExercises({
                                             }
                                         )
                                     }
-                                    title="Añadir+"
+                                    title={t("exercises_index_add_button")}
                                 ></CardRouteButton>
                             }
                         ></ExerciseCard>

@@ -4,6 +4,7 @@ import PrimaryButton from "@/modules/auth/components/PrimaryButton";
 import TextInput from "@/modules/auth/components/TextInput";
 import { Head, useForm } from "@inertiajs/react";
 import SignBase from "@/modules/auth/components/SignBase";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -12,6 +13,8 @@ export default function Register() {
         password: "",
         password_confirmation: "",
     });
+
+    const t = useTranslation();
 
     const submit = (e) => {
         e.preventDefault();
@@ -27,7 +30,7 @@ export default function Register() {
 
             <form onSubmit={submit} className="space-y-4 px-8 py-10">
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel value="Nombre" />
+                    <InputLabel value={t("register_name")} />
                     <TextInput
                         id="name"
                         type="text"
@@ -42,7 +45,7 @@ export default function Register() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel value="Email" />
+                    <InputLabel value={t("register_email")} />
                     <TextInput
                         id="email"
                         type="email"
@@ -56,7 +59,7 @@ export default function Register() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel value="Contraseña" />
+                    <InputLabel value={t("register_password")} />
                     <TextInput
                         id="password"
                         type="password"
@@ -70,7 +73,7 @@ export default function Register() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center">
-                    <InputLabel value="Confirmar Contraseña" />
+                    <InputLabel value={t("register_password_confirm")} />
                     <TextInput
                         id="password_confirmation"
                         type="password"
@@ -90,7 +93,7 @@ export default function Register() {
 
                 <div className="flex items-center justify-center mt-4">
                     <PrimaryButton processing={processing}>
-                        Regístrate
+                        {t("register_button")}
                     </PrimaryButton>
                 </div>
             </form>

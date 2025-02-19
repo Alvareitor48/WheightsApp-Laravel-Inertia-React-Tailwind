@@ -1,8 +1,8 @@
-import VideoThumbnail from "@/shared/components/VideoThumbnail";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 import MainLayout from "@/shared/layouts/MainLayout";
 
 export default function ShowExercise({ exercise }) {
-    console.log(exercise);
+    const t = useTranslation();
     const isImage = exercise.url.match(/\.(jpeg|jpg|gif|png|webp)$/) != null;
     const mediaType = isImage ? "image" : "video";
     return (
@@ -30,14 +30,14 @@ export default function ShowExercise({ exercise }) {
                                 style={{ pointerEvents: "none" }}
                                 className="w-full h-auto rounded-lg object-cover"
                             >
-                                Tu navegador no soporta el elemento de video.
+                                {t("show_exercise_video_not_supported")}
                             </video>
                         )}
                     </div>
 
                     <div className="mb-6">
                         <h2 className="text-responsive-h2 font-semibold mb-2">
-                            Descripción
+                            {t("show_exercise_description")}
                         </h2>
                         <p className="text-responsive-h4">
                             {exercise.description}
@@ -47,7 +47,7 @@ export default function ShowExercise({ exercise }) {
                     <div className="grid md:grid-cols-2 gap-6">
                         <div>
                             <h2 className="text-responsive-h4 font-semibold mb-2">
-                                Equipamiento
+                                {t("show_exercise_equipment")}
                             </h2>
                             {exercise.equipment !== null ? (
                                 <span className="bg-blue-900 bg-opacity-70 text-white px-2 py-1 rounded-full text-responsive-note-table">
@@ -55,14 +55,14 @@ export default function ShowExercise({ exercise }) {
                                 </span>
                             ) : (
                                 <span className="bg-blue-900 bg-opacity-70 text-white px-2 py-1 rounded-full text-responsive-note-table">
-                                    Sin equipamiento
+                                    {t("show_exercise_no_equipment")}
                                 </span>
                             )}
                         </div>
 
                         <div>
                             <h2 className="text-responsive-h4 font-semibold mb-2">
-                                Músculos implicados
+                                {t("show_exercise_muscles")}
                             </h2>
                             <div className="space-x-3">
                                 {exercise.muscles.map((muscle, index) => (

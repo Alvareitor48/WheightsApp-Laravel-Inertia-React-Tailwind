@@ -4,6 +4,7 @@ import { useDashboard } from "../contexts/dashboardContext";
 import handleTranslates from "../functions/handleTranslates";
 import { SubscriptionPopUp } from "./SubscriptionPopUp";
 import { usePremiumOrAdminCheck } from "../../../shared/hooks/usePremiumOrAdminCheck";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 const ExercisesForMuscle = () => {
     const {
         mainMuscle,
@@ -14,11 +15,12 @@ const ExercisesForMuscle = () => {
         fetchExercisesByMuscle,
     } = useDashboard();
 
-    const { translateExercise, translateFilter } = handleTranslates;
-
     const exerciseRef = useRef(null);
 
     const { isPopUpOpen, setIsPopUpOpen, isPremium } = usePremiumOrAdminCheck();
+
+    const { translateFilter } = handleTranslates;
+    const t = useTranslation();
 
     const handleFilterChange = (e) => {
         const selectedFilter = e.target.value;
@@ -40,18 +42,18 @@ const ExercisesForMuscle = () => {
             {mainMuscle !== "" ? (
                 <>
                     <h2 className="text-responsive-h4 mb-4">
-                        {`Ejercicios de ${translateExercise(
-                            mainMuscle
-                        )} (${translateFilter(exerciseFilter)})`}
+                        {t("exercises_title_part1")} {t(`muscle_${mainMuscle}`)}{" "}
+                        {t("exercises_title_part2")}{" "}
+                        {t(`filter_${exerciseFilter}`)}
                     </h2>
                     <select
                         value={exerciseFilter}
                         onChange={handleFilterChange}
                         className="mb-4 p-2 rounded bg-black text-white border border-white"
                     >
-                        <option value="month">Último mes</option>
-                        <option value="3months">Últimos 3 meses</option>
-                        <option value="year">Último año</option>
+                        <option value="month">{t(`filter_month`)}</option>
+                        <option value="3months">{t(`filter_3months`)}</option>
+                        <option value="year">{t(`filter_year`)}</option>
                     </select>
                     <div className="aspect-[2/2] max-h-[400px] bg-white/5 rounded-md overflow-y-auto scrollbar-hide p-4 w-full">
                         <m.div
@@ -65,7 +67,7 @@ const ExercisesForMuscle = () => {
                             <AnimatePresence>
                                 {loadingForMuscle ? (
                                     <h4 className="text-responsive-h4 mb-4">
-                                        Cargando ejercicios...
+                                        {t("exercises_loading")}
                                     </h4>
                                 ) : exercisesForMuscle.length > 0 ? (
                                     exercisesForMuscle.map(
@@ -116,7 +118,18 @@ const ExercisesForMuscle = () => {
                                                                                 scale: 1.1,
                                                                             }}
                                                                         >
-                                                                            {`${serie.weight} kg x ${serie.repetitions} repeticiones`}
+                                                                            {
+                                                                                serie.weight
+                                                                            }{" "}
+                                                                            {t(
+                                                                                "exercises_series_part2"
+                                                                            )}{" "}
+                                                                            {
+                                                                                serie.repetitions
+                                                                            }{" "}
+                                                                            {t(
+                                                                                "exercises_series_part3"
+                                                                            )}
                                                                         </m.div>
                                                                     );
                                                                 }
@@ -130,8 +143,9 @@ const ExercisesForMuscle = () => {
                                 ) : (
                                     <div>
                                         <h4 className="text-responsive-h4 mb-4">
-                                            Esta semana no has hecho ejercicios
-                                            de {translateExercise(mainMuscle)}
+                                            {t("exercises_no_data_part1")}{" "}
+                                            {t(`muscle_${mainMuscle}`)}{" "}
+                                            {t("exercises_no_data_part2")}
                                         </h4>
                                     </div>
                                 )}
@@ -142,10 +156,10 @@ const ExercisesForMuscle = () => {
             ) : (
                 <>
                     <h2 className="text-responsive-h4 mb-4">
-                        Ejercicios hechos de cada músculo
+                        {t("exercises_each_muscle")}
                     </h2>
                     <p className="text-center text-gray-400">
-                        Selecciona un músculo en el modelo
+                        {t("exercises_select_muscle")}
                     </p>
                 </>
             )}

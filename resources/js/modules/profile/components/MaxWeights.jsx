@@ -4,6 +4,7 @@ import { useDashboard } from "../contexts/dashboardContext";
 import handleTranslates from "../functions/handleTranslates";
 import { SubscriptionPopUp } from "./SubscriptionPopUp";
 import { usePremiumOrAdminCheck } from "../../../shared/hooks/usePremiumOrAdminCheck";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 const MaxWeights = () => {
     const {
@@ -45,24 +46,24 @@ const MaxWeights = () => {
             }
         }
     };
+    const t = useTranslation();
 
     return (
         <>
             {mainMuscle !== "" ? (
                 <>
                     <h2 className="text-responsive-h4 mb-4">
-                        {`Pesos maximos y minimos de ${translateExercise(
-                            mainMuscle
-                        )} (${translateFilter(weightFilter)})`}
+                        {t("max_weights_title")} {t(`muscle_${mainMuscle}`)}{" "}
+                        {t("max_weights_filter")} {t(`filter_${weightFilter}`)}
                     </h2>
                     <select
                         value={weightFilter}
                         onChange={handleFilterChange}
                         className="mb-4 p-2 rounded bg-black text-white border border-white"
                     >
-                        <option value="month">Último mes</option>
-                        <option value="3months">Últimos 3 meses</option>
-                        <option value="year">Último año</option>
+                        <option value="month">{t(`filter_month`)}</option>
+                        <option value="3months">{t(`filter_3months`)}</option>
+                        <option value="year">{t(`filter_year`)}</option>
                     </select>
                     <div className="relative">
                         <div className="overflow-hidden">
@@ -81,7 +82,7 @@ const MaxWeights = () => {
                                 <AnimatePresence>
                                     {loadingForMuscle2 ? (
                                         <h4 className="text-responsive-h4 mb-4">
-                                            Cargando ejercicios...
+                                            {t("max_weights_loading")}
                                         </h4>
                                     ) : maxWeightsStats.length > 0 ? (
                                         maxWeightsStats.map((stat, index) => {
@@ -110,7 +111,8 @@ const MaxWeights = () => {
                                                         {stat.max.exercise}
                                                     </h3>
                                                     <h4 className="text-responsive-select mb-1 sm:mb-2">
-                                                        Maximo: {stat.max.date}
+                                                        {t("max_weights_max")}{" "}
+                                                        {stat.max.date}
                                                     </h4>
                                                     <p className="text-responsive-select mb-3 font-bold">
                                                         {stat.max.weight +
@@ -120,7 +122,8 @@ const MaxWeights = () => {
                                                             " reps"}
                                                     </p>
                                                     <h4 className="text-responsive-select mb-1 sm:mb-2">
-                                                        Minimo: {stat.min.date}
+                                                        {t("max_weights_min")}{" "}
+                                                        {stat.min.date}
                                                     </h4>
                                                     <p className="text-responsive-select font-bold">
                                                         {stat.min.weight +
@@ -149,9 +152,9 @@ const MaxWeights = () => {
                                             className="w-full"
                                         >
                                             <h4 className="text-responsive-h4 mb-4">
-                                                No has hecho ejercicios de{" "}
-                                                {translateExercise(mainMuscle)}{" "}
-                                                en tu vida
+                                                {t("max_weights_no_data_part1")}{" "}
+                                                {t(`muscle_${mainMuscle}`)}{" "}
+                                                {t("max_weights_no_data_part2")}
                                             </h4>
                                         </m.div>
                                     )}
@@ -203,10 +206,10 @@ const MaxWeights = () => {
             ) : (
                 <>
                     <h2 className="text-responsive-h4 mb-4">
-                        Pesos maximos por músculo
+                        {t("max_weights_section_title")}
                     </h2>
                     <p className="text-center text-gray-400 relative">
-                        Selecciona un músculo en el modelo
+                        {t("max_weights_select_muscle")}
                     </p>
                 </>
             )}

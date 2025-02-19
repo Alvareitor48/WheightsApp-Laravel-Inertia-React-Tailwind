@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDashboard } from "../contexts/dashboardContext";
 import { router } from "@inertiajs/react";
 import handleTranslates from "../functions/handleTranslates";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 const BodyHighlight = () => {
     const [isFront, setIsFront] = useState(true);
@@ -16,16 +17,10 @@ const BodyHighlight = () => {
         setLoadingForMuscle2,
     } = useDashboard();
 
+    const t = useTranslation();
     const { translateExercise } = handleTranslates;
 
-    const handleClick = ({ muscle, data }) => {
-        const { exercises, frequency } = data;
-
-        /*alert(
-                `You clicked the ${muscle}! You've worked out this muscle ${frequency} times through the following exercises: ${JSON.stringify(
-                    exercises
-                )}`
-            );*/
+    const handleClick = ({ muscle }) => {
         if (!(muscle === "head" || muscle === "neck" || muscle === "knees")) {
             setMainMuscle(muscle);
             setLoadingForMuscle(true);
@@ -70,7 +65,7 @@ const BodyHighlight = () => {
     return (
         <>
             <h2 className="text-responsive-h4 mb-4">
-                Musculos entrenados esta semana
+                {t("body_highlight_title")}
             </h2>
             <div className="flex justify-center relative items-center min-h-[200px] sm:min-h-[300px] md:min-h-[400px] xl:min-h-[500px]">
                 {isFront ? (
@@ -115,7 +110,7 @@ const BodyHighlight = () => {
                         scale: 1.1,
                     }}
                 >
-                    Dar la vuelta
+                    {t("body_highlight_around")}
                 </m.button>
             </div>
         </>

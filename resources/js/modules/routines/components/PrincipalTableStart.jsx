@@ -8,9 +8,11 @@ import { GridTableStart } from "./GridTableStart";
 import { router } from "@inertiajs/react";
 import AutoResizingTextarea from "./AutoResizingTextArea";
 import VideoThumbnail from "@/shared/components/VideoThumbnail";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 export function PrincipalTableStart({ index, error }) {
     const { update, data, errors } = useUpdate();
     const { createSeries } = useCreateSeries();
+    const t = useTranslation();
 
     const handleRemoveExercise = (routineId, exerciseId, redirect_to) => {
         router.delete(
@@ -21,7 +23,7 @@ export function PrincipalTableStart({ index, error }) {
             {
                 data: { exercise_id: exerciseId },
                 preserveState: true,
-                only: ['exercises'],
+                only: ["exercises"],
                 preserveScroll: true,
                 onSuccess: () => {
                     console.log("Ejercicio eliminado correctamente");
@@ -96,15 +98,15 @@ export function PrincipalTableStart({ index, error }) {
         <>
             {handleErrors(index, errors) === "both" ? (
                 <p className="text-red-500 text-responsive-note-table mt-1">
-                    Hay errores en las repeticiones y los pesos
+                    {t("principal_table_start_error_reps_weights")}
                 </p>
             ) : handleErrors(index, errors) === "repetitions" ? (
                 <p className="text-red-500 text-responsive-note-table mt-1">
-                    Hay errores en las repeticiones
+                    {t("principal_table_start_error_reps")}
                 </p>
             ) : handleErrors(index, errors) === "weight" ? (
                 <p className="text-red-500 text-responsive-note-table mt-1">
-                    Hay errores en los pesos
+                    {t("principal_table_start_error_weights")}
                 </p>
             ) : error ? (
                 <p className="text-red-500 text-responsive-note-table mt-1">
@@ -120,7 +122,7 @@ export function PrincipalTableStart({ index, error }) {
                     createSeries(index);
                 }}
             >
-                + Añadir Serie
+                {t("principal_table_start_add_series")}
             </m.button>
             <m.button
                 type="button"

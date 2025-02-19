@@ -1,10 +1,12 @@
 import ReactDOM from "react-dom";
 import { m } from "motion/react";
 import { useState } from "react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export function PasswordPopUp({ isOpen, onClose, onConfirm }) {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const t = useTranslation();
 
     if (!isOpen) return null;
 
@@ -22,7 +24,7 @@ export function PasswordPopUp({ isOpen, onClose, onConfirm }) {
                 exit={{ opacity: 0, scale: 0.8 }}
             >
                 <h2 className="text-responsive-h3 text-white mb-4">
-                    Escribe tu contraseña para eliminar la cuenta
+                    {t("password_popup_title")}
                 </h2>
                 <form onSubmit={handleSubmit}>
                     <input
@@ -33,14 +35,16 @@ export function PasswordPopUp({ isOpen, onClose, onConfirm }) {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     {error && (
-                        <p className="text-red-500 text-sm mt-2">{error}</p>
+                        <p className="text-red-500 text-sm mt-2">
+                            {error && t("password_popup_error")}
+                        </p>
                     )}
 
                     <button
                         type="submit"
                         className="mt-4 w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg"
                     >
-                        Eliminar cuenta
+                        {t("password_popup_delete")}
                     </button>
                 </form>
                 <button
@@ -51,7 +55,7 @@ export function PasswordPopUp({ isOpen, onClose, onConfirm }) {
                         onClose();
                     }}
                 >
-                    Cerrar
+                    {t("password_popup_close")}
                 </button>
             </m.div>
         </div>,

@@ -8,9 +8,11 @@ import { handleErrors } from "../functions/handleErrors";
 import { router } from "@inertiajs/react";
 import AutoResizingTextarea from "./AutoResizingTextArea";
 import VideoThumbnail from "@/shared/components/VideoThumbnail";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 export function PrincipalTableUpdate({ index }) {
     const { update, data, errors } = useUpdate();
     const { createSeries } = useCreateSeries();
+    const t = useTranslation();
     const handleRemoveExercise = (routineId, exerciseId, redirect_to) => {
         router.delete(
             route("routines.delete.exercise", {
@@ -20,10 +22,9 @@ export function PrincipalTableUpdate({ index }) {
             {
                 data: { exercise_id: exerciseId },
                 preserveState: true,
-                only: ['exercises'],
+                only: ["exercises"],
                 preserveScroll: true,
                 onSuccess: () => {
-                    console.log("Ejercicio eliminado correctamente");
                     const updatedExercises = data.exercises.filter(
                         (exercise) => exercise.id !== exerciseId
                     );
@@ -33,14 +34,10 @@ export function PrincipalTableUpdate({ index }) {
                         routine: data.routine,
                         exercises: updatedExercises,
                     };
-                    console.log(routineProgress);
                     localStorage.setItem(
                         "routineProgress",
                         JSON.stringify(routineProgress)
                     );
-                },
-                onError: (errors) => {
-                    console.error("Error al eliminar el ejercicio", errors);
                 },
             }
         );
@@ -94,15 +91,15 @@ export function PrincipalTableUpdate({ index }) {
         <>
             {handleErrors(index, errors) === "both" ? (
                 <p className="text-red-500 text-responsive-note-table mt-1">
-                    ¡Hay errores en las repeticiones y los pesos!
+                    {t("principal_table_start_error_reps_weights")}
                 </p>
             ) : handleErrors(index, errors) === "repetitions" ? (
                 <p className="text-red-500 text-responsive-note-table mt-1">
-                    ¡Hay errores en las repeticiones!
+                    {t("principal_table_start_error_reps")}
                 </p>
             ) : handleErrors(index, errors) === "weight" ? (
                 <p className="text-red-500 text-responsive-note-table mt-1">
-                    ¡Hay errores en los pesos!
+                    {t("principal_table_start_error_weights")}
                 </p>
             ) : null}
             <m.button
@@ -114,7 +111,7 @@ export function PrincipalTableUpdate({ index }) {
                     createSeries(index);
                 }}
             >
-                + Añadir Serie
+                {t("principal_table_start_add_series")}
             </m.button>
             <m.button
                 type="button"

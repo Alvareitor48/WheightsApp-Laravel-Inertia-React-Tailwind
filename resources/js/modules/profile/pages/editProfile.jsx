@@ -4,6 +4,7 @@ import InputLabel from "@/modules/auth/components/InputLabel";
 import TextInput from "@/modules/auth/components/TextInput";
 import InputError from "@/modules/auth/components/InputError";
 import { useForm, usePage } from "@inertiajs/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function ProfileEditForm() {
     const { auth } = usePage().props;
@@ -15,6 +16,8 @@ export default function ProfileEditForm() {
         gender: auth.user.gender,
         birthdate: auth.user.birthdate,
     });
+
+    const t = useTranslation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -32,7 +35,7 @@ export default function ProfileEditForm() {
                     className="space-y-4 max-w-md"
                 >
                     <div>
-                        <InputLabel value="Nombre" />
+                        <InputLabel value={t("profile_edit_name")} />
                         <TextInput
                             id="name"
                             type="text"
@@ -46,7 +49,7 @@ export default function ProfileEditForm() {
                     </div>
 
                     <div>
-                        <InputLabel value="Email" />
+                        <InputLabel value={t("profile_edit_email")} />
                         <TextInput
                             id="email"
                             type="email"
@@ -60,7 +63,7 @@ export default function ProfileEditForm() {
                     </div>
 
                     <div>
-                        <InputLabel value="Peso corporal (kg)" />
+                        <InputLabel value={t("profile_edit_weight")} />
                         <TextInput
                             id="weight"
                             type="number"
@@ -74,7 +77,7 @@ export default function ProfileEditForm() {
                     </div>
 
                     <div>
-                        <InputLabel value="Altura (cm)" />
+                        <InputLabel value={t("profile_edit_height")} />
                         <TextInput
                             type="number"
                             id="height"
@@ -88,7 +91,7 @@ export default function ProfileEditForm() {
                     </div>
 
                     <div>
-                        <InputLabel value="Genero" />
+                        <InputLabel value={t("profile_edit_gender")} />
                         <select
                             id="gender"
                             name="gender"
@@ -96,15 +99,21 @@ export default function ProfileEditForm() {
                             onChange={(e) => setData("gender", e.target.value)}
                             className="block w-full rounded-md h-[4vh] border-lilaPrincipal bg-transparent shadow-sm focus:border-lilaPrincipal focus:ring-lilaPrincipal"
                         >
-                            <option value="">Selecciona un genero</option>
-                            <option value="male">Masculino</option>
-                            <option value="female">Femenino</option>
+                            <option value="">
+                                {t("profile_edit_gender_select")}
+                            </option>
+                            <option value="male">
+                                {t("profile_edit_gender_male")}
+                            </option>
+                            <option value="female">
+                                {t("profile_edit_gender_female")}
+                            </option>
                         </select>
                         <InputError message={errors.gender} className="mt-2" />
                     </div>
 
                     <div>
-                        <InputLabel value="Fecha de nacimiento" />
+                        <InputLabel value={t("profile_edit_birthdate")} />
                         <TextInput
                             type="date"
                             id="birthdate"
@@ -127,7 +136,7 @@ export default function ProfileEditForm() {
                         type="submit"
                         disabled={processing}
                     >
-                        Actualizar perfil
+                        {t("profile_edit_update_button")}
                     </m.button>
                 </m.form>
             </div>

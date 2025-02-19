@@ -1,4 +1,7 @@
+import { useTranslation } from "@/shared/hooks/useTranslation";
+
 export function PrincipalTableBase({ headDivs, tbody, aditionalDivs }) {
+    const t = useTranslation();
     return (
         <>
             <div className="m-auto w-[90%] mt-6 mb-6 relative">
@@ -12,13 +15,13 @@ export function PrincipalTableBase({ headDivs, tbody, aditionalDivs }) {
                     <thead>
                         <tr className="text-white uppercase leading-normal">
                             <th className="w-1/4 py-3 px-2 text-center">
-                                Serie
+                                {t("principal_table_base_series")}
                             </th>
                             <th className="w-1/4 py-3 px-2 text-center">
-                                Reps
+                                {t("principal_table_base_reps")}
                             </th>
                             <th className="w-1/4 py-3 px-2 text-center">
-                                Peso
+                                {t("principal_table_base_weight")}
                             </th>
                             <th className="w-1/4 py-3 px-2 text-center">RIR</th>
                         </tr>

@@ -2,6 +2,7 @@ import Calendar from "react-calendar";
 import { useDashboard } from "../contexts/dashboardContext";
 import { SubscriptionPopUp } from "./SubscriptionPopUp";
 import { usePremiumOrAdminCheck } from "@/shared/hooks/usePremiumOrAdminCheck";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 const RoutinesCalendar = () => {
     const { sessions, setCalendarDay } = useDashboard();
@@ -11,6 +12,7 @@ const RoutinesCalendar = () => {
         today.getMonth() - 1,
         today.getDate()
     );
+    const t = useTranslation();
     const { isPopUpOpen, setIsPopUpOpen, isPremium } = usePremiumOrAdminCheck();
     const handleClickDay = (value) => {
         const clickedDate = new Date(value);
@@ -41,7 +43,7 @@ const RoutinesCalendar = () => {
 
     return (
         <>
-            <h2 className="text-responsive-h4 mb-4">Calendario</h2>
+            <h2 className="text-responsive-h4 mb-4">{t("calendar")}</h2>
             <div className="rounded-lg overflow-hidden relative">
                 <Calendar
                     className="!bg-transparent !text-white !border-none !rounded-lg p-2 w-full h-full !text-responsive-select"

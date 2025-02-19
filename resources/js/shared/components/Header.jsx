@@ -6,9 +6,11 @@ import { m } from "motion/react";
 import HamburgerButton from "@/shared/components/HamburgerButton.jsx";
 import { Guest } from "./Guest";
 import { Auth } from "./Auth";
+import { useTranslation } from "../hooks/useTranslation";
 
 export const Header = () => {
     const { isOpen, toggleMenu } = useIconAnimation();
+    const t = useTranslation();
 
     return (
         <header className="p-2 bg-black fixed flex justify-between items-center w-screen z-20">
@@ -43,13 +45,13 @@ export const Header = () => {
                             href={route("login")}
                             className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                         >
-                            Login
+                            {t("header_login")}
                         </Link>
                         <Link
                             href={route("register")}
                             className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                         >
-                            Register
+                            {t("header_register")}
                         </Link>
                     </Guest>
                     <Auth>
@@ -57,13 +59,13 @@ export const Header = () => {
                             href={route("dashboard")}
                             className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                         >
-                            Mi perfil
+                            {t("header_dashboard")}
                         </Link>
                         <Link
                             href={route("routines.index")}
                             className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                         >
-                            Mis rutinas
+                            {t("header_my_routines")}
                         </Link>
                     </Auth>
 
@@ -71,31 +73,31 @@ export const Header = () => {
                         href={route("exercises.index")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
-                        Tutoriales
+                        {t("header_tutorials")}
                     </Link>
                     <Link
                         href={route("home")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
-                        Encontrar rutina
+                        {t("header_find_routine")}
                     </Link>
                     <Link
                         href={route("home")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
-                        Calcular 1RM
+                        {t("header_calculate_1rm")}
                     </Link>
                     <Link
                         href={route("home")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
-                        Calcular Calorias
+                        {t("header_calculate_calories")}
                     </Link>
                     <Link
                         href={route("home")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
-                        Sobre Nosotros
+                        {t("header_about_us")}
                     </Link>
                     <Auth>
                         <Link
@@ -104,7 +106,7 @@ export const Header = () => {
                             as="button"
                             className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                         >
-                            Cerrar Sesión
+                            {t("header_logout")}
                         </Link>
                     </Auth>
                 </m.div>

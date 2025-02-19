@@ -3,10 +3,12 @@ import PrimaryButton from "@/modules/auth/components/PrimaryButton";
 import { router } from "@inertiajs/react";
 import { AnimatePresence, motion } from "motion/react";
 import MainLayout from "@/shared/layouts/MainLayout";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function SignBase({ children, isSignIn }) {
     const [isAnimating, setIsAnimating] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const t = useTranslation();
 
     useEffect(() => {
         const handleResize = () => {
@@ -83,7 +85,9 @@ export default function SignBase({ children, isSignIn }) {
                                             >
                                                 <div className="flex flex-col justify-center items-center h-full p-4">
                                                     <p className="text-white text-responsive-td-table mb-4">
-                                                        ¿No estás registrado?
+                                                        {t(
+                                                            "signbase_no_account"
+                                                        )}
                                                     </p>
                                                     <PrimaryButton
                                                         onClick={() =>
@@ -92,7 +96,7 @@ export default function SignBase({ children, isSignIn }) {
                                                             )
                                                         }
                                                     >
-                                                        Regístrate
+                                                        {t("signbase_register")}
                                                     </PrimaryButton>
                                                 </div>
                                             </motion.div>
@@ -109,7 +113,9 @@ export default function SignBase({ children, isSignIn }) {
                                             >
                                                 <div className="flex flex-col justify-center items-center h-full p-4">
                                                     <p className="text-white text-responsive-td-table mb-4">
-                                                        ¿Ya tienes cuenta?
+                                                        {t(
+                                                            "signbase_have_account"
+                                                        )}
                                                     </p>
                                                     <PrimaryButton
                                                         onClick={() =>
@@ -118,7 +124,7 @@ export default function SignBase({ children, isSignIn }) {
                                                             )
                                                         }
                                                     >
-                                                        Inicia Sesión
+                                                        {t("signbase_login")}
                                                     </PrimaryButton>
                                                 </div>
                                             </motion.div>

@@ -8,15 +8,17 @@ import ExercisesForMuscle from "../components/ExercisesForMuscle";
 import { useDashboard } from "../contexts/dashboardContext";
 import { Link, router } from "@inertiajs/react";
 import { PasswordPopUp } from "./PasswordPopUp";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 export const DashboardMain = () => {
     const { calendarDay, sessions } = useDashboard();
     const [isOpen, setIsOpen] = useState(false);
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
     const toggleDropdown = () => setIsOpen(!isOpen);
+    const t = useTranslation();
 
     const handleRemoveAccount = () => {
-        setIsPopUpOpen(true); // Mostrar el popup al hacer clic en "Eliminar cuenta"
+        setIsPopUpOpen(true);
     };
 
     const confirmDeletion = (password, setError) => {
@@ -24,11 +26,11 @@ export const DashboardMain = () => {
             data: { password },
             preserveScroll: true,
             onSuccess: () => {
-                window.location.href = "/"; // Redirigir fuera de la app si se elimina la cuenta
+                window.location.href = "/";
             },
             onError: (errors) => {
                 if (errors.password) {
-                    setError(errors.password); // Mostrar error si la contraseña es incorrecta
+                    setError(errors.password);
                 }
             },
         });
@@ -41,7 +43,6 @@ export const DashboardMain = () => {
             className="min-h-screen bg-black text-white p-4 sm:p-6"
         >
             <div className="mx-auto grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:max-w-full xl:px-4">
-                {/* Header - spans full width */}
                 <m.div
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -100,13 +101,13 @@ export const DashboardMain = () => {
                                     href={route("profile.edit")}
                                     className="block px-4 py-3 text-sm text-white hover:bg-lilaSecundario rounded-t-xl"
                                 >
-                                    Editar perfil
+                                    {t("profile_edit")}
                                 </Link>
                                 <Link
                                     href={route("password.index")}
                                     className="block px-4 py-3 text-sm text-white hover:bg-lilaSecundario"
                                 >
-                                    Cambiar contraseña
+                                    {t("profile_change_password")}
                                 </Link>
                                 <button
                                     href="#"
@@ -114,13 +115,12 @@ export const DashboardMain = () => {
                                     type="button"
                                     onClick={handleRemoveAccount}
                                 >
-                                    Eliminar cuenta
+                                    {t("profile_delete_account")}
                                 </button>
                             </m.div>
                         )}
                     </div>
                 </m.div>
-                {/* Body Highlight */}
                 <m.div
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -129,7 +129,6 @@ export const DashboardMain = () => {
                 >
                     <BodyHighlight />
                 </m.div>
-                {/* Pesos maximos por musculo */}
                 <m.div
                     initial={{ x: 20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -139,7 +138,6 @@ export const DashboardMain = () => {
                     <MaxWeights />
                 </m.div>
 
-                {/* Ejercicios por musculo */}
                 <m.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -149,7 +147,6 @@ export const DashboardMain = () => {
                     <ExercisesForMuscle />
                 </m.div>
 
-                {/* Calendario */}
                 <m.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -160,13 +157,13 @@ export const DashboardMain = () => {
                     {calendarDay === "" ? (
                         <m.div className="rounded-lg bg-white/5 p-2">
                             <p className="text-center text-gray-400 text-responsive-select">
-                                Ese dia no tienes rutina
+                                {t("dashboard_no_routine_day")}
                             </p>
                         </m.div>
                     ) : calendarDay === null ? (
                         <m.div className="rounded-lg bg-white/5 p-2">
                             <p className="text-center text-gray-400 text-responsive-select">
-                                Selecciona un día con rutina en el calendario
+                                {t("dashboard_select_routine_day")}
                             </p>
                         </m.div>
                     ) : (
@@ -184,7 +181,7 @@ export const DashboardMain = () => {
                                             scale: 1.1,
                                         }}
                                     >
-                                        Ver dia
+                                        {t("dashboard_view_day")}
                                     </m.button>
                                 </m.div>
                             ))

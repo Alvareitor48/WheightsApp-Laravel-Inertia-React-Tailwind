@@ -1,6 +1,8 @@
 import { m } from "motion/react";
 import { router } from "@inertiajs/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 export function IndexRoutine({ name, description, id }) {
+    const t = useTranslation();
     return (
         <>
             <div className="w-responsive-index-width mx-6 my-6">
@@ -28,10 +30,9 @@ export function IndexRoutine({ name, description, id }) {
                                 router.visit(route("routines.show", id))
                             }
                         >
-                            Ver Rutina
+                            {t("index_show_routine_button")}
                         </m.button>
                     </div>
-                    {/*Muñeco con los musculos implicados*/}
                 </div>
             </div>
         </>

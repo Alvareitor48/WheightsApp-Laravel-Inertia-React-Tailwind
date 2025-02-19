@@ -4,11 +4,13 @@ import InputError from "@/modules/auth/components/InputError";
 import InputLabel from "@/modules/auth/components/InputLabel";
 import TextInput from "@/modules/auth/components/TextInput";
 import { useForm } from "@inertiajs/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
         password: "",
     });
+    const t = useTranslation();
 
     const submit = (e) => {
         e.preventDefault();
@@ -29,17 +31,19 @@ export default function ConfirmPassword() {
                 >
                     <div>
                         <h2 className="text-xl font-semibold text-center">
-                            Confirmar Contraseña
+                            {t("confirm_password_title")}
                         </h2>
                         <p className="text-gray-300 text-sm text-center mt-2">
-                            Esta es un área segura de la aplicación. Por favor,
-                            confirma tu contraseña antes de continuar.
+                            {t("confirm_password_message")}
                         </p>
                     </div>
 
                     {/* Campo de Contraseña */}
                     <div>
-                        <InputLabel htmlFor="password" value="Contraseña" />
+                        <InputLabel
+                            htmlFor="password"
+                            value={t("confirm_password_label")}
+                        />
                         <TextInput
                             id="password"
                             type="password"
@@ -64,7 +68,7 @@ export default function ConfirmPassword() {
                         type="submit"
                         disabled={processing}
                     >
-                        Confirmar
+                        {t("confirm_password_button")}
                     </m.button>
                 </m.form>
             </div>

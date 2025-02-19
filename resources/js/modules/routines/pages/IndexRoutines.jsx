@@ -2,8 +2,10 @@ import { Head, router } from "@inertiajs/react";
 import { IndexRoutine } from "@/modules/routines/components/IndexRoutine.jsx";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 import { m } from "motion/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function IndexRoutines({ routines }) {
+    const t = useTranslation();
     const handleCreateRoutine = () => {
         router.post(route("routines.store"));
     };
@@ -12,10 +14,9 @@ export default function IndexRoutines({ routines }) {
             <Head title="Routines" />
             <div className="min-h-screen bg-transparent">
                 <div className="flex flex-row flex-wrap relative items-center justify-center text-white">
-                    {/* Título y usuario */}
                     <div className="mb-4 mt-6 w-full">
                         <h1 className="text-center text-responsive-h2 font-semibold">
-                            Mis rutinas
+                            {t("index_routines_title")}
                         </h1>
                     </div>
                     {routines.map(function (routine) {

@@ -1,11 +1,8 @@
-// RoutineFormContext.jsx
 import { createContext, useContext } from "react";
 import { useForm } from "@inertiajs/react";
 
-// Crear el contexto
 const RoutineFormContext = createContext();
 
-// Proveedor del contexto
 export const RoutineFormProvider = ({ children, initialData }) => {
     const form = useForm(initialData);
 
@@ -16,7 +13,6 @@ export const RoutineFormProvider = ({ children, initialData }) => {
     );
 };
 
-// Hook para consumir el contexto
 export const useRoutineForm = () => {
     const context = useContext(RoutineFormContext);
     if (!context) {

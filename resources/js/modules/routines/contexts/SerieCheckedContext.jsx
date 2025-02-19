@@ -36,7 +36,6 @@ export const SerieCheckedProvider = ({ children }) => {
     );
 };
 
-// Hook para consumir el contexto
 export const useSerieChecked = () => {
     const context = useContext(SerieCheckedContext);
     if (!context) {

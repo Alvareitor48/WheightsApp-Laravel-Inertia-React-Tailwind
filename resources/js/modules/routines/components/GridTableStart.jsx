@@ -3,12 +3,14 @@ import { SelectPopUp } from "@/modules/routines/components/SelectPopUp.jsx";
 import { useState } from "react";
 import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import { useSerieChecked } from "../contexts/SerieCheckedContext";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export function GridTableStart({ seriesIndex, principalIndex }) {
     const { update, data } = useUpdate();
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [isPopup2Open, setPopup2Open] = useState(false);
     const { completedSeries, toggleCompletion } = useSerieChecked();
+    const t = useTranslation();
 
     const isCompleted =
         completedSeries[`${principalIndex}-${seriesIndex}`] || false;
@@ -100,7 +102,7 @@ export function GridTableStart({ seriesIndex, principalIndex }) {
                 isOpen={isPopup2Open}
                 onClose={() => setPopup2Open(false)}
                 onSelect={handleDelete}
-                options={["Eliminar"]}
+                options={[t("select_pop_up_remove")]}
             />
         </>
     );

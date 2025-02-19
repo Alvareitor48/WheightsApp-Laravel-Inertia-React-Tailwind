@@ -1,8 +1,10 @@
 import React from "react";
 import { router } from "@inertiajs/react";
 import { m } from "motion/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function Pagination({ links }) {
+    const t = useTranslation();
     if (!links) return null;
 
     return (
@@ -19,7 +21,7 @@ export default function Pagination({ links }) {
                         : {}
                 }
             >
-                Primero
+                {t("pagination_first")}
             </m.button>
             <m.button
                 onClick={() => links.prev && router.visit(links.prev)}
@@ -31,7 +33,7 @@ export default function Pagination({ links }) {
                     links.prev ? { backgroundColor: "#8F3985", scale: 1.1 } : {}
                 }
             >
-                Anterior
+                {t("pagination_previous")}
             </m.button>
             <m.button
                 onClick={() => links.next && router.visit(links.next)}
@@ -43,7 +45,7 @@ export default function Pagination({ links }) {
                     links.next ? { backgroundColor: "#8F3985", scale: 1.1 } : {}
                 }
             >
-                Siguiente
+                {t("pagination_next")}
             </m.button>
             <m.button
                 onClick={() => links.last && router.visit(links.last)}
@@ -55,7 +57,7 @@ export default function Pagination({ links }) {
                     links.last ? { backgroundColor: "#8F3985", scale: 1.1 } : {}
                 }
             >
-                Último
+                {t("pagination_last")}
             </m.button>
         </div>
     );

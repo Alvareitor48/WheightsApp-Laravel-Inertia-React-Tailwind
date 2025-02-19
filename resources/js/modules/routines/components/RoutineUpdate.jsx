@@ -4,6 +4,7 @@ import { PrincipalTableUpdate } from "@/modules/routines/components/PrincipalTab
 import { useRoutineForm } from "@/modules/routines/contexts/RoutineFormContext.jsx";
 import { useUpdate } from "@/modules/routines/hooks/useUpdate";
 import AutoResizingTextarea from "./AutoResizingTextArea";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function RoutineUpdate() {
     const { put, processing, errors } = useRoutineForm();
@@ -15,12 +16,12 @@ export default function RoutineUpdate() {
             exercises: data.exercises,
         });
     };
+    const t = useTranslation();
     return (
         <form
             onSubmit={handleSubmit}
             className="bg-transparent flex flex-col items-center min-h-screen text-white"
         >
-            {/* Título y usuario */}
             <div className="text-center mb-4 flex flex-col items-center">
                 <AutoResizingTextarea
                     onChange={(e) => update(e.target.value, 0, "name")}
@@ -43,7 +44,7 @@ export default function RoutineUpdate() {
                     </p>
                 )}
                 <span className="text-gray-200 text-responsive-h4 font-semibold my-4">
-                    Created by {data.routine.user.name}
+                    {t("routine_start_created_by")} {data.routine.user.name}
                 </span>
             </div>
 
@@ -68,7 +69,7 @@ export default function RoutineUpdate() {
                     );
                 }}
             >
-                + Añadir Ejercicio
+                {t("routine_start_add_exercise")}
             </m.button>
             <m.button
                 className="bg-lilaPrincipal pb-1 mt-10 w-responsive-normal-button-width h-responsive-normal-button-height text-responsive-h4 rounded-xl"
@@ -76,7 +77,7 @@ export default function RoutineUpdate() {
                 type="submit"
                 disabled={processing}
             >
-                Guardar Rutina
+                {t("routine_start_finish_routine")}
             </m.button>
         </form>
     );

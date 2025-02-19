@@ -4,6 +4,7 @@ import InputLabel from "@/modules/auth/components/InputLabel";
 import TextInput from "@/modules/auth/components/TextInput";
 import InputError from "@/modules/auth/components/InputError";
 import { useForm } from "@inertiajs/react";
+import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function ProfileEditForm() {
     const { data, setData, errors, put, reset, processing } = useForm({
@@ -11,6 +12,7 @@ export default function ProfileEditForm() {
         password: "",
         password_confirmation: "",
     });
+    const t = useTranslation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -104,7 +106,7 @@ export default function ProfileEditForm() {
                         type="submit"
                         disabled={processing}
                     >
-                        Actualizar perfil
+                        {t("password_update_button")}
                     </m.button>
                 </m.form>
             </div>

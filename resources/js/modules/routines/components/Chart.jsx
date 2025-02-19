@@ -1,3 +1,4 @@
+import { useTranslation } from "@/shared/hooks/useTranslation";
 import { useState } from "react";
 import {
     LineChart,
@@ -11,6 +12,7 @@ import {
 } from "recharts";
 
 const Chart = ({ data, height, width }) => {
+    const t = useTranslation();
     const [metric, setMetric] = useState("Repeticiones Totales");
 
     const handleMetricChange = (e) => {
@@ -27,9 +29,11 @@ const Chart = ({ data, height, width }) => {
                     className="border p-2 rounded bg-black text-responsive-select text-white"
                 >
                     <option value="Repeticiones Totales">
-                        Repeticiones Totales
+                        {t("chart_total_reps")}
                     </option>
-                    <option value="Peso Levantado">Peso Levantado</option>
+                    <option value="Peso Levantado">
+                        {t("chart_total_weight")}
+                    </option>
                 </select>
             </div>
 
@@ -48,21 +52,21 @@ const Chart = ({ data, height, width }) => {
                     <YAxis tick={{ fill: "#fff" }} />
                     <Tooltip
                         contentStyle={{
-                            backgroundColor: "#000", // Fondo negro
-                            color: "#fff", // Texto blanco
-                            borderRadius: "5px", // Bordes redondeados
-                            border: "none", // Sin borde
+                            backgroundColor: "#000",
+                            color: "#fff",
+                            borderRadius: "5px",
+                            border: "none",
                         }}
                         itemStyle={{
-                            color: "#fff", // Texto blanco para elementos
+                            color: "#fff",
                         }}
                         labelStyle={{
-                            color: "#8884d8", // Color del texto de la etiqueta
+                            color: "#8884d8",
                         }}
                     />
                     <Line
                         type="monotone"
-                        dataKey={metric} // Cambia entre "repetitionsCount" y "weightCount"
+                        dataKey={metric}
                         stroke="#8884d8"
                         activeDot={{ r: 8 }}
                     />
