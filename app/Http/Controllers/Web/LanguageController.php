@@ -11,7 +11,7 @@ class LanguageController extends Controller
 {
     public function setLocale(Request $request, $locale)
     {
-        if (!in_array($locale, ['en', 'es', 'fr'])) {
+        if (!in_array($locale, ['en', 'es', 'fr', 'de'])) {
             abort(400);
         }
         session(['locale' => $locale]);

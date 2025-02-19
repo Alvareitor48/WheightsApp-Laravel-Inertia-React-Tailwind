@@ -4,7 +4,8 @@ import { router, usePage } from "@inertiajs/react";
 import { useTranslation } from "@/shared/hooks/useTranslation";
 export const FirstHomeMainContainer = () => {
     const { locale } = usePage().props;
-    const changeLanguage = (lang) => {
+    const changeLanguage = (e) => {
+        const lang = e.target.value;
         router.get(
             route("setLocale", lang),
             {},
@@ -17,27 +18,16 @@ export const FirstHomeMainContainer = () => {
     const t = useTranslation();
     return (
         <>
-            <div>
-                <a
-                    onClick={() => changeLanguage("en")}
-                    className={locale === "en" ? "active" : ""}
-                >
-                    English
-                </a>{" "}
-                |
-                <a
-                    onClick={() => changeLanguage("es")}
-                    className={locale === "es" ? "active" : ""}
-                >
-                    Español
-                </a>
-                <a
-                    onClick={() => changeLanguage("fr")}
-                    className={locale === "fr" ? "active" : ""}
-                >
-                    Français
-                </a>
-            </div>
+            <select
+                value={locale}
+                onChange={changeLanguage}
+                className="p-2 rounded bg-black text-white border border-gray-300"
+            >
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+            </select>
             <div className="mt-8 pt-16 relative flex flex-wrap justify-around">
                 <m.div
                     className="w-responsive-width text-start custom-flex-wrap-first-title:text-center"
