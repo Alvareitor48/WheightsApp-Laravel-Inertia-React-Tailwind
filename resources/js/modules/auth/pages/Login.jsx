@@ -6,7 +6,7 @@ import TextInput from "@/modules/auth/components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 import SignBase from "@/modules/auth/components/SignBase";
 
-export default function Login({ status, canResetPassword, isSignUpProp }) {
+export default function Login() {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
@@ -71,15 +71,6 @@ export default function Login({ status, canResetPassword, isSignUpProp }) {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route("password.request")}
-                            className="underline text-sm text-white hover:text-gray-400"
-                        >
-                            Has olvidado tu contraseña?
-                        </Link>
-                    )}
-
                     <PrimaryButton className="ml-4" processing={processing}>
                         Iniciar Sesión
                     </PrimaryButton>
