@@ -31,6 +31,12 @@ export const FirstHomeMainContainer = () => {
                 >
                     Español
                 </a>
+                <a
+                    onClick={() => changeLanguage("fr")}
+                    className={locale === "fr" ? "active" : ""}
+                >
+                    Français
+                </a>
             </div>
             <div className="mt-8 pt-16 relative flex flex-wrap justify-around">
                 <m.div
