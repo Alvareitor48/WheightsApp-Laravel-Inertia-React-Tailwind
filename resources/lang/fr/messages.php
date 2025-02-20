@@ -187,4 +187,13 @@ return [
     'header_logout' => 'Se Déconnecter',
     'exercises_each_muscle' => 'Exercices effectués pour chaque muscle',
     'exercises_select_muscle' => 'Sélectionnez un muscle sur le modèle',
+    'new_payment_title' => 'Accès Premium à Weights Technology',
+    'new_payment_description' => 'Paiement unique pour un accès illimité',
+    'new_payment_price' => '50€',
+    'new_payment_price_note' => ' paiement unique',
+    'new_payment_features_calendar' => 'Accès complet au calendrier',
+    'new_payment_features_training_view' => 'Voir vos entraînements jusqu\'à 1 an',
+    'new_payment_features_max_weights' => 'Voir vos charges maximales jusqu\'à 1 an',
+    'new_payment_features_stats' => 'Accès aux statistiques jusqu\'à 1 an',
+    'new_payment_features_custom_exercises' => 'Créer vos propres exercices personnalisés',
 ];
