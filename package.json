@@ -21,6 +21,7 @@
         "vite": "^6.0"
     },
     "dependencies": {
+        "@paypal/react-paypal-js": "^8.8.2",
         "motion": "^11.14.4",
         "react-body-highlighter": "^2.0.5",
         "react-calendar": "^5.1.0",
