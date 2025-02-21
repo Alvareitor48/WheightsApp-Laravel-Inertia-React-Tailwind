@@ -9,6 +9,7 @@ Route::middleware(['auth:sanctum','role:user|admin|premium'])->group(function ()
     Route::get('/exercises/{id}', [ExerciseApiController::class, 'show'])->name('api.exercises.show');
     Route::post('/logout', [AuthApiController::class, 'logout'])->name('api.logout');
     Route::get('/routines/{id}', [RoutineApiController::class, 'show']);
+    Route::get('/routines/{id}/chart-data', [RoutineApiController::class, 'chartData']);
 });
 
 Route::middleware(['auth:sanctum','role:admin|premium'])->group(function () {
