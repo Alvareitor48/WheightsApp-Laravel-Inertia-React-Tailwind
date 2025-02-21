@@ -26,4 +26,10 @@ class ExerciseRoutine extends Model
     {
         return $this->hasMany(Serie::class,'exercises_routines_id');
     }
+
+    public function scopeByRoutineAndExercise($query, $routineId, $exerciseId)
+    {
+        return $query->where('routine_id', $routineId)
+            ->where('id', $exerciseId);
+    }
 }

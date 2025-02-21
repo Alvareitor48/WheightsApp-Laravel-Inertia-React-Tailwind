@@ -21,4 +21,18 @@ class RoutineSession extends Model
     {
         return $this->belongsTo(Routine::class, 'routine_id');
     }
+
+    public function scopeByUserAndDateRange($query, $userId, $startDate, $endDate, $routineId = null)
+    {
+        $query->where('user_id', $userId)
+            ->whereBetween('completed_at', [$startDate, $endDate])
+            ->with('exerciseLogs');
+
+        if (!is_null($routineId)) {
+            $query->where('routine_id', $routineId);
+        }
+
+        return $query;
+    }
+
 }
