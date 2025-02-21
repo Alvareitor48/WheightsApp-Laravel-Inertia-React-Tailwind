@@ -32,7 +32,7 @@ class RoutineDetailsService
         ];
     }
 
-    public function chartData(string $period, ?int $routineId = null): array
+    public function chartData(string $period = null, ?int $routineId = null): array
     {
         [$today, $startDate] = DateHelper::getDays($period);
         $sessions = RoutineSession::byUserAndDateRange(auth()->id(), $startDate, $today, $routineId)->get();
