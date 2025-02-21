@@ -3,6 +3,7 @@
 
 namespace App\Actions;
 
+use App\Models\Exercise;
 use App\Models\Muscle;
 use App\Services\ExerciseService;
 
@@ -15,9 +16,10 @@ class CreateExerciseAction
         $this->exerciseService = $exerciseService;
     }
 
-    public function execute(array $data): void
+    public function execute(array $data, ?array $muscles = null): Exercise
     {
         $equipment = ($data['equipment'] === 'Sin equipamiento') ? null : $data['equipment'];
+        $muscles = $muscles ?? $data['muscles'];
 
         $exercise = $this->exerciseService->createExercise(
             $data['media'],
@@ -25,9 +27,9 @@ class CreateExerciseAction
             $data['description'],
             $equipment
         );
-
-        $muscleIds = Muscle::whereIn('name', $data['muscles'])->pluck('id')->toArray();
+        $muscleIds = Muscle::whereIn('name', $muscles)->pluck('id')->toArray();
         $exercise->muscles()->attach($muscleIds);
+        return $exercise;
     }
 }
 

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Actions\CreateExerciseAction;
+use App\Actions\FilterExercisesAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreApiExerciseRequest;
 use App\Http\Resources\ExerciseResource;
 use App\Models\Exercise;
-use App\Models\Muscle;
 use App\Services\ExerciseService;
 use Illuminate\Http\Request;
 class ExerciseApiController extends Controller
@@ -16,13 +17,10 @@ class ExerciseApiController extends Controller
     {
         $this->exerciseService = $exerciseService;
     }
-    public function index(Request $request)
+    public function index(Request $request, FilterExercisesAction $action)
     {
         $this->authorize('viewAny', Exercise::class);
-        $query = Exercise::query();
-        $this->applyFilters($query, $request);
-        $exercises = $query->paginate(10);
-        return ExerciseResource::collection($exercises);
+        return ExerciseResource::collection($action->execute($request, true));
     }
     public function show($id)
     {
@@ -39,44 +37,13 @@ class ExerciseApiController extends Controller
 
         return new ExerciseResource($exercise);
     }
-    public function store(StoreApiExerciseRequest $request)
+    public function store(StoreApiExerciseRequest $request, CreateExerciseAction $action)
     {
         $data = $request->validated();
         $this->authorize('create', Exercise::class);
         $muscles = explode(',', $data['muscles']);
         $muscles = array_map('trim', $muscles);
-        $exercise = $this->exerciseService->createExercise(
-            $data['media'],
-            $data['name'],
-            $data['description'],
-            $data['equipment']
-        );
-
-        if (!empty($muscles)) {
-            $muscleIds = Muscle::whereIn('name', $muscles)->pluck('id')->toArray();
-            $exercise->muscles()->attach($muscleIds);
-        }
-
+        $exercise = $action->execute($request->validated(),$muscles);
         return new ExerciseResource($exercise);
-    }
-
-    private function applyFilters($query, Request $request)
-    {
-        if ($request->filled('equipment')) {
-            $query->where('equipment', $request->equipment);
-        }
-
-        if ($request->filled('muscles')) {
-            $muscles = explode(',', $request->muscles);
-            $query->whereHas('muscles', function ($q) use ($muscles) {
-                $q->whereIn('name', $muscles);
-            });
-        }
-
-        if ($request->boolean('created_by_me') && auth()->check()) {
-            $query->where('user_id', auth()->id());
-        } elseif ($request->boolean('created_by_me')) {
-            abort(response()->json(['message' => 'Unauthorized'], 401));
-        }
     }
 }
