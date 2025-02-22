@@ -9,9 +9,11 @@ use App\Http\Requests\StoreApiExerciseRequest;
 use App\Http\Resources\ExerciseResource;
 use App\Models\Exercise;
 use App\Services\ExerciseService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 class ExerciseApiController extends Controller
 {
+    use AuthorizesRequests;
     private ExerciseService $exerciseService;
     public function __construct(ExerciseService $exerciseService)
     {
@@ -25,10 +27,10 @@ class ExerciseApiController extends Controller
     public function show($id)
     {
         $exercise = Exercise::find($id);
-        $this->authorize('view', $exercise);
         if (!$exercise) {
             return response()->json(['message' => 'Ejercicio no encontrado'], 404);
         }
+        $this->authorize('view', $exercise);
         if($exercise->user_id != auth()->id() && $exercise->user_id != null){
             if(!(auth()->hasRole('admin'))){
                 return response()->json(['message' => 'Unauthorized to see this exercise'], 401);
