@@ -300,6 +300,7 @@ test('user can delete an exercise from a routine', function () {
         'id' => $exerciseRoutine->id,
         'routine_id' => $this->routine->id,
         'exercise_id' => $exercise->id,
+        'deleted_at' => null
     ]);
 });
 
@@ -477,4 +478,3 @@ test('non-premium user cannot download a routine PDF', function () {
     get(route('routines.download.pdf', $this->routine->id))
         ->assertStatus(403);
 });
-
