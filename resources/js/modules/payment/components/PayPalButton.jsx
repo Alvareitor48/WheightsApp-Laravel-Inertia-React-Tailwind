@@ -1,7 +1,7 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import {usePage} from "@inertiajs/react";
 
-export default function PayPalButton({ total }) {
+export default function PayPalButton() {
     const {auth} = usePage().props
 
     const createOrder = async () => {
@@ -12,7 +12,6 @@ export default function PayPalButton({ total }) {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                 },
-                body: JSON.stringify({ total }),
             });
 
             const data = await response.json();

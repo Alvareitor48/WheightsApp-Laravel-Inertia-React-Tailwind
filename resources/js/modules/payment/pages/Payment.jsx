@@ -2,7 +2,7 @@ import { useState } from "react";
 import { m } from "motion/react";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 import { useTranslation } from "@/shared/hooks/useTranslation";
-import PayPalButton from "@/shared/components/PayPalButton.jsx";
+import PayPalButton from "@/modules/payment/components/PayPalButton.jsx";
 
 export default function PaymentPage() {
     const t = useTranslation();
@@ -84,7 +84,7 @@ export default function PaymentPage() {
                             </ul>
                         </div>
                         <div className="pb-8 px-2">
-                            <PayPalButton total={20} />
+                            <PayPalButton/>
                         </div>
                     </div>
                 </m.div>

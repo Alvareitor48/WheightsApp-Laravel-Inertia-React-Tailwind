@@ -8,19 +8,13 @@ use Illuminate\Support\Facades\Http;
 
 class PayPalController extends Controller
 {
-    public function createOrder(Request $request)
+    public function createOrder()
     {
         $client_id = config('services.paypal.client_id');
         $secret = config('services.paypal.secret');
 
         if (!$client_id || !$secret) {
             return response()->json(['error' => 'Credenciales de PayPal no configuradas'], 500);
-        }
-
-        $total = $request->input('total');
-
-        if (!$total || !is_numeric($total)) {
-            return response()->json(['error' => 'El valor de total es inválido'], 400);
         }
 
         try {
@@ -30,7 +24,7 @@ class PayPalController extends Controller
                     'purchase_units' => [[
                         'amount' => [
                             'currency_code' => 'EUR',
-                            'value' => $total
+                            'value' => 50
                         ]
                     ]]
                 ]);
