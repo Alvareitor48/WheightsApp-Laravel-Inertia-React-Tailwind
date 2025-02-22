@@ -191,7 +191,7 @@ return [
     'new_payment_description' => 'Einmalige Zahlung für unbegrenzten Zugang',
     'new_payment_price' => '50€',
     'new_payment_price_note' => ' einmalige Zahlung',
-    'new_payment_features_calendar' => 'Vollständiger Zugriff auf den Kalender',
+    'new_payment_features_calendar' => 'Zugriff auf den Kalender für bis zu 1 Jahr',
     'new_payment_features_training_view' => 'Anzeigen Ihrer Trainingseinheiten bis zu 1 Jahr',
     'new_payment_features_max_weights' => 'Anzeigen Ihrer maximalen Gewichte bis zu 1 Jahr',
     'new_payment_features_stats' => 'Zugriff auf Statistiken bis zu 1 Jahr',

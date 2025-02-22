@@ -191,7 +191,7 @@ return [
     'new_payment_description' => 'One-time payment for unlimited access',
     'new_payment_price' => '50€',
     'new_payment_price_note' => ' one-time payment',
-    'new_payment_features_calendar' => 'Full access to the calendar',
+    'new_payment_features_calendar' => 'Access to the calendar for up to 1 year',
     'new_payment_features_training_view' => 'View your training sessions up to 1 year',
     'new_payment_features_max_weights' => 'View your max weights up to 1 year',
     'new_payment_features_stats' => 'Access to statistics up to 1 year',

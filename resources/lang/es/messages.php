@@ -191,7 +191,7 @@ return [
     'new_payment_description' => 'Pago único para acceso ilimitado',
     'new_payment_price' => '50€',
     'new_payment_price_note' => ' pago único',
-    'new_payment_features_calendar' => 'Acceso completo al calendario',
+    'new_payment_features_calendar' => 'Acceso al calendario de hasta 1 año',
     'new_payment_features_training_view' => 'Vista de tus entrenamientos de hasta 1 año',
     'new_payment_features_max_weights' => 'Vista de tus pesos máximos de hasta 1 año',
     'new_payment_features_stats' => 'Acceso a las estadísticas de hasta 1 año',
