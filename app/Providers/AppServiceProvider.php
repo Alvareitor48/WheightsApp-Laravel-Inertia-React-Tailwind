@@ -42,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
             $schedule = app(Schedule::class);
 
             $schedule->command('routines:delete-old')->daily();
+            $schedule->command('exercises-routines:delete-old')->monthlyOn(1);
         });
     }
 }
