@@ -180,6 +180,7 @@ export const DashboardMain = () => {
                                         whileHover={{
                                             scale: 1.1,
                                         }}
+                                        onClick={() => router.get(route('routines.sessions.show', { sessionId: session.id }))}
                                     >
                                         {t("dashboard_view_day")}
                                     </m.button>

@@ -9,7 +9,7 @@ import { SubscriptionPopUp } from "@/modules/profile/components/SubscriptionPopU
 import { m } from "motion/react";
 import { useTranslation } from "@/shared/hooks/useTranslation";
 
-export default function RoutineShow({ stadistics }) {
+export default function RoutineShow({ stadistics, isSession }) {
     const { data } = useUpdate();
     const [chartHeight, setChartHeight] = useState(300);
     const [chartWidth, setChartWidth] = useState(300);
@@ -120,6 +120,7 @@ export default function RoutineShow({ stadistics }) {
     return (
         <>
             <div className="bg-transparent flex flex-col items-center min-h-screen text-white">
+                {!isSession &&
                 <div className="w-full flex justify-between p-4">
                     <m.button
                         className="bg-lilaPrincipal text-white text-responsive-select py-1 px-2 rounded-md"
@@ -138,7 +139,7 @@ export default function RoutineShow({ stadistics }) {
                             : t("routine_show_export_pdf")}
                     </m.button>
                 </div>
-
+                }
                 <div className="text-center flex flex-col items-center justify-center mb-4 w-2/4">
                     <h1 className="text-responsive-h2 font-semibold break-all">
                         {data.routine.name}
@@ -149,6 +150,7 @@ export default function RoutineShow({ stadistics }) {
                     <span className="text-gray-200 text-responsive-h4 font-semibold my-4">
                         {t("routine_show_created_by")} {data.routine.user.name}
                     </span>
+                    {!isSession &&
                     <div className="w-full h-[40vh] flex flex-col justify-center items-center">
                         <select
                             value={chartFilter}
@@ -179,9 +181,10 @@ export default function RoutineShow({ stadistics }) {
                             />
                         )}
                     </div>
+                    }
                 </div>
 
-                {/* Botón de Comenzar Rutina*/}
+                {!isSession &&
                 <div className="flex justify-center items-center flex-wrap w-2/4 mb-4">
                     <RouteButton
                         extraCSS={"mx-2"}
@@ -202,6 +205,7 @@ export default function RoutineShow({ stadistics }) {
                         title={t("routine_show_update_routine")}
                     ></RouteButton>
                 </div>
+                }
                 {data.exercises.map(function (exercise, index) {
                     return (
                         <PrincipalTableShow

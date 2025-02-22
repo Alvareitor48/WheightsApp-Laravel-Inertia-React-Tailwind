@@ -5,7 +5,7 @@ import RoutineShow from "../components/RoutineShow";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 import { SerieCheckedProvider } from "../contexts/SerieCheckedContext";
 
-export default function AdminRoutines({ routine, exercises, stadistics }) {
+export default function AdminRoutines({ routine, exercises, stadistics, isSession }) {
     return (
         <SimpleLayout>
             <SerieCheckedProvider>
@@ -16,7 +16,7 @@ export default function AdminRoutines({ routine, exercises, stadistics }) {
                     }}
                 >
                     <Head title="Routines" />
-                    <RoutineShow stadistics={stadistics} />
+                    <RoutineShow stadistics={stadistics} isSession={isSession} />
                 </RoutineFormProvider>
             </SerieCheckedProvider>
         </SimpleLayout>
