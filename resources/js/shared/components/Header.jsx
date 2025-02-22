@@ -105,6 +105,12 @@ export const Header = () => {
                             method="post"
                             as="button"
                             className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
+                            onClick={()=>{
+                                localStorage.removeItem('routineProgress')
+                                localStorage.removeItem('seriesCompletion')
+                                localStorage.removeItem('startTime')
+                                }
+                            }
                         >
                             {t("header_logout")}
                         </Link>
