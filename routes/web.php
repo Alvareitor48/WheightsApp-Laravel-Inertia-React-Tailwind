@@ -40,6 +40,8 @@ Route::middleware(['auth', 'role:user|premium|admin'])->group(function(){
     Route::delete('/routines/{routineId}/delete-exercise/{redirect_to?}', [RoutineController::class, 'deleteExercise'])->name('routines.delete.exercise');
 
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
+
+    Route::get('/routines/sessions/{sessionId}',[\App\Http\Controllers\Web\RoutineSessionController::class,'show'])->name('routines.sessions.show');
 });
 
 Route::middleware(['auth', 'role:premium|admin'])->group(function(){
