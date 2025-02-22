@@ -122,15 +122,14 @@ public function store(CreateRoutineAction $action)
     {
         $filePath = "pdfs/rutina_{$id}.pdf";
         if (DB::table('jobs')->where('payload', 'like', "%GenerateRoutinePdfJob%")->exists()) {
-            return;
+            return null;
         }
 
         if (!Storage::disk('public')->exists($filePath)) {
-            return;
+            return null;
         }
 
         $pdfContent = Storage::disk('public')->path($filePath);
-        Storage::disk('public')->delete($filePath);
         return response()->download($pdfContent, "rutina_{$id}.pdf");
     }
     public function destroy($id)
