@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Routine;
 use App\Services\RoutineDetailsService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class RoutineApiController extends Controller
 {
+    use AuthorizesRequests;
     private RoutineDetailsService $routineDetailsService;
 
     public function __construct(RoutineDetailsService $routineDetailsService)

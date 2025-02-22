@@ -17,8 +17,8 @@ class StatisticsResource extends JsonResource
     {
         return [
             'date' => Carbon::parse($this->completed_at)->format('d-m-Y'),
-            'Repeticiones Totales' => $this->exerciseLogs->sum('repetitions'),
-            'Peso Levantado' => $this->exerciseLogs->sum('weight'),
+            'Repeticiones Totales' => $this->exerciseLogs->sum(fn ($log) => $log->repetitions ?? 0),
+            'Peso Levantado' => $this->exerciseLogs->sum(fn ($log) => $log->weight ?? 0),
         ];
     }
 }
