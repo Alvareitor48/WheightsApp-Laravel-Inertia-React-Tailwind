@@ -1,66 +1,172 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏋️ Weights Technology - Gym Tracker
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Weights Technology es una aplicación web desarrollada con Laravel, Inertia.js, React y Tailwind que permite gestionar rutinas de entrenamiento, registrar ejercicios y visualizar el progreso del usuario mediante gráficos interactivos.
 
-## About Laravel
+## 📸 Capturas de Pantalla
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Dashboard](https://github.com/user-attachments/assets/62ff273e-bd44-4e4a-8d3e-42d823208a0e)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![Routine](https://github.com/user-attachments/assets/dd90b145-6a4d-45ed-85c3-e91429d200ef)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![Exercises](https://github.com/user-attachments/assets/ae16b8b4-692c-48fc-bd66-2dd82666181a)
 
-## Learning Laravel
+## ✅ Requisitos Previos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Antes de comenzar, asegúrate de tener instalado:
+- **PHP 8.1+**
+- **Composer**
+- **Node.js 16+ y npm**
+- **MySQL**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📥 Instalación
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Sigue estos pasos para configurar el proyecto en tu máquina local:
 
-## Laravel Sponsors
+```sh
+# 1️⃣ Clonar el repositorio
+git clone https://github.com/Alvareitor48/WheightsApp-Laravel-Inertia-React-Tailwind.git
+cd mi-proyecto
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# 2️⃣ Instalar dependencias
+composer install
 
-### Premium Partners
+# 3️⃣ Copiar archivo de configuración
+cp .env.example .env
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+# 4️⃣ Configurar esto en el .env
 
-## Contributing
+APP_NAME="Weights Technology"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL="http://localhost"
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mi_base_de_datos
+DB_USERNAME=mi_usuario
+DB_PASSWORD=mi_contraseña
 
-## Code of Conduct
+# 5️⃣ Ejecutar:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+php artisan project:setup
 
-## Security Vulnerabilities
+# 6️⃣ Ejecutar para ver que todo funciona
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+php artisan test
 
-## License
+# 7️⃣ Volver a cambiar estos 2 parametros de .env
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+APP_ENV=production
+APP_DEBUG=false
+```
+
+## API Endpoints
+
+Esta API proporciona funcionalidades para gestionar ejercicios, rutinas y autenticación de usuarios.
+
+### Autenticación
+
+#### Registro de Usuario
+**Endpoint:** `POST /register`
+**Descripción:** Registra un nuevo usuario.
+**Parámetros:**
+- `name`: Nombre del usuario (string, requerido).
+- `email`: Correo electrónico (string, requerido, único).
+- `password`: Contraseña (string, requerido).
+- `password_confirmation`: Confirmación de la contraseña (string, requerido).
+
+**Respuesta:** JSON con los datos del usuario registrado y token de autenticación.
+
+---
+
+#### Inicio de Sesión
+**Endpoint:** `POST /login`
+**Descripción:** Autentica a un usuario y devuelve un token.
+**Parámetros:**
+- `email`: Correo electrónico (string, requerido).
+- `password`: Contraseña (string, requerido).
+
+**Respuesta:** JSON con el token de acceso.
+
+---
+
+#### Cerrar Sesión
+**Endpoint:** `POST /logout`
+**Descripción:** Invalida el token de autenticación del usuario actual.
+**Requiere Autenticación:** Sí
+**Respuesta:** JSON con mensaje de confirmación.
+
+---
+
+### Ejercicios
+
+#### Listar Ejercicios
+**Endpoint:** `GET /exercises`
+**Descripción:** Obtiene una lista de ejercicios disponibles.
+**Parámetros Opcionales:**
+- `muscles`: Filtrar por grupo muscular, separados por comas (string, opcional).
+- `equipment`: Filtrar por tipo de equipamiento (string, opcional).
+- `created_by_me`: Filtrar solo ejercicios creados por el usuario autenticado (boolean, opcional, `true` o `false`).
+
+**Respuesta:** JSON con la lista de ejercicios filtrados según los parámetros proporcionados.
+
+---
+
+#### Ver un Ejercicio
+**Endpoint:** `GET /exercises/{id}`
+**Descripción:** Obtiene los detalles de un ejercicio específico.
+**Requiere Autenticación:** Sí (roles: `user`, `admin`, `premium`)
+**Parámetros:**
+- `{id}`: ID del ejercicio (integer, requerido).
+
+**Respuesta:** JSON con la información del ejercicio.
+
+---
+
+#### Crear un Ejercicio
+**Endpoint:** `POST /exercises`
+**Descripción:** Crea un nuevo ejercicio.
+**Requiere Autenticación:** Sí (roles: `admin`, `premium`)
+**Parámetros:**
+- `name`: Nombre del ejercicio (string, requerido).
+- `description`: Descripción del ejercicio (string, requerido).
+- `equipment`: Equipamiento (string, opcional).
+- `muscles`: Musculos trabajados, separados por comas (string, requerido).
+- `media`: Video o imagen del ejercicio (file, mimes:webp,mp4, requerido).
+
+**Respuesta:** JSON con los detalles del ejercicio creado.
+
+---
+
+### Rutinas
+
+#### Ver una Rutina
+**Endpoint:** `GET /routines/{id}`
+**Descripción:** Obtiene los detalles de una rutina específica.
+**Requiere Autenticación:** Sí (roles: `user`, `admin`, `premium`)
+**Parámetros:**
+- `{id}`: ID de la rutina (integer, requerido).
+
+**Respuesta:** JSON con los detalles de la rutina.
+
+---
+
+#### Datos de Gráfica de una Rutina
+**Endpoint:** `GET /routines/{id}/chart-data`
+**Descripción:** Obtiene datos estadísticos de una rutina para visualización en gráficos.
+**Requiere Autenticación:** Sí (roles: `user`, `admin`, `premium`)
+**Parámetros:**
+- `{id}`: ID de la rutina (integer, requerido).
+- `{period}`: Periodo de consulta(month, 3months, year) (opcional)
+
+**Respuesta:** JSON con los datos para gráficos.
+
+---
+
+### Notas
+- Todos los endpoints que requieren autenticación utilizan `auth:sanctum`.
+- Los roles `admin` y `premium` tienen permisos adicionales para crear ejercicios.
+- Los roles `admin` y `premium` pueden listar sus ejercicios, los usuarios normales no
+- Los roles `admin` y `premium` pueden filtrar la grafica por 3 meses y año, los usuarios normales solo por mes
+- El sistema utiliza tokens de acceso para la autenticación.
