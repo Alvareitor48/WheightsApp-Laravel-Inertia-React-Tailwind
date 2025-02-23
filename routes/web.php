@@ -60,6 +60,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/about', function () {
+    return Inertia::render('aboutUs/pages/AboutUs');
+})->name('about');
+
 Route::get('/set-locale/{locale}',[LanguageController::class, 'setLocale'])->name('setLocale');
 
 require __DIR__.'/auth.php';
