@@ -3,12 +3,14 @@ import { m } from "motion/react";
 import SimpleLayout from "@/shared/layouts/SimpleLayout";
 import { useTranslation } from "@/shared/hooks/useTranslation";
 import PayPalButton from "@/modules/payment/components/PayPalButton.jsx";
+import {Head} from "@inertiajs/react";
 
 export default function PaymentPage() {
     const t = useTranslation();
 
     return (
         <SimpleLayout>
+            <Head title="Payment" />
             <div className="min-h-screen bg-black flex items-center justify-center p-4">
                 <m.div
                     initial={{ opacity: 0, y: 20 }}

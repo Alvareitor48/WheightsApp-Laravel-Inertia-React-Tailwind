@@ -7,6 +7,7 @@ import { SerieCheckedProvider } from "../contexts/SerieCheckedContext";
 export default function StartRoutines({ routine, exercises }) {
     return (
         <SimpleLayout>
+            <Head title="Session" />
             <SerieCheckedProvider>
                 <RoutineFormProvider
                     initialData={{

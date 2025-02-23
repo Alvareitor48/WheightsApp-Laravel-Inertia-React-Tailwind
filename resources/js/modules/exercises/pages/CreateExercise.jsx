@@ -1,5 +1,5 @@
 import MainLayout from "@/shared/layouts/MainLayout";
-import { useForm } from "@inertiajs/react";
+import {Head, useForm} from "@inertiajs/react";
 import AutoResizingTextarea from "@/modules/routines/components/AutoResizingTextArea";
 import { useTranslation } from "@/shared/hooks/useTranslation";
 
@@ -70,6 +70,7 @@ export default function CreateExercise({
 
     return (
         <MainLayout>
+            <Head title="Create Exercise" />
             <div className="min-h-screen bg-transparent text-white p-6">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-responsive-h1 font-bold mb-4">

@@ -7,6 +7,7 @@ import { SerieCheckedProvider } from "../contexts/SerieCheckedContext";
 export default function UpdateRoutines({ routine, exercises }) {
     return (
         <SimpleLayout>
+            <Head title="Update" />
             <SerieCheckedProvider>
                 <RoutineFormProvider
                     initialData={{

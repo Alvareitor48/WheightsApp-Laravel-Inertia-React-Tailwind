@@ -3,7 +3,7 @@ import { m } from "motion/react";
 import InputError from "@/modules/auth/components/InputError";
 import InputLabel from "@/modules/auth/components/InputLabel";
 import TextInput from "@/modules/auth/components/TextInput";
-import { useForm } from "@inertiajs/react";
+import {Head, useForm} from "@inertiajs/react";
 import { useTranslation } from "@/shared/hooks/useTranslation";
 
 export default function ConfirmPassword() {
@@ -21,6 +21,7 @@ export default function ConfirmPassword() {
 
     return (
         <SimpleLayout>
+            <Head title="Confirm Password" />
             <div className="min-h-[88.4vh] bg-black text-white p-4 sm:p-6 flex items-center justify-center">
                 <m.form
                     initial={{ opacity: 0, scale: 0.7 }}

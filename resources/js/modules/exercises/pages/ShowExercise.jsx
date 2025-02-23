@@ -1,5 +1,6 @@
 import { useTranslation } from "@/shared/hooks/useTranslation";
 import MainLayout from "@/shared/layouts/MainLayout";
+import {Head} from "@inertiajs/react";
 
 export default function ShowExercise({ exercise }) {
     const t = useTranslation();
@@ -7,6 +8,7 @@ export default function ShowExercise({ exercise }) {
     const mediaType = isImage ? "image" : "video";
     return (
         <MainLayout>
+            <Head title="Exercise" />
             <div className="min-h-screen bg-transparent text-white p-6">
                 <div className="max-w-4xl mx-auto">
                     <h1 className="text-responsive-h1 font-bold mb-4">

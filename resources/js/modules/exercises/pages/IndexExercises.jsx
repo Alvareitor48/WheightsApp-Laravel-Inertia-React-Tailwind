@@ -2,7 +2,7 @@ import MainLayout from "@/shared/layouts/MainLayout";
 import { m } from "motion/react";
 import Pagination from "../components/Pagination";
 import ExerciseCard from "../components/ExerciseCard";
-import { useForm } from "@inertiajs/react";
+import {Head, useForm} from "@inertiajs/react";
 import { Auth } from "@/shared/components/Auth";
 import { useTranslation } from "@/shared/hooks/useTranslation";
 
@@ -38,6 +38,7 @@ export default function IndexExercises({ exercises, equipments, muscles }) {
     };
     return (
         <MainLayout>
+            <Head title="Index" />
             <m.div className="min-h-screen bg-transparent p-8 relative">
                 <h1 className="text-responsive-h2 font-bold text-white mb-8 text-center">
                     {t("exercises_index_title")}
