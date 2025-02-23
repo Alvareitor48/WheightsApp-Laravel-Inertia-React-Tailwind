@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Actions\CreateExerciseLogAction;
 use App\Actions\CreateExerciseRoutineAction;
 use App\Actions\CreateRoutineSessionAction;
+use App\Actions\DestroyRoutinesAndRelatedAction;
+use App\Actions\RestoreRoutinesAndRelatedAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ManageExerciseRemoveRequest;
 use App\Http\Requests\ManageExerciseRequest;
@@ -12,8 +14,10 @@ use App\Http\Requests\StartRoutinesRequest;
 use App\Http\Requests\UpdateRoutinesRequest;
 use App\Jobs\GenerateRoutinePdfJob;
 use App\Models\Exercise;
+use App\Models\ExerciseLog;
 use App\Models\ExerciseRoutine;
 use App\Models\Routine;
+use App\Models\RoutineSession;
 use App\Services\RoutineDetailsService;
 use App\Services\RoutineService;
 use Illuminate\Http\Request;
@@ -132,19 +136,19 @@ public function store(CreateRoutineAction $action)
         $pdfContent = Storage::disk('public')->path($filePath);
         return response()->download($pdfContent, "rutina_{$id}.pdf");
     }
-    public function destroy($id)
+    public function destroy($id, DestroyRoutinesAndRelatedAction $action)
     {
         $routine = Routine::findOrFail($id);
         $this->authorize('delete',$routine);
         event(new RoutineDeleted($routine));
-        $routine->delete();
+        $action->execute($routine);
         return redirect()->route('routines.index');
     }
-    public function restore($id)
+    public function restore($id, RestoreRoutinesAndRelatedAction $action)
     {
         $routine = Routine::onlyTrashed()->findOrFail($id);
         $this->authorize('delete', $routine);
-        $routine->restore();
+        $action->execute($routine);
         return redirect()->route('routines.index');
     }
     private function setSessionDataAndGetId($data, CreateRoutineSessionAction $sessionAction, CreateExerciseLogAction $logAction)
