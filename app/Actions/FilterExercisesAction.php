@@ -40,6 +40,6 @@ class FilterExercisesAction
             }
         }
 
-        return $query->paginate($isApi ? 10 : 20);
+        return $query->paginate($isApi ? 10 : 20)->appends($request->query());
     }
 }
