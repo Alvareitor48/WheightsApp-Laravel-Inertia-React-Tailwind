@@ -208,5 +208,6 @@ return [
     "about_feature_tracking"=> "Detailed Tracking",
     "about_feature_tracking_text"=> "Keep a precise record of your workouts, including sets, reps, and weights.",
     "about_feature_progress"=> "Progress Tracking",
-    "about_feature_progress_text"=> "Visualize your progress over time with detailed charts and statistics."
+    "about_feature_progress_text"=> "Visualize your progress over time with detailed charts and statistics.",
+    "rights_reserved"=> "All rights reserved.",
 ];

@@ -208,5 +208,6 @@ return [
     "about_feature_tracking"=> "Detaillierte Aufzeichnung",
     "about_feature_tracking_text"=> "Führen Sie eine genaue Aufzeichnung Ihrer Workouts, einschließlich Sätze, Wiederholungen und Gewichte.",
     "about_feature_progress"=> "Fortschrittsverfolgung",
-    "about_feature_progress_text"=> "Visualisieren Sie Ihren Fortschritt über die Zeit mit detaillierten Diagrammen und Statistiken."
+    "about_feature_progress_text"=> "Visualisieren Sie Ihren Fortschritt über die Zeit mit detaillierten Diagrammen und Statistiken.",
+    "rights_reserved"=> "Alle Rechte vorbehalten.",
 ];

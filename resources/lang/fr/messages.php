@@ -208,5 +208,6 @@ return [
     "about_feature_tracking"=> "Suivi détaillé",
     "about_feature_tracking_text"=> "Enregistrez précisément vos entraînements, y compris les séries, les répétitions et les poids.",
     "about_feature_progress"=> "Suivi des progrès",
-    "about_feature_progress_text"=> "Visualisez votre progression au fil du temps grâce à des graphiques et des statistiques détaillées."
+    "about_feature_progress_text"=> "Visualisez votre progression au fil du temps grâce à des graphiques et des statistiques détaillées.",
+    "rights_reserved"=> "Tous droits réservés."
 ];
