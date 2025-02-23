@@ -6,13 +6,14 @@ import RoutinesCalendar from "../components/RoutinesCalendar";
 import MaxWeights from "../components/MaxWeights";
 import ExercisesForMuscle from "../components/ExercisesForMuscle";
 import { useDashboard } from "../contexts/dashboardContext";
-import { Link, router } from "@inertiajs/react";
+import {Link, router, usePage} from "@inertiajs/react";
 import { PasswordPopUp } from "./PasswordPopUp";
 import { useTranslation } from "@/shared/hooks/useTranslation";
 export const DashboardMain = () => {
     const { calendarDay, sessions } = useDashboard();
     const [isOpen, setIsOpen] = useState(false);
     const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+    const {auth} = usePage().props;
 
     const toggleDropdown = () => setIsOpen(!isOpen);
     const t = useTranslation();
@@ -63,7 +64,7 @@ export const DashboardMain = () => {
                             </svg>
                         </div>
                         <h1 className="text-xl sm:text-2xl font-semibold">
-                            Alvaro
+                            {auth.user.name}
                         </h1>
                     </div>
                     <div className="relative">
