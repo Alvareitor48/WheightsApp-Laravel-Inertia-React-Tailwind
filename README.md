@@ -47,6 +47,8 @@ DB_DATABASE=mi_base_de_datos
 DB_USERNAME=mi_usuario
 DB_PASSWORD=mi_contraseña
 
+L5_SWAGGER_CONST_BASE_URL=http://tudominio/api
+
 # 5️⃣ Ejecutar:
 
 php artisan project:setup
@@ -170,3 +172,16 @@ Esta API proporciona funcionalidades para gestionar ejercicios, rutinas y autent
 - Los roles `admin` y `premium` pueden listar sus ejercicios, los usuarios normales no
 - Los roles `admin` y `premium` pueden filtrar la grafica por 3 meses y año, los usuarios normales solo por mes
 - El sistema utiliza tokens de acceso para la autenticación.
+
+### 📜 Documentación de la API
+
+Este proyecto incluye documentación generada automáticamente con **Swagger**.  
+
+https://tu-dominio.com/api/documentation
+
+### 📌 **Cómo regenerar la documentación**
+Si realizas cambios en los endpoints, ejecuta el siguiente comando para actualizar la documentación:
+
+```sh
+php artisan l5-swagger:generate
+```

@@ -1,0 +1,337 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Weights Technology API",
+        "description": "Documentación de la API para la gestión de rutinas y ejercicios.",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://laravel-react.test/api",
+            "description": "API Base URL"
+        }
+    ],
+    "paths": {
+        "/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Registra un nuevo usuario",
+                "operationId": "dda1672153edafa4a0ea8c018b987bd0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuario registrado correctamente"
+                    },
+                    "422": {
+                        "description": "Datos inválidos"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Autentica un usuario y devuelve un token",
+                "operationId": "4a50da69eed48c10c8aaed7d3bc464b7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Inicio de sesión exitoso"
+                    },
+                    "401": {
+                        "description": "Credenciales incorrectas"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Cierra la sesión del usuario autenticado",
+                "operationId": "a13fb0782060eedb569d06a2be760ecf",
+                "responses": {
+                    "200": {
+                        "description": "Cierre de sesión exitoso"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/exercises": {
+            "get": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Obtiene una lista de ejercicios",
+                "operationId": "c05a0afb5d9d3f73009639759c78cc23",
+                "parameters": [
+                    {
+                        "name": "muscles",
+                        "in": "query",
+                        "description": "Filtrar por grupo muscular",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "equipment",
+                        "in": "query",
+                        "description": "Filtrar por equipamiento",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mine",
+                        "in": "query",
+                        "description": "Filtrar solo ejercicios creados por el usuario autenticado",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de ejercicios"
+                    },
+                    "401": {
+                        "description": "No autenticado"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Crea un nuevo ejercicio",
+                "operationId": "b4893ae3a77267d4de2539659079cd98",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "muscle_group",
+                                    "media"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Push-Up"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Ejercicio de flexiones"
+                                    },
+                                    "muscle_group": {
+                                        "type": "string",
+                                        "example": "chest"
+                                    },
+                                    "media": {
+                                        "description": "Archivo de media en formato .mp4 o .webp",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ejercicio creado correctamente"
+                    },
+                    "403": {
+                        "description": "No autorizado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/exercises/{id}": {
+            "get": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Obtiene los detalles de un ejercicio",
+                "operationId": "76b49caf8e84d073af80ff2719f92de3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del ejercicio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles del ejercicio"
+                    },
+                    "404": {
+                        "description": "Ejercicio no encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/routines/{id}": {
+            "get": {
+                "tags": [
+                    "Routines"
+                ],
+                "summary": "Obtiene los detalles de una rutina",
+                "operationId": "0670c5e1c2c5b03ca97d6a958b3aeb57",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la rutina",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalles de la rutina"
+                    },
+                    "404": {
+                        "description": "Rutina no encontrada"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/routines/{id}/chart-data": {
+            "get": {
+                "tags": [
+                    "Routines"
+                ],
+                "summary": "Obtiene datos para gráficos de una rutina",
+                "operationId": "69dc319629c033b910127d29cd8e654a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la rutina",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Datos de la rutina para gráficos"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Endpoints relacionados con la autenticación de usuarios"
+        },
+        {
+            "name": "Exercises",
+            "description": "Endpoints para la gestión de ejercicios"
+        },
+        {
+            "name": "Routines",
+            "description": "Endpoints para la gestión de rutinas"
+        }
+    ]
+}
