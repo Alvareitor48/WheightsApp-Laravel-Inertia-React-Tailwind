@@ -13,7 +13,7 @@ export const Header = () => {
     const t = useTranslation();
 
     return (
-        <header className="p-2 bg-black fixed flex justify-between items-center w-screen z-20">
+        <header className="p-2 bg-black fixed flex justify-between items-center w-screen z-40">
             <Link href={route("home")}>
                 <img
                     className="h-11"
@@ -75,6 +75,7 @@ export const Header = () => {
                     >
                         {t("header_tutorials")}
                     </Link>
+                    {/*
                     <Link
                         href={route("home")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
@@ -93,8 +94,9 @@ export const Header = () => {
                     >
                         {t("header_calculate_calories")}
                     </Link>
+                    */}
                     <Link
-                        href={route("home")}
+                        href={route("about")}
                         className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
                     >
                         {t("header_about_us")}
@@ -105,12 +107,11 @@ export const Header = () => {
                             method="post"
                             as="button"
                             className="block my-2 px-4 py-2 text-white hover:bg-lilaSecundario"
-                            onClick={()=>{
-                                localStorage.removeItem('routineProgress')
-                                localStorage.removeItem('seriesCompletion')
-                                localStorage.removeItem('startTime')
-                                }
-                            }
+                            onClick={() => {
+                                localStorage.removeItem("routineProgress");
+                                localStorage.removeItem("seriesCompletion");
+                                localStorage.removeItem("startTime");
+                            }}
                         >
                             {t("header_logout")}
                         </Link>
