@@ -67,10 +67,10 @@ class DashboardController extends Controller
         $sessionsQuery = RoutineSession::query()
             ->where('user_id', auth()->id());
 
-        if (!auth()->user()->hasRole('admin') || !auth()->user()->hasRole('premium')) {
+        if (!(auth()->user()->hasRole('admin') || auth()->user()->hasRole('premium'))) {
             $sessionsQuery->whereDate('completed_at', '>=', $startDate);
         }else{
-            $sessionsQuery->whereDate('completed_at', '<=', Carbon::now()->subYear());
+            $sessionsQuery->whereDate('completed_at', '>=', Carbon::now()->subYear());
         }
 
         return $sessionsQuery->whereDate('completed_at', '<=', $endDate)
