@@ -34,16 +34,13 @@ private function getRoutineDetails(int $id): array
     $exerciseRoutines = ExerciseRoutine::withTrashed()->with('series')->where('routine_id', $routine->id)->get();
     $groupedExercisesLogs = ExerciseLog::where('routine_session_id', $routineSession->id)
         ->get()
-        ->groupBy('exercise_id');
+        ->groupBy('exercise_id')
+        ->values();
     $seriesLogs = $groupedExercisesLogs->map(fn($exerciseLogs) => SerieResource::collection($exerciseLogs));
-    $seriesLogsDef = [];
-    foreach ($seriesLogs as $seriesLog) {
-        array_push($seriesLogsDef, $seriesLog);
-    }
     $exercises = $exerciseRoutines->map(fn($exerciseRoutine) => new ExerciseResource(Exercise::where('id', $exerciseRoutine->exercise_id)->first()));
     $exerciseRoutinesWithDetails = $exerciseRoutines->map(fn($exerciseRoutine, $index) =>
-    isset($seriesLogsDef[$index])
-        ? (new ExerciseRoutineResource($exerciseRoutine, $seriesLogsDef[$index], $exercises[$index]))->toArray(request())
+    isset($seriesLogs[$index])
+        ? (new ExerciseRoutineResource($exerciseRoutine, $seriesLogs[$index], $exercises[$index]))->toArray(request())
         : null
     )->filter();
 
