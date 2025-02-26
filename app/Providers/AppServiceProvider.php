@@ -11,6 +11,7 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 use Spatie\Permission\Middleware\PermissionMiddleware;
 use Spatie\Permission\Middleware\RoleMiddleware;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -44,5 +45,9 @@ class AppServiceProvider extends ServiceProvider
             $schedule->command('routines:delete-old')->daily();
             $schedule->command('exercises-routines:delete-old')->monthlyOn(1);
         });
+
+        if (config('app.env') !== 'local') {
+            URL::forceScheme('https');
+        }
     }
 }
